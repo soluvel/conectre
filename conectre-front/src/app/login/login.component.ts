@@ -16,9 +16,12 @@ export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   forgotPasswordForm: FormGroup;
   showLogin: boolean = true;
+  errorMessage: string;
+  error: boolean;
+  isLogged: boolean = false;
 
   constructor(private fb: FormBuilder,
-              private authService: AuthService,
+              public authService: AuthService,
               private router: Router) {
   }
 
@@ -29,7 +32,7 @@ export class LoginComponent implements OnInit {
     });
 
     this.forgotPasswordForm = this.fb.group({
-      forgotEmail: ['', [Validators.required, Validators.email]]
+      email: ['', [Validators.required, Validators.email]]
     });
   }
 
@@ -41,9 +44,26 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit() {
-    this.authService.setLoggedIn(true);
-    this.router.navigate(['/inicio']);
+    this.authService.loggar(this.loginForm.getRawValue()).subscribe({
+      next: (islogged) => {
+        this.isLogged = islogged;
+        this.authService.setLoggedIn(islogged);
+        if (islogged) {
+          this.router.navigate(['/inicio']);
+        }
+      }, error: () => {
+        this.error = true;
+      }
+    });
+  }
 
+
+  requestNewPasswordByEmail() {
+    this.authService.requestPassword(this.forgotPasswordForm.getRawValue()).subscribe({
+      next: () => {
+      }, error: () => {
+      }
+    });
   }
 
   showForgotPassword() {
@@ -52,7 +72,8 @@ export class LoginComponent implements OnInit {
   }
 
 
-  showCustomContent() {
+  redefinePassword() {
+    this.requestNewPasswordByEmail()
     this.showForgotPasswordContent = false;
     this.showContent = true;
   }

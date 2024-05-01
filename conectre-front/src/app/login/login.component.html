@@ -12,6 +12,12 @@
             <input type="password" id="password" formControlName="password" placeholder="Senha" required>
             <img class="toggle-password" src="assets/hide.svg" (click)="togglePasswordVisibility()">
           </div>
+          <div *ngIf="isLogged" class="error-message">
+            E-mail ou Senha incorretos.
+          </div>
+          <div *ngIf="error" class="error-message">
+            E-mail não cadastrado.
+          </div>
           <div class="form-group">
             <input type="submit" value="Entrar">
           </div>
@@ -28,7 +34,7 @@
             <input type="email" formControlName="email" placeholder="E-mail" required>
           </div>
           <div class="form-group">
-            <input type="submit" value="Enviar link de redefinição" (click)="showCustomContent()">
+            <input type="submit" value="Enviar link de redefinição" (click)="redefinePassword()">
           </div>
         </form>
       </div>
@@ -37,14 +43,12 @@
 
     <ng-container *ngIf="showContent">
       <div class="login-form">
-        <form [formGroup]="forgotPasswordForm">
           <img src="assets/check.svg" class="haha">
           <h2 style="margin-bottom: 10px">E-mail enviado!</h2>
           <h4>Verifique sua caixa de e-mail e spam <br> para prosseguirmos e redefinir sua senha</h4>
           <div class="form-group">
             <input type="submit" value="Voltar ao início" (click)="showLoginView()">
           </div>
-        </form>
       </div>
     </ng-container>
   </div>

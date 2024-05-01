@@ -16,6 +16,8 @@ import { MatInputModule } from "@angular/material/input";
 import { MatButtonModule } from "@angular/material/button";
 import { MatCardModule } from "@angular/material/card";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { HttpClientModule } from "@angular/common/http";
+import { RedefinirSenhaComponent } from "./redefinir-senha/redefinir-senha.component";
 
 @NgModule({
   declarations: [
@@ -24,9 +26,11 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
     InicioComponent,
     NotificacaoComponent,
     LoginComponent,
+    RedefinirSenhaComponent
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MatToolbarModule,

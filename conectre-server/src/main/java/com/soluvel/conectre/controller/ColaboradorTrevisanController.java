@@ -24,9 +24,4 @@ public class ColaboradorTrevisanController extends CrudController<ColaboradorTre
         this.service = colaboradorService;
     }
 
-    @GetMapping("email/{email}")
-    public ResponseEntity<Optional<ColaboradorTrevisan>> findByEmail(@PathVariable("email") String email) {
-        return ResponseEntity.ok(service.findByEmail(email));
-    }
-
 }

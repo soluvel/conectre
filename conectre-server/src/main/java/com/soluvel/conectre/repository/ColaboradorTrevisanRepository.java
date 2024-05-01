@@ -6,6 +6,4 @@ import com.soluvel.conectre.domain.ColaboradorTrevisan;
 import java.util.Optional;
 
 public interface ColaboradorTrevisanRepository extends CrudRepository<ColaboradorTrevisan, Long> {
-
-    Optional<ColaboradorTrevisan> findByEmail(String email);
 }

@@ -1,5 +1,5 @@
 package com.soluvel.conectre.domain.records;
 
-public record EmailRecord(String to) {
+public record EmailRecord(String email) {
 
 }

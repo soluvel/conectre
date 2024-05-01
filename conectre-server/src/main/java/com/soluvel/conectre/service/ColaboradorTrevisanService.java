@@ -23,7 +23,4 @@ public class ColaboradorTrevisanService extends CrudService<ColaboradorTrevisan,
         return repository.save(colaborador);
     }
 
-    public Optional<ColaboradorTrevisan> findByEmail(String email) {
-        return repository.findByEmail(email);
-    }
 }
