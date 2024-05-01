@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.3.xsd">
+
+    <changeSet id="1" author="kassia.zama">
+        <preConditions onFail="MARK_RAN" onFailMessage="A tabela colaborador_trevisan já existe no database">
+            <not>
+                <tableExists tableName="colaborador_trevisan"/>
+            </not>
+        </preConditions>
+
+        <createTable tableName="colaborador_trevisan">
+            <column name="id"  autoIncrement="true" type="int">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_colaborador_trevisan_user"/>
+            </column>
+            <column name="cargo" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <addForeignKeyConstraint
+                baseTableName="colaborador_trevisan"
+                baseColumnNames="id"
+                constraintName="fk_trevisan_user"
+                referencedTableName="user"
+                referencedColumnNames="id"/>
+    </changeSet>
+</databaseChangeLog>
