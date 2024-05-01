@@ -1,0 +1,23 @@
+<ng-container *ngIf="isLoggedIn">
+  <mat-sidenav-container>
+    <mat-sidenav opened mode="side" [style.width]="sidenavWidth()">
+      <app-menu [collapsed]="collapsed()"/>
+    </mat-sidenav>
+    <mat-sidenav-content class="content" [style.margin-left]="sidenavWidth()" (click)="collapsed.set(!collapsed())">
+      <mat-toolbar>
+        <span>Visualização geral</span>
+        <div class="container">
+          <img src="assets/pedro.jpg" class="profile-pic">
+          <span>Olá, Pedro</span>
+          <img src="assets/Icon%20End.svg">
+        </div>
+      </mat-toolbar>
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</ng-container>
+
+<ng-container *ngIf="!isLoggedIn">
+  <router-outlet></router-outlet>
+</ng-container>
+

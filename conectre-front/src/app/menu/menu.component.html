@@ -1,0 +1,17 @@
+<div class="sidenav-header">
+  <img class="logo-full" src="{{ logoCollapsed() }}" [ngClass]="{'logo-icon': sideNavCollapsed()}">
+</div>
+<mat-nav-list>
+  <span matListItemTitle class="topic" *ngIf="!sideNavCollapsed()">Gestão</span>
+  <a mat-list-item *ngFor="let item of gestaoItems()" [routerLink]="item.route">
+    <img matListItemIcon src="{{item.icon}}">
+    <span matListItemTitle>{{ item.title }}</span>
+  </a>
+  <img src="assets/Line%201.svg" class="topic"  *ngIf="!sideNavCollapsed()">
+  <span matListItemTitle class="topic"  *ngIf="!sideNavCollapsed()">Sistema</span>
+  <a mat-list-item *ngFor="let item of sistemaItems()" [routerLink]="item.route">
+    <img matListItemIcon src="{{item.icon}}">
+    <span matListItemTitle>{{ item.title }}</span>
+  </a>
+</mat-nav-list>
+

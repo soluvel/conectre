@@ -1,0 +1,41 @@
+.mat-mdc-list-item-title {
+  color: #71717A;
+  font-size: 12px;
+  font-weight: 400;
+}
+
+.sidenav-header {
+  margin-bottom: 10vh;
+}
+
+img.logo-full {
+  margin: 16px;
+  width: 170px;
+}
+
+img.logo-icon {
+  margin: 16px;
+  width: 32px;
+}
+
+.mdc-list-item.mdc-list-item--with-one-line .mdc-list-item__start {
+  align-self: center;
+  margin: auto 10px auto 20px;
+  height: 18px;
+}
+
+.mat-mdc-list-item.mdc-list-item--with-leading-avatar.mdc-list-item--with-one-line,
+.mat-mdc-list-item.mdc-list-item--with-leading-checkbox.mdc-list-item--with-one-line,
+.mat-mdc-list-item.mdc-list-item--with-leading-icon.mdc-list-item--with-one-line {
+  height: 40px;
+}
+
+.topic {
+  margin: 40px 16px 20px 16px;
+  font-weight: bold;
+  color: #A1A1AA;
+}
+
+.mdc-list-item:hover .mdc-list-item__primary-text {
+  color: white;
+}

@@ -1,0 +1,111 @@
+.geral {
+  position: relative;
+  background-image: url('../../assets/background.svg');
+  background-repeat: no-repeat;
+  background-size: contain;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  min-height: 100vh;
+  margin-right: 10vh;
+}
+
+img {
+  position: absolute;
+  top: 3vh;
+  left: 3vh;
+}
+
+.login-form img.haha {
+  position: relative;
+  top: 0;
+  left: 0;
+  padding-top: 10px;
+  padding-bottom: 20px;
+}
+
+.login-form {
+  display: block;
+  align-items: center;
+  flex-direction: column;
+  position: absolute;
+  background: #27272A;
+  width: 90%;
+}
+
+.login-container {
+  align-items: center;
+  border-radius: 24px;
+  justify-content: center;
+  position: relative;
+  display: flex;
+  width: 40vh;
+  height: 90vh;
+  background-color: #27272A;
+  padding: 20px;
+}
+
+.login-container h2 {
+  text-align: left;
+  color: white;
+  font-weight: bold;
+}
+
+.login-container h4 {
+  text-align: left;
+  color: white;
+  font-size: 12px;
+  font-weight: normal;
+  margin-bottom: 30px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+  position: relative;
+  width: 100%;
+  justify-content: center;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  position: relative;
+}
+
+input[type="password"] {
+  padding-right: 30px;
+}
+
+img.toggle-password {
+  position: absolute;
+  top: 50%;
+  left: 90%;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
+.form-group input[type="submit"] {
+  background-color: #068FFF;
+  color: white;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+}
+
+.login-container a {
+  display: block;
+  text-align: center;
+  color: #A1A1AA;
+  text-decoration: underline;
+  font-family: 'Work Sans', sans-serif;
+  font-weight: normal;
+  margin-top: 15px;
+}
+
+.back {
+  position: absolute;
+  bottom: 3vh;
+  left: 3vh;
+}
