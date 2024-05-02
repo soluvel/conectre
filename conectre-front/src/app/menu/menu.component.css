@@ -1,41 +1,57 @@
+/*.principal {*/
+/*  width: 99%;*/
+/*  height: 90%;*/
+/*}*/
+
+
+.contain {
+  display: flex;
+  position: absolute;
+  align-items: normal;
+  flex-direction: column;
+  justify-content: center;
+  max-height: 90%;
+  max-width: 90%;
+  /*background-color: red;*/
+}
+
+
 .mat-mdc-list-item-title {
-  color: #71717A;
-  font-size: 12px;
+  color: #52525B;
+  font-size: 14px;
+  line-height: 20px;
   font-weight: 400;
 }
 
 .sidenav-header {
-  margin-bottom: 10vh;
+  margin: 2vh 0 2vh 2vh;
 }
 
 img.logo-full {
-  margin: 16px;
   width: 170px;
 }
 
 img.logo-icon {
-  margin: 16px;
   width: 32px;
 }
 
-.mdc-list-item.mdc-list-item--with-one-line .mdc-list-item__start {
-  align-self: center;
-  margin: auto 10px auto 20px;
-  height: 18px;
+.divider {
+  padding-left: 20px;
 }
 
-.mat-mdc-list-item.mdc-list-item--with-leading-avatar.mdc-list-item--with-one-line,
-.mat-mdc-list-item.mdc-list-item--with-leading-checkbox.mdc-list-item--with-one-line,
-.mat-mdc-list-item.mdc-list-item--with-leading-icon.mdc-list-item--with-one-line {
-  height: 40px;
+.mdc-list-item.mdc-list-item--with-one-line .mdc-list-item__start {
+  margin: auto 10px auto 20px;
 }
 
 .topic {
   margin: 40px 16px 20px 16px;
-  font-weight: bold;
+  font-weight: 400;
+  font-size: 12px;
   color: #A1A1AA;
 }
 
 .mdc-list-item:hover .mdc-list-item__primary-text {
   color: white;
 }
+
+

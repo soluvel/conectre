@@ -10,53 +10,81 @@
   margin-right: 10vh;
 }
 
-img {
-  position: absolute;
-  top: 3vh;
-  left: 3vh;
-}
-
-.login-form img.haha {
-  position: relative;
-  top: 0;
-  left: 0;
-  padding-top: 10px;
-  padding-bottom: 20px;
-}
-
-.login-form {
-  display: block;
-  align-items: center;
-  flex-direction: column;
-  position: absolute;
-  background: #27272A;
-  width: 90%;
-}
-
 .login-container {
   align-items: center;
   border-radius: 24px;
   justify-content: center;
   position: relative;
   display: flex;
-  width: 40vh;
+  width: 45vh;
   height: 90vh;
   background-color: #27272A;
-  padding: 20px;
+}
+
+img {
+  position: absolute;
+  top: 3vh;
+  left: 3vh;
+}
+
+.login-form img.icons {
+  position: relative;
+  top: 0;
+  left: 0;
+  padding-top: 10px;
+  padding-bottom: 20px;
+  max-width: 15%;
+}
+
+.login-form {
+  display: flex;
+  position: absolute;
+  align-items: normal;
+  flex-direction: column;
+  justify-content: center;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+  width: 90%;
+  height: 85%;
+  max-width: 400px;
+  background: #27272A;
+}
+
+img.progress {
+  display: flex;
+  position: absolute;
+  align-items: normal;
+  flex-direction: column;
+  justify-content: center;
+  width: 95%;
+  /*height: 2px;*/
+  top: 2vh;
+  left: 1vh;
+}
+
+
+.login-container h1 {
+  color: white;
+  text-align: left;
+  font-size: 32px;
+  font-weight: 600;
 }
 
 .login-container h2 {
-  text-align: left;
   color: white;
-  font-weight: bold;
+  text-align: left;
+  font-size: 28px;
+  font-weight: 600;
 }
 
 .login-container h4 {
   text-align: left;
   color: white;
-  font-size: 12px;
-  font-weight: normal;
+  font-size: 14px;
+  font-weight: 400;
   margin-bottom: 30px;
+  line-height: 20px;
 }
 
 .form-group {
@@ -89,19 +117,20 @@ img.toggle-password {
 .form-group input[type="submit"] {
   background-color: #068FFF;
   color: white;
-  font-weight: bold;
   border: none;
   cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
 }
 
 .login-container a {
   display: block;
   text-align: center;
   color: #A1A1AA;
-  text-decoration: underline;
-  font-family: 'Work Sans', sans-serif;
-  font-weight: normal;
+  font-size: 14px;
   margin-top: 15px;
+  font-weight: 600;
+  text-decoration: underline;
 }
 
 .back {
@@ -113,4 +142,10 @@ img.toggle-password {
 .error-message {
   color: red;
   padding-bottom: 2vh;
+}
+
+::placeholder {
+  color: #707070;
+  font-size: 14px;
+  font-weight: 400;
 }

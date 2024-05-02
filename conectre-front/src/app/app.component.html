@@ -1,17 +1,21 @@
 <ng-container *ngIf="isLoggedIn">
   <mat-sidenav-container>
-    <mat-sidenav opened mode="side" [style.width]="sidenavWidth()">
-      <app-menu [collapsed]="collapsed()"/>
+    <mat-sidenav opened mode="side" [style.width]="sidenavWidth()" (click)="collapsed.set(!collapsed())">
+      <app-menu [collapsed]="collapsed()" />
     </mat-sidenav>
-    <mat-sidenav-content class="content" [style.margin-left]="sidenavWidth()" (click)="collapsed.set(!collapsed())">
-      <mat-toolbar>
-        <span>Visualização geral</span>
-        <div class="container">
-          <img src="assets/pedro.jpg" class="profile-pic">
-          <span>Olá, Pedro</span>
-          <img src="assets/Icon%20End.svg">
-        </div>
-      </mat-toolbar>
+    <mat-sidenav-content class="content" [style.margin-left]="sidenavWidth()">
+
+      <div class="cabecalho">
+        <h2 class="titulo">Visualização Geral</h2>
+        <img src="assets/pedro.jpg" class="img-avatar" alt="Imagem Redonda">
+        <h2>Olá, <b>Pedro</b></h2>
+        <img  src="assets/Icon%20End.svg" [matMenuTriggerFor]="menu">
+      </div>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item>Sobre o plano</button>
+        <button mat-menu-item>Suporte</button>
+      </mat-menu>
+
       <router-outlet></router-outlet>
     </mat-sidenav-content>
   </mat-sidenav-container>

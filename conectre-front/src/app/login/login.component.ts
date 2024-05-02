@@ -16,7 +16,6 @@ export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   forgotPasswordForm: FormGroup;
   showLogin: boolean = true;
-  errorMessage: string;
   error: boolean;
   isLogged: boolean = false;
 

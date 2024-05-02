@@ -18,6 +18,7 @@ import { MatCardModule } from "@angular/material/card";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { HttpClientModule } from "@angular/common/http";
 import { RedefinirSenhaComponent } from "./redefinir-senha/redefinir-senha.component";
+import { MatMenuModule } from "@angular/material/menu";
 
 @NgModule({
   declarations: [
@@ -28,21 +29,22 @@ import { RedefinirSenhaComponent } from "./redefinir-senha/redefinir-senha.compo
     LoginComponent,
     RedefinirSenhaComponent
   ],
-  imports: [
-    BrowserModule,
-    HttpClientModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    MatToolbarModule,
-    MatSidenavModule,
-    MatListModule,
-    MatIconModule,
-    MatInputModule,
-    MatButtonModule,
-    MatCardModule,
-    FormsModule,
-    ReactiveFormsModule
-  ],
+    imports: [
+        BrowserModule,
+        HttpClientModule,
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        MatToolbarModule,
+        MatSidenavModule,
+        MatListModule,
+        MatIconModule,
+        MatInputModule,
+        MatButtonModule,
+        MatCardModule,
+        FormsModule,
+        ReactiveFormsModule,
+        MatMenuModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })

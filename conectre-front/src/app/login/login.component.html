@@ -4,7 +4,7 @@
     <ng-container *ngIf="showLogin">
       <div class="login-form">
         <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-          <h2 style="margin-bottom: 40px">Login</h2>
+          <h1 style="padding-bottom: 40px">Login</h1>
           <div class="form-group">
             <input type="email" formControlName="email" placeholder="E-mail" required>
           </div>
@@ -28,6 +28,7 @@
     <ng-container *ngIf="showForgotPasswordContent">
       <div class="login-form">
         <form [formGroup]="forgotPasswordForm">
+          <img class="progress" src="assets/Static_ProgressBar1.svg">
           <h2 style="margin-bottom: 10px">Esqueceu a senha?</h2>
           <h4>Nos informe seu e-mail para enviarmos <br> um link para redefinir sua senha</h4>
           <div class="form-group">
@@ -43,12 +44,13 @@
 
     <ng-container *ngIf="showContent">
       <div class="login-form">
-          <img src="assets/check.svg" class="haha">
-          <h2 style="margin-bottom: 10px">E-mail enviado!</h2>
-          <h4>Verifique sua caixa de e-mail e spam <br> para prosseguirmos e redefinir sua senha</h4>
-          <div class="form-group">
-            <input type="submit" value="Voltar ao início" (click)="showLoginView()">
-          </div>
+        <img class="progress" src="assets/Static_ProgressBar1.svg">
+        <img src="assets/check.svg" class="icons">
+        <h2 style="margin-bottom: 10px">E-mail enviado!</h2>
+        <h4>Verifique sua caixa de e-mail e spam <br> para prosseguirmos e redefinir sua senha</h4>
+        <div class="form-group">
+          <input type="submit" value="Voltar ao início" (click)="showLoginView()">
+        </div>
       </div>
     </ng-container>
   </div>

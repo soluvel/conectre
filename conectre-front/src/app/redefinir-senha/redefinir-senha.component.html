@@ -4,6 +4,7 @@
     <ng-container *ngIf="redefineView">
       <div class="login-form">
         <form [formGroup]="newPassword" (ngSubmit)="redefinePassword()">
+<!--          <img class="progress" src="assets/Static_ProgressBar4.svg">-->
           <h2 style="margin-bottom: 10px">Redefina sua senha</h2>
           <h4>Agora, vamos criar uma nova senha para você <br> com no <b>mínimo 6 caracteres</b>.</h4>
           <div class="form-group">
@@ -11,7 +12,8 @@
             <img class="toggle-password" src="assets/hide.svg" (click)="togglePasswordVisibility()">
           </div>
           <div class="form-group">
-            <input type="password" id="passwordCheck" formControlName="passwordCheck" placeholder="Confirmar senha" required>
+            <input type="password" id="passwordCheck" formControlName="passwordCheck" placeholder="Confirmar senha"
+                   required>
             <img class="toggle-password" src="assets/hide.svg" (click)="togglePasswordVisibility()">
           </div>
           <div class="form-group">
@@ -23,12 +25,13 @@
 
     <ng-container *ngIf="showContent">
       <div class="login-form">
-          <img src="assets/check.svg" class="haha">
-          <h2 style="margin-bottom: 10px">Senha redefinida!</h2>
-          <h4>Utilize agora sua nova senha para entrar <br> em sua plataforma</h4>
-          <div class="form-group">
-            <input type="submit" value="Voltar ao início" (click)="showLoginView()">
-          </div>
+<!--        <img class="progress" src="assets/Static_ProgressBar5.svg">-->
+        <img src="assets/check.svg" class="icons">
+        <h2 style="margin-bottom: 10px">Senha redefinida!</h2>
+        <h4>Utilize agora sua nova senha para entrar <br> em sua plataforma</h4>
+        <div class="form-group">
+          <input type="submit" value="Voltar ao início" (click)="showLoginView()">
+        </div>
       </div>
     </ng-container>
   </div>

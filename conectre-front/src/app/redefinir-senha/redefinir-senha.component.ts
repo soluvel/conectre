@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { AuthService } from "../auth.service";
-import { ActivatedRoute, Params, Router } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 
 @Component({
   selector: 'app-redefinir-senha',
@@ -46,7 +46,6 @@ export class RedefinirSenhaComponent implements OnInit {
     this.authService.updatePassword(this.newPassword.getRawValue()).subscribe({
       next: () => {
         console.log("password alterado com sucesso")
-        this.router.navigate(['/login']);
       }, error: () => {
       }
     });
@@ -59,8 +58,7 @@ export class RedefinirSenhaComponent implements OnInit {
   }
 
   showLoginView() {
-    this.redefineView = false;
-    this.showContent = false;
+    this.router.navigate(['/login']);
   }
 
 }
