@@ -8,8 +8,16 @@
     <changeSet id="1" author="kassia.zama">
         <sql>
             INSERT INTO public.user (id, name, email, password, active)
-            VALUES (1, 'usuario', 'usuario@conectre.com', 'senha', true);
-            INSERT INTO public.colaborador_trevisan (id, cargo)VALUES(1, 'Administrador');
+            VALUES (1, 'Gildo', 'gildo@soluveldesign.com.br', 'PASSWORD', true);
+            INSERT INTO public.colaborador_trevisan (id, cargo)VALUES(1, 'user');
+
+            INSERT INTO public.user (id, name, email, password, active)
+            VALUES (2, 'Bruno', ' bruno.kambara@soluveldesign.com.br', 'PASSWORD', true);
+            INSERT INTO public.colaborador_trevisan (id, cargo)VALUES(2, 'user');
+
+            INSERT INTO public.user (id, name, email, password, active)
+            VALUES (3, 'Gabriel', 'gabriel.souza@soluveldesign.com.br', 'PASSWORD', true);
+            INSERT INTO public.colaborador_trevisan (id, cargo)VALUES(3, 'user');
         </sql>
     </changeSet>
 </databaseChangeLog>

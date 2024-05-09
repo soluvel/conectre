@@ -1,6 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
 @import "@fortawesome/fontawesome-free/css/all.css";
 
+:root {
+  --mdc-tab-indicator-active-indicator-color: #068FFF;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -14,5 +18,40 @@ body {
 
 p {
   margin: 5vh;
+}
+
+.button-geral {
+  background-color: #068FFF;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 5px 12px 5px 12px;
+  border-radius: 3px;
+}
+
+.button-geral-full {
+  background-color: #068FFF;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 5px 12px 5px 12px;
+  border-radius: 3px;
+  width: 100%;
+  text-align: center;
+}
+
+.button-white {
+  background-color: #fafafa;
+  color: #3F3F46;
+  border: 2px solid #D1D1D1;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 5px 12px 5px 12px;
+  border-radius: 4px;
 }
 

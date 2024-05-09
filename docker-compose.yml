@@ -1,0 +1,30 @@
+version: "1"
+
+services:
+  server:
+    image: kassiazama/soluvel-server
+    container_name: server
+    ports:
+      - '8080:8080'
+    depends_on:
+      - postgres-compose
+
+  postgres-compose:
+    image: postgres
+    container_name: postgres-compose
+    restart: always
+    environment:
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=1234
+      - POSTGRES_DB=conectre
+    ports:
+      - '5432:5432'
+
+  angular:
+    image: kassiazama/soluvel-front
+    container_name: angular
+    ports:
+      - '4200:4200'
+
+
+

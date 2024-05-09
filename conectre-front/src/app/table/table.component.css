@@ -1,0 +1,177 @@
+table {
+  width: 100%;
+  height: 40vh;
+  border-radius: 30px;
+}
+
+.example-form {
+  max-width: 300px;
+  width: 100%;
+}
+
+.example-full-width {
+  width: 100%;
+}
+
+.form-group {
+  display: flex;
+  margin-bottom: 30px;
+  position: relative;
+  width: 100%;
+  height: 30px;
+  justify-content: flex-end;
+}
+
+
+.input-search {
+  width: 25%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  left: 0;
+  top: 0;
+  height: 100%;
+  position: absolute;
+  margin-right: 30px;
+  font-family: 'Work Sans', sans-serif;
+  outline: none;
+}
+
+.input-img {
+  height: 80%;
+  position: absolute;
+  left: 23%;
+  padding-top: 5px;
+}
+
+
+table th {
+  color: #6D6D6D;
+  background: #F4F4F5;
+  font-size: 14px;
+  font-weight: normal;
+  font-family: 'Work Sans', sans-serif;
+}
+
+table td {
+  color: #09090B;
+  font-size: 14px;
+  font-weight: 600;
+  font-family: 'Work Sans', sans-serif;
+}
+
+
+#header-left {
+  border-top-left-radius: 20px;
+}
+
+#header-right {
+  border-top-right-radius: 20px;
+  text-align: right;
+}
+
+img.img-avatar {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  margin-right: -10px;
+}
+
+
+mat-paginator {
+  border-bottom-right-radius: 20px;
+  border-bottom-left-radius: 20px;
+  justify-content: center;
+
+}
+
+.container {
+  display: flex;
+  justify-content: space-between; /* Distribui o espaço entre os itens */
+  padding: 20px;
+  /*background-color: #f0f0f0;*/
+}
+.column {
+  flex: 0 0 10%;
+  padding: 10px;
+}
+.column:nth-child(2) {
+  justify-content: center;
+  flex: 0 0 60%; /* A segunda coluna é maior */
+}
+
+img.img-button {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: -10px;
+}
+
+#overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 30%;
+  height: 100%;
+  background-color: white;
+  z-index: 9999;
+}
+#content {
+  padding: 35px;
+}
+
+.conta {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  padding-bottom: 30px;
+  font-family: 'Work Sans', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.conta h3 {
+  text-decoration: underline;
+  color: #71717A;
+}
+
+.checkbox-container {
+  display: flex;
+  flex-direction: column;
+}
+
+mat-expansion-panel {
+  border: none;
+  border-bottom: 1px solid #71717A;
+}
+
+mat-panel-title {
+  color: #71717A;
+  font-family: 'Work Sans', sans-serif;
+}
+
+.mat-expansion-panel:not([class*=mat-elevation-z]) {
+  box-shadow:none;
+}
+
+::ng-deep .mat-mdc-checkbox label {
+  cursor: pointer;
+  color: #71717A;
+  font-family: 'Work Sans', sans-serif;
+}
+
+h5 {
+  color: #71717A;
+  font-family: 'Work Sans', sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+}
+
+.h5-bold {
+  color: #616161;
+  font-family: 'Work Sans', sans-serif;
+  font-weight: 600;
+  font-size: 12px;
+  margin-bottom: 15px;
+}
