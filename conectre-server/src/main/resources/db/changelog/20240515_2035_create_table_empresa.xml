@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.3.xsd">
+
+    <changeSet id="1" author="kassia.zama">
+        <preConditions onFail="MARK_RAN" onFailMessage="A tabela empresa já existe no database">
+            <not>
+                <tableExists tableName="empresa"/>
+            </not>
+        </preConditions>
+
+        <createTable tableName="empresa">
+            <column name="id" autoIncrement="true" type="int">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_empresa"/>
+            </column>
+            <column name="razao_social" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="cnpj_cpf" type="varchar(15)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="cep" type="varchar(8)"/>
+            <column name="logradouro" type="varchar(255)"/>
+            <column name="numero" type="varchar(10)"/>
+            <column name="complemento" type="varchar(255)"/>
+            <column name="bairro" type="varchar(255)"/>
+            <column name="cidade" type="varchar(255)"/>
+            <column name="estado" type="varchar(2)"/>
+
+            <column name="plano" type="varchar(30)">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="grupo_id" type="int">
+                <constraints foreignKeyName="fk_empresa_grupo" referencedTableName="empresa_grupo" referencedColumnNames="id"/>
+            </column>
+        </createTable>
+
+    </changeSet>
+</databaseChangeLog>

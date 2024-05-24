@@ -51,18 +51,6 @@ img {
   background: #27272A;
 }
 
-img.progress {
-  display: flex;
-  position: absolute;
-  align-items: normal;
-  flex-direction: column;
-  justify-content: center;
-  width: 95%;
-  top: 2vh;
-  left: 1vh;
-}
-
-
 .login-container h1 {
   color: white;
   text-align: left;
@@ -147,4 +135,16 @@ img.toggle-password {
   color: #707070;
   font-size: 14px;
   font-weight: 400;
+}
+
+mat-progress-bar {
+  display: flex;
+  position: absolute;
+  align-items: normal;
+  flex-direction: column;
+  justify-content: center;
+  width: 95%;
+  top: 4vh;
+  left: 1vh;
+  color: red;
 }

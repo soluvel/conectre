@@ -6,26 +6,26 @@
                    http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.3.xsd">
 
     <changeSet id="1" author="kassia.zama">
-        <preConditions onFail="MARK_RAN" onFailMessage="A tabela colaborador_trevisan já existe no database">
+        <preConditions onFail="MARK_RAN" onFailMessage="A tabela usuario_trevisan já existe no database">
             <not>
-                <tableExists tableName="colaborador_trevisan"/>
+                <tableExists tableName="usuario_trevisan"/>
             </not>
         </preConditions>
 
-        <createTable tableName="colaborador_trevisan">
+        <createTable tableName="usuario_trevisan">
             <column name="id"  autoIncrement="true" type="int">
-                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_colaborador_trevisan_user"/>
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_usuario_trevisan"/>
             </column>
-            <column name="cargo" type="varchar(255)">
+            <column name="cargo" type="varchar(100)">
                 <constraints nullable="false"/>
             </column>
         </createTable>
 
         <addForeignKeyConstraint
-                baseTableName="colaborador_trevisan"
+                baseTableName="usuario_trevisan"
                 baseColumnNames="id"
-                constraintName="fk_trevisan_user"
-                referencedTableName="user"
+                constraintName="fk_trevisan_usuario"
+                referencedTableName="usuario"
                 referencedColumnNames="id"/>
     </changeSet>
 </databaseChangeLog>

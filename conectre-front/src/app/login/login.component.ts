@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { AuthService } from "../auth.service";
 import { Router } from "@angular/router";
+import { Subject, takeUntil } from "rxjs";
+import { StorageService } from "../storage.service";
 
 @Component({
   selector: 'app-login',
@@ -21,17 +23,22 @@ export class LoginComponent implements OnInit {
 
   constructor(private fb: FormBuilder,
               public authService: AuthService,
+              private _tokenService: StorageService,
               private router: Router) {
   }
 
   ngOnInit(): void {
+    if (this._tokenService.isTokenValido())  {
+      this.router.navigate(['/inicio']);
+    }
+
     this.loginForm = this.fb.group({
-      email: ['', [Validators.required, Validators.email]],
+      username: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required]
     });
 
     this.forgotPasswordForm = this.fb.group({
-      email: ['', [Validators.required, Validators.email]]
+      username: ['', [Validators.required, Validators.email]]
     });
   }
 
@@ -45,11 +52,13 @@ export class LoginComponent implements OnInit {
   onSubmit() {
     this.authService.loggar(this.loginForm.getRawValue()).subscribe({
       next: (islogged) => {
-        this.isLogged = islogged;
-        this.authService.setLoggedIn(islogged);
-        if (islogged) {
+        if (islogged != '') {
+          this.isLogged = true;
+          this.authService.setLoggedIn(this.isLogged);
           this.router.navigate(['/inicio']);
+          this._tokenService.saveToken(islogged)
         }
+
       }, error: () => {
         this.error = true;
       }

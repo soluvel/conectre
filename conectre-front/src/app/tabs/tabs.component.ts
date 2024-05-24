@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { StorageService } from "../storage.service";
 
 @Component({
   selector: 'app-tabs',
@@ -6,5 +7,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./tabs.component.css']
 })
 export class TabsComponent {
+
+  constructor(public storage: StorageService) {
+  }
 
 }

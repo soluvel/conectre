@@ -1,11 +1,10 @@
 package com.soluvel.conectre.domain;
 
+import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.Inheritance;
-import jakarta.persistence.InheritanceType;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -21,17 +20,16 @@ import java.io.Serializable;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "user", schema = "public")
-@Inheritance(strategy = InheritanceType.JOINED)
-public class User implements Serializable {
+@Table(name = "empresa_grupo", schema = "public")
+public class EmpresaGrupo implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String name;
-    private String email;
-    private String password;
-    private boolean active;
+    private String nome;
+
+    @Embedded
+    private Endereco endereco;
 
 }

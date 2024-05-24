@@ -6,26 +6,29 @@
                    http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.3.xsd">
 
     <changeSet id="1" author="kassia.zama">
-        <preConditions onFail="MARK_RAN" onFailMessage="A tabela user já existe no database">
+        <preConditions onFail="MARK_RAN" onFailMessage="A tabela usuario já existe no database">
             <not>
-                <tableExists tableName="user"/>
+                <tableExists tableName="usuario"/>
             </not>
         </preConditions>
 
-        <createTable tableName="user">
-            <column name="id"  autoIncrement="true" type="int">
-                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_user"/>
+        <createTable tableName="usuario">
+            <column name="id" autoIncrement="true" type="int">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_usuario"/>
             </column>
-            <column name="name" type="varchar(255)">
+            <column name="nome" type="varchar(255)">
                 <constraints nullable="false"/>
             </column>
-            <column name="email" type="varchar(100)">
-                <constraints nullable="false"/>
+            <column name="username" type="varchar(100)">
+                <constraints nullable="false" unique="true"/>
             </column>
             <column name="password" type="varchar(100)">
                 <constraints nullable="false"/>
             </column>
-            <column name="active" type="boolean" defaultValue="true">
+            <column name="ativo" type="boolean" defaultValue="true">
+                <constraints nullable="false"/>
+            </column>
+            <column name="permissao" type="varchar(100)">
                 <constraints nullable="false"/>
             </column>
         </createTable>

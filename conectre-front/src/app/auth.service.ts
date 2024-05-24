@@ -8,13 +8,13 @@ import { Observable } from "rxjs";
 export class AuthService {
 
   loggedInChanged = new EventEmitter<boolean>();
-  private apiUrl = 'http://localhost:8080/login';
+  private apiUrl = 'http://localhost:8080/auth';
 
   constructor(private http: HttpClient) { }
 
-  loggar(login: any): Observable<boolean> {
-    return this.http.post<any>(`${this.apiUrl}`, login);
-  }
+  loggar(login: any): Observable<string> {
+    return this.http.post<any>(`${this.apiUrl}/login`, login);
+  };
 
   requestPassword(login: any): Observable<void> {
     return this.http.post<any>(`${this.apiUrl}/redefinir-senha`, login);

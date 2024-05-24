@@ -16,7 +16,6 @@ export class MenuComponent {
     return [
       { icon: 'assets/inicio-grey.svg', title: 'Início', route: '/inicio' },
       { icon: 'assets/notificacoes-grey.svg', title: 'Notificações', route: '/notificacao' },
-      { icon: 'assets/cadastros-grey.svg', title: 'Rota Login - teste', route: '/login' },
     ];
   }
 

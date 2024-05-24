@@ -4,7 +4,7 @@
     <ng-container *ngIf="redefineView">
       <div class="login-form">
         <form [formGroup]="newPassword" (ngSubmit)="redefinePassword()">
-<!--          <img class="progress" src="assets/Static_ProgressBar4.svg">-->
+          <mat-progress-bar mode="determinate" value="60"></mat-progress-bar>
           <h2 style="margin-bottom: 10px">Redefina sua senha</h2>
           <h4>Agora, vamos criar uma nova senha para você <br> com no <b>mínimo 6 caracteres</b>.</h4>
           <div class="form-group">
@@ -25,7 +25,7 @@
 
     <ng-container *ngIf="showContent">
       <div class="login-form">
-<!--        <img class="progress" src="assets/Static_ProgressBar5.svg">-->
+        <mat-progress-bar mode="determinate" value="100"></mat-progress-bar>
         <img src="assets/check.svg" class="icons">
         <h2 style="margin-bottom: 10px">Senha redefinida!</h2>
         <h4>Utilize agora sua nova senha para entrar <br> em sua plataforma</h4>

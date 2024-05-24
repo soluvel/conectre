@@ -6,7 +6,7 @@
         <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
           <h1 style="padding-bottom: 40px">Login</h1>
           <div class="form-group">
-            <input type="email" formControlName="email" placeholder="E-mail" required>
+            <input type="email" formControlName="username" placeholder="E-mail" required>
           </div>
           <div class="form-group">
             <input type="password" id="password" formControlName="password" placeholder="Senha" required>
@@ -28,11 +28,11 @@
     <ng-container *ngIf="showForgotPasswordContent">
       <div class="login-form">
         <form [formGroup]="forgotPasswordForm">
-          <img class="progress" src="assets/Static_ProgressBar1.svg">
+          <mat-progress-bar mode="determinate" value="30"></mat-progress-bar>
           <h2 style="margin-bottom: 10px">Esqueceu a senha?</h2>
           <h4>Nos informe seu e-mail para enviarmos <br> um link para redefinir sua senha</h4>
           <div class="form-group">
-            <input type="email" formControlName="email" placeholder="E-mail" required>
+            <input type="email" formControlName="username" placeholder="E-mail" required>
           </div>
           <div class="form-group">
             <input type="submit" value="Enviar link de redefinição" (click)="redefinePassword()">
@@ -44,7 +44,7 @@
 
     <ng-container *ngIf="showContent">
       <div class="login-form">
-        <img class="progress" src="assets/Static_ProgressBar1.svg">
+        <mat-progress-bar mode="determinate" value="30"></mat-progress-bar>
         <img src="assets/check.svg" class="icons">
         <h2 style="margin-bottom: 10px">E-mail enviado!</h2>
         <h4>Verifique sua caixa de e-mail e spam <br> para prosseguirmos e redefinir sua senha</h4>

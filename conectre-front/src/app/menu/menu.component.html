@@ -11,6 +11,16 @@
         <img matListItemIcon src="{{item.icon}}">
         <span matListItemTitle>{{ item.title }}</span>
       </a>
+
+      <a mat-list-item>
+        <img matListItemIcon src="assets/cadastros-grey.svg">
+        <span matListItemTitle>Cadastros</span>
+      </a>
+
+      <a mat-list-item [routerLink]=" 'cadastrar/empresa' ">
+        <span matListItemTitle>Empresa</span>
+      </a>
+
     </mat-nav-list>
 
 

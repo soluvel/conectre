@@ -16,9 +16,13 @@ import java.io.Serializable;
 @NoArgsConstructor
 @AllArgsConstructor
 @PrimaryKeyJoinColumn(name = "id")
-@Table(name = "colaborador_trevisan", schema = "public")
-public class ColaboradorTrevisan extends User implements Serializable {
+@Table(name = "usuario_trevisan", schema = "public")
+public class UsuarioTrevisan extends Usuario implements Serializable {
 
     private String cargo;
 
+    public UsuarioTrevisan(String nome, String username, String password, Permissao permissao, String cargo) {
+        super(nome, username, password, permissao);
+        this.cargo = cargo;
+    }
 }

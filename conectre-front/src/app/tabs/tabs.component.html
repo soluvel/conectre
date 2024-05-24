@@ -1,9 +1,8 @@
 <div style="padding-top: 30px">
   <mat-tab-group animationDuration="0ms">
-    <mat-tab label="Empresas">
+    <mat-tab label="Empresas" *ngIf="storage.getRole() === 'ADM_TREVISAN' || storage.getRole() === 'EMPRESA'">
       <div class="example-small-box">
         <div class="column" style="padding-right: 50px">
-<!--          TODO: REFATORAR para exibir as informações de forma dinâmica-->
           <h4>Empresas</h4>
           <h1>12</h1>
         </div>
@@ -13,7 +12,7 @@
         </div>
       </div>
     </mat-tab>
-    <mat-tab label="Técnicos">
+    <mat-tab label="Técnicos" *ngIf="storage.getRole() === 'ADM_TREVISAN' || storage.getRole() === 'TECNICO' || storage.getRole() === 'EMPRESA'">
       <div class="example-small-box">
         <div class="column" style="padding-right: 50px">
           <h4>Técnicos</h4>

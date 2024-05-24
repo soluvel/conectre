@@ -51,19 +51,6 @@ img {
   background: #27272A;
 }
 
-img.progress {
-  display: flex;
-  position: absolute;
-  align-items: normal;
-  flex-direction: column;
-  justify-content: center;
-  width: 95%;
-  /*height: 2px;*/
-  top: 2vh;
-  left: 1vh;
-}
-
-
 .login-container h1 {
   color: white;
   text-align: left;

@@ -30,6 +30,11 @@ import { MatExpansionModule } from "@angular/material/expansion";
 import { MatDatepickerModule } from "@angular/material/datepicker";
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatCheckboxModule } from "@angular/material/checkbox";
+import { AcessoNegadoComponent } from './acesso-negado/acesso-negado.component';
+import { EmpresaFormComponent } from './empresa/empresa-form/empresa-form.component';
+import { TecnicoFormComponent } from './tecnico-form/tecnico-form.component';
+import { MatProgressBarModule } from "@angular/material/progress-bar";
+import { MatGridListModule } from "@angular/material/grid-list";
 
 @NgModule({
   declarations: [
@@ -41,7 +46,10 @@ import { MatCheckboxModule } from "@angular/material/checkbox";
     RedefinirSenhaComponent,
     TabsComponent,
     TableComponent,
-    FilterComponent
+    FilterComponent,
+    AcessoNegadoComponent,
+    EmpresaFormComponent,
+    TecnicoFormComponent
   ],
   imports: [
     BrowserModule,
@@ -66,6 +74,8 @@ import { MatCheckboxModule } from "@angular/material/checkbox";
     MatDatepickerModule,
     MatFormFieldModule,
     MatCheckboxModule,
+    MatProgressBarModule,
+    MatGridListModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

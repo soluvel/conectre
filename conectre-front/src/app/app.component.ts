@@ -1,4 +1,6 @@
-import { Component, computed, signal } from '@angular/core';
+import { Component, computed, OnInit, signal } from '@angular/core';
+import { StorageService } from "./storage.service";
+import { Router } from "@angular/router";
 import { AuthService } from "./auth.service";
 
 @Component({
@@ -6,17 +8,28 @@ import { AuthService } from "./auth.service";
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'Conectre';
-  isLoggedIn: boolean = true;
+  isLoggedIn: boolean = false;
 
-constructor(private authService: AuthService) {
-  this.authService.loggedInChanged.subscribe((loggedIn: boolean) => {
-    this.isLoggedIn = true;
-  });
-}
+  constructor(public storage: StorageService,
+              private _router: Router,
+              private _authService: AuthService) {
+    this._authService.loggedInChanged.subscribe((loggedIn: boolean) => {
+      this.isLoggedIn = loggedIn;
+    });
+  }
+
+  ngOnInit() {
+    this.isLoggedIn = this.storage.isTokenValido();
+  }
 
   collapsed = signal(true);
   sidenavWidth = computed(() => (this.collapsed() ? "65px" : "250px"));
 
+  logout() {
+    this.isLoggedIn = false;
+    this.storage.clear();
+    this._router.navigate(['/login']);
+  }
 }

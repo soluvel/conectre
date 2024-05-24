@@ -15,7 +15,7 @@ public class EmailService {
     public void sendEmail(EmailRecord email, String token) {
        var message = new SimpleMailMessage();
        message.setFrom("conectre@conectre.com.br");
-       message.setTo(email.email());
+       message.setTo(email.username());
        message.setSubject("Recuperação de senha");
        message.setText(String.format("Na Sprint de autenticação, será adicionaddo a funcionalidade " +
                "do link que expira para recuperar a senha. Por enquanto, " +

@@ -6,75 +6,67 @@
   </div>
 
   <div class="form-group">
-    <input class="input-search" type="text" placeholder="O que você procura?" required>
-    <img src="assets/search-icon.svg" class="input-img">
-    <!--  </div>-->
-    <!--  <div class="form-group">-->
-    <button type="button" class="button-geral" style="margin-right: 10px">Nova Empresa</button>
+    <input class="input-search" type="text" placeholder="O que você procura?" [(ngModel)]="razaoSocial" >
+    <img src="assets/search-icon.svg" class="input-img" (click)="search()">
+    <button type="button" class="button-geral" style="margin-right: 10px" [routerLink]=" 'cadastrar/empresa'">Nova Empresa</button>
     <button type="button" class="button-white" (click)="exibirQuadrado()">Filtrar<img src="assets/filter.svg"
                                                                                       alt="Imagem Redonda"
                                                                                       style="padding-left: 10px">
     </button>
   </div>
 
-  <div class="mat-elevation-z8" style="border-radius: 20px">
+  <div class="mat-elevation-z8" style="border-radius: 10px">
     <table mat-table [dataSource]="dataSource">
 
-      <ng-container matColumnDef="empresa">
+      <ng-container matColumnDef="razaoSocial">
         <th mat-header-cell *matHeaderCellDef id="header-left" style="width: 10%">Empresa</th>
-        <td mat-cell *matCellDef="let element"> {{ element.empresa }}</td>
+        <td mat-cell *matCellDef="let element"> {{ element.razaoSocial }}</td>
       </ng-container>
 
-      <ng-container matColumnDef="adm">
+      <ng-container matColumnDef="administradores">
         <th mat-header-cell *matHeaderCellDef style="width: 15%">Administrador</th>
         <td mat-cell *matCellDef="let element">
-          <ng-container *ngFor="let img of getRange(element.adm)">
-            <img src="assets/pedro.jpg" class="img-avatar" alt="Imagem Redonda">
+          <ng-container *ngFor="let img of element.administradores">
+            <img src="assets/pedro.jpg" class="img-avatar" alt="{{ img.nome }}">
           </ng-container>
         </td>
       </ng-container>
 
-      <ng-container matColumnDef="cnpj">
+      <ng-container matColumnDef="cnpjCpf">
         <th mat-header-cell *matHeaderCellDef style="width: 15%">CNPJ/CPF</th>
-        <td mat-cell *matCellDef="let element"> {{ element.cnpj }}</td>
+        <td mat-cell *matCellDef="let element"> {{ element.cnpjCpf }}</td>
       </ng-container>
 
       <ng-container matColumnDef="grupo">
         <th mat-header-cell *matHeaderCellDef style="width: 15%">Grupo</th>
-        <td mat-cell *matCellDef="let element"> {{ element.grupo }}</td>
+        <td mat-cell *matCellDef="let element"> {{ element?.grupo?.nome }}</td>
       </ng-container>
 
       <ng-container matColumnDef="plano">
         <th mat-header-cell *matHeaderCellDef>Plano</th>
-        <td mat-cell *matCellDef="let element"> {{ element.plano }}</td>
+        <td mat-cell *matCellDef="let element"> {{ element?.plano }}</td>
       </ng-container>
 
       <ng-container matColumnDef="detalhe">
         <th mat-header-cell *matHeaderCellDef id="header-right">Detalhes</th>
         <td mat-cell *matCellDef="let element" style="text-align: right; padding-right: 30px"><img
-          src="{{ element.detalhe }}" style="height: 30px;"></td>
+          src="assets/search.svg" style="height: 30px;"></td>
       </ng-container>
 
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
-
-    <div class="container">
-      <div class="column">
-        <img src="assets/button-left.svg" class="img-button" alt="Imagem Redonda">
+    <div style="display: flex; align-items: center; justify-content: space-between; padding: 15px 10px 15px 10px">
+      <img src="assets/Esquerda.svg" style="width:30px" (click)="voltar()">
+      <div style="display: flex; align-items: center;">
+        <ng-container *ngFor="let number of getSequence(totalPage)">
+          <span style="padding: 0 10px 0 10px; font-family: 'Work Sans',serif; color: #6D6D6D" (click)="paginado(number)">{{ number }}</span>
+        </ng-container>
       </div>
-      <div class="column">
-        <mat-paginator [pageSizeOptions]="[5, 10, 20]"
-                       [showFirstLastButtons]="false"
-                       [hidePageSize]="true"
-                       aria-label="Select page of periodic elements">
-        </mat-paginator>
-      </div>
-      <div class="column" style="text-align: right">
-        <img src="assets/button-right.svg" class="img-button" alt="Imagem Redonda">
-      </div>
+      <img src="assets/direita.svg" style="width:30px;" (click)="avancar()">
     </div>
   </div>
+
 </div>
 
 <!--TODO: REFATORAR para componentizar-->
@@ -88,7 +80,7 @@
       <h2>Filtragem</h2>
       <h3>Limpar todos</h3>
     </div>
-   <mat-divider style="margin-bottom: 15px"></mat-divider>
+    <mat-divider style="margin-bottom: 15px"></mat-divider>
     <div style="padding: 15px 20px 30px 0">
       <h5 class="h5-bold">Filtros aplicados</h5>
       <h5>Nenhum selecionado</h5>
@@ -103,9 +95,7 @@
           </mat-expansion-panel-header>
 
           <div class="checkbox-container">
-            <mat-checkbox class="checkbox-item" [(ngModel)]="checked">Start</mat-checkbox>
-            <mat-checkbox class="checkbox-item" [(ngModel)]="checked">Standard</mat-checkbox>
-            <mat-checkbox class="checkbox-item" [(ngModel)]="checked">Enterprise</mat-checkbox>
+            <mat-checkbox class="checkbox-item" *ngFor="let opcao of opcoes; let i = index" [(ngModel)]="checkedPlanos[i]">{{ opcao }}</mat-checkbox>
           </div>
         </mat-expansion-panel>
 
@@ -117,9 +107,7 @@
           </mat-expansion-panel-header>
 
           <div class="checkbox-container">
-            <mat-checkbox class="checkbox-item" [(ngModel)]="checked">Palotina, PR</mat-checkbox>
-            <mat-checkbox class="checkbox-item" [(ngModel)]="checked">Maringá, PR</mat-checkbox>
-            <mat-checkbox class="checkbox-item" [(ngModel)]="checked">Natal, RN</mat-checkbox>
+            <mat-checkbox class="checkbox-item" *ngFor="let cidade of cidades; let i = index" [(ngModel)]="checkedCidades[i]">{{ cidade }}</mat-checkbox>
           </div>
         </mat-expansion-panel>
 
@@ -131,15 +119,17 @@
           </mat-expansion-panel-header>
 
           <div class="checkbox-container">
-            <mat-checkbox class="checkbox-item" [(ngModel)]="checked">C-Vale</mat-checkbox>
-            <mat-checkbox class="checkbox-item" [(ngModel)]="checked">Copacol</mat-checkbox>
-            <mat-checkbox class="checkbox-item" [(ngModel)]="checked">Grupo MSB</mat-checkbox>
+            <mat-checkbox class="checkbox-item">C-Vale</mat-checkbox>
+            <mat-checkbox class="checkbox-item">Copacol</mat-checkbox>
+            <mat-checkbox class="checkbox-item">Grupo MSB</mat-checkbox>
           </div>
         </mat-expansion-panel>
       </mat-accordion>
     </div>
     <div style="margin-top: 50%">
-      <button type="button" class="button-geral-full" (click)="fecharQuadrado()"  [style.background-color]="hasFilter ? '#068FFF' : '#D4D4D4'">Ver resultados</button>
+      <button type="button" class="button-geral-full" (click)="fecharQuadrado()"
+              [style.background-color]="hasFilter ? '#068FFF' : '#D4D4D4'">Ver resultados
+      </button>
     </div>
   </div>
 </div>
