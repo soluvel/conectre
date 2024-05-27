@@ -1,57 +1,17 @@
-@import url('https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
-@import "@fortawesome/fontawesome-free/css/all.css";
+/* Error: Can't find stylesheet to import.
+ *   ,
+ * 2 | @use '@angular/material' as mat;
+ *   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ *   '
+ *   styles.scss 2:1  root stylesheet */
 
-:root {
-  --mdc-tab-indicator-active-indicator-color: #068FFF;
+body::before {
+  font-family: "Source Code Pro", "SF Mono", Monaco, Inconsolata, "Fira Mono",
+      "Droid Sans Mono", monospace, monospace;
+  white-space: pre;
+  display: block;
+  padding: 1em;
+  margin-bottom: 1em;
+  border-bottom: 2px solid black;
+  content: "Error: Can't find stylesheet to import.\a   \2577 \a 2 \2502  @use '@angular/material' as mat;\a   \2502  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\a   \2575 \a   styles.scss 2:1  root stylesheet";
 }
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-body {
-  position: relative;
-  font-family: 'Work Sans', sans-serif;
-}
-
-p {
-  margin: 5vh;
-}
-
-.button-geral {
-  background-color: #068FFF;
-  color: white;
-  border: none;
-  cursor: pointer;
-  font-size: 14px;
-  font-weight: 600;
-  padding: 5px 12px 5px 12px;
-  border-radius: 3px;
-}
-
-.button-geral-full {
-  background-color: #068FFF;
-  color: white;
-  border: none;
-  cursor: pointer;
-  font-size: 14px;
-  font-weight: 600;
-  padding: 5px 12px 5px 12px;
-  border-radius: 3px;
-  width: 100%;
-  text-align: center;
-}
-
-.button-white {
-  background-color: #fafafa;
-  color: #3F3F46;
-  border: 2px solid #D1D1D1;
-  cursor: pointer;
-  font-size: 14px;
-  font-weight: 600;
-  padding: 5px 12px 5px 12px;
-  border-radius: 4px;
-}
-

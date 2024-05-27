@@ -1,4 +1,4 @@
-import { Component, computed, OnInit, signal } from '@angular/core';
+import { Component, computed, signal } from '@angular/core';
 import { StorageService } from "./storage.service";
 import { Router } from "@angular/router";
 import { AuthService } from "./auth.service";
@@ -6,11 +6,11 @@ import { AuthService } from "./auth.service";
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
   title = 'Conectre';
-  isLoggedIn: boolean = false;
+  isLoggedIn: boolean = true;
 
   constructor(public storage: StorageService,
               private _router: Router,

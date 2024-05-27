@@ -38,7 +38,7 @@ button {
   justify-content: flex-end;
   align-items: center;
   border-bottom: 1px solid #52525B;
-  padding: 10px 30px 20px 0;
+  padding: 10px 30px 10px 0;
 }
 
 img.img-avatar {
@@ -64,7 +64,4 @@ img.img-avatar {
   margin-left: 10px;
 }
 
-
-
-
-
+/*# sourceMappingURL=app.component.css.map */

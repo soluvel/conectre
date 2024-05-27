@@ -1,6 +1,5 @@
 .geral {
   position: relative;
-  background-image: url('../../assets/background.svg');
   background-repeat: no-repeat;
   background-size: contain;
   display: flex;
@@ -89,7 +88,7 @@ img {
   position: relative;
 }
 
-input[type="password"] {
+input[type=password] {
   padding-right: 30px;
 }
 
@@ -101,7 +100,7 @@ img.toggle-password {
   cursor: pointer;
 }
 
-.form-group input[type="submit"] {
+.form-group input[type=submit] {
   background-color: #068FFF;
   color: white;
   border: none;
@@ -148,3 +147,5 @@ mat-progress-bar {
   left: 1vh;
   color: red;
 }
+
+/*# sourceMappingURL=login.component.css.map */

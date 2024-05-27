@@ -1,14 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
-import { AuthService } from "../auth.service";
-import { Router } from "@angular/router";
-import { Subject, takeUntil } from "rxjs";
 import { StorageService } from "../storage.service";
+import { Router } from "@angular/router";
+import { AuthService } from "../auth.service";
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
   showContent: boolean = false;
@@ -93,3 +92,4 @@ export class LoginComponent implements OnInit {
   }
 
 }
+

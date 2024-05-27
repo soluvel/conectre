@@ -4,78 +4,76 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatToolbarModule } from "@angular/material/toolbar";
-import { MatSidenavModule } from "@angular/material/sidenav";
-import { MenuComponent } from './menu/menu.component';
-import { MatListModule } from "@angular/material/list";
-import { MatIconModule } from "@angular/material/icon";
-import { InicioComponent } from './inicio/inicio.component';
-import { NotificacaoComponent } from './notificacao/notificacao.component';
-import { LoginComponent } from './login/login.component';
-import { MatInputModule } from "@angular/material/input";
 import { MatButtonModule } from "@angular/material/button";
-import { MatCardModule } from "@angular/material/card";
-import { FormsModule, ReactiveFormsModule } from "@angular/forms";
-import { HttpClientModule } from "@angular/common/http";
-import { RedefinirSenhaComponent } from "./redefinir-senha/redefinir-senha.component";
-import { MatMenuModule } from "@angular/material/menu";
+import { HomeComponent } from './home/home.component';
 import { TabsComponent } from './tabs/tabs.component';
 import { MatTabsModule } from "@angular/material/tabs";
-import { TableComponent } from './table/table.component';
-import { MatPaginatorModule } from "@angular/material/paginator";
+import { EmpresaTableComponent } from './empresa/table-empresa/empresa-table.component';
 import { MatTableModule } from "@angular/material/table";
-import { FlexModule } from "@angular/flex-layout";
-import { FilterComponent } from './filter/filter.component';
+import { EmpresaComponent } from './empresa/empresa-crud/empresa-cadastro/empresa.component';
+import { HttpClientModule } from "@angular/common/http";
+import { CpfCnpjPipe } from "./pipes/cpf-cnpj";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { MatIconModule } from "@angular/material/icon";
+import { EmpresaFilterComponent } from './empresa/empresa-filter/empresa-filter.component';
+import { MatChipsModule } from "@angular/material/chips";
 import { MatExpansionModule } from "@angular/material/expansion";
-import { MatDatepickerModule } from "@angular/material/datepicker";
-import { MatFormFieldModule } from "@angular/material/form-field";
+import { MatListModule } from "@angular/material/list";
 import { MatCheckboxModule } from "@angular/material/checkbox";
-import { AcessoNegadoComponent } from './acesso-negado/acesso-negado.component';
-import { EmpresaFormComponent } from './empresa/empresa-form/empresa-form.component';
-import { TecnicoFormComponent } from './tecnico-form/tecnico-form.component';
+import { MatInputModule } from "@angular/material/input";
+import { FlexLayoutModule } from "@angular/flex-layout";
+import { MatSelectModule } from "@angular/material/select";
+import { MatMenuModule } from "@angular/material/menu";
+import { MatSidenavModule } from "@angular/material/sidenav";
+import { SidebarComponent } from './sidebar/sidebar.component';
+import { LoginComponent } from "./login/login.component";
+import { RedefinirSenhaComponent } from "./login/redefinir-senha/redefinir-senha.component";
 import { MatProgressBarModule } from "@angular/material/progress-bar";
-import { MatGridListModule } from "@angular/material/grid-list";
+import { GrupoComponent } from "./empresa/empresa-crud/empresa-cadastro/grupo/grupo.component";
+import { MatDialogModule } from "@angular/material/dialog";
+import { TableTecnicoComponent } from "./tecnico/table-tecnico/table-tecnico.component";
+import { TableProdutorComponent } from "./produtor/table-produtor/table-produtor.component";
+import { EquipamentoComponent } from "./produtor/equipamento/equipamento.component";
 
 @NgModule({
   declarations: [
     AppComponent,
-    MenuComponent,
-    InicioComponent,
-    NotificacaoComponent,
+    HomeComponent,
+    TabsComponent,
+    EmpresaTableComponent,
+    EmpresaComponent,
+    EmpresaFilterComponent,
+    SidebarComponent,
     LoginComponent,
     RedefinirSenhaComponent,
-    TabsComponent,
-    TableComponent,
-    FilterComponent,
-    AcessoNegadoComponent,
-    EmpresaFormComponent,
-    TecnicoFormComponent
+    GrupoComponent,
+    TableTecnicoComponent,
+    TableProdutorComponent,
+    EquipamentoComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MatToolbarModule,
-    MatSidenavModule,
-    MatListModule,
-    MatIconModule,
-    MatInputModule,
     MatButtonModule,
-    MatCardModule,
-    FormsModule,
-    ReactiveFormsModule,
-    MatMenuModule,
     MatTabsModule,
-    MatPaginatorModule,
     MatTableModule,
-    FlexModule,
+    CpfCnpjPipe,
+    FormsModule,
+    MatIconModule,
+    MatChipsModule,
     MatExpansionModule,
-    MatDatepickerModule,
-    MatFormFieldModule,
+    MatListModule,
     MatCheckboxModule,
+    ReactiveFormsModule,
+    MatInputModule,
+    FlexLayoutModule,
+    MatSelectModule,
+    MatMenuModule,
+    MatSidenavModule,
     MatProgressBarModule,
-    MatGridListModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]
