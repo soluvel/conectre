@@ -20,7 +20,7 @@
             <column name="cpf" type="varchar(11)">
                 <constraints nullable="false"/>
             </column>
-            <column name="celular" type="varchar(9)"/>
+            <column name="celular" type="varchar(11)"/>
             <column name="cep" type="varchar(8)"/>
             <column name="logradouro" type="varchar(255)"/>
             <column name="numero" type="varchar(10)"/>
@@ -28,6 +28,10 @@
             <column name="bairro" type="varchar(255)"/>
             <column name="cidade" type="varchar(255)"/>
             <column name="estado" type="varchar(2)"/>
+
+            <column name="empresa_id" type="int">
+                <constraints nullable="false" foreignKeyName="fk_usuarioempresa_empresa" referencedTableName="empresa" referencedColumnNames="id"/>
+            </column>
         </createTable>
 
     </changeSet>

@@ -1,0 +1,37 @@
+<div class="container-full" [ngClass]="{'container': sideNavCollapsed}">
+  <img class="logo-full" src="{{ logoCollapsed }}" [ngClass]="{'logo-icon': sideNavCollapsed}">
+
+  <div class="itens">
+    <h4 class="topic" *ngIf="!sideNavCollapsed">Gestão</h4>
+    <ul>
+      <ng-container *ngFor="let g of gestaoItems()">
+        <li><img src="{{g.icon}}" alt="{{ g.title }}"><a href="{{ g.route }}"><span
+          *ngIf="!sideNavCollapsed">{{ g.title }}</span></a></li>
+      </ng-container>
+      <li class="dropdown">
+        <img src="assets/menu-cadastro-icon.svg" alt="Cadastros">
+        <a href="#">
+          <span *ngIf="!sideNavCollapsed">Cadastros</span>
+          <img *ngIf="!sideNavCollapsed" src="assets/down-arrow.svg" alt="Cadastros">
+        </a>
+        <div class="dropdown-content">
+          <a href="empresa/cadastrar"><img src="../../assets/subitem-icon.svg" alt="Cadastros">Empresa</a>
+          <a href="tecnico/cadastrar"><img src="../../assets/subitem-icon.svg" alt="Cadastros">Técnico</a>
+        </div>
+      </li>
+
+    </ul>
+  </div>
+
+  <mat-divider *ngIf="!sideNavCollapsed"></mat-divider>
+
+  <div class="itens">
+    <ul>
+      <h4 class="topic" *ngIf="!sideNavCollapsed">Sistema</h4>
+      <ng-container *ngFor="let g of sistemaItems()">
+        <li class="sidemenu-secondary"><img src="{{g.icon}}" alt="{{ g.title }}"><a href="{{ g.route }}"><span
+          *ngIf="!sideNavCollapsed">{{ g.title }}</span></a></li>
+      </ng-container>
+    </ul>
+  </div>
+</div>

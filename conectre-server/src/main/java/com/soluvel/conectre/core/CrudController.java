@@ -32,7 +32,7 @@ public abstract class CrudController<T, ID extends Serializable> {
                 .orElseGet(() -> ResponseEntity.status(HttpStatus.NOT_FOUND).build());
     }
 
-    @PostMapping
+    @PostMapping("/save")
     public ResponseEntity<T> create(@RequestBody T entity) {
         return new ResponseEntity<>(service.save(entity), HttpStatus.CREATED);
     }

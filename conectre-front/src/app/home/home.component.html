@@ -1,0 +1,11 @@
+<app-tabs (tabChange)="onTabChange($event)"></app-tabs>
+<div class="tipography">
+  <h3>{{ activeMessage }}</h3>
+</div>
+
+<div [ngSwitch]="getActiveComponent()">
+  <app-table-empresa *ngSwitchCase="'Empresas'"></app-table-empresa>
+  <app-table-tecnico *ngSwitchCase="'Técnicos'"></app-table-tecnico>
+  <app-table-produtor *ngSwitchCase="'Produtores'"></app-table-produtor>
+  <app-table-empresa *ngSwitchDefault></app-table-empresa>
+</div>

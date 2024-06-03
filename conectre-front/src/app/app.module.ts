@@ -30,10 +30,18 @@ import { LoginComponent } from "./login/login.component";
 import { RedefinirSenhaComponent } from "./login/redefinir-senha/redefinir-senha.component";
 import { MatProgressBarModule } from "@angular/material/progress-bar";
 import { GrupoComponent } from "./empresa/empresa-crud/empresa-cadastro/grupo/grupo.component";
-import { MatDialogModule } from "@angular/material/dialog";
 import { TableTecnicoComponent } from "./tecnico/table-tecnico/table-tecnico.component";
 import { TableProdutorComponent } from "./produtor/table-produtor/table-produtor.component";
 import { EquipamentoComponent } from "./produtor/equipamento/equipamento.component";
+import { ToastrModule } from "ngx-toastr";
+import { CnpjCpfMaskDirective } from './diretiva/cnpj-cpf-mask.directive';
+import { AdministradorComponent } from './administrador/administrador.component';
+import { AdministradorCadastroComponent } from './administrador/administrador-cadastro/administrador-cadastro.component';
+import { TecnicoCadastroComponent } from './tecnico/tecnico-cadastro/tecnico-cadastro.component';
+import {
+  TableProdutorVinculadoComponent
+} from "./produtor/table-produtor-vinculado/table-produtor-vinculado.component";
+import { TecnicoFilterComponent } from "./tecnico/tecnico-filter/tecnico-filter.component";
 
 @NgModule({
   declarations: [
@@ -49,7 +57,13 @@ import { EquipamentoComponent } from "./produtor/equipamento/equipamento.compone
     GrupoComponent,
     TableTecnicoComponent,
     TableProdutorComponent,
-    EquipamentoComponent
+    EquipamentoComponent,
+    CnpjCpfMaskDirective,
+    AdministradorComponent,
+    AdministradorCadastroComponent,
+    TecnicoCadastroComponent,
+    TableProdutorVinculadoComponent,
+    TecnicoFilterComponent
   ],
   imports: [
     BrowserModule,
@@ -73,7 +87,7 @@ import { EquipamentoComponent } from "./produtor/equipamento/equipamento.compone
     MatMenuModule,
     MatSidenavModule,
     MatProgressBarModule,
-    MatDialogModule
+    ToastrModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

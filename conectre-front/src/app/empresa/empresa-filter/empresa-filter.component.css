@@ -1,0 +1,74 @@
+#container-footer {
+  height: 30px;
+  width: 100%;
+  margin-top: 30%;
+  display: flex;
+  justify-content: center;
+}
+
+.checkbox-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.container-options, .container-chips, .container-header {
+  margin: 30px 0 30px 0;
+}
+
+mat-expansion-panel {
+  border: none;
+  border-radius: unset !important;
+  border-bottom: 1px solid #71717A;
+}
+
+.mat-accordion .mat-expansion-panel:last-of-type {
+  border-bottom-right-radius: unset !important;
+  border-bottom-left-radius: unset !important;
+}
+
+.mat-expansion-panel:not([class*=mat-elevation-z]) {
+  box-shadow: none;
+}
+
+.container-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+}
+
+.container-header h4 {
+  font-size: 18px;
+  font-weight: 500;
+}
+
+#text-limpar {
+  color: #71717A;
+  font-size: 14px;
+  text-decoration: underline;
+}
+
+@media screen and (max-width: 1200px) {
+  .container-header {
+    font-size: 10px;
+  }
+}
+mat-divider {
+  margin: 30px 0 30px 0;
+}
+
+.container-sub-header h4 {
+  font-size: 14px;
+  margin-top: 10px;
+  font-weight: 400;
+  color: #71717A;
+}
+
+#text-filtro {
+  font-weight: 600;
+}
+
+.mat-mdc-standard-chip {
+  border-radius: unset;
+}
+
+/*# sourceMappingURL=empresa-filter.component.css.map */

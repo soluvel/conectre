@@ -1,0 +1,143 @@
+<div style="position: relative; min-height: 85vh">
+  <div class="container-header">
+    <img src="../../../../assets/left-arrow.svg" alt="">
+    <span style="padding-left: 10px">Voltar para a página principal</span>
+  </div>
+
+  <div class="container-form">
+    <span style="font-size: 12px; color: #A1A1AA">Dados da Empresa</span>
+    <form [formGroup]="form">
+      <div class="row g-3">
+        <div class="col-6">
+          <label id="empresa" for="nomeEmpresa" class="form-label required">Nome da Empresa</label>
+          <div class="input-group">
+            <input type="text" class="form-control" formControlName="razaoSocial" id="nomeEmpresa"
+                   aria-describedby="empresaImage">
+            <span class="input-group-text">
+          <img src="assets/pen.svg" alt="Imagem" *ngIf="isEditando">
+          </span>
+          </div>
+        </div>
+        <div class="col-6">
+          <label id="cnpj" for="cnpjCpf" class="form-label required">CNPJ/CPF</label>
+          <div class="input-group">
+            <input type="text" class="form-control" formControlName="cnpjCpf" id="cnpjCpf" appCnpjCpfMask>
+            <span class="input-group-text">
+          <img src="assets/pen.svg" alt="Imagem" *ngIf="isEditando">
+          </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="row g-3">
+        <div class="col-6">
+          <label for="email" class="form-label required">E-mail</label>
+          <div class="input-group">
+            <input type="email" class="form-control" formControlName="email" id="email">
+            <span class="input-group-text">
+          <img src="assets/pen.svg" alt="Imagem" *ngIf="isEditando">
+          </span>
+          </div>
+        </div>
+
+        <div class="col-6" formGroupName="endereco">
+          <label for="cep" class="form-label required">CEP</label>
+          <div class="input-group">
+            <input type="text" class="form-control required" formControlName="cep" id="cep">
+            <span class="input-group-text">
+          <img src="assets/pen.svg" alt="Imagem" *ngIf="isEditando">
+          </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="row g-3" formGroupName="endereco">
+        <div class="col-6">
+          <label for="logradouro" class="form-label required">Logradouro</label>
+          <div class="input-group">
+            <input type="text" class="form-control" formControlName="logradouro" id="logradouro">
+            <span class="input-group-text">
+          <img src="assets/pen.svg" alt="Imagem" *ngIf="isEditando">
+          </span>
+          </div>
+        </div>
+
+        <div class="col-2">
+          <label for="numero" class="form-label required">Número</label>
+          <div class="input-group">
+            <input type="text" class="form-control" formControlName="numero" id="numero">
+            <span class="input-group-text">
+          <img src="assets/pen.svg" alt="Imagem" *ngIf="isEditando">
+          </span>
+          </div>
+        </div>
+
+        <div class="col-4">
+          <label for="cidade" class="form-label required">Cidade</label>
+          <div class="input-group">
+            <input type="text" class="form-control" formControlName="cidade" id="cidade">
+            <span class="input-group-text">
+          <img src="assets/pen.svg" alt="Imagem" *ngIf="isEditando">
+          </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="row g-3" formGroupName="endereco">
+        <div class="col-12">
+          <label for="complemento" class="form-label">Complemento</label>
+          <div class="input-group" style="padding-bottom: 0">
+            <input type="text" class="form-control" formControlName="complemento" id="complemento"
+                   style="margin-bottom: 0">
+            <span class="input-group-text">
+          <img src="assets/pen.svg" alt="Imagem" *ngIf="isEditando">
+          </span>
+          </div>
+        </div>
+        <span style="margin-top: 5px">Em caso de área rural, informar latitude e longitude</span>
+      </div>
+
+
+      <div class="container-select" style="margin-top: 40px">
+        <span style="font-size: 12px; color: #A1A1AA">Sobre a contratação</span>
+        <div class="row g-3">
+          <div class="col-md-6">
+            <label for="plano" class="form-label required">Plano</label>
+            <select id="plano" class="form-select" formControlName="plano">
+              <option selected></option>
+              <option value="START">Start</option>
+              <option>Start</option>
+              <option>Start</option>
+            </select>
+          </div>
+
+          <div class="col-md-6" formGroupName="grupo">
+            <label for="grupo" class="form-label required">Grupo</label>
+            <select id="grupo" class="form-select">
+              <option selected></option>
+              <option>Grupo Tilápia | Toledo, PR</option>
+              <option>Grupo Tilápia | Toledo, PR</option>
+              <option>Grupo Tilápia | Toledo, PR</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <div id="btn-grupo">
+    <button class="button-no-border" (click)="openGrupoForm()">+ Adicionar grupo</button>
+  </div>
+
+  <app-administrador></app-administrador>
+
+  <div class="actions-footer">
+    <button class="button-no-border" style="margin-right: 10px">Limpar dados</button>
+    <button [disabled]="!form.valid" (click)="onSubmit()"  [ngClass]="{'button-disabled': !form.valid}"> {{ msgButton }} </button>
+  </div>
+
+  <div id="overlay">
+    <app-grupo></app-grupo>
+  </div>
+
+</div>

@@ -1,0 +1,17 @@
+<mat-expansion-panel style="margin-top: 20px" [(expanded)]="isPanelExpanded">
+  <mat-expansion-panel-header>
+    <mat-panel-title>
+      <span style="font-size: 16px">Administradores cadastrados</span>
+      <span *ngIf="!isPanelExpanded" class="license-info">5 / 5 licenças utilizadas</span>
+    </mat-panel-title>
+  </mat-expansion-panel-header>
+
+  <span style="margin: 20px 20px 40px 20px"><b>Plano start:</b> 5/5 licenças</span>
+  <div class="container-adms" style="margin: 20px">
+    <div *ngFor="let item of listaDeObjetos" class="avatar">
+      <div class="avatar-circle">{{ getInitials(item.nome) }}</div>
+      <p>{{ item.nome }}</p>
+    </div>
+  </div>
+
+</mat-expansion-panel>

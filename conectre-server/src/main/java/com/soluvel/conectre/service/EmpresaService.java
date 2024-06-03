@@ -3,12 +3,15 @@ package com.soluvel.conectre.service;
 import com.soluvel.conectre.core.CrudRepository;
 import com.soluvel.conectre.core.CrudService;
 import com.soluvel.conectre.domain.Empresa;
+import com.soluvel.conectre.domain.Plano;
+import com.soluvel.conectre.domain.records.EmpresaReduceRecords;
 import com.soluvel.conectre.repository.EmpresaRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class EmpresaService extends CrudService<Empresa, Long> {
@@ -33,7 +36,27 @@ public class EmpresaService extends CrudService<Empresa, Long> {
         return repository.findByCidadeContaining(filter, pageable);
     }
 
+    public Page<Empresa> empresaFilter(List<Plano> planos, List<String> cidades, List<String> empresas, Pageable pageable) {
+
+        List<String> cidadesSemEstados = cidades.stream()
+                .map(palavra -> {
+                    int indiceHifen = palavra.indexOf("-");
+                    return indiceHifen != -1 ? palavra.substring(0, indiceHifen).trim() : palavra;
+                })
+                .toList();
+
+        return repository.empresaFilter(planos, cidadesSemEstados, empresas, pageable);
+    }
+
     public List<String> getCidades() {
         return repository.getCidades();
+    }
+
+    public List<String> getRazaoSocial() {
+        return repository.getRazaoSocial();
+    }
+
+    public List<EmpresaReduceRecords> findAllReduce() {
+        return repository.findAllReduce();
     }
 }

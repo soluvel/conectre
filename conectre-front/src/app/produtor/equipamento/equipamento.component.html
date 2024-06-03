@@ -1,0 +1,37 @@
+<div class="container-header">
+  <h4 id="titulo">Novo equipamento</h4>
+    <img src="assets/close.svg" alt="Imagem Redonda" style="width: 15px" (click)="closeModal()">
+</div>
+
+
+<div class="container-form">
+  <form [formGroup]="form">
+    <div class="row g-3">
+      <div class="col-12">
+        <label for="equipamento" class="form-label required">Nome do equipamento</label>
+        <input type="text" class="form-control" id="equipamento" aria-describedby="empresaImage">
+      </div>
+    </div>
+    <div class="row g-3">
+      <div class="col-12">
+        <label for="propriedade" class="form-label required">Onde está o equipamento?</label>
+        <input type="text" class="form-control" id="propriedade" aria-describedby="empresaImage">
+      </div>
+    </div>
+    <div class="row g-3">
+      <div class="col-6">
+        <label for="codigo" class="form-label required">Código</label>
+        <input type="text" class="form-control" id="codigo" aria-describedby="empresaImage">
+      </div>
+      <div class="col-6">
+        <label for="quantidade" class="form-label required">Quantidade</label>
+        <input type="text" class="form-control" id="quantidade" aria-describedby="empresaImage">
+      </div>
+    </div>
+  </form>
+</div>
+
+<div class="actions-footer">
+  <button class="button-white" style="margin-right: 10px">Cancelar</button>
+  <button>Cadastrar</button>
+</div>

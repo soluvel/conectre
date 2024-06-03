@@ -1,0 +1,62 @@
+<div class="container-filter">
+  <input class="input-search" type="text" placeholder="O que você procura?" [(ngModel)]="razaoSocial">
+  <img src="../../../assets/search.svg" class="input-img" alt="search">
+  <button type="button" class="button-white" (click)="exibirQuadrado()">Filtrar
+    <img src="../../../assets/filter.svg" alt="Imagem Redonda" style="padding-left: 10px">
+  </button>
+</div>
+
+
+<div class="mat-elevation-z2">
+  <table mat-table [dataSource]="dataSource">
+
+    <ng-container matColumnDef="nome">
+      <th mat-header-cell *matHeaderCellDef id="nome">Nome</th>
+      <td mat-cell *matCellDef="let element">
+        <img style="margin-right: 10px" class="icon-size-30" src="../../../assets/avatar.svg" alt="search">{{ element.nome }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="empresa">
+      <th mat-header-cell *matHeaderCellDef id="adm">Empresa</th>
+      <td mat-cell *matCellDef="let element"> {{ element.empresa.razaoSocial }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="contato">
+      <th mat-header-cell *matHeaderCellDef id="contato">Contato</th>
+      <td mat-cell *matCellDef="let element"> {{ element.celular }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="produtores">
+      <th mat-header-cell *matHeaderCellDef id="grupo">Produtores</th>
+      <td mat-cell *matCellDef="let element">
+        <ng-container *ngFor="let img of element.produtores">
+          <img src="../../../assets/avatar.svg" class="conjunto-avatar" alt="{{ img.nome }}">
+        </ng-container>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="detalhe">
+      <th mat-header-cell *matHeaderCellDef id="header-right">Detalhes</th>
+      <td mat-cell *matCellDef="let element" id="detalhe">
+        <img class="icon-size-30" src="../../../assets/search.svg" alt="search" (click)="redirectToDetails(element?.id)"></td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+  <div id="paginacao" class="flex-align-itens-center">
+    <img class="icon-size-30" src="../../../assets/paginacao-esquerda.svg" (click)="nextOrBack(false)" alt="paginacao-esquerda">
+    <div class="flex-align-itens-center">
+      <ng-container *ngFor="let number of getSequence(totalPage)">
+        <span id="paginacao-number" (click)="paginado(number)">{{ number }}</span>
+      </ng-container>
+    </div>
+    <img class="icon-size-30" src="../../../assets/paginacao-direita.svg" (click)="nextOrBack(true)" alt="paginacao-direita">
+  </div>
+</div>
+
+
+<div id="overlay">
+  <app-tecnico-filter (filtroAlterado)="onFiltroAlterado($event)"></app-tecnico-filter>
+</div>

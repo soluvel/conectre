@@ -41,6 +41,8 @@ public class Empresa implements Serializable {
     @Column(name = "cnpj_cpf")
     private String cnpjCpf;
 
+    private String email;
+
     @Embedded
     private Endereco endereco;
 
@@ -48,7 +50,7 @@ public class Empresa implements Serializable {
     private Plano plano;
 
     @ManyToOne
-    @JoinColumn(name = "grupo_id")
+    @JoinColumn(name = "grupo_id", nullable = true)
     private EmpresaGrupo grupo;
 
     @OneToMany(mappedBy = "empresa", fetch = FetchType.LAZY)

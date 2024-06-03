@@ -1,0 +1,168 @@
+//Necessário para customização de theme do Angular Material
+@use '@angular/material' as mat;
+
+//Import de font
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+
+// Importando variáveis e mixins do Bootstrap
+@import 'node_modules/bootstrap/scss/functions';
+@import 'node_modules/bootstrap/scss/variables';
+@import 'node_modules/bootstrap/scss/mixins';
+
+// Importando o Bootstrap
+@import 'node_modules/bootstrap/scss/bootstrap';
+
+
+//Customização de theme do Angular Material
+// A principio, o theme só utiliza o valor 500, porém, sem os demais valores não builda - todo: estudar como funciona
+$custom-primary-palette: (
+  50: #ffffff,
+  100: #ffffff,
+  200: #ffffff,
+  300: #ffffff,
+  400: #ffffff,
+  500: #068FFF,
+  600: #ffffff,
+  700: #ffffff,
+  800: #ffffff,
+  900: #ffffff,
+  contrast: (
+    50: #ffffff,
+    100: #ffffff,
+    200: #ffffff,
+    300: #ffffff,
+    400: #ffffff,
+    500: #ffffff,
+    600: #ffffff,
+    700: #ffffff,
+    800: #ffffff,
+    900: #ffffff
+  )
+);
+
+$custom-accent-palette: (
+  50: #ffffff,
+  100: #ffffff,
+  200: #ffffff,
+  300: #ffffff,
+  400: #ffffff,
+  500: #27272A,
+  600: #ffffff,
+  700: #ffffff,
+  800: #ffffff,
+  900: #ffffff,
+  contrast: (
+    50: #ffffff,
+    100: #ffffff,
+    200: #ffffff,
+    300: #ffffff,
+    400: #ffffff,
+    500: #ffffff,
+    600: #ffffff,
+    700: #ffffff,
+    800: #ffffff,
+    900: #ffffff
+  )
+);
+
+$custom-typography: mat.define-typography-config($font-family: "Work Sans, sans-serif");
+$custom-primary: mat.define-palette($custom-primary-palette);
+$custom-accent: mat.define-palette($custom-accent-palette);
+$custom-warn: mat.define-palette($custom-accent-palette); //todo:
+
+$custom-theme: mat.define-light-theme((
+  color: (
+    primary: $custom-primary,
+    accent: $custom-accent,
+    warn: $custom-warn,
+  ),
+  typography: $custom-typography,
+));
+
+@include mat.all-component-themes($custom-theme);
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Work Sans", sans-serif;
+}
+
+$accent-color: #27272A;
+
+.icon-size-30 {
+  width: 30px;
+}
+
+.flex-align-itens-center {
+  display: flex;
+  align-items: center;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.conjunto-avatar {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  margin-right: -10px;
+}
+
+.tipography {
+  font-size: 20px;
+  font-weight: 500;
+  color: $accent-color;
+  margin: 40px 0 30px 0;
+}
+
+button {
+  background: #068FFF;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 5px 12px 5px 12px;
+  border-radius: 3px;
+}
+
+.button-disabled {
+  background-color: #BDBDBD;
+  cursor: not-allowed;
+  color: #F0F0F0;
+}
+
+.button-geral-full {
+  background-color: #068FFF;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 5px 12px 5px 12px;
+  border-radius: 3px;
+  width: 100%;
+  text-align: center;
+}
+
+.button-white {
+  background-color: #fafafa;
+  color: #3F3F46;
+  border: 2px solid #D1D1D1;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 5px 12px 5px 12px;
+  border-radius: 4px;
+}
+
+.button-no-border {
+  background-color: #fafafa;
+  color: #3F3F46;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: underline;
+}
