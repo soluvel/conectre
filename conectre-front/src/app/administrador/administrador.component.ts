@@ -1,24 +1,43 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder } from "@angular/forms";
+import { ActivatedRoute } from "@angular/router";
+import { AdministradorService } from "./administrador.service";
 
 @Component({
   selector: 'app-administrador',
   templateUrl: './administrador.component.html',
   styleUrls: ['./administrador.component.scss']
 })
-export class AdministradorComponent {
+export class AdministradorComponent implements OnInit {
   isPanelExpanded: boolean = false;
+  administradores: any[] = [];
+  admId: any;
 
-  listaDeObjetos = [
-    { nome: "Gabriel Souza", imagem: "https://via.placeholder.com/100" },
-    { nome: "Marcelo Trevisan", imagem: "https://via.placeholder.com/100" },
-    { nome: "Bruno Kambara", imagem: "https://via.placeholder.com/100" },
-    { nome: "Diogo Garcia", imagem: "https://via.placeholder.com/100" },
-    { nome: "Giulia Garbo", imagem: "https://via.placeholder.com/100" }
-  ];
+  constructor(private service: AdministradorService,
+              private route: ActivatedRoute) {
+  }
+
+  ngOnInit() {
+    this.route.paramMap.subscribe(params => {
+      this.service.getAdministradores(params.get('id')).subscribe(data => {
+        this.administradores = data;
+      })
+    });
+
+  }
 
   getInitials(name: string): string {
     const names = name.split(' ');
     return names.map(name => name.charAt(0)).join('').toUpperCase();
   }
 
+  adicionarAdm() {
+    var overlay = document.getElementById('overlay');
+    overlay.style.display = 'block';
+  }
+
+  editarAdm(admId: any) {
+    this.admId = admId;
+    this.adicionarAdm();
+  }
 }

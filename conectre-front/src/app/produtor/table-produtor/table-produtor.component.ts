@@ -77,12 +77,4 @@ export class TableProdutorComponent {
   }
 }
 
-export interface Empresa {
-  razaoSocial: string;
-  administradores: [],
-  cnpjCpf: string;
-  grupo: string;
-  plano: string;
-  detalhe: string;
-}
 

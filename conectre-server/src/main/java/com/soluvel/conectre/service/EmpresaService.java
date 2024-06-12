@@ -10,7 +10,9 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 @Service
@@ -38,14 +40,16 @@ public class EmpresaService extends CrudService<Empresa, Long> {
 
     public Page<Empresa> empresaFilter(List<Plano> planos, List<String> cidades, List<String> empresas, Pageable pageable) {
 
-        List<String> cidadesSemEstados = cidades.stream()
-                .map(palavra -> {
-                    int indiceHifen = palavra.indexOf("-");
-                    return indiceHifen != -1 ? palavra.substring(0, indiceHifen).trim() : palavra;
-                })
-                .toList();
+        if (Objects.nonNull(cidades)) {
+            cidades = cidades.stream()
+                    .map(palavra -> {
+                        int indiceHifen = palavra.indexOf("-");
+                        return indiceHifen != -1 ? palavra.substring(0, indiceHifen).trim() : palavra;
+                    })
+                    .toList();
+        }
 
-        return repository.empresaFilter(planos, cidadesSemEstados, empresas, pageable);
+        return repository.empresaFilter(planos, cidades, empresas, pageable);
     }
 
     public List<String> getCidades() {

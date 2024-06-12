@@ -31,6 +31,10 @@
   margin: auto 10px;
 }
 
+.license-info {
+  margin-left: auto;
+}
+
 mat-expansion-panel {
   border: none;
   border-radius: unset !important;
@@ -45,4 +49,17 @@ mat-expansion-panel {
 
 .mat-expansion-panel:not([class*=mat-elevation-z]) {
   box-shadow: none;
+}
+
+#overlay {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 45%;
+  height: 55%;
+  background-color: white;
+  z-index: 9999;
+  border-radius: 10px;
 }

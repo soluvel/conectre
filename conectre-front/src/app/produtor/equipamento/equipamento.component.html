@@ -9,23 +9,25 @@
     <div class="row g-3">
       <div class="col-12">
         <label for="equipamento" class="form-label required">Nome do equipamento</label>
-        <input type="text" class="form-control" id="equipamento" aria-describedby="empresaImage">
+        <input type="text" class="form-control" id="equipamento" aria-describedby="empresaImage" formControlName="nome">
       </div>
     </div>
     <div class="row g-3">
       <div class="col-12">
-        <label for="propriedade" class="form-label required">Onde está o equipamento?</label>
-        <input type="text" class="form-control" id="propriedade" aria-describedby="empresaImage">
+        <label id="propriedade" for="propriedade" class="form-label required">Onde está o equipamento?</label>
+        <select  class="form-select" formControlName="propriedade">
+          <option *ngFor="let propriedade of propriedades" [value]="propriedade">{{ propriedade.nome }}</option>
+        </select>
       </div>
     </div>
     <div class="row g-3">
       <div class="col-6">
         <label for="codigo" class="form-label required">Código</label>
-        <input type="text" class="form-control" id="codigo" aria-describedby="empresaImage">
+        <input type="text" class="form-control" id="codigo" aria-describedby="empresaImage" formControlName="codigo">
       </div>
       <div class="col-6">
         <label for="quantidade" class="form-label required">Quantidade</label>
-        <input type="text" class="form-control" id="quantidade" aria-describedby="empresaImage">
+        <input type="text" class="form-control" id="quantidade" aria-describedby="empresaImage" formControlName="quantidade">
       </div>
     </div>
   </form>
@@ -33,5 +35,5 @@
 
 <div class="actions-footer">
   <button class="button-white" style="margin-right: 10px">Cancelar</button>
-  <button>Cadastrar</button>
+  <button (click)="onSubmit()">Cadastrar</button>
 </div>

@@ -10,7 +10,7 @@
           </div>
           <div class="form-group">
             <input type="password" id="password" formControlName="password" placeholder="Senha" required>
-            <img class="toggle-password" src="assets/hide.svg" (click)="togglePasswordVisibility()">
+            <img class="toggle-password" src="assets/eye-password.svg" (click)="togglePasswordVisibility()">
           </div>
           <div *ngIf="isLogged" class="error-message">
             E-mail ou Senha incorretos.

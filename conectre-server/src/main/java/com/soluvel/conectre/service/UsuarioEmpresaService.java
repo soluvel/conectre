@@ -6,15 +6,21 @@ import com.soluvel.conectre.domain.UsuarioEmpresa;
 import com.soluvel.conectre.repository.UsuarioEmpresaRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class UsuarioEmpresaService extends CrudService<UsuarioEmpresa, Long> {
 
-    private final UsuarioEmpresaRepository repository;
+    private UsuarioEmpresaRepository repository;
 
     public UsuarioEmpresaService(CrudRepository<UsuarioEmpresa, Long> repository,
                                  UsuarioEmpresaRepository empresaAdmRepository) {
         super(repository);
         this.repository = empresaAdmRepository;
+    }
+
+    public List<UsuarioEmpresa> findByEmpresa(Long empresaId) {
+        return repository.findByEmpresaId(empresaId);
     }
 
 }

@@ -28,6 +28,9 @@
   background-color: #fafafa;
   border: none;
   border-radius: unset;
+  padding-top: 0.1rem;
+  padding-bottom: 0.1rem;
+  margin-bottom: 0.25rem;
 }
 
 textarea:focus, input:focus, select:focus {
@@ -47,12 +50,6 @@ label.required::after {
   padding-bottom: 0.1rem;
   font-size: 0.8rem;
   margin-bottom: 5px;
-}
-
-.input-group-text {
-  padding-top: 0.1rem;
-  padding-bottom: 0.1rem;
-  margin-bottom: 0.25rem;
 }
 
 .row.g-3 > .col-3 {
@@ -93,10 +90,6 @@ label.required::after {
   align-items: center;
   justify-content: space-between;
   width: 100%;
-}
-
-.license-info {
-  margin-left: auto;
 }
 
 .button-disabled {

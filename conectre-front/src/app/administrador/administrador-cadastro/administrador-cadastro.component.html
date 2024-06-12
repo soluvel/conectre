@@ -1,1 +1,48 @@
-<p>administrador-cadastro works!</p>
+<div class="container-header">
+  <h4 id="titulo">Novo Administrador</h4>
+  <img src="assets/close.svg" alt="Imagem Redonda" style="width: 15px" (click)="closeModal()">
+</div>
+
+<div class="container-form">
+  <form [formGroup]="form">
+    <div class="row g-3">
+      <div class="col-3">
+        <label id="avatar" for="avatarInput" class="form-label required">Foto</label>
+        <div class="input-group">
+          <input type="file" id="avatarInput" (change)="handleImageUpload($event)" accept="image/*"
+                 style="display: none">
+          <label for="avatarInput" class="input-group-text" style="cursor: pointer;">
+            <div
+              style="width: 40px; height: 40px; border-radius: 50%; background-color: #ccc; display: flex; justify-content: center; align-items: center;">
+            </div>
+          </label>
+        </div>
+      </div>
+    </div>
+    <div class="row g-3">
+      <div class="col-6">
+        <label for="nome" class="form-label required">Nome</label>
+        <input type="text" class="form-control" formControlName="nome" id="nome">
+      </div>
+      <div class="col-6">
+        <label for="email" class="form-label required">E-mail</label>
+        <input type="text" class="form-control" formControlName="email" id="email">
+      </div>
+    </div>
+    <div class="row g-3">
+      <div class="col-6">
+        <label for="celular" class="form-label required">Celular</label>
+        <input type="text" class="form-control" formControlName="celular" id="celular">
+      </div>
+      <div class="col-6">
+        <label for="cargo" class="form-label required">Cargo</label>
+        <input type="text" class="form-control" formControlName="cargo" id="cargo">
+      </div>
+    </div>
+  </form>
+</div>
+
+<div class="actions-footer">
+  <button class="button-white" style="margin-right: 10px" (click)="closeModal()">Cancelar</button>
+  <button (click)="onSubmmit()">Cadastrar</button>
+</div>

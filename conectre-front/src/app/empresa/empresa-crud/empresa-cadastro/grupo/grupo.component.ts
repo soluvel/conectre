@@ -20,11 +20,7 @@ export class GrupoComponent {
   }
 
   onSubmit() {
-    // if (this.form.valid) {
-    //   // Aqui você pode enviar os dados do formulário para um serviço ou processar conforme necessário
-    //   console.log(this.form.value);
-    //   this.dialogRef.close(this.form.value);  // Feche o dialog e envie os dados de volta
-    // }
+
   }
 
   closeModal() {

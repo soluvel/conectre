@@ -1,0 +1,46 @@
+.container-header {
+  display: flex;
+  justify-content: flex-start;
+  padding: 5px 0 10px 0;
+}
+
+.container-header span {
+  font-weight: 600;
+}
+
+h4 {
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.column {
+  padding-right: 50px;
+}
+
+::ng-deep .mat-mdc-tab.mdc-tab--active .mdc-tab__text-label {
+  color: #27272A !important;
+  font-weight: 700;
+  font-size: 14px;
+}
+
+::ng-deep .mat-mdc-tab-labels {
+  width: 30px;
+}
+
+::ng-deep .mat-mdc-tab-group.mat-mdc-tab-group-stretch-tabs > .mat-mdc-tab-header .mat-mdc-tab {
+  font-weight: 500;
+}
+
+.avatar-circle {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #52525B;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+  color: white;
+}
+
+/*# sourceMappingURL=notificacao.component.css.map */

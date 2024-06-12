@@ -7,11 +7,20 @@
   </mat-expansion-panel-header>
 
   <span style="margin: 20px 20px 40px 20px"><b>Plano start:</b> 5/5 licenças</span>
+  <button class="button-white license-info" (click)="adicionarAdm()">Novo administrador</button>
+
+
   <div class="container-adms" style="margin: 20px">
-    <div *ngFor="let item of listaDeObjetos" class="avatar">
-      <div class="avatar-circle">{{ getInitials(item.nome) }}</div>
+    <div *ngFor="let item of administradores" class="avatar">
+      <div class="avatar-circle" (click)="editarAdm(item.id)">{{ getInitials(item.nome) }}</div>
       <p>{{ item.nome }}</p>
     </div>
   </div>
 
 </mat-expansion-panel>
+
+<div id="overlay">
+  <app-administrador-cadastro [admId]="admId"></app-administrador-cadastro>
+</div>
+
+

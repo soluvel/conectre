@@ -42,6 +42,8 @@ import {
   TableProdutorVinculadoComponent
 } from "./produtor/table-produtor-vinculado/table-produtor-vinculado.component";
 import { TecnicoFilterComponent } from "./tecnico/tecnico-filter/tecnico-filter.component";
+import { ProdutorCadastroComponent } from "./produtor/produtor-cadastro/produtor-cadastro.component";
+import { NotificacaoComponent } from './notificacao/notificacao.component';
 
 @NgModule({
   declarations: [
@@ -63,7 +65,9 @@ import { TecnicoFilterComponent } from "./tecnico/tecnico-filter/tecnico-filter.
     AdministradorCadastroComponent,
     TecnicoCadastroComponent,
     TableProdutorVinculadoComponent,
-    TecnicoFilterComponent
+    TecnicoFilterComponent,
+    ProdutorCadastroComponent,
+    NotificacaoComponent
   ],
   imports: [
     BrowserModule,

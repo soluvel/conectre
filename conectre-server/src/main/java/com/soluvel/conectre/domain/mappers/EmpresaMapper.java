@@ -18,6 +18,8 @@ public class EmpresaMapper {
         Empresa empresa = new Empresa();
         GenericMapper.map(record, empresa);
 
+        empresa.getEndereco().setEstado("PR");
+
         if (Objects.isNull(record.grupoId())) {
             empresa.setGrupo(null);
         }

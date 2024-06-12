@@ -53,3 +53,38 @@ label.required::after {
 label {
   margin-top: 3%;
 }
+
+textarea:focus, input:focus, select:focus {
+  box-shadow: 0 0 0 0;
+  border-bottom: 1px solid $border-botton-color;
+  outline: 0;
+}
+
+option, select {
+  border: none;
+  border-bottom: 1px solid $border-botton-color;
+  border-radius: unset;
+  background-color: $background-color;
+}
+
+select:focus {
+  border-bottom: 2px solid #0F6CBD;
+}
+
+.form-label,
+.form-control, option, select {
+  padding-top: 0.10rem;
+  padding-bottom: 0.10rem;
+  font-size: 0.800rem;
+  margin-bottom: 0.25rem;
+}
+
+.input-group-text, .form-select {
+  padding-top: 0.10rem;
+  padding-bottom: 0.10rem;
+  margin-bottom: 0.25rem;
+}
+
+.row.g-3 > .col-6 {
+  margin-bottom: 0.1rem;
+}

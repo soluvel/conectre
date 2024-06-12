@@ -51,4 +51,39 @@ label {
   margin-top: 2%;
 }
 
+textarea:focus, input:focus, select:focus {
+  box-shadow: 0 0 0 0;
+  border-bottom: 1px solid #E0E0E0;
+  outline: 0;
+}
+
+option, select {
+  border: none;
+  border-bottom: 1px solid #E0E0E0;
+  border-radius: unset;
+  background-color: #ffffff;
+}
+
+select:focus {
+  border-bottom: 2px solid #0F6CBD;
+}
+
+.form-label,
+.form-control, option, select {
+  padding-top: 0.1rem;
+  padding-bottom: 0.1rem;
+  font-size: 0.8rem;
+  margin-bottom: 0.25rem;
+}
+
+.input-group-text, .form-select {
+  padding-top: 0.1rem;
+  padding-bottom: 0.1rem;
+  margin-bottom: 0.25rem;
+}
+
+.row.g-3 > .col-6 {
+  margin-bottom: 0.1rem;
+}
+
 /*# sourceMappingURL=grupo.component.css.map */
