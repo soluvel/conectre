@@ -2,14 +2,12 @@ package com.soluvel.conectre.service;
 
 import com.soluvel.conectre.core.CrudRepository;
 import com.soluvel.conectre.core.CrudService;
-import com.soluvel.conectre.core.GenericSpecification;
 import com.soluvel.conectre.domain.Empresa;
 import com.soluvel.conectre.domain.Plano;
 import com.soluvel.conectre.domain.records.EmpresaReduceRecords;
 import com.soluvel.conectre.repository.EmpresaRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -24,10 +22,6 @@ public class EmpresaService extends CrudService<Empresa, Long> {
                           EmpresaRepository empresaRepository) {
         super(repository);
         this.repository = empresaRepository;
-    }
-
-    public Page<Empresa> pageWithFilter(String filter, Pageable pageable) {
-        return repository.findByRazaoSocialContaining(filter, pageable);
     }
 
     public Page<Empresa> pageWithFilterCidade(String filter, Pageable pageable) {

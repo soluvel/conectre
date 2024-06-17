@@ -17,7 +17,7 @@ public class PropriedadeController extends CrudController<Propriedade, Long> {
 
     public PropriedadeController(CrudService<Propriedade, Long> service,
                                  PropriedadeService propriedadeService) {
-        super(service);
+        super(service, Propriedade.class);
         this.service = propriedadeService;
     }
 

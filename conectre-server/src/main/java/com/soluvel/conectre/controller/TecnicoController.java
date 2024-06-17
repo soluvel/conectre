@@ -26,7 +26,7 @@ public class TecnicoController extends CrudController<Tecnico, Long> {
     private final TecnicoMapper mapper;
 
     public TecnicoController(CrudService<Tecnico, Long> service, TecnicoService tecnicoService, TecnicoMapper mapper) {
-        super(service);
+        super(service, Tecnico.class);
         this.service = tecnicoService;
         this.mapper = mapper;
     }

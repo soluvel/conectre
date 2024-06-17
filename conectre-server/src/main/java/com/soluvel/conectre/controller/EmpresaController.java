@@ -20,9 +20,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.Arrays;
 import java.util.List;
-import java.util.Objects;
 
 @RestController
 @RequestMapping("/empresa")
@@ -33,7 +31,7 @@ public class EmpresaController extends CrudController<Empresa, Long> {
     private final EmpresaMapper mapper;
 
     public EmpresaController(CrudService<Empresa, Long> service, EmpresaService empresaService, EmpresaMapper mapper) {
-        super(service);
+        super(service, Empresa.class);
         this.service = empresaService;
         this.mapper = mapper;
     }

@@ -26,7 +26,7 @@ public class UsuarioTrevisanController extends CrudController<UsuarioTrevisan, L
     public UsuarioTrevisanController(CrudService<UsuarioTrevisan, Long> service,
                                      UsuarioTrevisanService usuarioTrevisanService,
                                      UsuarioService usuarioService) {
-        super(service);
+        super(service, UsuarioTrevisan.class);
         this.service = usuarioTrevisanService;
         this.usuarioService = usuarioService;
     }

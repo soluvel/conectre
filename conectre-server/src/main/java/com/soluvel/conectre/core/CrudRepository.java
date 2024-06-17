@@ -1,6 +1,5 @@
 package com.soluvel.conectre.core;
 
-import com.soluvel.conectre.domain.Empresa;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;

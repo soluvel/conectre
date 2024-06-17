@@ -1,6 +1,5 @@
 package com.soluvel.conectre.core;
 
-import com.soluvel.conectre.domain.Empresa;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
