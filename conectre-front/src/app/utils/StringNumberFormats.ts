@@ -23,4 +23,12 @@ export class StringNumberFormats {
     }
   }
 
+  static removeBeforeHifen(list) {
+    return list.map(item => {
+      const parts = item.split(" - ");
+      return parts[0].trim();
+    });
+
+  }
+
 }

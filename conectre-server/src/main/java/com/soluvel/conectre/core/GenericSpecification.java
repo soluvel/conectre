@@ -4,6 +4,7 @@ import jakarta.persistence.criteria.CriteriaBuilder;
 import jakarta.persistence.criteria.CriteriaQuery;
 import jakarta.persistence.criteria.Expression;
 import jakarta.persistence.criteria.Join;
+import jakarta.persistence.criteria.JoinType;
 import jakarta.persistence.criteria.Predicate;
 import jakarta.persistence.criteria.Root;
 import org.springframework.data.jpa.domain.Specification;
@@ -32,7 +33,7 @@ public class GenericSpecification<T> {
             for (String attribute : attributes) {
                 if (attribute.contains(".")) {
                     String[] parts = attribute.split("\\.");
-                    Join<Object, Object> join = root.join(parts[0]);
+                    Join<Object, Object> join = root.join(parts[0], JoinType.LEFT);
                     predicates.add(criteriaBuilder.like(
                             criteriaBuilder.lower(join.get(parts[1])),
                             "%" + value.toLowerCase() + "%"

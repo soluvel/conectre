@@ -16,18 +16,22 @@ export class EmpresaService {
   constructor(private http: HttpClient,
               private storage: StorageService) { }
 
-
-  page(numb: number, size: number, filter: string): Observable<any> {
-    if (filter != '') {
-      return this.http.get<any>(`${this.apiUrl}/page/${numb}/${size}?filter=${filter}`, { headers: this.headers });
+  page(numb: number, size: number, filter: string, attributes: string[]): Observable<any> {
+    let params = new HttpParams();
+    if (filter) {
+      params = params.set('filter', filter);
     }
 
-    return this.http.get<any>(`${this.apiUrl}/page/${numb}/${size}`, { headers: this.headers });
-  };
+    attributes.forEach(attribute => {
+      params = params.append('attributes', attribute);
+    });
 
-  pageTeste(numb: number, size: number, filter: string): Observable<any> {
-      return this.http.get<any>(`${this.apiUrl}/page-dinamico/${numb}/${size}?filter=${filter}`, { headers: this.headers });
-  };
+    return this.http.get<any>(`${this.apiUrl}/page/${numb}/${size}`, {
+      params: params,
+      headers: this.headers
+    });
+
+  }
 
   getCidades(): Observable<string[]> {
     return this.http.get<any>(`${this.apiUrl}/cidades`, { headers: this.headers });
