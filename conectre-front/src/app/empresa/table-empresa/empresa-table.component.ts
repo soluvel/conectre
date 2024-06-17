@@ -18,7 +18,7 @@ export class EmpresaTableComponent {
   pageNumber: number = 0;
   totalPage: number;
   size: number = 3;
-  razaoSocial: string;
+  filter: string;
 
   constructor(private service: EmpresaService,
               private router: Router) {
@@ -79,7 +79,7 @@ export class EmpresaTableComponent {
   }
 
   search() {
-    this.service.page(0, this.size, this.razaoSocial).subscribe({
+    this.service.pageTeste(0, this.size, this.filter).subscribe({
       next: (page) => {
         this.dataSource.data = page.content
         this.pageNumber = page.pageable.pageNumber

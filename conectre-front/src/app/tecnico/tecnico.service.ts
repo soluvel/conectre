@@ -25,4 +25,8 @@ export class TecnicoService {
   getTecnico(id: any): Observable<any> {
     return this.http.get<any>(`${this.apiUrl}/${id}`, { headers: this.headers });
   }
+
+  count(): Observable<number> {
+    return this.http.get<any>(`${this.apiUrl}/count`, {headers: this.headers});
+  }
 }

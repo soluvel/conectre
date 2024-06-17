@@ -50,7 +50,7 @@ export class AdministradorCadastroComponent implements OnInit, OnDestroy, OnChan
   }
 
   closeModal() {
-    var overlay = document.getElementById('overlay');
+    var overlay = document.getElementById('overlayAdm');
     overlay.style.display = 'none';
   }
 

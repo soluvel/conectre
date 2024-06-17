@@ -25,6 +25,10 @@ export class EmpresaService {
     return this.http.get<any>(`${this.apiUrl}/page/${numb}/${size}`, { headers: this.headers });
   };
 
+  pageTeste(numb: number, size: number, filter: string): Observable<any> {
+      return this.http.get<any>(`${this.apiUrl}/page-dinamico/${numb}/${size}?filter=${filter}`, { headers: this.headers });
+  };
+
   getCidades(): Observable<string[]> {
     return this.http.get<any>(`${this.apiUrl}/cidades`, { headers: this.headers });
   }
@@ -61,6 +65,10 @@ export class EmpresaService {
       params: params,
       headers: this.headers
     });
+  }
+
+  count(): Observable<number> {
+    return this.http.get<any>(`${this.apiUrl}/count`, {headers: this.headers});
   }
 
 }

@@ -72,7 +72,7 @@ import { CelularPipe } from "./pipes/celular";
     TableProdutorVinculadoComponent,
     TecnicoFilterComponent,
     ProdutorCadastroComponent,
-    NotificacaoComponent
+    NotificacaoComponent,
   ],
   imports: [
     BrowserModule,

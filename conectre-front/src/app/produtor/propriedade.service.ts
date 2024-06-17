@@ -18,4 +18,8 @@ export class PropriedadeService {
     return this.http.get<any>(`${this.apiUrl}`, { headers: this.headers });
   }
 
+  count(): Observable<number> {
+    return this.http.get<any>(`${this.apiUrl}/count`, {headers: this.headers});
+  }
+
 }

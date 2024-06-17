@@ -40,4 +40,5 @@ public class TecnicoController extends CrudController<Tecnico, Long> {
     public ResponseEntity<Page<Tecnico>> page(@PathVariable int number, @PathVariable int size) {
         return ResponseEntity.ok(service.page(PageRequest.of(number, size)));
     }
+
 }

@@ -5,6 +5,7 @@ import { Subject, takeUntil } from "rxjs";
 import { ToastrService } from "ngx-toastr";
 import { ActivatedRoute, Router } from "@angular/router";
 import { ViaCepService } from "../../../via-cep.service";
+import { StringNumberFormats } from "../../../utils/StringNumberFormats";
 
 @Component({
   selector: 'app-empresa',
@@ -62,6 +63,7 @@ export class EmpresaComponent implements OnInit, OnDestroy {
   getEmpresa(): void {
     this.service.getEmpresa(parseInt(this.empresaId)).subscribe(data => {
       this.form.patchValue(data);
+      this.form.get('cnpjCpf').setValue(StringNumberFormats.formatCpfCnpj(this.form.get('cnpjCpf').value));
       this.isEditando = true;
     });
   }
