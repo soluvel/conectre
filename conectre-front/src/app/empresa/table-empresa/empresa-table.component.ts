@@ -93,6 +93,9 @@ export class EmpresaTableComponent {
   }
 
 
+  redirectToEmpresa() {
+    this.router.navigate(['/empresa/cadastrar']);
+  }
 }
 
 export interface Empresa {

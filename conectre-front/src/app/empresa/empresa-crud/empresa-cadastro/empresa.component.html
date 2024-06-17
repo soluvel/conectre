@@ -40,10 +40,20 @@
           </div>
         </div>
 
-        <div class="col-6" formGroupName="endereco">
+        <div class="col-2" formGroupName="endereco">
           <label for="cep" class="form-label required">CEP</label>
           <div class="input-group">
-            <input type="text" class="form-control required" formControlName="cep" id="cep">
+            <input type="text" class="form-control required" formControlName="cep" id="cep" appCepMask (blur)="getEnderecoViaCep()">
+            <span class="input-group-text">
+          <img src="assets/pen.svg" alt="Imagem" *ngIf="isEditando">
+          </span>
+          </div>
+        </div>
+
+        <div class="col-4" formGroupName="endereco">
+          <label for="localidade" class="form-label required">Cidade</label>
+          <div class="input-group">
+            <input type="text" class="form-control" formControlName="localidade" id="localidade">
             <span class="input-group-text">
           <img src="assets/pen.svg" alt="Imagem" *ngIf="isEditando">
           </span>
@@ -72,10 +82,20 @@
           </div>
         </div>
 
-        <div class="col-4">
-          <label for="cidade" class="form-label required">Cidade</label>
+        <div class="col-2">
+          <label for="bairro" class="form-label required">Bairro</label>
           <div class="input-group">
-            <input type="text" class="form-control" formControlName="cidade" id="cidade">
+            <input type="text" class="form-control" formControlName="bairro" id="bairro">
+            <span class="input-group-text">
+          <img src="assets/pen.svg" alt="Imagem" *ngIf="isEditando">
+          </span>
+          </div>
+        </div>
+
+        <div class="col-2">
+          <label for="uf" class="form-label required">Estado</label>
+          <div class="input-group">
+            <input type="text" class="form-control" formControlName="uf" id="uf">
             <span class="input-group-text">
           <img src="assets/pen.svg" alt="Imagem" *ngIf="isEditando">
           </span>

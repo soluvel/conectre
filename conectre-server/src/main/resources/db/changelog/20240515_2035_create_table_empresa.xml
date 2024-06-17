@@ -23,13 +23,13 @@
                 <constraints nullable="false"/>
             </column>
             <column name="email" type="varchar(255)"/>
-            <column name="cep" type="varchar(8)"/>
+            <column name="cep" type="varchar(9)"/>
             <column name="logradouro" type="varchar(255)"/>
             <column name="numero" type="varchar(10)"/>
             <column name="complemento" type="varchar(255)"/>
             <column name="bairro" type="varchar(255)"/>
-            <column name="cidade" type="varchar(255)"/>
-            <column name="estado" type="varchar(2)"/>
+            <column name="localidade" type="varchar(255)"/>
+            <column name="uf" type="varchar(2)"/>
 
             <column name="plano" type="varchar(30)">
                 <constraints nullable="false"/>

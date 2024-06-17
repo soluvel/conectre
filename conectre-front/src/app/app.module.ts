@@ -44,6 +44,9 @@ import {
 import { TecnicoFilterComponent } from "./tecnico/tecnico-filter/tecnico-filter.component";
 import { ProdutorCadastroComponent } from "./produtor/produtor-cadastro/produtor-cadastro.component";
 import { NotificacaoComponent } from './notificacao/notificacao.component';
+import { CepMaskDirective } from "./diretiva/cep-mask.directive";
+import { CelularMaskDirective } from "./diretiva/celular-mask.directive";
+import { CelularPipe } from "./pipes/celular";
 
 @NgModule({
   declarations: [
@@ -61,6 +64,8 @@ import { NotificacaoComponent } from './notificacao/notificacao.component';
     TableProdutorComponent,
     EquipamentoComponent,
     CnpjCpfMaskDirective,
+    CepMaskDirective,
+    CelularMaskDirective,
     AdministradorComponent,
     AdministradorCadastroComponent,
     TecnicoCadastroComponent,
@@ -91,7 +96,8 @@ import { NotificacaoComponent } from './notificacao/notificacao.component';
     MatMenuModule,
     MatSidenavModule,
     MatProgressBarModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
+    CelularPipe
   ],
   providers: [],
   bootstrap: [AppComponent]

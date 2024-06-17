@@ -5,6 +5,8 @@ import { ToastrService } from "ngx-toastr";
 import { ActivatedRoute, Router } from "@angular/router";
 import { Subject, takeUntil } from "rxjs";
 import { TecnicoService } from "../tecnico.service";
+import { ViaCepService } from "../../via-cep.service";
+import { StringNumberFormats } from "../../utils/StringNumberFormats";
 
 @Component({
   selector: 'app-tecnico-cadastro',
@@ -23,6 +25,7 @@ export class TecnicoCadastroComponent implements OnInit, OnDestroy {
               private route: ActivatedRoute,
               private service: TecnicoService,
               private empresaService: EmpresaService,
+              private viaCepService: ViaCepService,
               private router: Router) {
     this.form = this.formBuilder.group({
       id: [],
@@ -35,8 +38,10 @@ export class TecnicoCadastroComponent implements OnInit, OnDestroy {
         cep: [''],
         logradouro: [''],
         numero: [''],
-        cidade: [''],
-        complemento: ['']
+        complemento: [''],
+        bairro: [''],
+        localidade: [''],
+        uf: [''],
       }),
     });
   }
@@ -60,6 +65,7 @@ export class TecnicoCadastroComponent implements OnInit, OnDestroy {
   getEmpresa(): void {
     this.service.getTecnico(parseInt(this.tecnicoId)).subscribe(data => {
       this.form.patchValue(data);
+      this.form.get('celular').setValue(StringNumberFormats.formatCelular(this.form.get('celular').value))
       this.isEditando = true;
     });
   }
@@ -76,6 +82,18 @@ export class TecnicoCadastroComponent implements OnInit, OnDestroy {
       }
     });
 
+  }
+
+  getEnderecoViaCep() {
+    this.viaCepService.getEndereco(this.form.get('endereco.cep').value).pipe(takeUntil(this.destroy$)
+    ).subscribe({
+      next: response => {
+        this.form.get('endereco').patchValue(response);
+      },
+      error: error => {
+        console.error('Erro:', error);
+      }
+    });
   }
 
   handleImageUpload($event: Event) {

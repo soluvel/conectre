@@ -9,6 +9,8 @@ import com.soluvel.conectre.service.EmpresaService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
 
+import static com.soluvel.conectre.utils.StringFormat.removeSpecialCharacters;
+
 @Component
 @AllArgsConstructor
 public class TecnicoMapper {
@@ -19,6 +21,7 @@ public class TecnicoMapper {
         Tecnico tecnico = new Tecnico();
         GenericMapper.map(record, tecnico);
 
+        tecnico.setCelular(removeSpecialCharacters(record.celular()));
         tecnico.setCpf("07700000");
         tecnico.setUsername(record.nome());
         tecnico.setPassword("$2a$12$.0PG.Ju0.vlAFdEh.rLgu.NZFFdD3W9EwOJBjvihyOwd7BfVkDCw2");
