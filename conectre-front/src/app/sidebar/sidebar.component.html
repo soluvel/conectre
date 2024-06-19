@@ -5,14 +5,14 @@
     <h4 class="topic" *ngIf="!sideNavCollapsed">Gestão</h4>
     <ul>
       <ng-container *ngFor="let g of gestaoItems()">
-        <li><img src="{{g.icon}}" alt="{{ g.title }}"><a href="{{ g.route }}"><span
-          *ngIf="!sideNavCollapsed">{{ g.title }}</span></a></li>
+        <li><a href="{{ g.route }}"><img class="icon" src="{{g.icon}}" alt="{{ g.title }}">
+            <span class="item" *ngIf="!sideNavCollapsed">{{ g.title }}</span></a></li>
       </ng-container>
       <li class="dropdown">
-        <img src="assets/menu-cadastro-icon.svg" alt="Cadastros">
         <a href="#">
-          <span *ngIf="!sideNavCollapsed">Cadastros</span>
-          <img *ngIf="!sideNavCollapsed" src="assets/down-arrow.svg" alt="Cadastros">
+          <img class="icon" src="assets/menu-cadastro-icon.svg" alt="Cadastros">
+          <span class="item" *ngIf="!sideNavCollapsed">Cadastros</span>
+          <img class="icon" *ngIf="!sideNavCollapsed" src="assets/down-arrow.svg" alt="Cadastros">
         </a>
         <div class="dropdown-content">
           <a href="empresa/cadastrar"><img src="../../assets/subitem-icon.svg" alt="Cadastros">Empresa</a>
@@ -26,11 +26,11 @@
   <mat-divider *ngIf="!sideNavCollapsed"></mat-divider>
 
   <div class="itens">
+    <h4 class="topic topic-child-2" *ngIf="!sideNavCollapsed">Sistema</h4>
     <ul>
-      <h4 class="topic" *ngIf="!sideNavCollapsed">Sistema</h4>
       <ng-container *ngFor="let g of sistemaItems()">
-        <li class="sidemenu-secondary"><img src="{{g.icon}}" alt="{{ g.title }}"><a href="{{ g.route }}"><span
-          *ngIf="!sideNavCollapsed">{{ g.title }}</span></a></li>
+        <li class="sidemenu-secondary"><a href="{{ g.route }}"><img class="icon" src="{{g.icon}}" alt="{{ g.title }}">
+            <span class="item" *ngIf="!sideNavCollapsed">{{ g.title }}</span></a></li>
       </ng-container>
     </ul>
   </div>

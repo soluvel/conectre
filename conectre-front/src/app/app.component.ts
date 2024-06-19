@@ -27,6 +27,11 @@ export class AppComponent {
   collapsed = signal(true);
   sidenavWidth = computed(() => (this.collapsed() ? "65px" : "250px"));
 
+  openMenu() {
+    document.querySelector('.user-menu').classList.toggle('user-menu-open')
+    document.querySelector('.menu-arrow-icon').classList.toggle('menu-open-arrow-icon')
+  }
+
   logout() {
     this.isLoggedIn = false;
     this.storage.clear();

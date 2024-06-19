@@ -1,39 +1,48 @@
-<div class="container-header">
-  <h4 id="titulo">Novo equipamento</h4>
-    <img src="assets/close.svg" alt="Imagem Redonda" style="width: 15px" (click)="closeModal()">
-</div>
+<div class="modal-dialog modal-dialog-centered">
+  <div class="modal-content">
+
+    <div class="container-header modal-header">
+      <h4 id="titulo">Novo equipamento</h4>
+      <button type="button" class="btn btn-close" (click)="closeModal()"></button>
+    </div>
 
 
-<div class="container-form">
-  <form [formGroup]="form">
-    <div class="row g-3">
-      <div class="col-12">
-        <label for="equipamento" class="form-label required">Nome do equipamento</label>
-        <input type="text" class="form-control" id="equipamento" aria-describedby="empresaImage" formControlName="nome">
-      </div>
+    <div class="container-form">
+      <form [formGroup]="form">
+        <div class="row g-3">
+          <div class="col-12">
+            <label for="equipamento" class="form-label required">Nome do equipamento</label>
+            <input type="text" class="form-control" id="equipamento" aria-describedby="empresaImage"
+              formControlName="nome">
+          </div>
+        </div>
+        <div class="row g-3">
+          <div class="col-12">
+            <label id="propriedade" for="propriedade" class="form-label required">Onde está o equipamento?</label>
+            <select class="form-select" formControlName="propriedade">
+              <option *ngFor="let propriedade of propriedades" [value]="propriedade">{{ propriedade.nome }}</option>
+            </select>
+          </div>
+        </div>
+        <div class="row g-3">
+          <div class="col-6">
+            <label for="codigo" class="form-label required">Código</label>
+            <input type="text" class="form-control" id="codigo" aria-describedby="empresaImage"
+              formControlName="codigo">
+          </div>
+          <div class="col-6">
+            <label for="quantidade" class="form-label required">Quantidade</label>
+            <input type="text" class="form-control" id="quantidade" aria-describedby="empresaImage"
+              formControlName="quantidade">
+          </div>
+        </div>
+      </form>
     </div>
-    <div class="row g-3">
-      <div class="col-12">
-        <label id="propriedade" for="propriedade" class="form-label required">Onde está o equipamento?</label>
-        <select  class="form-select" formControlName="propriedade">
-          <option *ngFor="let propriedade of propriedades" [value]="propriedade">{{ propriedade.nome }}</option>
-        </select>
-      </div>
-    </div>
-    <div class="row g-3">
-      <div class="col-6">
-        <label for="codigo" class="form-label required">Código</label>
-        <input type="text" class="form-control" id="codigo" aria-describedby="empresaImage" formControlName="codigo">
-      </div>
-      <div class="col-6">
-        <label for="quantidade" class="form-label required">Quantidade</label>
-        <input type="text" class="form-control" id="quantidade" aria-describedby="empresaImage" formControlName="quantidade">
-      </div>
-    </div>
-  </form>
-</div>
 
-<div class="actions-footer">
-  <button class="button-white" style="margin-right: 10px">Cancelar</button>
-  <button (click)="onSubmit()">Cadastrar</button>
+    <div class="actions-footer">
+      <button class="button-white" style="margin-right: 10px" (click)="closeModal()">Cancelar</button>
+      <button (click)="onSubmit()">Cadastrar</button>
+    </div>
+
+  </div>
 </div>

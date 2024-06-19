@@ -11,6 +11,11 @@ mat-sidenav {
   left: 2vh;
 }
 
+// transition effect ---------------------------
+.transition-effect {
+  transition: .3s;
+}
+
 h2 {
   font-size: 14px;
   font-weight: 400;
@@ -38,7 +43,29 @@ button {
   justify-content: flex-end;
   align-items: center;
   border-bottom: 1px solid #52525B;
-  padding: 10px 30px 10px 0;
+  padding: 10px 0 10px 0;
+}
+
+.user-box {
+  display: flex;
+  position: relative;
+  width: 200px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.menu-arrow-icon {
+  cursor: pointer;
+  transition: .3s;
+}
+
+.menu-arrow-icon,
+.user-msg {
+  margin-bottom: 5px;
+}
+
+.menu-open-arrow-icon {
+  transform: rotatex(180deg);
 }
 
 img.img-avatar {
@@ -47,6 +74,62 @@ img.img-avatar {
   border-radius: 50%;
   margin-right: 10px;
 }
+
+.user-name-and-icon-box {
+  display: flex;
+  position: relative;
+  width: 75%;
+  justify-content: center;
+  align-items: center;
+}
+
+.user-menu {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 90%;
+  right: 0;
+  background: #fff;
+  width: 100%;
+  height: 0%;
+  overflow: hidden;
+  z-index: 999;
+  box-shadow:
+    0 2px 4px rgba(0, 0, 0, 0.1),
+    0 4px 8px rgba(0, 0, 0, 0.1),
+    0 8px 16px rgba(0, 0, 0, 0.1),
+    0 16px 32px rgba(0, 0, 0, 0.1);
+  transition: height 0.3s ease;
+}
+
+.user-menu-open {
+  height: 300%;
+  border-top: 2px solid #068fff;
+}
+
+.menu-button {
+  background: transparent;
+  display: flex;
+  flex-direction: column;
+  border-radius: 0;
+  justify-content: left;
+  margin-bottom: 5px;
+  transition: .4s;
+}
+
+.menu-button:hover {
+  background: #d3d3d3;
+}
+
+// ::ng-deep {
+//   .cdk-overlay-container {
+//     position: absolute;
+//     top: 0;
+//     right: 0;
+//     z-index: 999;
+//     background: red !important;
+//   }
+// }
 
 .content {
   padding: 2vh 5vh 2vh 5vh;
@@ -60,11 +143,6 @@ img.img-avatar {
   align-items: center;
 }
 
-.container > * {
+.container>* {
   margin-left: 10px;
 }
-
-
-
-
-

@@ -39,6 +39,7 @@ export class TableProdutorComponent {
     overlay.style.display = 'block';
   }
 
+
   nextOrBack(isAvancar: boolean) {
 
     let page = isAvancar ? this.pageNumber + 1 : this.pageNumber - 1;
