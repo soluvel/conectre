@@ -36,7 +36,7 @@
         <div class="col-3">
           <label for="cpf" class="form-label required">CPF</label>
           <div class="input-group">
-            <input type="email" class="form-control" formControlName="cpf" id="cpf">
+            <input type="email" class="form-control" formControlName="cpf" id="cpf" appCnpjCpfMask [maxLength]="14">
             <span class="input-group-text">
           <img src="assets/pen.svg" alt="Imagem" *ngIf="isEditando">
           </span>
@@ -46,7 +46,7 @@
           <label id="celular" for="celular" class="form-label required">Celular</label>
           <div class="input-group">
             <input type="text" class="form-control" formControlName="celular"
-                   aria-describedby="empresaImage">
+                   aria-describedby="empresaImage" appCelularMask [maxLength]="15">
             <span class="input-group-text">
           <img src="assets/pen.svg" alt="Imagem" *ngIf="isEditando">
           </span>
@@ -55,59 +55,11 @@
       </div>
 
       <div class="row g-3">
-
-        <ng-container formGroupName="endereco">
-        <div class="col-2">
-          <label id="cep" for="cep" class="form-label required">CEP</label>
-          <div class="input-group">
-            <input type="text" class="form-control required" formControlName="cep">
-            <span class="input-group-text">
-          <img src="assets/pen.svg" alt="Imagem" *ngIf="isEditando">
-          </span>
-          </div>
-        </div>
-
-        <div class="col-3">
-          <label id="cidade" for="cidade" class="form-label required">Cidade</label>
-          <div class="input-group">
-            <input type="text" class="form-control" formControlName="cidade">
-            <span class="input-group-text">
-          <img src="assets/pen.svg" alt="Imagem" *ngIf="isEditando">
-          </span>
-          </div>
-        </div>
-
-        <div class="col-7">
-          <label id="logradouro" for="logradouro" class="form-label required">Logradouro</label>
-          <div class="input-group">
-            <input type="text" class="form-control" formControlName="logradouro">
-            <span class="input-group-text">
-          <img src="assets/pen.svg" alt="Imagem" *ngIf="isEditando">
-          </span>
-          </div>
-        </div>
-        </ng-container>
-      </div>
-
-      <div class="row g-3" formGroupName="endereco">
-        <div class="col-2">
-          <label id="numero" for="numero" class="form-label required">Número</label>
-          <div class="input-group">
-            <input type="text" class="form-control" formControlName="numero">
-            <span class="input-group-text">
-          <img src="assets/pen.svg" alt="Imagem" *ngIf="isEditando">
-          </span>
-          </div>
-        </div>
-        <div class="col-10">
-          <label for="complemento" class="form-label">Complemento</label>
-          <div class="input-group" style="padding-bottom: 0">
-            <input type="text" class="form-control" formControlName="complemento" id="complemento"
-                   style="margin-bottom: 0">
-            <span class="input-group-text">
-          <img src="assets/pen.svg" alt="Imagem" *ngIf="isEditando">
-          </span>
-          </div>
+        <div class="col-4">
+          <label id="empresa" for="empresa" class="form-label required">Empresa</label>
+          <select class="form-select" formControlName="empresa">
+            <option *ngFor="let empresa of empresas" [value]="empresa.id">{{ empresa.razaoSocial }}</option>
+          </select>
         </div>
       </div>
     </form>

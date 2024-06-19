@@ -19,6 +19,17 @@
             <column name="nome" type="varchar(150)">
                 <constraints nullable="false"/>
             </column>
+            <column name="cep" type="varchar(9)"/>
+            <column name="logradouro" type="varchar(255)"/>
+            <column name="numero" type="varchar(10)"/>
+            <column name="complemento" type="varchar(255)"/>
+            <column name="bairro" type="varchar(255)"/>
+            <column name="localidade" type="varchar(255)"/>
+            <column name="uf" type="varchar(2)"/>
+
+            <column name="produtor_id" type="int">
+                <constraints nullable="false" foreignKeyName="fk_propriedade_produtor" referencedTableName="produtor" referencedColumnNames="id"/>
+            </column>
         </createTable>
 
     </changeSet>

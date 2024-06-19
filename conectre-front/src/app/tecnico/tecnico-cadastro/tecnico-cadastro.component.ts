@@ -32,7 +32,6 @@ export class TecnicoCadastroComponent implements OnInit, OnDestroy {
       nome: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       celular: ['', Validators.required],
-      cargo: ['', Validators.required],
       empresa: ['', Validators.required],
       endereco: this.formBuilder.group({
         cep: [''],

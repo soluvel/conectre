@@ -15,12 +15,13 @@
         <createTable tableName="tecnico">
             <column name="id"  autoIncrement="true" type="int">
                 <constraints nullable="false" primaryKey="true" primaryKeyName="pk_tecnico"
-                             foreignKeyName="fk_usuarioempresa_usuario" referencedTableName="usuario" referencedColumnNames="id"/>
+                             foreignKeyName="fk_tecnico_usuario" referencedTableName="usuario" referencedColumnNames="id"/>
             </column>
             <column name="cpf" type="varchar(11)">
                 <constraints nullable="false"/>
             </column>
             <column name="celular" type="varchar(11)"/>
+            <column name="email" type="varchar(255)"/>
             <column name="cep" type="varchar(9)"/>
             <column name="logradouro" type="varchar(255)"/>
             <column name="numero" type="varchar(10)"/>
@@ -30,7 +31,7 @@
             <column name="uf" type="varchar(2)"/>
 
             <column name="empresa_id" type="int">
-                <constraints nullable="false" foreignKeyName="fk_usuarioempresa_empresa" referencedTableName="empresa" referencedColumnNames="id"/>
+                <constraints nullable="false" foreignKeyName="fk_tecnico_empresa" referencedTableName="empresa" referencedColumnNames="id"/>
             </column>
         </createTable>
 
