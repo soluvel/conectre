@@ -4,6 +4,7 @@ $size-px-30: 30px;
 $size-percent-10: 10%;
 $size-percent-15: 15%;
 $grey: #6D6D6D;
+$fadegrey: #6d6d6d75;
 
 table {
   width: 100%;
@@ -66,6 +67,13 @@ mat-paginator {
 
 //estilização da parte de consulta -------------------------------------
 
+
+//estilização da parte de fade pop-up -------------------------------------
+.overlay-fade {
+  background: $fadegrey;
+}
+
+
 .container-filter {
   display: flex;
   margin-bottom: $size-px-30;
@@ -96,19 +104,6 @@ mat-paginator {
 }
 
 // estilização do filtro
-
-#overlay {
-  display: none;
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 45%;
-  height: 50%;
-  background-color: white;
-  z-index: 9999;
-  border-radius: 10px;
-}
 
 
 @media screen and (max-width: 600px) {

@@ -105,18 +105,18 @@ label.required::after {
   margin-top: 5px;
 }
 
-#overlay {
-  display: none;
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 45%;
-  height: 30%;
-  background-color: white;
-  z-index: 9999;
-  border-radius: 10px;
-}
+// #overlay {
+//   display: none;
+//   position: fixed;
+//   top: 50%;
+//   left: 50%;
+//   transform: translate(-50%, -50%);
+//   width: 45%;
+//   height: 30%;
+//   background-color: white;
+//   z-index: 9999;
+//   border-radius: 10px;
+// }
 
 .mat-panel-title {
   display: flex;
@@ -128,7 +128,3 @@ label.required::after {
 .license-info {
   margin-left: auto;
 }
-
-
-
-

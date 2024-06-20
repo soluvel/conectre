@@ -11,6 +11,7 @@
       </div>
     </div>
   </mat-tab>
+
   <mat-tab label="Técnicos"
            *ngIf="storage.getRole() === 'ADM_TREVISAN' || storage.getRole() === 'TECNICO' || storage.getRole() === 'EMPRESA'">
     <div class="tab-container">
@@ -20,6 +21,7 @@
       </div>
     </div>
   </mat-tab>
+
   <mat-tab label="Produtores">
     <div class="tab-container">
       <div class="column">
