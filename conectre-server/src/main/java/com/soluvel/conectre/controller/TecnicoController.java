@@ -2,11 +2,8 @@ package com.soluvel.conectre.controller;
 
 import com.soluvel.conectre.core.CrudController;
 import com.soluvel.conectre.core.CrudService;
-import com.soluvel.conectre.domain.Empresa;
 import com.soluvel.conectre.domain.Tecnico;
-import com.soluvel.conectre.domain.mappers.EmpresaMapper;
 import com.soluvel.conectre.domain.mappers.TecnicoMapper;
-import com.soluvel.conectre.domain.records.EmpresaRecords;
 import com.soluvel.conectre.domain.records.TecnicoRecords;
 import com.soluvel.conectre.service.TecnicoService;
 import org.springframework.data.domain.Page;
@@ -18,10 +15,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.util.Objects;
 
 @RestController
 @RequestMapping("/tecnico")

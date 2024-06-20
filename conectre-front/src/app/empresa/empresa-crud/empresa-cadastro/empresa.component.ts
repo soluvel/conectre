@@ -4,6 +4,7 @@ import { EmpresaService } from "../../empresa.service";
 import { Subject, takeUntil } from "rxjs";
 import { ToastrService } from "ngx-toastr";
 import { ActivatedRoute, Router } from "@angular/router";
+import { ViaCepService } from "../../../via-cep.service";
 
 @Component({
   selector: 'app-empresa',
@@ -20,10 +21,11 @@ export class EmpresaComponent implements OnInit, OnDestroy {
   constructor(private formBuilder: FormBuilder,
               private service: EmpresaService,
               private toastr: ToastrService,
+              private viaCepService: ViaCepService,
               private route: ActivatedRoute,
               private router: Router) {
     this.form = this.formBuilder.group({
-      id:[],
+      id: [],
       razaoSocial: ['', Validators.required],
       cnpjCpf: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
@@ -31,9 +33,10 @@ export class EmpresaComponent implements OnInit, OnDestroy {
         cep: [''],
         logradouro: [''],
         numero: [''],
-        cidade: [''],
+        complemento: [''],
         bairro: [''],
-        complemento: ['']
+        localidade: [''],
+        uf: [''],
       }),
       plano: [''],
       grupo: this.formBuilder.group({
@@ -77,6 +80,18 @@ export class EmpresaComponent implements OnInit, OnDestroy {
       next: response => {
         this.toastr.success('Formulário salvo com sucesso!');
         this.router.navigate(['/inicio']);
+      },
+      error: error => {
+        console.error('Erro:', error);
+      }
+    });
+  }
+
+  getEnderecoViaCep() {
+    this.viaCepService.getEndereco(this.form.get('endereco.cep').value).pipe(takeUntil(this.destroy$)
+    ).subscribe({
+      next: response => {
+        this.form.get('endereco').patchValue(response);
       },
       error: error => {
         console.error('Erro:', error);

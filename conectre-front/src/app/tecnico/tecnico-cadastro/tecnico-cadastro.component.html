@@ -23,7 +23,7 @@
         </div>
       </div>
       <div class="row g-3">
-        <div class="col-3">
+        <div class="col-4">
           <label id="nome" for="nome" class="form-label required">Nome</label>
           <div class="input-group">
             <input type="text" class="form-control" formControlName="nome"
@@ -33,7 +33,7 @@
           </span>
           </div>
         </div>
-        <div class="col-3">
+        <div class="col-2">
           <label for="email" class="form-label required">E-mail</label>
           <div class="input-group">
             <input type="email" class="form-control" formControlName="email" id="email">
@@ -43,9 +43,9 @@
           </div>
         </div>
         <div class="col-3">
-          <label id="celular" for="celular" class="form-label required">Telefone</label>
+          <label id="celular" for="celular" class="form-label required">Celular</label>
           <div class="input-group">
-            <input type="text" class="form-control" formControlName="celular"
+            <input type="text" class="form-control" formControlName="celular" appCelularMask
                    aria-describedby="empresaImage">
             <span class="input-group-text">
           <img src="assets/pen.svg" alt="Imagem" *ngIf="isEditando">
@@ -65,7 +65,7 @@
       </div>
 
       <div class="row g-3">
-        <div class="col-3">
+        <div class="col-4">
           <label id="empresa" for="empresa" class="form-label required">Empresa</label>
           <select  class="form-select" formControlName="empresa">
             <option *ngFor="let empresa of empresas" [value]="empresa.id">{{ empresa.razaoSocial }}</option>
@@ -73,10 +73,10 @@
         </div>
 
         <ng-container formGroupName="endereco">
-        <div class="col-3">
+        <div class="col-2">
           <label id="cep" for="cep" class="form-label required">CEP</label>
           <div class="input-group">
-            <input type="text" class="form-control required" formControlName="cep">
+            <input type="text" class="form-control required" formControlName="cep" appCepMask (blur)="getEnderecoViaCep()">
             <span class="input-group-text">
           <img src="assets/pen.svg" alt="Imagem" *ngIf="isEditando">
           </span>
@@ -84,9 +84,9 @@
         </div>
 
         <div class="col-3">
-          <label id="cidade" for="cidade" class="form-label required">Cidade</label>
+          <label id="localidade" for="localidade" class="form-label required">Cidade</label>
           <div class="input-group">
-            <input type="text" class="form-control" formControlName="cidade">
+            <input type="text" class="form-control" formControlName="localidade">
             <span class="input-group-text">
           <img src="assets/pen.svg" alt="Imagem" *ngIf="isEditando">
           </span>
@@ -106,7 +106,17 @@
       </div>
 
       <div class="row g-3" formGroupName="endereco">
-        <div class="col-3">
+        <div class="col-4">
+          <label for="bairro" class="form-label required">Bairro</label>
+          <div class="input-group">
+            <input type="text" class="form-control" formControlName="bairro" id="bairro">
+            <span class="input-group-text">
+          <img src="assets/pen.svg" alt="Imagem" *ngIf="isEditando">
+          </span>
+          </div>
+        </div>
+
+        <div class="col-1">
           <label id="numero" for="numero" class="form-label required">Número</label>
           <div class="input-group">
             <input type="text" class="form-control" formControlName="numero">
@@ -115,7 +125,18 @@
           </span>
           </div>
         </div>
-        <div class="col-7">
+
+        <div class="col-1">
+          <label for="uf" class="form-label required">Estado</label>
+          <div class="input-group">
+            <input type="text" class="form-control" formControlName="uf" id="uf">
+            <span class="input-group-text">
+          <img src="assets/pen.svg" alt="Imagem" *ngIf="isEditando">
+          </span>
+          </div>
+        </div>
+
+        <div class="col-6">
           <label for="complemento" class="form-label">Complemento</label>
           <div class="input-group" style="padding-bottom: 0">
             <input type="text" class="form-control" formControlName="complemento" id="complemento"

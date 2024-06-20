@@ -18,7 +18,7 @@
                              foreignKeyName="fk_usuarioempresa_usuario" referencedTableName="usuario" referencedColumnNames="id"/>
             </column>
 
-            <column name="celular" type="varchar(9)"/>
+            <column name="celular" type="varchar(11)"/>
             <column name="cargo" type="varchar(100)"/>
 
             <column name="empresa_id" type="int">
