@@ -5,6 +5,8 @@ import { ToastrService } from "ngx-toastr";
 import { ActivatedRoute, Router } from "@angular/router";
 import { Subject, takeUntil } from "rxjs";
 import { TecnicoService } from "../../tecnico/tecnico.service";
+import { ProdutorService } from "../produtor.service";
+import { StringNumberFormats } from "../../utils/StringNumberFormats";
 
 @Component({
   selector: 'app-produtor-cadastro',
@@ -14,14 +16,14 @@ import { TecnicoService } from "../../tecnico/tecnico.service";
 export class ProdutorCadastroComponent implements OnInit, OnDestroy {
   form: FormGroup;
   isEditando: boolean = false;
-  tecnicoId: any;
+  produtorId: any;
   private destroy$ = new Subject<void>();
   empresas: any[] = [];
 
   constructor(private formBuilder: FormBuilder,
               private toastr: ToastrService,
               private route: ActivatedRoute,
-              private service: TecnicoService,
+              private service: ProdutorService,
               private empresaService: EmpresaService,
               private router: Router) {
     this.form = this.formBuilder.group({
@@ -29,13 +31,7 @@ export class ProdutorCadastroComponent implements OnInit, OnDestroy {
       nome: ['', Validators.required],
       cpf: ['', Validators.required],
       celular: ['', Validators.required],
-      endereco: this.formBuilder.group({
-        cep: [''],
-        logradouro: [''],
-        numero: [''],
-        cidade: [''],
-        complemento: ['']
-      }),
+      empresa: ['', Validators.required],
     });
   }
 
@@ -46,8 +42,8 @@ export class ProdutorCadastroComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
-      this.tecnicoId = params.get('id');
-      this.getEmpresa();
+      this.produtorId = params.get('id');
+      this.getProdutor();
     });
 
     this.empresaService.getEmpresasReduce().subscribe(data => {
@@ -55,9 +51,11 @@ export class ProdutorCadastroComponent implements OnInit, OnDestroy {
     });
   }
 
-  getEmpresa(): void {
-    this.service.getTecnico(parseInt(this.tecnicoId)).subscribe(data => {
+  getProdutor(): void {
+    this.service.findOne(parseInt(this.produtorId)).subscribe(data => {
       this.form.patchValue(data);
+      this.form.get('celular').setValue(StringNumberFormats.formatCelular(this.form.get('celular').value))
+      this.form.get('cpf').setValue(StringNumberFormats.formatCpfCnpj(this.form.get('cpf').value))
       this.isEditando = true;
     });
   }

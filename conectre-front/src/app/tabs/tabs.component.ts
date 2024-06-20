@@ -5,6 +5,7 @@ import { TecnicoService } from "../tecnico/tecnico.service";
 import { GrupoService } from "../empresa/empresa-crud/empresa-cadastro/grupo/grupo.service";
 import { PropriedadeService } from "../produtor/propriedade.service";
 import { EquipamentoService } from "../produtor/equipamento.service";
+import { ProdutorService } from "../produtor/produtor.service";
 
 @Component({
   selector: 'app-tabs',
@@ -25,6 +26,7 @@ export class TabsComponent implements OnInit {
               private empresaService: EmpresaService,
               private grupoService: GrupoService,
               private propriedadeService: PropriedadeService,
+              private produtorService: ProdutorService,
               private equipamentoService: EquipamentoService,
               private tecnicoService: TecnicoService,) {
   }
@@ -48,6 +50,10 @@ export class TabsComponent implements OnInit {
 
     this.equipamentoService.count().subscribe(qnt => {
       this.equipamentoQnt = qnt
+    });
+
+    this.produtorService.count().subscribe(qnt => {
+      this.produtorQnt = qnt
     });
   }
 

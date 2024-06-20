@@ -2,13 +2,11 @@ package com.soluvel.conectre.domain.records;
 
 import com.soluvel.conectre.domain.Endereco;
 
-public record TecnicoRecords(
+public record ProdutorRecords(
         Long id,
         String nome,
         String cpf,
         String celular,
-        String email,
-        String cargo,
         Endereco endereco,
         Long empresa) {
 }

@@ -8,6 +8,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -15,25 +16,28 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.io.Serializable;
+import java.util.List;
 
 @Entity
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "propriedade", schema = "public")
-public class Propriedade implements Serializable {
+@Table(name = "produtor", schema = "public")
+public class Produtor extends Usuario implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String nome;
 
-    @Embedded
-    private Endereco endereco;
+    private String cpf;
+    private String celular;
+
+    @OneToMany(mappedBy = "produtor", fetch = FetchType.LAZY)
+    private List<Propriedade> propriedades;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "produtor_id", nullable = false)
-    private Produtor produtor;
+    @JoinColumn(name = "empresa_id", nullable = false)
+    private Empresa empresa;
 
 }

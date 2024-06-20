@@ -30,6 +30,7 @@ public class Tecnico extends Usuario implements Serializable {
     private Long id;
     private String cpf;
     private String celular;
+    private String email;
 
     @Embedded
     private Endereco endereco;

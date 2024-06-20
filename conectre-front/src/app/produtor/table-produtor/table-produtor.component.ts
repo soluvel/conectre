@@ -2,6 +2,8 @@ import { Component, ViewChild } from '@angular/core';
 import { MatTableDataSource } from "@angular/material/table";
 import { MatPaginator } from "@angular/material/paginator";
 import { EmpresaService } from "../../empresa/empresa.service";
+import { ProdutorService } from "../produtor.service";
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-table-produtor',
@@ -11,7 +13,7 @@ import { EmpresaService } from "../../empresa/empresa.service";
 export class TableProdutorComponent {
 
   dataSource = new MatTableDataSource<any>;
-  displayedColumns: string[] = ['nome', 'empresa', 'tecnico', 'propriedade', 'equipamento', 'contato', 'detalhe'];
+  displayedColumns: string[] = ['nome', 'empresa', 'propriedade', 'equipamento', 'contato', 'detalhe'];
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   pageNumber: number = 0;
@@ -19,7 +21,8 @@ export class TableProdutorComponent {
   size: number = 3;
   razaoSocial: string;
 
-  constructor(private service: EmpresaService) {
+  constructor(private service: ProdutorService,
+              private router: Router) {
   }
 
   ngOnInit(): void {
@@ -74,6 +77,10 @@ export class TableProdutorComponent {
       }, error: () => {
       }
     });
+  }
+
+  redirectToDetails(id: number) {
+    this.router.navigate(['/produtor/editar', id]);
   }
 }
 
