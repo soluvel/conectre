@@ -13,12 +13,9 @@ import org.springframework.web.bind.annotation.RestController;
 @CrossOrigin(origins = "*", maxAge = 3600)
 public class EquipamentoController extends CrudController<Equipamento, Long> {
 
-    private final EquipamentoService service;
-
     public EquipamentoController(CrudService<Equipamento, Long> service,
                                  EquipamentoService equipamentoService) {
-        super(service);
-        this.service = equipamentoService;
+        super(service, Equipamento.class);
     }
 
 }

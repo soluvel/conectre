@@ -17,7 +17,7 @@ public class EmpresaGrupoController extends CrudController<EmpresaGrupo, Long> {
 
     public EmpresaGrupoController(CrudService<EmpresaGrupo, Long> service,
                                   EmpresaGrupoService grupoService) {
-        super(service);
+        super(service, EmpresaGrupo.class);
         this.service = grupoService;
     }
 

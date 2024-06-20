@@ -10,10 +10,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-import java.util.stream.Collectors;
 
 @Service
 public class EmpresaService extends CrudService<Empresa, Long> {
@@ -24,14 +22,6 @@ public class EmpresaService extends CrudService<Empresa, Long> {
                           EmpresaRepository empresaRepository) {
         super(repository);
         this.repository = empresaRepository;
-    }
-
-    public Page<Empresa> page(Pageable pageable) {
-        return repository.findAll(pageable);
-    }
-
-    public Page<Empresa> pageWithFilter(String filter, Pageable pageable) {
-        return repository.findByRazaoSocialContaining(filter, pageable);
     }
 
     public Page<Empresa> pageWithFilterCidade(String filter, Pageable pageable) {

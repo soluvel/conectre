@@ -8,7 +8,6 @@ import com.soluvel.conectre.domain.mappers.EmpresaMapper;
 import com.soluvel.conectre.domain.records.EmpresaRecords;
 import com.soluvel.conectre.domain.records.EmpresaReduceRecords;
 import com.soluvel.conectre.service.EmpresaService;
-import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.http.ResponseEntity;
@@ -22,7 +21,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
-import java.util.Objects;
 
 @RestController
 @RequestMapping("/empresa")
@@ -32,25 +30,15 @@ public class EmpresaController extends CrudController<Empresa, Long> {
     private final EmpresaService service;
     private final EmpresaMapper mapper;
 
-    public EmpresaController(CrudService<Empresa, Long> service, EmpresaService service1, EmpresaMapper mapper) {
-        super(service);
-        this.service = service1;
+    public EmpresaController(CrudService<Empresa, Long> service, EmpresaService empresaService, EmpresaMapper mapper) {
+        super(service, Empresa.class);
+        this.service = empresaService;
         this.mapper = mapper;
     }
 
     @PostMapping("save/record")
     public ResponseEntity<Empresa> create(@RequestBody EmpresaRecords records) {
         return super.create(mapper.toEntity(records));
-    }
-
-    @GetMapping("/page/{number}/{size}")
-    public ResponseEntity<Page<Empresa>> page(@PathVariable int number, @PathVariable int size,
-                                              @RequestParam(value = "filter", required = false) String filter) {
-        if (Objects.nonNull(filter)) {
-            return ResponseEntity.ok(service.pageWithFilter(filter, PageRequest.of(number, size)));
-        }
-
-        return ResponseEntity.ok(service.page(PageRequest.of(number, size)));
     }
 
     @GetMapping("/cidades")

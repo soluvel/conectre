@@ -23,7 +23,7 @@ export class TableProdutorVinculadoComponent {
   }
 
   ngOnInit(): void {
-    this.service.page(this.pageNumber, this.size, '').subscribe({
+    this.service.page(this.pageNumber, this.size, '', []).subscribe({
       next: (page) => {
         this.dataSource.data = page.content
         this.pageNumber = page.pageable.pageNumber
@@ -43,7 +43,7 @@ export class TableProdutorVinculadoComponent {
 
     let page = isAvancar ? this.pageNumber + 1 : this.pageNumber - 1;
 
-    this.service.page(page, this.size, '').subscribe({
+    this.service.page(page, this.size, '', []).subscribe({
       next: (page) => {
         this.dataSource.data = page.content
         this.pageNumber = page.pageable.pageNumber
@@ -57,7 +57,7 @@ export class TableProdutorVinculadoComponent {
   }
 
   paginado(number: number) {
-    this.service.page(number - 1, this.size, '').subscribe({
+    this.service.page(number - 1, this.size, '', []).subscribe({
       next: (page) => {
         this.dataSource.data = page.content
         this.pageNumber = page.pageable.pageNumber
@@ -67,7 +67,7 @@ export class TableProdutorVinculadoComponent {
   }
 
   search() {
-    this.service.page(0, this.size, this.razaoSocial).subscribe({
+    this.service.page(0, this.size, this.razaoSocial, []).subscribe({
       next: (page) => {
         this.dataSource.data = page.content
         this.pageNumber = page.pageable.pageNumber

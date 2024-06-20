@@ -21,7 +21,7 @@
         <div class="col-6">
           <label id="cnpj" for="cnpjCpf" class="form-label required">CNPJ/CPF</label>
           <div class="input-group">
-            <input type="text" class="form-control" formControlName="cnpjCpf" id="cnpjCpf" appCnpjCpfMask>
+            <input type="text" class="form-control" formControlName="cnpjCpf" id="cnpjCpf" appCnpjCpfMask [maxLength]="18">
             <span class="input-group-text">
           <img src="assets/pen.svg" alt="Imagem" *ngIf="isEditando">
           </span>
@@ -43,7 +43,7 @@
         <div class="col-2" formGroupName="endereco">
           <label for="cep" class="form-label required">CEP</label>
           <div class="input-group">
-            <input type="text" class="form-control required" formControlName="cep" id="cep" appCepMask (blur)="getEnderecoViaCep()">
+            <input type="text" class="form-control required" formControlName="cep" id="cep" appCepMask (blur)="getEnderecoViaCep()" [maxLength]="9">
             <span class="input-group-text">
           <img src="assets/pen.svg" alt="Imagem" *ngIf="isEditando">
           </span>
@@ -95,7 +95,7 @@
         <div class="col-2">
           <label for="uf" class="form-label required">Estado</label>
           <div class="input-group">
-            <input type="text" class="form-control" formControlName="uf" id="uf">
+            <input type="text" class="form-control" formControlName="uf" id="uf" [maxLength]="2">
             <span class="input-group-text">
           <img src="assets/pen.svg" alt="Imagem" *ngIf="isEditando">
           </span>

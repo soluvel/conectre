@@ -32,7 +32,7 @@ export class AdministradorComponent implements OnInit {
   }
 
   adicionarAdm() {
-    var overlay = document.getElementById('overlay');
+    var overlay = document.getElementById('overlayAdm');
     overlay.style.display = 'block';
   }
 

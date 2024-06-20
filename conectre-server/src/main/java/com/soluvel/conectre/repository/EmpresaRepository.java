@@ -13,9 +13,6 @@ import java.util.List;
 
 public interface EmpresaRepository extends CrudRepository<Empresa, Long> {
 
-    @Query("SELECT e FROM Empresa e WHERE LOWER(REPLACE(e.razaoSocial, ' ', '')) LIKE LOWER(CONCAT('%', REPLACE(:nome, ' ', ''), '%'))")
-    Page<Empresa> findByRazaoSocialContaining(String nome, Pageable pageable);
-
     @Query("SELECT DISTINCT CONCAT(e.endereco.localidade, ' - ', e.endereco.uf) FROM Empresa e")
     List<String> getCidades();
 
@@ -29,9 +26,9 @@ public interface EmpresaRepository extends CrudRepository<Empresa, Long> {
             "AND (:cidades IS NULL OR e.endereco.localidade IN :cidades)" +
             "AND (:empresas IS NULL OR e.razaoSocial IN :empresas)")
     Page<Empresa> empresaFilter(@Param("planos") List<Plano> planos,
-                                 @Param("cidades") List<String> cidades,
-                                 @Param("empresas") List<String> empresas,
-                                 Pageable pageable);
+                                @Param("cidades") List<String> cidades,
+                                @Param("empresas") List<String> empresas,
+                                Pageable pageable);
 
     @Query("SELECT new com.soluvel.conectre.domain.records.EmpresaReduceRecords(e.id, e.razaoSocial) FROM Empresa e")
     List<EmpresaReduceRecords> findAllReduce();

@@ -22,11 +22,11 @@ import java.util.List;
 @CrossOrigin(origins = "*", maxAge = 3600)
 public class UsuarioEmpresaController extends CrudController<UsuarioEmpresa, Long> {
 
-    private  UsuarioEmpresaService service;
+    private final UsuarioEmpresaService service;
     private final UsuarioEmpresaMapper mapper;
 
     public UsuarioEmpresaController(CrudService<UsuarioEmpresa, Long> service, UsuarioEmpresaService empresaAdmService, UsuarioEmpresaMapper mapper) {
-        super(service);
+        super(service, UsuarioEmpresa.class);
         this.service = empresaAdmService;
         this.mapper = mapper;
     }
