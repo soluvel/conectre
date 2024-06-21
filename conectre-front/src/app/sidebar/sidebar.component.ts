@@ -30,4 +30,11 @@ export class SidebarComponent implements OnChanges {
       {icon: 'assets/menu-notificacoes-icon.svg', title: 'Termos de Uso', route: '/notifications'},
     ];
   }
+  
+  openSideMenu() {
+    document.querySelector('.first-line').classList.toggle('first-line-open-menu')
+    document.querySelector('.second-line').classList.toggle('second-line-open-menu')
+    document.querySelector('.third-line').classList.toggle('third-line-open-menu')
+  }
+
 }
