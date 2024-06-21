@@ -27,7 +27,6 @@ li img {
 
 li a {
   font-weight: normal;
-  font-size: 20px;
   color: var(--text-color-menu);
   text-decoration: none;
 }
@@ -41,12 +40,23 @@ li.sidemenu-secondary a {
 
 li.sidemenu-secondary a:hover, li a:hover {
   color: #E4E4E7;
+  filter: brightness(3);
 }
 
 .itens {
+  display: flex;
+  flex-direction: column;
   margin-top: 30px;
-  /*background: pink;*/
   height: 200px;
+  overflow: hidden;
+  white-space: nowrap;
+  color: #5a5a5a;
+}
+
+.item {
+  font-size: 1.1em;
+  overflow-x: hidden;
+  white-space: nowrap;
 }
 
 #divider {
@@ -54,10 +64,14 @@ li.sidemenu-secondary a:hover, li a:hover {
 }
 
 .topic {
-  margin-bottom: 15px;
+  padding: 10px 0;
   font-weight: 400;
-  font-size: 12px;
+  font-size: 1.1em;
   color: #A1A1AA;
+}
+
+.topic-child-2 {
+  border-top: 1px solid #A1A1AA;
 }
 
 .container-full {
@@ -67,12 +81,14 @@ li.sidemenu-secondary a:hover, li a:hover {
   display: flex;
   flex-flow: column wrap;
   align-items: flex-start;
+  overflow: hidden;
 }
 
 .container {
   padding: 20px 0;
   flex-flow: column wrap;
   align-items: center;
+  max-width: 65px;
 }
 
 .dropdown-content {

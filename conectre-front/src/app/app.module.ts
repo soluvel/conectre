@@ -36,7 +36,9 @@ import { EquipamentoComponent } from "./produtor/equipamento/equipamento.compone
 import { ToastrModule } from "ngx-toastr";
 import { CnpjCpfMaskDirective } from './diretiva/cnpj-cpf-mask.directive';
 import { AdministradorComponent } from './administrador/administrador.component';
-import { AdministradorCadastroComponent } from './administrador/administrador-cadastro/administrador-cadastro.component';
+import {
+  AdministradorCadastroComponent
+} from './administrador/administrador-cadastro/administrador-cadastro.component';
 import { TecnicoCadastroComponent } from './tecnico/tecnico-cadastro/tecnico-cadastro.component';
 import {
   TableProdutorVinculadoComponent
@@ -97,7 +99,7 @@ import { CelularPipe } from "./pipes/celular";
     MatSidenavModule,
     MatProgressBarModule,
     ToastrModule.forRoot(),
-    CelularPipe
+    CelularPipe,
   ],
   providers: [],
   bootstrap: [AppComponent]

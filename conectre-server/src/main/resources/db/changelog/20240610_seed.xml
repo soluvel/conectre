@@ -11,6 +11,8 @@
                 (id, nome, username, "password", ativo, permissao)
             VALUES(1, 'soluvel', 'soluvel', '$2a$10$IjIG9PcNY3Tzv8WCbHICCuhTqQ5A9KCD7syWpHlQPF70FEdtEYr9y', false, 'ADM_TREVISAN');
 
+            ALTER SEQUENCE public.usuario_id_seq MINVALUE 3 START 3 RESTART 3;
+
         </sql>
     </changeSet>
 </databaseChangeLog>
