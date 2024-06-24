@@ -6,8 +6,11 @@ import com.soluvel.conectre.domain.Permissao;
 import com.soluvel.conectre.domain.Tecnico;
 import com.soluvel.conectre.domain.records.TecnicoRecords;
 import com.soluvel.conectre.service.EmpresaService;
+import com.soluvel.conectre.utils.GenerateRandomKeyUtils;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
+
+import java.util.Objects;
 
 import static com.soluvel.conectre.utils.StringFormat.removeSpecialCharacters;
 
@@ -22,9 +25,12 @@ public class TecnicoMapper {
         GenericMapper.map(record, tecnico);
 
         tecnico.setCelular(removeSpecialCharacters(record.celular()));
-        tecnico.setCpf("07700000");
-        tecnico.setUsername(record.nome());
-        tecnico.setPassword("$2a$12$.0PG.Ju0.vlAFdEh.rLgu.NZFFdD3W9EwOJBjvihyOwd7BfVkDCw2");
+        tecnico.setUsername(record.email());
+
+        if (Objects.isNull(tecnico.getId())) {
+            tecnico.setPassword(GenerateRandomKeyUtils.generateRandomKey(6));
+        }
+
         tecnico.setPermissao(Permissao.TECNICO);
         tecnico.setAtivo(true);
         tecnico.setEmpresa(empresaService.findById(record.empresa()).orElse(null));

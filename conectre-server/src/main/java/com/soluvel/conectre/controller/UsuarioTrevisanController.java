@@ -3,7 +3,7 @@ package com.soluvel.conectre.controller;
 import com.soluvel.conectre.core.CrudController;
 import com.soluvel.conectre.core.CrudService;
 import com.soluvel.conectre.domain.UsuarioTrevisan;
-import com.soluvel.conectre.domain.records.RegisterRecord;
+import com.soluvel.conectre.domain.records.UsuarioTrevisanRecords;
 import com.soluvel.conectre.service.UsuarioService;
 import com.soluvel.conectre.service.UsuarioTrevisanService;
 import jakarta.validation.Valid;
@@ -32,13 +32,13 @@ public class UsuarioTrevisanController extends CrudController<UsuarioTrevisan, L
     }
 
     @PostMapping("/cadastrar")
-    public ResponseEntity<String> cadastrar(@RequestBody @Valid RegisterRecord data) {
-        if (this.usuarioService.findByUsername(data.username()).isPresent()) {
+    public ResponseEntity<String> cadastrar(@RequestBody @Valid UsuarioTrevisanRecords data) {
+        if (this.usuarioService.findByUsername(data.email()).isPresent()) {
             return ResponseEntity.badRequest().build();
         }
 
         String encryptedPassword = new BCryptPasswordEncoder().encode(data.password());
-        var newUser = new UsuarioTrevisan(data.nome(), data.username(), encryptedPassword, data.permissao(), data.cargo());
+        var newUser = new UsuarioTrevisan(data.nome(), data.email(), encryptedPassword, data.permissao(), data.cargo(), data.email());
 
         this.service.save(newUser);
         return ResponseEntity.ok("Usuário cadastrado com sucesso");

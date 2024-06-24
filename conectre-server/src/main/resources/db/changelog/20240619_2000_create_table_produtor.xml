@@ -15,13 +15,18 @@
         <createTable tableName="produtor">
             <column name="id" autoIncrement="true" type="int">
                 <constraints nullable="false" primaryKey="true" primaryKeyName="pk_produtor"
-                             foreignKeyName="fk_produtor_usuario" referencedTableName="usuario" referencedColumnNames="id"/>
+                             foreignKeyName="fk_produtor_usuario" referencedTableName="usuario"
+                             referencedColumnNames="id"/>
             </column>
 
             <column name="cpf" type="varchar(11)"/>
+            <column name="email" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
             <column name="celular" type="varchar(11)"/>
             <column name="empresa_id" type="int">
-                <constraints nullable="false" foreignKeyName="fk_produtor_empresa" referencedTableName="empresa" referencedColumnNames="id"/>
+                <constraints nullable="false" foreignKeyName="fk_produtor_empresa" referencedTableName="empresa"
+                             referencedColumnNames="id"/>
             </column>
         </createTable>
 

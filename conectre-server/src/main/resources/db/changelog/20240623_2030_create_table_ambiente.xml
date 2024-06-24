@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.3.xsd">
+
+    <changeSet id="1" author="kassia.zama">
+        <preConditions onFail="MARK_RAN" onFailMessage="A tabela ambiente já existe no database">
+            <not>
+                <tableExists tableName="ambiente"/>
+            </not>
+        </preConditions>
+
+        <createTable tableName="ambiente">
+            <column name="id"  autoIncrement="true" type="int">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_ambiente"/>
+            </column>
+            <column name="dt_coleta" type="DATE">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="hr_coleta" type="TIME">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="ph" type="INTEGER"/>
+            <column name="amonia" type="INTEGER"/>
+            <column name="nitrito" type="INTEGER"/>
+            <column name="alcalinidade" type="NUMERIC(10, 2)"/>
+            <column name="transparencia_agua" type="INTEGER"/>
+            <column name="temperatura" type="NUMERIC(10, 2)"/>
+            <column name="oxigenio" type="INTEGER"/>
+
+            <column name="medicao_id" type="int">
+                <constraints nullable="false" foreignKeyName="fk_ambiente_medicao" referencedTableName="medicao" referencedColumnNames="id"/>
+            </column>
+        </createTable>
+
+    </changeSet>
+</databaseChangeLog>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.3.xsd">
+
+    <changeSet id="1" author="kassia.zama">
+        <preConditions onFail="MARK_RAN" onFailMessage="A tabela peixe já existe no database">
+            <not>
+                <tableExists tableName="peixe"/>
+            </not>
+        </preConditions>
+
+        <createTable tableName="peixe">
+            <column name="id"  autoIncrement="true" type="int">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_peixe"/>
+            </column>
+            <column name="dt_coleta" type="DATE">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="hr_coleta" type="TIME">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="qnt_amostra" type="INTEGER"/>
+            <column name="volume" type="INTEGER"/>
+            <column name="mortalidade" type="INTEGER"/>
+
+            <column name="peso_medio" type="NUMERIC(10, 2)"/>
+            <column name="biomassa" type="NUMERIC(10, 2)"/>
+            <column name="ganho_peso" type="NUMERIC(10, 2)"/>
+            <column name="kg_racao_ofertada" type="NUMERIC(10, 2)"/>
+
+            <column name="medicao_id" type="int">
+                <constraints nullable="false" foreignKeyName="fk_peixe_medicao" referencedTableName="medicao" referencedColumnNames="id"/>
+            </column>
+        </createTable>
+
+    </changeSet>
+</databaseChangeLog>

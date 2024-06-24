@@ -32,6 +32,7 @@ export class TecnicoCadastroComponent implements OnInit, OnDestroy {
       nome: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       celular: ['', Validators.required],
+      cpf: ['', Validators.required],
       empresa: ['', Validators.required],
       endereco: this.formBuilder.group({
         cep: [''],
@@ -65,6 +66,7 @@ export class TecnicoCadastroComponent implements OnInit, OnDestroy {
     this.service.getTecnico(parseInt(this.tecnicoId)).subscribe(data => {
       this.form.patchValue(data);
       this.form.get('celular').setValue(StringNumberFormats.formatCelular(this.form.get('celular').value))
+      this.form.get('cpf').setValue(StringNumberFormats.formatCpfCnpj(this.form.get('cpf').value))
       this.isEditando = true;
     });
   }

@@ -24,6 +24,10 @@
             <column name="empresa_id" type="int">
                 <constraints nullable="false" foreignKeyName="fk_usuarioempresa_empresa" referencedTableName="empresa" referencedColumnNames="id"/>
             </column>
+
+            <column name="email" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
         </createTable>
 
     </changeSet>

@@ -1,5 +1,6 @@
 package com.soluvel.conectre.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
@@ -37,9 +38,13 @@ public class Usuario implements UserDetails, Serializable {
     private Long id;
 
     private String nome;
+
     private String username;
+
+    @JsonIgnore
     private String password;
-    private boolean ativo;
+
+    private Boolean ativo = Boolean.TRUE;
 
     @Enumerated(EnumType.STRING)
     private Permissao permissao;

@@ -10,6 +10,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -22,20 +23,20 @@ import java.io.Serializable;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "propriedade", schema = "public")
-public class Propriedade implements Serializable {
+@Table(name = "tanque", schema = "public")
+public class Tanque implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nome;
 
-    @Embedded
-    private Endereco endereco;
-
     @JsonIgnore
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "produtor_id", nullable = false)
-    private Produtor produtor;
+    @JoinColumn(name = "propriedade_id", nullable = false)
+    private Propriedade propriedade;
+
+    @Transient
+    private Long propriedadeId;
 
 }
