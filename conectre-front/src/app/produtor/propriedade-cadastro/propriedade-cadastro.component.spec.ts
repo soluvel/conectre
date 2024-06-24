@@ -1,16 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TecnicoCadastroComponent } from './tecnico-cadastro.component';
+import { PropriedadeCadastroComponent } from './propriedade-cadastro.component';
 
 describe('TecnicoCadastroComponent', () => {
-  let component: TecnicoCadastroComponent;
-  let fixture: ComponentFixture<TecnicoCadastroComponent>;
+  let component: PropriedadeCadastroComponent;
+  let fixture: ComponentFixture<PropriedadeCadastroComponent>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [TecnicoCadastroComponent]
+      declarations: [PropriedadeCadastroComponent]
     });
-    fixture = TestBed.createComponent(TecnicoCadastroComponent);
+    fixture = TestBed.createComponent(PropriedadeCadastroComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -49,6 +49,8 @@ import { NotificacaoComponent } from './notificacao/notificacao.component';
 import { CepMaskDirective } from "./diretiva/cep-mask.directive";
 import { CelularMaskDirective } from "./diretiva/celular-mask.directive";
 import { CelularPipe } from "./pipes/celular";
+import { ProdutorFilterComponent } from "./produtor/produtor-filter/produtor-filter.component";
+import { PropriedadeCadastroComponent } from "./produtor/propriedade-cadastro/propriedade-cadastro.component";
 
 @NgModule({
   declarations: [
@@ -75,6 +77,8 @@ import { CelularPipe } from "./pipes/celular";
     TecnicoFilterComponent,
     ProdutorCadastroComponent,
     NotificacaoComponent,
+    ProdutorFilterComponent,
+    PropriedadeCadastroComponent
   ],
   imports: [
     BrowserModule,

@@ -9,6 +9,7 @@ import { RedefinirSenhaComponent } from "./login/redefinir-senha/redefinir-senha
 import { TecnicoCadastroComponent } from "./tecnico/tecnico-cadastro/tecnico-cadastro.component";
 import { ProdutorCadastroComponent } from "./produtor/produtor-cadastro/produtor-cadastro.component";
 import { NotificacaoComponent } from "./notificacao/notificacao.component";
+import { PropriedadeCadastroComponent } from "./produtor/propriedade-cadastro/propriedade-cadastro.component";
 
 const routes: Routes = [
   {path: '', redirectTo: 'inicio', pathMatch: 'full'},
@@ -21,6 +22,8 @@ const routes: Routes = [
   {path: 'tecnico/editar/:id', component: TecnicoCadastroComponent, data: {role: ['ADM_TREVISAN']}, canActivate: [AuthGuard]},
   {path: 'produtor/cadastrar', component: ProdutorCadastroComponent, data: {role: ['ADM_TREVISAN']}, canActivate: [AuthGuard]},
   {path: 'produtor/editar/:id', component: ProdutorCadastroComponent, data: {role: ['ADM_TREVISAN']}, canActivate: [AuthGuard]},
+  {path: 'propriedade/cadastrar', component: PropriedadeCadastroComponent, data: {role: ['ADM_TREVISAN']}, canActivate: [AuthGuard]},
+  {path: 'propriedade/editar/:id', component: PropriedadeCadastroComponent, data: {role: ['ADM_TREVISAN']}, canActivate: [AuthGuard]},
   {path: 'notificacao', component: NotificacaoComponent, data: {role: ['ADM_TREVISAN']}, canActivate: [AuthGuard]},
   {path: 'acesso-negado', component: AcessoNegadoComponent},
   {path: '**', redirectTo: 'acesso-negado'}

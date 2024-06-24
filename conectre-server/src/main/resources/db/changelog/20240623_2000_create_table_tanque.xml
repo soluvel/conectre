@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.3.xsd">
+
+    <changeSet id="1" author="kassia.zama">
+        <preConditions onFail="MARK_RAN" onFailMessage="A tabela tanque já existe no database">
+            <not>
+                <tableExists tableName="tanque"/>
+            </not>
+        </preConditions>
+
+        <createTable tableName="tanque">
+            <column name="id"  autoIncrement="true" type="int">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_tanque"/>
+            </column>
+            <column name="nome" type="varchar(150)">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="propriedade_id" type="int">
+                <constraints nullable="false" foreignKeyName="fk_tanque_propriedade" referencedTableName="propriedade" referencedColumnNames="id"/>
+            </column>
+        </createTable>
+
+    </changeSet>
+</databaseChangeLog>

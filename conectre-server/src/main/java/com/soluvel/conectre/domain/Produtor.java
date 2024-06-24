@@ -32,6 +32,7 @@ public class Produtor extends Usuario implements Serializable {
 
     private String cpf;
     private String celular;
+    private String email;
 
     @OneToMany(mappedBy = "produtor", fetch = FetchType.LAZY)
     private List<Propriedade> propriedades;

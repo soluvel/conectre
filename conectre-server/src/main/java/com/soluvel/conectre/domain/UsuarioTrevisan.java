@@ -20,9 +20,11 @@ import java.io.Serializable;
 public class UsuarioTrevisan extends Usuario implements Serializable {
 
     private String cargo;
+    private String email;
 
-    public UsuarioTrevisan(String nome, String username, String password, Permissao permissao, String cargo) {
+    public UsuarioTrevisan(String nome, String username, String password, Permissao permissao, String cargo, String email) {
         super(nome, username, password, permissao);
         this.cargo = cargo;
+        this.email = email;
     }
 }

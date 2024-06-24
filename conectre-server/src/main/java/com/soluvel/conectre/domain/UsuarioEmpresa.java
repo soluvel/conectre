@@ -30,6 +30,7 @@ public class UsuarioEmpresa extends Usuario implements Serializable {
 
     private String celular;
     private String cargo;
+    private String email;
 
     @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)

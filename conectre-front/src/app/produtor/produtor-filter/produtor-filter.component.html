@@ -1,0 +1,78 @@
+<div>
+
+  <div style="text-align: right">
+    <img src="assets/close.svg" alt="Imagem Redonda" style="width: 15px" (click)="fecharQuadrado()">
+  </div>
+
+  <div class="container-header">
+    <h4>Filtragem</h4>
+    <h4 id="text-limpar">Limpar todos</h4>
+  </div>
+
+  <mat-divider></mat-divider>
+
+  <div class="container-sub-header">
+    <h4 id="text-filtro">Filtros aplicados</h4>
+    <h4>Nenhum selecionado</h4>
+  </div>
+</div>
+
+<div class="container-chips">
+  <mat-chip-set>
+    <mat-chip *ngFor="let chip of checkedRazaoSocial">{{ chip }}</mat-chip>
+  </mat-chip-set>
+  <mat-chip-set>
+    <mat-chip *ngFor="let chip of checkedQntEquipamentos">{{ chip }}</mat-chip>
+  </mat-chip-set>
+  <mat-chip-set>
+    <mat-chip *ngFor="let chip of checkedQntPropriedades">{{ chip }}</mat-chip>
+  </mat-chip-set>
+</div>
+
+<div class="container-options">
+  <mat-accordion multi>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Empresa
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+
+      <div class="checkbox-container">
+        <mat-checkbox class="checkbox-item" *ngFor="let empresa of razaoSocial; let i = index" (change)="toggleRazaoSocial(empresa)">{{ empresa }}
+        </mat-checkbox>
+      </div>
+    </mat-expansion-panel>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Equipamentos
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+
+      <div class="checkbox-container">
+        <mat-checkbox [color]="'accent'" class="checkbox-item" *ngFor="let opcao of qnts"
+                      (change)="toggleChip(opcao, checkedQntEquipamentos)">{{ opcao }}
+        </mat-checkbox>
+      </div>
+    </mat-expansion-panel>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Propriedades
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+
+      <div class="checkbox-container">
+        <mat-checkbox [color]="'accent'" class="checkbox-item" *ngFor="let opcao of qnts"
+                      (change)="toggleChip(opcao, checkedQntPropriedades)">{{ opcao }}
+        </mat-checkbox>
+      </div>
+    </mat-expansion-panel>
+  </mat-accordion>
+</div>
+
+
+<div id="container-footer">
+  <button class="button-geral-full" type="button" (click)="filter()">Ver resultados</button>
+</div>

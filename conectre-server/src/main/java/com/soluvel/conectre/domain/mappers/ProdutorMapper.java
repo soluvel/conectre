@@ -6,8 +6,11 @@ import com.soluvel.conectre.domain.Permissao;
 import com.soluvel.conectre.domain.Produtor;
 import com.soluvel.conectre.domain.records.ProdutorRecords;
 import com.soluvel.conectre.service.EmpresaService;
+import com.soluvel.conectre.utils.GenerateRandomKeyUtils;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
+
+import java.util.Objects;
 
 import static com.soluvel.conectre.utils.StringFormat.removeSpecialCharacters;
 
@@ -22,9 +25,11 @@ public class ProdutorMapper {
         GenericMapper.map(record, produtor);
 
         produtor.setCelular(removeSpecialCharacters(record.celular()));
-        produtor.setCpf("07700000");
-        produtor.setUsername(record.nome());
-        produtor.setPassword("$2a$12$.0PG.Ju0.vlAFdEh.rLgu.NZFFdD3W9EwOJBjvihyOwd7BfVkDCw2");
+        produtor.setUsername(record.email());
+
+        if (Objects.isNull(produtor.getId())) {
+            produtor.setPassword(GenerateRandomKeyUtils.generateRandomKey(6));
+        }
         produtor.setPermissao(Permissao.PRODUTOR);
         produtor.setAtivo(true);
         produtor.setEmpresa(empresaService.findById(record.empresa()).orElse(null));
