@@ -30,3 +30,6 @@ public class Endereco {
     @NotBlank(message = "uf não pode ser em branco ou nulo")
     private String uf;
 }
+
+
+
