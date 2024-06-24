@@ -32,11 +32,6 @@ mat-paginator {
   width: 15%;
 }
 
-#empresa {
-  border-top-left-radius: 20px;
-  width: 20%;
-}
-
 #header-right {
   border-top-right-radius: 20px;
   text-align: right;
@@ -59,6 +54,18 @@ mat-paginator {
 
 .overlay-fade {
   background: rgba(109, 109, 109, 0.4588235294);
+}
+
+#overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  right: 0;
+  padding: 30px;
+  width: 30%;
+  height: 100%;
+  background-color: white;
+  z-index: 9999;
 }
 
 .container-filter {
