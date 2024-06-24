@@ -4,7 +4,7 @@
   <button type="button" class="button-geral" data-bs-toggle="modal" data-bs-target="#overlay" style="margin-right: 10px" (click)="exibirQuadrado()">
     Novo equipamento
   </button>
-  <button type="button" class="button-white" (click)="exibirQuadrado()">
+  <button type="button" class="button-white" (click)="exibirFiltro()">
     Filtrar
     <img src="../../../assets/filter.svg" alt="Imagem Redonda" style="padding-left: 10px">
   </button>
@@ -64,6 +64,10 @@
 </div>
 
 
-<div id="overlay">
+<div id="overlay" class="modal overlay-fade" role="dialog">
+  <app-equipamento></app-equipamento>
+</div>
+
+<div id="overlay-filter">
   <app-produtor-filter (filtroAlterado)="onFiltroAlterado($event)"></app-produtor-filter>
 </div>

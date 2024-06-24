@@ -39,6 +39,11 @@ export class TableProdutorComponent {
 
   }
 
+  exibirFiltro() {
+    var overlay = document.getElementById('overlay-filter');
+    overlay.style.display = 'block';
+  }
+  
   exibirQuadrado() {
     var overlay = document.getElementById('overlay');
     overlay.style.display = 'block';

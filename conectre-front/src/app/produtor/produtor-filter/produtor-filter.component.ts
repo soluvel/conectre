@@ -37,7 +37,7 @@ export class ProdutorFilterComponent implements OnInit {
   }
 
   fecharQuadrado() {
-    var overlay = document.getElementById('overlay');
+    var overlay = document.getElementById('overlay-filter');
     overlay.style.display = 'none';
   }
 
