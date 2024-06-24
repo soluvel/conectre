@@ -56,6 +56,8 @@ public class Usuario implements UserDetails, Serializable {
         this.permissao = permissao;
     }
 
+
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         if (this.permissao == Permissao.ADM_TREVISAN) {
