@@ -27,9 +27,6 @@
                 <constraints nullable="false"/>
             </column>
 
-            <column name="propriedade_id" type="int">
-                <constraints nullable="false" foreignKeyName="fk_equipamento_propriedade" referencedTableName="propriedade" referencedColumnNames="id"/>
-            </column>
         </createTable>
 
     </changeSet>

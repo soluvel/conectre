@@ -3,16 +3,23 @@ package com.soluvel.conectre.controller;
 import com.soluvel.conectre.core.CrudController;
 import com.soluvel.conectre.core.CrudService;
 import com.soluvel.conectre.core.GenericMapper;
+import com.soluvel.conectre.domain.Equipamento;
 import com.soluvel.conectre.domain.Propriedade;
 import com.soluvel.conectre.domain.records.PropriedadeRecords;
+import com.soluvel.conectre.service.EquipamentoService;
 import com.soluvel.conectre.service.ProdutorService;
 import com.soluvel.conectre.service.PropriedadeService;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/propriedade")
@@ -22,12 +29,16 @@ public class PropriedadeController extends CrudController<Propriedade, Long> {
     private final PropriedadeService service;
     private final ProdutorService produtorService;
 
+    private final EquipamentoService equipamentoService;
+
     public PropriedadeController(CrudService<Propriedade, Long> service,
                                  PropriedadeService propriedadeService,
-                                 ProdutorService produtorService) {
+                                 ProdutorService produtorService,
+                                 EquipamentoService equipamentoService) {
         super(service, Propriedade.class);
         this.service = propriedadeService;
         this.produtorService = produtorService;
+        this.equipamentoService = equipamentoService;
     }
 
     @PostMapping("save/record")
@@ -36,5 +47,28 @@ public class PropriedadeController extends CrudController<Propriedade, Long> {
         produtorService.findById(records.produtor()).ifPresent(propriedade::setProdutor);
         return super.create(propriedade);
     }
+
+    @PostMapping("/{id}/equipamentos")
+    public Propriedade adicionarEquipamentos(@PathVariable Long id, @RequestBody List<Long> equipamentos) {
+        Propriedade propriedade = service.findById(id).orElseThrow();
+        equipamentos.forEach(e -> {
+            Equipamento equipamento = equipamentoService.findById(e).orElseThrow();
+            Long count = service.countEquipamentosById(equipamento.getId());
+
+            if (count < equipamento.getQuantidade()) {
+                propriedade.getEquipamentos().add(equipamento);
+            } else {
+                throw new RuntimeException();
+            }
+        });
+
+        return service.save(propriedade);
+    }
+
+    @GetMapping("/equipamentos")
+    public ResponseEntity<List<Equipamento>> equipamentosDisponiveis() {
+        return new ResponseEntity<>(service.listEquipamentoDisponivel(), HttpStatus.OK);
+    }
+
 
 }

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.3.xsd">
+
+    <changeSet id="1" author="kassia.zama">
+        <preConditions onFail="MARK_RAN" onFailMessage="A tabela propriedade_equipamento já existe no database">
+            <not>
+                <tableExists tableName="propriedade_equipamento"/>
+            </not>
+        </preConditions>
+
+        <createTable tableName="propriedade_equipamento">
+
+            <column name="propriedade_id" type="int">
+                <constraints nullable="false" foreignKeyName="fk_propriedade_equip" referencedTableName="propriedade" referencedColumnNames="id"/>
+            </column>
+
+            <column name="equipamento_id" type="int">
+                <constraints nullable="false" foreignKeyName="fk_equipamento_prop" referencedTableName="equipamento" referencedColumnNames="id"/>
+            </column>
+        </createTable>
+
+    </changeSet>
+</databaseChangeLog>

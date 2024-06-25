@@ -36,9 +36,19 @@ public class MedicaoController extends CrudController<Medicao, Long> {
     @Override
     public ResponseEntity<Medicao> create(Medicao medicao) {
         tanqueService.findById(medicao.getTanqueId()).ifPresent(medicao::setTanque);
-        medicao.getPeixe().setMedicao(medicao);
-        medicao.getAmbiente().setMedicao(medicao);
-        medicao.getRacao().setMedicao(medicao);
+
+        if (medicao.getPeixe() != null) {
+            medicao.getPeixe().setMedicao(medicao);
+        }
+
+        if (medicao.getAmbiente() != null) {
+            medicao.getAmbiente().setMedicao(medicao);
+        }
+
+        if (medicao.getRacao() != null) {
+            medicao.getRacao().setMedicao(medicao);
+        }
+
         return super.create(medicao);
     }
 }

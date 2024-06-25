@@ -8,6 +8,8 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
@@ -17,7 +19,10 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Getter
@@ -40,7 +45,12 @@ public class Propriedade implements Serializable {
     @JoinColumn(name = "produtor_id", nullable = false)
     private Produtor produtor;
 
-    @OneToMany(mappedBy = "propriedade", fetch = FetchType.LAZY)
-    private List<Equipamento> equipamentos;
+    @ManyToMany
+    @JoinTable(
+            name = "propriedade_equipamento",
+            joinColumns = @JoinColumn(name = "propriedade_id"),
+            inverseJoinColumns = @JoinColumn(name = "equipamento_id")
+    )
+    private List<Equipamento> equipamentos = new ArrayList<>();
 
 }
