@@ -5,6 +5,7 @@ import com.soluvel.conectre.core.CrudService;
 import com.soluvel.conectre.core.GenericMapper;
 import com.soluvel.conectre.domain.Equipamento;
 import com.soluvel.conectre.domain.Propriedade;
+import com.soluvel.conectre.domain.records.EquipamentoResponseRecords;
 import com.soluvel.conectre.domain.records.PropriedadeRecords;
 import com.soluvel.conectre.service.EquipamentoService;
 import com.soluvel.conectre.service.ProdutorService;
@@ -66,9 +67,8 @@ public class PropriedadeController extends CrudController<Propriedade, Long> {
     }
 
     @GetMapping("/equipamentos")
-    public ResponseEntity<List<Equipamento>> equipamentosDisponiveis() {
-        return new ResponseEntity<>(service.listEquipamentoDisponivel(), HttpStatus.OK);
+    public ResponseEntity<List<EquipamentoResponseRecords>> equipamentosDisponiveis() {
+        return new ResponseEntity<>(service.listEquipamentoResponse(), HttpStatus.OK);
     }
-
 
 }
