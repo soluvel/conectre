@@ -1,8 +1,8 @@
 <div class="container-filter">
   <input class="input-search" type="text" placeholder="O que você procura?" [(ngModel)]="razaoSocial">
-  <img src="../../../assets/search.svg" class="input-img" alt="search">
-  <button type="button" class="button-white" (click)="exibirQuadrado()">Filtrar
-    <img src="../../../assets/filter.svg" alt="Imagem Redonda" style="padding-left: 10px">
+  <mat-icon class="icon-search material-symbols-rounded">search</mat-icon>
+  <button type="button" class="button-white filter-button" (click)="exibirQuadrado()">Filtrar
+    <mat-icon class="icon-filter material-symbols-rounded">filter_list</mat-icon>
   </button>
 </div>
 
@@ -13,7 +13,9 @@
     <ng-container matColumnDef="nome">
       <th mat-header-cell *matHeaderCellDef id="nome">Nome</th>
       <td mat-cell *matCellDef="let element">
-        <img style="margin-right: 10px" class="icon-size-30" src="../../../assets/avatar.svg" alt="search">{{ element.nome }}</td>
+        <img style="margin-right: 10px" class="icon-size-30" src="../../../assets/avatar.svg" alt="search">{{
+        element.nome }}
+      </td>
     </ng-container>
 
     <ng-container matColumnDef="empresa">
@@ -38,7 +40,9 @@
     <ng-container matColumnDef="detalhe">
       <th mat-header-cell *matHeaderCellDef id="header-right">Detalhes</th>
       <td mat-cell *matCellDef="let element" id="detalhe">
-        <img class="icon-size-30" src="../../../assets/search.svg" alt="search" (click)="redirectToDetails(element?.id)"></td>
+        <img class="icon-size-30" src="../../../assets/search.svg" alt="search"
+          (click)="redirectToDetails(element?.id)">
+      </td>
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
@@ -46,13 +50,15 @@
   </table>
 
   <div id="paginacao" class="flex-align-itens-center">
-    <img class="icon-size-30" src="../../../assets/paginacao-esquerda.svg" (click)="nextOrBack(false)" alt="paginacao-esquerda">
+    <img class="icon-size-30" src="../../../assets/paginacao-esquerda.svg" (click)="nextOrBack(false)"
+      alt="paginacao-esquerda">
     <div class="flex-align-itens-center">
       <ng-container *ngFor="let number of getSequence(totalPage)">
         <span id="paginacao-number" (click)="paginado(number)">{{ number }}</span>
       </ng-container>
     </div>
-    <img class="icon-size-30" src="../../../assets/paginacao-direita.svg" (click)="nextOrBack(true)" alt="paginacao-direita">
+    <img class="icon-size-30" src="../../../assets/paginacao-direita.svg" (click)="nextOrBack(true)"
+      alt="paginacao-direita">
   </div>
 </div>
 

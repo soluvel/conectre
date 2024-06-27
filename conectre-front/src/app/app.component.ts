@@ -25,7 +25,7 @@ export class AppComponent {
   }
 
   collapsed = signal(true);
-  sidenavWidth = computed(() => (this.collapsed() ? "65px" : "250px"));
+  sidenavWidth = computed(() => (this.collapsed() ? "70px" : "270px"));
 
   openMenu() {
     document.querySelector('.user-menu').classList.toggle('user-menu-open')
@@ -36,5 +36,15 @@ export class AppComponent {
     this.isLoggedIn = false;
     this.storage.clear();
     this._router.navigate(['/login']);
+  }
+  
+  openSideMenu() {
+    document.querySelector('.first-line').classList.toggle('first-line-open-menu');
+    document.querySelector('.second-line').classList.toggle('second-line-open-menu');
+    document.querySelector('.third-line').classList.toggle('third-line-open-menu');
+    
+    document.querySelectorAll('.hidden-effect').forEach(topic => {
+      topic.classList.toggle('invisible-effect');
+    });
   }
 }

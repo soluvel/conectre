@@ -1,0 +1,232 @@
+<mat-tab-group animationDuration="0ms" (selectedTabChange)="onTabChange($event)">
+  
+  <mat-tab label="Peixes" *ngIf="storage.getRole() === 'ADM_TREVISAN' || storage.getRole() === 'PEIXE'">
+    <ng-template mat-tab-label>
+      <mat-icon class="icon-tabs material-symbols-rounded">set_meal</mat-icon>
+      Peixes
+    </ng-template>
+    <div class="tab-container">
+      <div class="row g-3 row-full-line">
+        <div class="col-4">
+          <label for="1complemento" class="form-label">Data da coleta</label>
+          <div class="input-group" style="padding-bottom: 0">
+            <input type="text" class="form-control" id="1complemento"
+              style="margin-bottom: 0">
+          </div>
+        </div>
+
+        <div class="col-4">
+          <label for="1numero" class="form-label required">Hora da coleta</label>
+          <div class="input-group">
+            <input type="text" class="form-control" id="1numero">
+          </div>
+        </div>
+
+        <div class="col-4">
+          <label for="1bairro" class="form-label required">Nº de peixes por amostra</label>
+          <div class="input-group">
+            <input type="text" class="form-control" id="1bairro">
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="tab-container">
+      <div class="row g-3 row-full-line">
+        <div class="col-4">
+          <label for="1complemento" class="form-label">Volume de peixes</label>
+          <div class="input-group" style="padding-bottom: 0">
+            <input type="text" class="form-control" id="1complemento"
+              style="margin-bottom: 0">
+          </div>
+        </div>
+
+        <div class="col-4">
+          <label for="1numero" class="form-label required">Mortalidade</label>
+          <div class="input-group">
+            <input type="text" class="form-control" id="1numero">
+          </div>
+        </div>
+
+        <div class="col-4">
+          <label for="1bairro" class="form-label required">Peso Médio</label>
+          <div class="input-group">
+            <input type="text" class="form-control" id="1bairro">
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="tab-container">
+      <div class="row g-3 row-full-line">
+        <div class="col-4">
+          <label for="1complemento" class="form-label">Biomassa total</label>
+          <div class="input-group" style="padding-bottom: 0">
+            <input type="text" class="form-control" id="1complemento"
+              style="margin-bottom: 0">
+          </div>
+        </div>
+
+        <div class="col-4">
+          <label for="1numero" class="form-label required">Ganho de peso</label>
+          <div class="input-group">
+            <input type="text" class="form-control" id="1numero">
+          </div>
+        </div>
+
+        <div class="col-4">
+          <label for="1bairro" class="form-label required">Ração ofertada</label>
+          <div class="input-group">
+            <input type="text" class="form-control" id="1bairro">
+          </div>
+        </div>
+      </div>
+    </div>
+  </mat-tab>
+
+  <mat-tab label="Ambiente" *ngIf="storage.getRole() === 'ADM_TREVISAN' || storage.getRole() === 'AMBIENTE' || storage.getRole() === 'PEIXE'">
+    <ng-template mat-tab-label>
+      <mat-icon class="icon-tabs material-symbols-rounded">humidity_low</mat-icon>
+      Ambiente
+    </ng-template>
+    
+    <div class="tab-container">
+      <div class="row g-3 row-full-line">
+        <div class="col-4">
+          <label for="1complemento" class="form-label">Data da coleta</label>
+          <div class="input-group" style="padding-bottom: 0">
+            <input type="text" class="form-control" id="1complemento"
+              style="margin-bottom: 0">
+          </div>
+        </div>
+
+        <div class="col-4">
+          <label for="1numero" class="form-label required">Hora da coleta</label>
+          <div class="input-group">
+            <input type="text" class="form-control" id="1numero">
+          </div>
+        </div>
+
+        <div class="col-4">
+          <label for="1bairro" class="form-label required">PH</label>
+          <div class="input-group">
+            <input type="text" class="form-control" id="1bairro">
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="tab-container">
+      <div class="row g-3 row-full-line">
+        <div class="col-4">
+          <label for="1complemento" class="form-label">Amônia</label>
+          <div class="input-group" style="padding-bottom: 0">
+            <input type="text" class="form-control" id="1complemento"
+              style="margin-bottom: 0">
+          </div>
+        </div>
+
+        <div class="col-4">
+          <label for="1numero" class="form-label required">Nitrito</label>
+          <div class="input-group">
+            <input type="text" class="form-control" id="1numero">
+          </div>
+        </div>
+
+        <div class="col-4">
+          <label for="1bairro" class="form-label required">Alcalinidade</label>
+          <div class="input-group">
+            <input type="text" class="form-control" id="1bairro">
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="tab-container">
+      <div class="row g-3 row-full-line">
+        <div class="col-4">
+          <label for="1complemento" class="form-label">Transparência da água</label>
+          <div class="input-group" style="padding-bottom: 0">
+            <input type="text" class="form-control" id="1complemento"
+              style="margin-bottom: 0">
+          </div>
+        </div>
+
+        <div class="col-4">
+          <label for="1numero" class="form-label required">Temperatura</label>
+          <div class="input-group">
+            <input type="text" class="form-control" id="1numero">
+          </div>
+        </div>
+
+        <div class="col-4">
+          <label for="1bairro" class="form-label required">Oxigênio</label>
+          <div class="input-group">
+            <input type="text" class="form-control" id="1bairro">
+          </div>
+        </div>
+      </div>
+    </div>
+  </mat-tab>
+
+  <mat-tab label="Ração">
+    <ng-template mat-tab-label>
+      <mat-icon class="icon-tabs material-symbols-rounded">package_2</mat-icon>
+      Ração
+    </ng-template>
+    
+    <div class="tab-container">
+      <div class="row g-3 row-full-line">
+        <div class="col-4">
+          <label for="1complemento" class="form-label">Data da coleta</label>
+          <div class="input-group" style="padding-bottom: 0">
+            <input type="text" class="form-control" id="1complemento"
+              style="margin-bottom: 0">
+          </div>
+        </div>
+
+        <div class="col-4">
+          <label for="1numero" class="form-label required">Hora da coleta</label>
+          <div class="input-group">
+            <input type="text" class="form-control" id="1numero">
+          </div>
+        </div>
+
+        <div class="col-4">
+          <label for="1bairro" class="form-label required">Temperatura</label>
+          <div class="input-group">
+            <input type="text" class="form-control" id="1bairro">
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="tab-container">
+      <div class="row g-3 row-full-line">
+        <div class="col-4">
+          <label for="1complemento" class="form-label">Oxigênio</label>
+          <div class="input-group" style="padding-bottom: 0">
+            <input type="text" class="form-control" id="1complemento"
+              style="margin-bottom: 0">
+          </div>
+        </div>
+
+        <div class="col-4">
+          <label for="1numero" class="form-label required">Ração por trato</label>
+          <div class="input-group">
+            <input type="text" class="form-control" id="1numero">
+          </div>
+        </div>
+
+        <div class="col-4">
+          <label for="1bairro" class="form-label required">Ração total</label>
+          <div class="input-group">
+            <input type="text" class="form-control" id="1bairro">
+          </div>
+        </div>
+      </div>
+    </div>
+  </mat-tab>
+  
+  
+</mat-tab-group>

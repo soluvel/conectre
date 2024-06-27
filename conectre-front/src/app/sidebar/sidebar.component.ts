@@ -12,22 +12,39 @@ export class SidebarComponent implements OnChanges {
   logoCollapsed: string
 
   ngOnChanges(changes: SimpleChanges) {
-    this.sideNavCollapsed = this.collapse;
+    // this.sideNavCollapsed = this.collapse;
     this.logoCollapsed = this.sideNavCollapsed ? 'assets/conectre-icon.svg' : 'assets/conectre-72.svg'
   }
 
   gestaoItems(): { icon: string, title: string, route: string }[] {
     return [
-      {icon: 'assets/menu-inicio-icon.svg', title: 'Início', route: '/inicio'},
-      {icon: 'assets/menu-notificacoes-icon.svg', title: 'Notificações', route: '/notificacao'},
+      {icon: 'home', title: 'Início', route: '/inicio'},
+      {icon: 'notifications', title: 'Notificações', route: '/notificacao'},
     ];
   }
 
   sistemaItems(): { icon: string, title: string, route: string }[] {
     return [
-      {icon: 'assets/menu-config-icon.svg', title: 'Configurações', route: '/home'},
-      {icon: 'assets/menu-politicas-icon.svg', title: 'Políticas de Privacidade', route: '/settings'},
-      {icon: 'assets/menu-notificacoes-icon.svg', title: 'Termos de Uso', route: '/notifications'},
+      {icon: 'settings', title: 'Configurações', route: '/home'},
+      {icon: 'description', title: 'Políticas de Privacidade', route: '/settings'},
+      {icon: 'notifications_unread', title: 'Termos de Uso', route: '/notifications'},
     ];
   }
+  
+  openSideMenu() {
+    document.querySelector('.first-line').classList.toggle('first-line-open-menu');
+    document.querySelector('.second-line').classList.toggle('second-line-open-menu');
+    document.querySelector('.third-line').classList.toggle('third-line-open-menu');
+    
+    document.querySelectorAll('.hidden-effect').forEach(topic => {
+      topic.classList.toggle('invisible-effect');
+    });
+  }
+
+  openDropdown() {
+    if (document.querySelector('.container-full').clientWidth > 70) {
+      document.querySelector('.dropdown-content').classList.toggle('dropdown-content-open');
+    }
+  }
+
 }
