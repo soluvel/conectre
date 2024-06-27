@@ -4,11 +4,11 @@ import com.soluvel.conectre.core.CrudController;
 import com.soluvel.conectre.core.CrudService;
 import com.soluvel.conectre.core.GenericMapper;
 import com.soluvel.conectre.domain.Equipamento;
+import com.soluvel.conectre.domain.Produtor;
 import com.soluvel.conectre.domain.Propriedade;
 import com.soluvel.conectre.domain.records.EquipamentoResponseRecords;
 import com.soluvel.conectre.domain.records.PropriedadeRecords;
 import com.soluvel.conectre.service.EquipamentoService;
-import com.soluvel.conectre.service.ProdutorService;
 import com.soluvel.conectre.service.PropriedadeService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -25,29 +25,33 @@ import java.util.List;
 @RestController
 @RequestMapping("/propriedade")
 @CrossOrigin(origins = "*", maxAge = 3600)
-public class PropriedadeController extends CrudController<Propriedade, Long> {
+public class PropriedadeController extends CrudController<Propriedade, Propriedade, Long> {
 
     private final PropriedadeService service;
-    private final ProdutorService produtorService;
-
     private final EquipamentoService equipamentoService;
 
     public PropriedadeController(CrudService<Propriedade, Long> service,
                                  PropriedadeService propriedadeService,
-                                 ProdutorService produtorService,
                                  EquipamentoService equipamentoService) {
         super(service, Propriedade.class);
         this.service = propriedadeService;
-        this.produtorService = produtorService;
         this.equipamentoService = equipamentoService;
     }
 
     @PostMapping("save/record")
     public ResponseEntity<Propriedade> create(@RequestBody PropriedadeRecords records) {
         var propriedade = GenericMapper.map(records, new Propriedade());
-        produtorService.findById(records.produtor()).ifPresent(propriedade::setProdutor);
-        return super.create(propriedade);
+        propriedade.setProdutor(Produtor.builder().id(records.produtor()).build());
+        return new ResponseEntity<>(service.save(propriedade), HttpStatus.CREATED);
     }
+
+//    @Override
+//    public ResponseEntity<?> create(Object object) {
+//        PropriedadeRecords propriedadeRecords = castObjectToRecord(object);
+//        var propriedade = GenericMapper.map(propriedadeRecords, new Propriedade());
+//        propriedade.setProdutor(Produtor.builder().id(propriedadeRecords.id()).build());
+//        return super.create(propriedade);
+//    }
 
     @PostMapping("/{id}/equipamentos")
     public Propriedade adicionarEquipamentos(@PathVariable Long id, @RequestBody List<Long> equipamentos) {
@@ -69,6 +73,14 @@ public class PropriedadeController extends CrudController<Propriedade, Long> {
     @GetMapping("/equipamentos")
     public ResponseEntity<List<EquipamentoResponseRecords>> equipamentosDisponiveis() {
         return new ResponseEntity<>(service.listEquipamentoResponse(), HttpStatus.OK);
+    }
+
+    private PropriedadeRecords castObjectToRecord(Object object) {
+        try {
+            return (PropriedadeRecords) object;
+        } catch (ClassCastException e) {
+            throw new IllegalArgumentException("Failed to cast object to PropriedadeRecords", e);
+        }
     }
 
 }

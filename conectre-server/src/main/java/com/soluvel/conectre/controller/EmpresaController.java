@@ -10,6 +10,7 @@ import com.soluvel.conectre.domain.records.EmpresaReduceRecords;
 import com.soluvel.conectre.service.EmpresaService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,21 +26,22 @@ import java.util.List;
 @RestController
 @RequestMapping("/empresa")
 @CrossOrigin(origins = "*", maxAge = 3600)
-public class EmpresaController extends CrudController<Empresa, Long> {
+public class EmpresaController extends CrudController<Empresa, EmpresaRecords, Long> {
 
     private final EmpresaService service;
     private final EmpresaMapper mapper;
 
     public EmpresaController(CrudService<Empresa, Long> service, EmpresaService empresaService, EmpresaMapper mapper) {
-        super(service, Empresa.class);
+        super(service, mapper, Empresa.class);
         this.service = empresaService;
         this.mapper = mapper;
     }
 
     @PostMapping("save/record")
     public ResponseEntity<Empresa> create(@RequestBody EmpresaRecords records) {
-        return super.create(mapper.toEntity(records));
+        return new ResponseEntity<>(service.save(this.mapper.toEntity(records)), HttpStatus.CREATED);
     }
+
 
     @GetMapping("/cidades")
     public ResponseEntity<List<String>> getCidades() {

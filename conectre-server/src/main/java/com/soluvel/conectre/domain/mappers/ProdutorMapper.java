@@ -2,6 +2,7 @@ package com.soluvel.conectre.domain.mappers;
 
 
 import com.soluvel.conectre.core.GenericMapper;
+import com.soluvel.conectre.core.Mapper;
 import com.soluvel.conectre.domain.Permissao;
 import com.soluvel.conectre.domain.Produtor;
 import com.soluvel.conectre.domain.records.ProdutorRecords;
@@ -16,9 +17,15 @@ import static com.soluvel.conectre.utils.StringFormat.removeSpecialCharacters;
 
 @Component
 @AllArgsConstructor
-public class ProdutorMapper {
+public class ProdutorMapper implements Mapper<Produtor, ProdutorRecords> {
 
     private final EmpresaService empresaService;
+
+    @Override
+    public ProdutorRecords toRecord(Produtor entity) {
+        return new ProdutorRecords(entity.getId(), entity.getNome(), entity.getCpf(),
+                entity.getCelular(), entity.getEmail(), entity.getEmpresa().getId());
+    }
 
     public Produtor toEntity(ProdutorRecords record) {
         Produtor produtor = new Produtor();
