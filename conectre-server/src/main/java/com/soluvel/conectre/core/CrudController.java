@@ -17,18 +17,27 @@ import org.springframework.web.bind.annotation.RequestParam;
 import java.io.Serializable;
 import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 @Component
 @AllArgsConstructor
-public abstract class CrudController<T, ID extends Serializable> {
+public abstract class CrudController<T, R, ID extends Serializable> {
 
     private CrudService<T, ID> service;
-
+    private final Mapper<T, R> mapper;
     private final Class<T> entityClass;
 
+    public CrudController(CrudService<T, ID> service, Class<T> entityClass) {
+        this(service, null, entityClass);
+    }
+
     @GetMapping
-    public ResponseEntity<List<T>> findAll() {
-        return new ResponseEntity<>(service.findAll(), HttpStatus.OK);
+    public ResponseEntity<List<?>> findAll() {
+        List<T> entityList = service.findAll();
+        List<Object> recordList = entityList.stream()
+                .map(entity -> mapper != null ? mapper.toRecord(entity) : entity)
+                .collect(Collectors.toList());
+        return new ResponseEntity<>(recordList, HttpStatus.OK);
     }
 
     @GetMapping("/count")
@@ -37,15 +46,16 @@ public abstract class CrudController<T, ID extends Serializable> {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<T> getById(@PathVariable("id") ID id) {
+    public ResponseEntity<Object> getById(@PathVariable("id") ID id) {
         return service.findById(id)
-                .map(value -> new ResponseEntity<>(value, HttpStatus.OK))
+                .map(entity -> new ResponseEntity<>(mapper != null ? mapper.toRecord(entity) : entity, HttpStatus.OK))
                 .orElseGet(() -> ResponseEntity.status(HttpStatus.NOT_FOUND).build());
     }
 
     @PostMapping("/save")
-    public ResponseEntity<T> create(@RequestBody T entity) {
-        return new ResponseEntity<>(service.save(entity), HttpStatus.CREATED);
+    public ResponseEntity<?> create(@RequestBody Object object) {
+        T t = mapper != null ? service.save(mapper.toEntity(castObjectToR(object))) : service.save(castObjectToT(object));
+        return new ResponseEntity<>(mapper != null ? mapper.toRecord(t) : t, HttpStatus.CREATED);
     }
 
     @PutMapping("/{id}")
@@ -63,13 +73,31 @@ public abstract class CrudController<T, ID extends Serializable> {
 
     @GetMapping("/page/{number}/{size}")
     public ResponseEntity<Page<T>> page(@PathVariable int number, @PathVariable int size,
-                                              @RequestParam(value = "filter", required = false) String filter,
-                                              @RequestParam(value = "attributes", required = false) List<String> attributes) {
+                                        @RequestParam(value = "filter", required = false) String filter,
+                                        @RequestParam(value = "attributes", required = false) List<String> attributes) {
         if (Objects.nonNull(filter)) {
             return ResponseEntity.ok(service.findByAttributes(attributes, filter, PageRequest.of(number, size), entityClass));
         }
 
         return ResponseEntity.ok(service.page(PageRequest.of(number, size)));
+    }
+
+    @SuppressWarnings("unchecked")
+    private T castObjectToT(Object object) {
+        try {
+            return (T) object;
+        } catch (ClassCastException e) {
+            throw new IllegalArgumentException("Failed to cast object to type T", e);
+        }
+    }
+
+    @SuppressWarnings("unchecked")
+    private R castObjectToR(Object object) {
+        try {
+            return (R) object;
+        } catch (ClassCastException e) {
+            throw new IllegalArgumentException("Failed to cast object to type R", e);
+        }
     }
 
 }

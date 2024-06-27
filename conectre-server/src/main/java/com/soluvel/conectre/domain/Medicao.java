@@ -39,13 +39,13 @@ public class Medicao implements Serializable {
     @Transient
     private Long tanqueId;
 
-    @OneToOne(mappedBy = "medicao", cascade = CascadeType.ALL)
+    @OneToOne(mappedBy = "medicao", cascade = CascadeType.ALL, optional = true)
     private Peixe peixe;
 
-    @OneToOne(mappedBy = "medicao", cascade = CascadeType.ALL)
+    @OneToOne(mappedBy = "medicao", cascade = CascadeType.ALL, optional = true)
     private Ambiente ambiente;
 
-    @OneToOne(mappedBy = "medicao", cascade = CascadeType.ALL)
+    @OneToOne(mappedBy = "medicao", cascade = CascadeType.ALL, optional = true)
     private Racao racao;
 
     public Long getTanqueId() {

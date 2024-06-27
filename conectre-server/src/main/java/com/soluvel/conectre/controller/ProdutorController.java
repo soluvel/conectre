@@ -3,13 +3,10 @@ package com.soluvel.conectre.controller;
 import com.soluvel.conectre.core.CrudController;
 import com.soluvel.conectre.core.CrudService;
 import com.soluvel.conectre.domain.Produtor;
-import com.soluvel.conectre.domain.Tecnico;
 import com.soluvel.conectre.domain.mappers.ProdutorMapper;
-import com.soluvel.conectre.domain.mappers.TecnicoMapper;
 import com.soluvel.conectre.domain.records.ProdutorRecords;
-import com.soluvel.conectre.domain.records.TecnicoRecords;
 import com.soluvel.conectre.service.ProdutorService;
-import com.soluvel.conectre.service.TecnicoService;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -20,20 +17,20 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/produtor")
 @CrossOrigin(origins = "*", maxAge = 3600)
-public class ProdutorController extends CrudController<Produtor, Long> {
+public class ProdutorController extends CrudController<Produtor, ProdutorRecords, Long> {
 
-    private final ProdutorService service;
     private final ProdutorMapper mapper;
+    private final ProdutorService produtorServicevice;
 
-    public ProdutorController(CrudService<Produtor, Long> service, ProdutorService produtorService, ProdutorMapper mapper) {
-        super(service, Produtor.class);
-        this.service = produtorService;
+    public ProdutorController(CrudService<Produtor, Long> service, ProdutorMapper mapper, ProdutorService produtorServicevice) {
+        super(service, mapper, Produtor.class);
         this.mapper = mapper;
+        this.produtorServicevice = produtorServicevice;
     }
 
     @PostMapping("save/record")
     public ResponseEntity<Produtor> create(@RequestBody ProdutorRecords records) {
-        return super.create(mapper.toEntity(records));
+        return new ResponseEntity<>(produtorServicevice.save(this.mapper.toEntity(records)), HttpStatus.CREATED);
     }
 
 }

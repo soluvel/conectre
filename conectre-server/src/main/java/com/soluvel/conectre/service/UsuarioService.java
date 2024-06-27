@@ -21,6 +21,10 @@ public class UsuarioService {
         return repository.findByUsername(email);
     }
 
+    public boolean existsByUsername(String email) {
+        return repository.existsByUsername(email);
+    }
+
     public Optional<Usuario> findByPassword(String password) {
         return repository.findByPassword(password);
     }
