@@ -15,27 +15,6 @@ h4 {
   padding-right: 50px;
 }
 
-.container-header a {
-  display: flex;
-  text-align: center;
-}
-
-.container-header {
-  display: flex;
-  // align-items: center;
-  margin-bottom: 50px;
-  cursor: default;
-}
-
-.back-icon {
-  color: #333333;
-  cursor: pointer;
-}
-
-.back-icon:hover {
-  color: #000;
-}
-
 .tab-container {
   display: flex;
   // padding-left: 10px;
@@ -68,38 +47,30 @@ h4 {
     border-top-left-radius: $border-radius;
     border-top-right-radius: $border-radius;
     font-weight: $weight-500;
+    width: 33% !important;
     display: flex;
     align-items: center;
-    justify-content: center;
-    padding: 0px;
-    width: 0px;
-    height: auto;
+    justify-content: start;
+    padding-left: 5px;
   }
 }
 
 ::ng-deep {
-  .mat-mdc-tab.mdc-tab {
-    // background-color: $background-color;
-    height: 40px !important;
-    width: 0px !important;
-  }
-}
-  ::ng-deep {
   .mat-mdc-tab.mdc-tab--active {
-    // background-color: $background-color;
-    border-bottom: 4px solid #068fff;
+    background-color: $background-color;
+    border-bottom: 2px solid #068fff;
   }
 }
 
 ::ng-deep {
   .mat-mdc-tab-header {
     --mdc-tab-indicator-active-indicator-height: 0px !important;
-    margin: 30px 0 50px 0;
   }
 }
 
 ::ng-deep {
   .mat-mdc-tab-list {
+    width: 100% !important;
     flex-grow: 0 !important;
   }
 }
@@ -115,45 +86,39 @@ h4 {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin-left: 50px;
+  width: 100%;
 }
 
-.page-subtitle {
-  font-size: 24px;
-  font-weight: 600;
-  color: #313131;
-  padding-left: 40px;
-
-}
-
-.message-container {
+.row-full-line {
+  width: 100%;
   display: flex;
-  justify-content: center;
-  padding: 20px 0;
-  width: 95%;
-  height: auto;
+  justify-content: end;
+}
+
+mat-tab {
+  display: flex;
+  text-align: start;
+}
+
+.icon-tabs {
+  margin-right: 5px;
+}
+
+.form-control {
+  border: none;
   border-bottom: 1px solid $border-botton-color;
+  border-radius: unset;
+  background-color: $background-color;
 }
 
-.user {
-  display: flex;
-  justify-content: start;
-  align-items: center;
-  margin-right: 30px;
-  width: 20%;
+textarea:focus, input:focus, select:focus {
+  box-shadow: 0 0 0 0;
+  border-bottom: 1px solid $border-botton-color;
+  outline: 0;
 }
 
-.user-perfil-image {
-  height: 60px;
-  padding-right: 10px;
-}
-
-.user-name {
-  font-size: 18px;
-}
-
-.message {
-  padding: 10px 0;
-  width: 60%;
-  text-align: justify;
+.form-label, .form-control, option, select{
+  padding-top: 0.10rem;
+  padding-bottom: 0.10rem;
+  margin-bottom: 5px;
 }
