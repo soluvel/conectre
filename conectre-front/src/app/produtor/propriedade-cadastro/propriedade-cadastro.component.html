@@ -1,24 +1,138 @@
 <div style="position: relative; min-height: 85vh">
   <div class="container-header">
-    <img src="../../../../assets/left-arrow.svg" alt="">
-    <span style="padding-left: 10px">Voltar para a página principal</span>
+    <mat-icon class="icon back-icon material-symbols-rounded">arrow_back</mat-icon>
+    <span style="padding-left: 10px">Voltar aos detalhes do produtor</span>
   </div>
 
   <div class="container-form">
-    <span style="font-size: 12px; color: #A1A1AA">Dados Pessoais</span>
+    <span style="font-size: 12px; color: #A1A1AA">Dados da Propriedade</span>
     <form [formGroup]="form">
-      <!--      INSIRA AQUI O FORMULÁRIO-->
+      <div class="row g-3">
+        <div class="col-6">
+          <label id="nomeLabel" for="nome" class="form-label required">Nome</label>
+          <div class="input-group">
+            <input type="text" class="form-control" formControlName="nome" id="nome"
+                   aria-describedby="nomeImage">
+            <span class="input-group-text">
+          <mat-icon class="icon material-symbols-rounded">edit</mat-icon>
+          </span>
+          </div>
+        </div>
+
+        <div class="col-6">
+          <label id="produtorLabel" for="produtor" class="form-label required">Produtor</label>
+          <div class="input-group">
+            <input type="text" class="form-control" formControlName="produtor" id="produtor">
+            <span class="input-group-text">
+          <mat-icon class="icon material-symbols-rounded">edit</mat-icon>
+          </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="row g-3">
+        <div class="col-6" formGroupName="endereco">
+          <label for="logradouro" class="form-label required">Logradouro</label>
+          <div class="input-group">
+            <input type="text" class="form-control" formControlName="logradouro" id="logradouro">
+            <span class="input-group-text">
+          <mat-icon class="icon material-symbols-rounded">edit</mat-icon>
+          </span>
+          </div>
+        </div>
+
+        <div class="col-2" formGroupName="endereco">
+          <label for="cep" class="form-label required">CEP</label>
+          <div class="input-group">
+            <input type="text" class="form-control required" formControlName="cep" id="cep" appCepMask [maxLength]="9">
+            <span class="input-group-text">
+          <mat-icon class="icon material-symbols-rounded">edit</mat-icon>
+          </span>
+          </div>
+        </div>
+
+        <div class="col-4" formGroupName="endereco">
+          <label for="localidade" class="form-label required">Cidade</label>
+          <div class="input-group">
+            <input type="text" class="form-control" formControlName="localidade" id="localidade">
+            <span class="input-group-text">
+          <mat-icon class="icon material-symbols-rounded">edit</mat-icon>
+          </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="row g-3" formGroupName="endereco">
+        <div class="col-6">
+          <label for="complemento" class="form-label">Complemento</label>
+          <div class="input-group" style="padding-bottom: 0">
+            <input type="text" class="form-control" formControlName="complemento" id="complemento"
+                   style="margin-bottom: 0">
+            <span class="input-group-text">
+          <mat-icon class="icon material-symbols-rounded">edit</mat-icon>
+          </span>
+          </div>
+          <span style="margin-top: 5px">Em caso de área rural, informar latitude e longitude</span>
+        </div>
+
+        <div class="col-2">
+          <label for="numero" class="form-label required">Número</label>
+          <div class="input-group">
+            <input type="text" class="form-control" formControlName="numero" id="numero">
+            <span class="input-group-text">
+          <mat-icon class="icon material-symbols-rounded">edit</mat-icon>
+          </span>
+          </div>
+        </div>
+
+        <div class="col-2">
+          <label for="bairro" class="form-label required">Bairro</label>
+          <div class="input-group">
+            <input type="text" class="form-control" formControlName="bairro" id="bairro">
+            <span class="input-group-text">
+          <mat-icon class="icon material-symbols-rounded">edit</mat-icon>
+          </span>
+          </div>
+        </div>
+
+        <div class="col-2">
+          <label for="uf" class="form-label required">Estado</label>
+          <div class="input-group">
+            <input type="text" class="form-control" formControlName="uf" id="uf" [maxLength]="2">
+            <span class="input-group-text">
+          <mat-icon class="icon material-symbols-rounded">edit</mat-icon>
+          </span>
+          </div>
+        </div>
+      </div>
     </form>
+    
+    <div class="container-buttons">
+      <button class="button-no-border" style="margin-right: 10px">Limpar dados</button>
+      <button [disabled]="!form.valid" (click)="onSubmit()"  [ngClass]="{'button-disabled': !form.valid}">
+        Salvar alteração
+      </button>
+    </div>
   </div>
 
-  <div class="actions-footer">
-    <button class="button-no-border" style="margin-right: 10px">Limpar dados</button>
-    <button>Cadastrar
-      Produtor
-    </button>
+  <div class="tanque-infos">
+    <div class="header-infos">
+      <span class="select-title" (click)="selectOpen()">Tanque Sol<mat-icon class="menu-arrow-icon-select material-symbols-rounded">keyboard_arrow_down</mat-icon></span>
+      <div class="select-infos">
+          <span>Piscicultura Sol nascente</span>
+          <ul>
+            <li>Tanque Sol</li>
+            <li>Tanque Lua</li>
+            <li>Tanque Nuvem</li>
+            <li>Tanque Planeta</li>
+          </ul>
+        </div>
+      <span> Piscicultura Nascente</span>
+    </div>
+
+    <app-tabs-tanque class="table-infos" (tabChange)="onTabChange($event)"></app-tabs-tanque>
+    
+    <div class="footer-infos">Registro realizado em:<strong> 08 de Maio, 2024 às 19h40</strong></div>
   </div>
-
-
-  <!--COMPONENT DANTAS-->
 
 </div>

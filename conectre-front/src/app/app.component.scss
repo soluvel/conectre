@@ -56,6 +56,7 @@ button {
 
 .menu-arrow-icon {
   cursor: pointer;
+  margin-left: 10px;
   transition: .3s;
 }
 
@@ -103,7 +104,7 @@ img.img-avatar {
 }
 
 .user-menu-open {
-  height: 300%;
+  height: 110px;
   border-top: 2px solid #068fff;
 }
 
@@ -121,16 +122,6 @@ img.img-avatar {
   background: #d3d3d3;
 }
 
-// ::ng-deep {
-//   .cdk-overlay-container {
-//     position: absolute;
-//     top: 0;
-//     right: 0;
-//     z-index: 999;
-//     background: red !important;
-//   }
-// }
-
 .content {
   padding: 2vh 5vh 2vh 5vh;
 }
@@ -145,4 +136,64 @@ img.img-avatar {
 
 .container>* {
   margin-left: 10px;
+}
+
+.sidebar-button {
+  display: flex;
+  flex-direction: column;
+  height: 30px;
+  width: 30px;
+  position: absolute;
+  bottom: 1%;
+  left: 5px;
+  transform: translate(50%, -50%);
+  cursor: pointer;
+}
+
+.menu-icon-line {
+  width: 90%;
+  height: 10%;
+  border-radius: 25px;
+  position: absolute;
+  background: #fff;
+  opacity: 1;
+  transition: .4s;
+}
+
+.first-line {
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.second-line {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.third-line {
+  top: 70%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.first-line-open-menu {
+  left: 0px;
+  top: 14px;
+  width: 95%;
+  transform: rotate(45deg);
+}
+
+.second-line-open-menu {
+  opacity: 0;
+  left: 3%;
+  transform: rotate(45deg);
+}
+
+.third-line-open-menu {
+  left: 0px;
+  top: 14px;
+  width: 95%;
+  transform: rotate(-45deg);
 }

@@ -1,9 +1,9 @@
 <div class="container-filter">
   <input class="input-search" type="text" placeholder="O que você procura?" [(ngModel)]="filter">
-  <img src="../../../assets/search.svg" class="input-img" (click)="search()" alt="search">
+  <mat-icon class="icon-search material-symbols-rounded" (click)="search()">search</mat-icon>
   <button type="button" class="button-geral" style="margin-right: 10px" (click)="redirectToEmpresa()">Nova Empresa</button>
-  <button type="button" class="button-white" (click)="exibirQuadrado()">Filtrar
-    <img src="../../../assets/filter.svg" alt="Imagem Redonda" style="padding-left: 10px">
+  <button type="button" class="button-white filter-button" (click)="exibirQuadrado()">Filtrar
+    <mat-icon class="icon-filter material-symbols-rounded">filter_list</mat-icon>
   </button>
 </div>
 

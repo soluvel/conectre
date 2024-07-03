@@ -2,6 +2,8 @@ package com.soluvel.conectre.domain.mappers;
 
 
 import com.soluvel.conectre.core.GenericMapper;
+import com.soluvel.conectre.core.Mapper;
+import com.soluvel.conectre.domain.Empresa;
 import com.soluvel.conectre.domain.Permissao;
 import com.soluvel.conectre.domain.Tecnico;
 import com.soluvel.conectre.domain.records.TecnicoRecords;
@@ -16,10 +18,17 @@ import static com.soluvel.conectre.utils.StringFormat.removeSpecialCharacters;
 
 @Component
 @AllArgsConstructor
-public class TecnicoMapper {
+public class TecnicoMapper implements Mapper<Tecnico, TecnicoRecords> {
 
     private final EmpresaService empresaService;
 
+    @Override
+    public TecnicoRecords toRecord(Tecnico entity) {
+        return new TecnicoRecords(entity.getId(), entity.getNome(), entity.getCpf(), entity.getCelular(), entity.getEmail(),
+                "", entity.getEndereco(), entity.getEmpresa().getId());
+    }
+
+    @Override
     public Tecnico toEntity(TecnicoRecords record) {
         Tecnico tecnico = new Tecnico();
         GenericMapper.map(record, tecnico);
@@ -34,8 +43,9 @@ public class TecnicoMapper {
 
         tecnico.setPermissao(Permissao.TECNICO);
         tecnico.setAtivo(true);
-        tecnico.setEmpresa(empresaService.findById(record.empresa()).orElse(null));
+        tecnico.setEmpresa(Empresa.builder().id(record.empresa()).build());
 
         return tecnico;
     }
+
 }

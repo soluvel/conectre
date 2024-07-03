@@ -88,13 +88,16 @@ mat-paginator {
   outline: none;
 }
 
-.input-img {
-  height: 80%;
+.icon-search {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  font-size: 20px;
   position: absolute;
   left: 23%;
-  padding-top: 5px;
+  cursor: pointer;
 }
-
 
 #overlay {
   display: none;
@@ -106,6 +109,19 @@ mat-paginator {
   height: 100%;
   background-color: white;
   z-index: 9999;
+}
+
+.filter-button {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.icon-filter {
+  font-size: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 @media screen and (max-width: 600px) {

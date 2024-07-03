@@ -1,18 +1,18 @@
-<div class="container-full" [ngClass]="{'container': sideNavCollapsed}">
-  <img class="logo-full" src="{{ logoCollapsed }}" [ngClass]="{'logo-icon': sideNavCollapsed}">
+<div class="container-full">
+  <img class="logo-full" src="assets/conectre-72.svg">
 
   <div class="itens">
-    <h4 class="topic" *ngIf="!sideNavCollapsed">Gestão</h4>
+    <h4 class="topic hidden-effect invisible-effect">Gestão</h4>
     <ul>
       <ng-container *ngFor="let g of gestaoItems()">
-        <li><a href="{{ g.route }}"><img class="icon" src="{{g.icon}}" alt="{{ g.title }}">
+        <li><a href="{{ g.route }}"><mat-icon class="icon material-symbols-rounded">{{ g.icon }}</mat-icon>
             <span class="item" *ngIf="!sideNavCollapsed">{{ g.title }}</span></a></li>
       </ng-container>
       <li class="dropdown">
-        <a href="#">
-          <img class="icon" src="assets/menu-cadastro-icon.svg" alt="Cadastros">
+        <a class="cadastros-button" (click)="openDropdown()">
+          <mat-icon class="icon material-symbols-rounded">person_add</mat-icon>
           <span class="item" *ngIf="!sideNavCollapsed">Cadastros</span>
-          <img class="icon" *ngIf="!sideNavCollapsed" src="assets/down-arrow.svg" alt="Cadastros">
+          <mat-icon class="arrow-icon material-symbols-rounded hidden-effect invisible-effect">keyboard_arrow_down</mat-icon>
         </a>
         <div class="dropdown-content">
           <a href="empresa/cadastrar" *ngIf="storage.getRole() === 'ADM_TREVISAN' || storage.getRole() === 'EMPRESA'"><img src="../../assets/subitem-icon.svg" alt="Cadastros">Empresa</a>
@@ -20,19 +20,22 @@
           <a href="produtor/cadastrar" *ngIf="storage.getRole() === 'ADM_TREVISAN' || storage.getRole() === 'TECNICO' || storage.getRole() === 'EMPRESA'"><img src="../../assets/subitem-icon.svg" alt="Cadastros">Produtor</a>
         </div>
       </li>
-
     </ul>
   </div>
 
-  <mat-divider *ngIf="!sideNavCollapsed"></mat-divider>
-
   <div class="itens">
-    <h4 class="topic topic-child-2" *ngIf="!sideNavCollapsed">Sistema</h4>
+    <h4 class="topic topic-child-2 hidden-effect invisible-effect">Sistema</h4>
     <ul>
       <ng-container *ngFor="let g of sistemaItems()">
-        <li class="sidemenu-secondary"><a href="{{ g.route }}"><img class="icon" src="{{g.icon}}" alt="{{ g.title }}">
+        <li class="sidemenu-secondary"><a href="{{ g.route }}"><mat-icon class="icon material-symbols-rounded">{{ g.icon }}</mat-icon>
             <span class="item" *ngIf="!sideNavCollapsed">{{ g.title }}</span></a></li>
       </ng-container>
     </ul>
   </div>
+
+  <!-- <div class="menu-button" (click)="openSideMenu()">
+    <span class="menu-icon-line first-line"></span>
+    <span class="menu-icon-line second-line"></span>
+    <span class="menu-icon-line third-line"></span>
+  </div> -->
 </div>

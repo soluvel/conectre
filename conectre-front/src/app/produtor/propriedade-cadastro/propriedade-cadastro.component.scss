@@ -114,4 +114,140 @@ select:focus {
   border-bottom: 2px solid #0F6CBD;
 }
 
+.container-buttons {
+  display: flex;
+  justify-content: end;
+  margin-top: 20px;
+}
 
+.icon {
+  color: #838383;
+}
+
+.back-icon {
+  color: #333333;
+  cursor: pointer;
+}
+
+.back-icon:hover {
+  color: #000;
+}
+
+.filter-button {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.icon-filter {
+  font-size: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.menu-arrow-icon-select {
+  transition: .3s;
+}
+
+.menu-arrow-icon-select-open {
+  transform: rotateX(180deg);
+}
+
+.tanque-infos {
+  background: #E4E4E7;
+  padding: 15px 40px 0 40px;
+  border-radius: 20px;
+  height: 475px;
+  margin: 0 35px 0 35px;
+}
+
+.header-infos {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #000;
+}
+
+.header-infos > span {
+  display: flex;
+  align-items: center;
+  padding-left: 10px;
+}
+
+.select-title {
+  position: relative;
+  font-weight: 600;
+  width: 10%;
+  justify-content: space-between;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: .3s;
+}
+
+.select-title-open {
+  width: 33.3%;
+}
+
+.select-infos {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 100%;
+  width: 33.3%;
+  height: 0px;
+  z-index: 999;
+  transition: .3s;
+  background: #fff;
+  margin-left: 0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1),
+  0 4px 8px rgba(0, 0, 0, 0.1),
+  0 8px 16px rgba(0, 0, 0, 0.1),
+  0 16px 32px rgba(0, 0, 0, 0.1);
+  overflow-x: hidden;
+  // overflow-y: scroll;
+}
+
+.select-infos-open {
+  position: absolute;
+  top: 100%;
+  height: 300px;
+  z-index: 999;
+}
+
+.select-infos span {
+  padding: 10px;
+}
+
+.select-infos ul {
+  list-style-type: none;
+}
+
+.select-infos ul li {
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+
+.select-infos span {
+  font-weight: 600;
+  cursor: default;
+}
+
+.table-infos {
+  display: flex;
+  height: auto;
+  width: 100%;
+}
+
+.footer-infos {
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  right: 0;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

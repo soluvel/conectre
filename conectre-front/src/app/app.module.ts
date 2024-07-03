@@ -51,12 +51,14 @@ import { CelularMaskDirective } from "./diretiva/celular-mask.directive";
 import { CelularPipe } from "./pipes/celular";
 import { ProdutorFilterComponent } from "./produtor/produtor-filter/produtor-filter.component";
 import { PropriedadeCadastroComponent } from "./produtor/propriedade-cadastro/propriedade-cadastro.component";
+import { TabsTanqueComponent } from './tabs-tanque/tabs-tanque.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     TabsComponent,
+    TabsTanqueComponent,
     EmpresaTableComponent,
     EmpresaComponent,
     EmpresaFilterComponent,
