@@ -40,7 +40,7 @@ public class ProdutorMapper implements Mapper<Produtor, ProdutorRecords> {
         }
         produtor.setPermissao(Permissao.PRODUTOR);
         produtor.setAtivo(true);
-        produtor.setEmpresa(empresaService.findById(record.empresa().id()).orElse(null));
+        produtor.setEmpresa(empresaService.findById(record.empresa()).orElse(null));
 
         return produtor;
     }

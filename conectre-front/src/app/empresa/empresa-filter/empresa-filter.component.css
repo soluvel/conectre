@@ -47,11 +47,19 @@ mat-expansion-panel {
   text-decoration: underline;
 }
 
-@media screen and (max-width: 1200px) {
-  .container-header {
-    font-size: 10px;
-  }
+.button-close-div {
+  display: flex;
+  justify-content: end;
 }
+
+.icon-close {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 32px;
+  cursor: pointer;
+}
+
 mat-divider {
   margin: 30px 0 30px 0;
 }
@@ -69,6 +77,12 @@ mat-divider {
 
 .mat-mdc-standard-chip {
   border-radius: unset;
+}
+
+@media screen and (max-width: 1200px) {
+  .container-header {
+    font-size: 10px;
+  }
 }
 
 /*# sourceMappingURL=empresa-filter.component.css.map */

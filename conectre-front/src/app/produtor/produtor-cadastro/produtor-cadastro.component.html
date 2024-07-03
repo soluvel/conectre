@@ -68,7 +68,7 @@
         <div class="col-3">
           <label id="empresa" for="empresa" class="form-label required">Empresa</label>
           <select class="form-select" formControlName="empresa">
-            <option *ngFor="let empresa of empresas" [value]="empresa">{{ empresa.razaoSocial }}</option>
+            <option *ngFor="let empresa of empresas" [value]="empresa.id">{{ empresa.razaoSocial }}</option>
           </select>
         </div>
       </div>

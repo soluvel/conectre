@@ -5,6 +5,8 @@ import { Subject, takeUntil } from "rxjs";
 import { ToastrService } from "ngx-toastr";
 import { ActivatedRoute, Router } from "@angular/router";
 import { ViaCepService } from "../../via-cep.service";
+import { ProdutorService } from "../produtor.service";
+import { ExcelService } from "../../excel.service";
 
 @Component({
   selector: 'app-propriedade-cadastro',
@@ -17,9 +19,12 @@ export class PropriedadeCadastroComponent implements OnInit, OnDestroy {
   private destroy$ = new Subject<void>();
   msgButton: string;
   form: FormGroup;
+  produtores: any;
 
   constructor(private formBuilder: FormBuilder,
     private service: PropriedadeService,
+    private produtorService: ProdutorService,
+    private excelService: ExcelService,
     private toastr: ToastrService,
     private viaCepService: ViaCepService,
     private route: ActivatedRoute,
@@ -41,38 +46,14 @@ export class PropriedadeCadastroComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
+    this.produtorService.getProdutorReduce().subscribe(data => {
+      this.produtores = data;
+    });
+
     this.route.paramMap.subscribe(params => {
-
-      // Acredito que aqui seria para pegar o ID do produtor 
-
-      // this.ProdutorId = params.get('id');
-      // this.getProdutor();
     });
 
     this.msgButton = this.form.valid ? "Cadastrar Propriedade" : "Salvar Alterações"
-  }
-
-  activeMessage: string = 'Peixe';
-  activeComponent: string;
-
-  onTabChange(tabLabel: string) {
-    this.changeMessage(tabLabel);
-    this.activeComponent = tabLabel
-  }
-
-  changeMessage(tabLabel: string) {
-    const messages = {
-      Peixe: 'Peixe',
-      Ambiente: 'Ambiente',
-      Racao: 'Ração',
-      default: 'Peixe'
-    };
-
-    this.activeMessage = messages[tabLabel] || messages.default;
-  }
-
-  getActiveComponent(): string {
-    return this.activeComponent;
   }
 
   ngOnDestroy() {
@@ -92,20 +73,7 @@ export class PropriedadeCadastroComponent implements OnInit, OnDestroy {
       }
     });
   }
-  //
-  // getProdutor(): void {
-  //   this.service.findOne(parseInt(this.produtorId)).subscribe(data => {
-  //     this.form.patchValue(data);
-  //     this.form.get('celular').setValue(StringNumberFormats.formatCelular(this.form.get('celular').value))
-  //     this.form.get('cpf').setValue(StringNumberFormats.formatCpfCnpj(this.form.get('cpf').value))
-  //     this.isEditando = true;
-  //   });
-  // }
-  //
 
-  // handleImageUpload($event: Event) {
-  //
-  // }
 
   getEnderecoViaCep() {
     this.viaCepService.getEndereco(this.form.get('endereco.cep').value).pipe(takeUntil(this.destroy$)
@@ -122,7 +90,20 @@ export class PropriedadeCadastroComponent implements OnInit, OnDestroy {
   selectOpen() {
     document.querySelector('.select-title').classList.toggle('select-title-open');
     document.querySelector('.menu-arrow-icon-select').classList.toggle('menu-arrow-icon-select-open');
-    
+
     document.querySelector('.select-infos').classList.toggle('select-infos-open');
+  }
+
+  onDownload(): void {
+    this.excelService.downloadExcel().subscribe(blob => {
+      const url = window.URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'data.xlsx';
+      a.click();
+      window.URL.revokeObjectURL(url);
+    }, error => {
+      console.error('Download failed', error);
+    });
   }
 }

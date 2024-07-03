@@ -13,7 +13,6 @@ import org.springframework.stereotype.Service;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
@@ -57,21 +56,21 @@ public class ExcelService {
     private void addPeixeRow(Sheet sheet, int rowNum, Peixe peixe) {
         Row row = sheet.createRow(rowNum);
         row.createCell(0).setCellValue(peixe.getId());
-        row.createCell(1).setCellValue(peixe.getDtColeta());
-        row.createCell(2).setCellValue(LocalDateTime.from(peixe.getHrColeta()));
+        row.createCell(1).setCellValue(peixe.getDtColeta().toString());
+        row.createCell(2).setCellValue(peixe.getHrColeta().toString());
     }
 
     private void addAmbienteRow(Sheet sheet, int rowNum, Ambiente ambiente) {
         Row row = sheet.createRow(rowNum);
         row.createCell(0).setCellValue(ambiente.getId());
-        row.createCell(1).setCellValue(ambiente.getDtColeta());
-        row.createCell(2).setCellValue(LocalDateTime.from(ambiente.getHrColeta()));
+        row.createCell(1).setCellValue(ambiente.getDtColeta().toString());
+        row.createCell(2).setCellValue(ambiente.getHrColeta().toString());
     }
 
     private void addRacaoRow(Sheet sheet, int rowNum, Racao racao) {
         Row row = sheet.createRow(rowNum);
         row.createCell(0).setCellValue(racao.getId());
-        row.createCell(1).setCellValue(racao.getDtColeta());
+        row.createCell(1).setCellValue(racao.getDtColeta().toString());
     }
 }
 

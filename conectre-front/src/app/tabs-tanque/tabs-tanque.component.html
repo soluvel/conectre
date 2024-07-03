@@ -1,232 +1,236 @@
-<mat-tab-group animationDuration="0ms" (selectedTabChange)="onTabChange($event)">
-  
-  <mat-tab label="Peixes" *ngIf="storage.getRole() === 'ADM_TREVISAN' || storage.getRole() === 'PEIXE'">
-    <ng-template mat-tab-label>
-      <mat-icon class="icon-tabs material-symbols-rounded">set_meal</mat-icon>
-      Peixes
-    </ng-template>
-    <div class="tab-container">
-      <div class="row g-3 row-full-line">
-        <div class="col-4">
-          <label for="1complemento" class="form-label">Data da coleta</label>
-          <div class="input-group" style="padding-bottom: 0">
-            <input type="text" class="form-control" id="1complemento"
-              style="margin-bottom: 0">
+<mat-tab-group animationDuration="0ms">
+  <form [formGroup]="form">
+    <mat-tab label="Peixes">
+      <ng-template mat-tab-label>
+        <mat-icon class="icon-tabs material-symbols-rounded">set_meal</mat-icon>
+        Peixes
+      </ng-template>
+      <div formGroupName="peixe">
+        <div class="tab-container">
+          <div class="row g-3 row-full-line">
+            <div class="col-4">
+              <label for="dataColeta" class="form-label">Data da coleta</label>
+              <div class="input-group" style="padding-bottom: 0">
+                <input type="date" class="form-control" id="dataColeta" formControlName="dtColeta"
+                       style="margin-bottom: 0">
+              </div>
+            </div>
+
+            <div class="col-4">
+              <label for="horaColeta" class="form-label required">Hora da coleta</label>
+              <div class="input-group">
+                <input type="time" class="form-control" id="horaColeta" formControlName="hrColeta">
+              </div>
+            </div>
+
+            <div class="col-4">
+              <label for="qntAmostra" class="form-label required">Nº de peixes por amostra</label>
+              <div class="input-group">
+                <input type="text" class="form-control" id="qntAmostra" formControlName="qntAmostra">
+              </div>
+            </div>
           </div>
         </div>
 
-        <div class="col-4">
-          <label for="1numero" class="form-label required">Hora da coleta</label>
-          <div class="input-group">
-            <input type="text" class="form-control" id="1numero">
+        <div class="tab-container">
+          <div class="row g-3 row-full-line">
+            <div class="col-4">
+              <label for="volPeixes" class="form-label">Volume de peixes</label>
+              <div class="input-group" style="padding-bottom: 0">
+                <input type="text" class="form-control" id="volPeixes" formControlName="volume"
+                       style="margin-bottom: 0">
+              </div>
+            </div>
+
+            <div class="col-4">
+              <label for="mortalidade" class="form-label required">Mortalidade</label>
+              <div class="input-group">
+                <input type="text" class="form-control" id="mortalidade" formControlName="mortalidade">
+              </div>
+            </div>
+
+            <div class="col-4">
+              <label for="peso" class="form-label required">Peso Médio</label>
+              <div class="input-group">
+                <input type="text" class="form-control" id="peso" formControlName="pesoMedio">
+              </div>
+            </div>
           </div>
         </div>
 
-        <div class="col-4">
-          <label for="1bairro" class="form-label required">Nº de peixes por amostra</label>
-          <div class="input-group">
-            <input type="text" class="form-control" id="1bairro">
+        <div class="tab-container">
+          <div class="row g-3 row-full-line">
+            <div class="col-4">
+              <label for="biomassa" class="form-label">Biomassa total</label>
+              <div class="input-group" style="padding-bottom: 0">
+                <input type="text" class="form-control" id="biomassa" formControlName="biomassa"
+                       style="margin-bottom: 0">
+              </div>
+            </div>
+
+            <div class="col-4">
+              <label for="ganhoPeso" class="form-label required">Ganho de peso</label>
+              <div class="input-group">
+                <input type="text" class="form-control" id="ganhoPeso" formControlName="ganhoPeso">
+              </div>
+            </div>
+
+            <div class="col-4">
+              <label for="racaoOfertada" class="form-label required">Ração ofertada</label>
+              <div class="input-group">
+                <input type="text" class="form-control" id="racaoOfertada" formControlName="kgRacaoOfertada">
+              </div>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-    
-    <div class="tab-container">
-      <div class="row g-3 row-full-line">
-        <div class="col-4">
-          <label for="1complemento" class="form-label">Volume de peixes</label>
-          <div class="input-group" style="padding-bottom: 0">
-            <input type="text" class="form-control" id="1complemento"
-              style="margin-bottom: 0">
+    </mat-tab>
+
+    <mat-tab label="Ambiente">
+      <ng-template mat-tab-label>
+        <mat-icon class="icon-tabs material-symbols-rounded">humidity_low</mat-icon>
+        Ambiente
+      </ng-template>
+      <div formGroupName="ambiente">
+        <div class="tab-container">
+          <div class="row g-3 row-full-line">
+            <div class="col-4">
+              <label for="dataColetaAmbiente" class="form-label">Data da coleta</label>
+              <div class="input-group" style="padding-bottom: 0">
+                <input type="date" class="form-control" id="dataColetaAmbiente" formControlName="dtColeta"
+                       style="margin-bottom: 0">
+              </div>
+            </div>
+
+            <div class="col-4">
+              <label for="horaColetaAmbiente" class="form-label required">Hora da coleta</label>
+              <div class="input-group">
+                <input type="time" class="form-control" id="horaColetaAmbiente" formControlName="hrColeta">
+              </div>
+            </div>
+
+            <div class="col-4">
+              <label for="ph" class="form-label required">PH</label>
+              <div class="input-group">
+                <input type="text" class="form-control" id="ph" formControlName="ph">
+              </div>
+            </div>
           </div>
         </div>
 
-        <div class="col-4">
-          <label for="1numero" class="form-label required">Mortalidade</label>
-          <div class="input-group">
-            <input type="text" class="form-control" id="1numero">
+        <div class="tab-container">
+          <div class="row g-3 row-full-line">
+            <div class="col-4">
+              <label for="amonia" class="form-label">Amônia</label>
+              <div class="input-group" style="padding-bottom: 0">
+                <input type="text" class="form-control" id="amonia" formControlName="amonia"
+                       style="margin-bottom: 0">
+              </div>
+            </div>
+
+            <div class="col-4">
+              <label for="nitrito" class="form-label required">Nitrito</label>
+              <div class="input-group">
+                <input type="text" class="form-control" id="nitrito" formControlName="nitrito">
+              </div>
+            </div>
+
+            <div class="col-4">
+              <label for="alcalinidade" class="form-label required">Alcalinidade</label>
+              <div class="input-group">
+                <input type="text" class="form-control" id="alcalinidade" formControlName="alcalinidade">
+              </div>
+            </div>
           </div>
         </div>
 
-        <div class="col-4">
-          <label for="1bairro" class="form-label required">Peso Médio</label>
-          <div class="input-group">
-            <input type="text" class="form-control" id="1bairro">
+        <div class="tab-container">
+          <div class="row g-3 row-full-line">
+            <div class="col-4">
+              <label for="transparenciaAgua" class="form-label">Transparência da água</label>
+              <div class="input-group" style="padding-bottom: 0">
+                <input type="text" class="form-control" id="transparenciaAgua" formControlName="transparenciaAgua"
+                       style="margin-bottom: 0">
+              </div>
+            </div>
+
+            <div class="col-4">
+              <label for="temperatura" class="form-label required">Temperatura</label>
+              <div class="input-group">
+                <input type="text" class="form-control" id="temperatura" formControlName="temperatura">
+              </div>
+            </div>
+
+            <div class="col-4">
+              <label for="oxigenio" class="form-label required">Oxigênio</label>
+              <div class="input-group">
+                <input type="text" class="form-control" id="oxigenio" formControlName="oxigenio">
+              </div>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-    
-    <div class="tab-container">
-      <div class="row g-3 row-full-line">
-        <div class="col-4">
-          <label for="1complemento" class="form-label">Biomassa total</label>
-          <div class="input-group" style="padding-bottom: 0">
-            <input type="text" class="form-control" id="1complemento"
-              style="margin-bottom: 0">
+    </mat-tab>
+
+    <mat-tab label="Ração">
+      <ng-template mat-tab-label>
+        <mat-icon class="icon-tabs material-symbols-rounded">package_2</mat-icon>
+        Ração
+      </ng-template>
+      <div formGroupName="racao">
+        <div class="tab-container">
+          <div class="row g-3 row-full-line">
+            <div class="col-4">
+              <label for="dataColetaRacao" class="form-label">Data da coleta</label>
+              <div class="input-group" style="padding-bottom: 0">
+                <input type="date" class="form-control" id="dataColetaRacao" formControlName="dtColeta"
+                       style="margin-bottom: 0">
+              </div>
+            </div>
+
+            <div class="col-4">
+              <label for="horaColetaRacao" class="form-label required">Hora da coleta</label>
+              <div class="input-group">
+                <input type="time" class="form-control" id="horaColetaRacao" formControlName="hrColeta">
+              </div>
+            </div>
+
+            <div class="col-4">
+              <label for="temperaturaRacao" class="form-label required">Temperatura</label>
+              <div class="input-group">
+                <input type="text" class="form-control" id="temperaturaRacao" formControlName="temperatura">
+              </div>
+            </div>
           </div>
         </div>
 
-        <div class="col-4">
-          <label for="1numero" class="form-label required">Ganho de peso</label>
-          <div class="input-group">
-            <input type="text" class="form-control" id="1numero">
-          </div>
-        </div>
+        <div class="tab-container">
+          <div class="row g-3 row-full-line">
+            <div class="col-4">
+              <label for="oxigenioRacao" class="form-label">Oxigênio</label>
+              <div class="input-group" style="padding-bottom: 0">
+                <input type="text" class="form-control" id="oxigenioRacao" formControlName="oxigenio"
+                       style="margin-bottom: 0">
+              </div>
+            </div>
 
-        <div class="col-4">
-          <label for="1bairro" class="form-label required">Ração ofertada</label>
-          <div class="input-group">
-            <input type="text" class="form-control" id="1bairro">
+            <div class="col-4">
+              <label for="racaoTrato" class="form-label required">Ração por trato</label>
+              <div class="input-group">
+                <input type="text" class="form-control" id="racaoTrato" formControlName="racaoTrato">
+              </div>
+            </div>
+
+            <div class="col-4">
+              <label for="racaoTotal" class="form-label required">Ração total</label>
+              <div class="input-group">
+                <input type="text" class="form-control" id="racaoTotal" formControlName="racaoTotal">
+              </div>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </mat-tab>
-
-  <mat-tab label="Ambiente" *ngIf="storage.getRole() === 'ADM_TREVISAN' || storage.getRole() === 'AMBIENTE' || storage.getRole() === 'PEIXE'">
-    <ng-template mat-tab-label>
-      <mat-icon class="icon-tabs material-symbols-rounded">humidity_low</mat-icon>
-      Ambiente
-    </ng-template>
-    
-    <div class="tab-container">
-      <div class="row g-3 row-full-line">
-        <div class="col-4">
-          <label for="1complemento" class="form-label">Data da coleta</label>
-          <div class="input-group" style="padding-bottom: 0">
-            <input type="text" class="form-control" id="1complemento"
-              style="margin-bottom: 0">
-          </div>
-        </div>
-
-        <div class="col-4">
-          <label for="1numero" class="form-label required">Hora da coleta</label>
-          <div class="input-group">
-            <input type="text" class="form-control" id="1numero">
-          </div>
-        </div>
-
-        <div class="col-4">
-          <label for="1bairro" class="form-label required">PH</label>
-          <div class="input-group">
-            <input type="text" class="form-control" id="1bairro">
-          </div>
-        </div>
-      </div>
-    </div>
-    
-    <div class="tab-container">
-      <div class="row g-3 row-full-line">
-        <div class="col-4">
-          <label for="1complemento" class="form-label">Amônia</label>
-          <div class="input-group" style="padding-bottom: 0">
-            <input type="text" class="form-control" id="1complemento"
-              style="margin-bottom: 0">
-          </div>
-        </div>
-
-        <div class="col-4">
-          <label for="1numero" class="form-label required">Nitrito</label>
-          <div class="input-group">
-            <input type="text" class="form-control" id="1numero">
-          </div>
-        </div>
-
-        <div class="col-4">
-          <label for="1bairro" class="form-label required">Alcalinidade</label>
-          <div class="input-group">
-            <input type="text" class="form-control" id="1bairro">
-          </div>
-        </div>
-      </div>
-    </div>
-    
-    <div class="tab-container">
-      <div class="row g-3 row-full-line">
-        <div class="col-4">
-          <label for="1complemento" class="form-label">Transparência da água</label>
-          <div class="input-group" style="padding-bottom: 0">
-            <input type="text" class="form-control" id="1complemento"
-              style="margin-bottom: 0">
-          </div>
-        </div>
-
-        <div class="col-4">
-          <label for="1numero" class="form-label required">Temperatura</label>
-          <div class="input-group">
-            <input type="text" class="form-control" id="1numero">
-          </div>
-        </div>
-
-        <div class="col-4">
-          <label for="1bairro" class="form-label required">Oxigênio</label>
-          <div class="input-group">
-            <input type="text" class="form-control" id="1bairro">
-          </div>
-        </div>
-      </div>
-    </div>
-  </mat-tab>
-
-  <mat-tab label="Ração">
-    <ng-template mat-tab-label>
-      <mat-icon class="icon-tabs material-symbols-rounded">package_2</mat-icon>
-      Ração
-    </ng-template>
-    
-    <div class="tab-container">
-      <div class="row g-3 row-full-line">
-        <div class="col-4">
-          <label for="1complemento" class="form-label">Data da coleta</label>
-          <div class="input-group" style="padding-bottom: 0">
-            <input type="text" class="form-control" id="1complemento"
-              style="margin-bottom: 0">
-          </div>
-        </div>
-
-        <div class="col-4">
-          <label for="1numero" class="form-label required">Hora da coleta</label>
-          <div class="input-group">
-            <input type="text" class="form-control" id="1numero">
-          </div>
-        </div>
-
-        <div class="col-4">
-          <label for="1bairro" class="form-label required">Temperatura</label>
-          <div class="input-group">
-            <input type="text" class="form-control" id="1bairro">
-          </div>
-        </div>
-      </div>
-    </div>
-    
-    <div class="tab-container">
-      <div class="row g-3 row-full-line">
-        <div class="col-4">
-          <label for="1complemento" class="form-label">Oxigênio</label>
-          <div class="input-group" style="padding-bottom: 0">
-            <input type="text" class="form-control" id="1complemento"
-              style="margin-bottom: 0">
-          </div>
-        </div>
-
-        <div class="col-4">
-          <label for="1numero" class="form-label required">Ração por trato</label>
-          <div class="input-group">
-            <input type="text" class="form-control" id="1numero">
-          </div>
-        </div>
-
-        <div class="col-4">
-          <label for="1bairro" class="form-label required">Ração total</label>
-          <div class="input-group">
-            <input type="text" class="form-control" id="1bairro">
-          </div>
-        </div>
-      </div>
-    </div>
-  </mat-tab>
-  
-  
+    </mat-tab>
+  </form>
 </mat-tab-group>
+<button class="button-no-border" style="margin-right: 10px" (click)="onSubmit()">Salvar</button>

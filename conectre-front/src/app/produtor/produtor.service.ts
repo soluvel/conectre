@@ -26,6 +26,10 @@ export class ProdutorService {
     return this.http.get<any>(`${this.apiUrl}/count`, {headers: this.headers});
   }
 
+  getProdutorReduce(): Observable<any[]> {
+    return this.http.get<any>(`${this.apiUrl}/reduce`, { headers: this.headers });
+  }
+
   page(numb: number, size: number, filter: string, attributes: string[]): Observable<any> {
     let params = new HttpParams();
     if (filter) {

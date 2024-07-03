@@ -79,11 +79,28 @@ mat-paginator {
   outline: none;
 }
 
-.input-img {
-  height: 80%;
+.icon-search {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  font-size: 20px;
   position: absolute;
   left: 23%;
-  padding-top: 5px;
+  cursor: pointer;
+}
+
+.filter-button {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.icon-filter {
+  font-size: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 #overlay {

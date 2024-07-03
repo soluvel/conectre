@@ -41,8 +41,8 @@ public class MedicaoController extends CrudController<Medicao, Medicao, Long> {
             medicao.getAmbiente().setMedicao(medicao);
         }
 
-        if (medicao.getRacao() != null) {
-            medicao.getRacao().setMedicao(medicao);
+        if (medicao.getRacao().getDtColeta() == null) {
+            medicao.setRacao(null);
         }
         return new ResponseEntity<>(medicaoService.save(medicao), HttpStatus.CREATED);
     }
