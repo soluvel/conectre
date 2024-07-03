@@ -4,7 +4,6 @@ import { EmpresaService } from "../../empresa/empresa.service";
 import { ToastrService } from "ngx-toastr";
 import { ActivatedRoute, Router } from "@angular/router";
 import { Subject, takeUntil } from "rxjs";
-import { TecnicoService } from "../../tecnico/tecnico.service";
 import { ProdutorService } from "../produtor.service";
 import { StringNumberFormats } from "../../utils/StringNumberFormats";
 
@@ -19,6 +18,7 @@ export class ProdutorCadastroComponent implements OnInit, OnDestroy {
   produtorId: any;
   private destroy$ = new Subject<void>();
   empresas: any[] = [];
+  empresaSelecionada: any;
 
   constructor(private formBuilder: FormBuilder,
               private toastr: ToastrService,
@@ -30,6 +30,7 @@ export class ProdutorCadastroComponent implements OnInit, OnDestroy {
       id: [],
       nome: ['', Validators.required],
       cpf: ['', Validators.required],
+      email: ['', Validators.required],
       celular: ['', Validators.required],
       empresa: ['', Validators.required],
     });
@@ -43,19 +44,24 @@ export class ProdutorCadastroComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
       this.produtorId = params.get('id');
-      this.getProdutor();
-    });
 
-    this.empresaService.getEmpresasReduce().subscribe(data => {
-      this.empresas = data;
+      if (!this.produtorId) {
+        this.empresaService.getEmpresasReduce().subscribe(data => {
+          this.empresas = data;
+        });
+      } else {
+        this.getProdutor();
+
+      }
+
     });
   }
 
   getProdutor(): void {
     this.service.findOne(parseInt(this.produtorId)).subscribe(data => {
       this.form.patchValue(data);
-      this.form.get('celular').setValue(StringNumberFormats.formatCelular(this.form.get('celular').value))
-      this.form.get('cpf').setValue(StringNumberFormats.formatCpfCnpj(this.form.get('cpf').value))
+      this.form.get('celular').setValue(StringNumberFormats.formatCelular(this.form.get('celular').value));
+      this.form.get('cpf').setValue(StringNumberFormats.formatCpfCnpj(this.form.get('cpf').value));
       this.isEditando = true;
     });
   }

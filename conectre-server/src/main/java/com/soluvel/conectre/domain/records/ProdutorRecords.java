@@ -1,8 +1,6 @@
 package com.soluvel.conectre.domain.records;
 
-import com.soluvel.conectre.domain.Endereco;
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
 
 public record ProdutorRecords(
         Long id,
@@ -17,5 +15,5 @@ public record ProdutorRecords(
 
         @NotBlank(message = "email não pode ser em branco ou nulo")
         String email,
-        Long empresa) {
+        EmpresaReduceRecords empresa) {
 }

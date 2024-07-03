@@ -20,7 +20,7 @@ const routes: Routes = [
   {path: 'empresa/editar/:id', component: EmpresaComponent, data: {role: ['ADM_TREVISAN']}, canActivate: [AuthGuard]},
   {path: 'tecnico/cadastrar', component: TecnicoCadastroComponent, data: {role: ['ADM_TREVISAN']}, canActivate: [AuthGuard]},
   {path: 'tecnico/editar/:id', component: TecnicoCadastroComponent, data: {role: ['ADM_TREVISAN']}, canActivate: [AuthGuard]},
-  {path: 'produtor/cadastrar', component: ProdutorCadastroComponent, data: {role: ['ADM_TREVISAN']}, canActivate: [AuthGuard]},
+  {path: 'produtor/cadastrar', component: ProdutorCadastroComponent, data: {role: ['ADM_TREVISAN', 'TECNICO']}, canActivate: [AuthGuard]},
   {path: 'produtor/editar/:id', component: ProdutorCadastroComponent, data: {role: ['ADM_TREVISAN']}, canActivate: [AuthGuard]},
   {path: 'propriedade/cadastrar', component: PropriedadeCadastroComponent, data: {role: ['ADM_TREVISAN']}, canActivate: [AuthGuard]},
   {path: 'propriedade/editar/:id', component: PropriedadeCadastroComponent, data: {role: ['ADM_TREVISAN']}, canActivate: [AuthGuard]},

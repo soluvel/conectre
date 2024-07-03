@@ -1,4 +1,5 @@
 import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { StorageService } from "../storage.service";
 
 @Component({
   selector: 'app-sidebar',
@@ -10,6 +11,8 @@ export class SidebarComponent implements OnChanges {
   @Input() collapse: boolean;
   sideNavCollapsed: boolean;
   logoCollapsed: string
+
+  constructor(public storage: StorageService) {}
 
   ngOnChanges(changes: SimpleChanges) {
     this.sideNavCollapsed = this.collapse;

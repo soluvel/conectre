@@ -25,6 +25,7 @@ public class ProdutorMapper {
         GenericMapper.map(record, produtor);
 
         produtor.setCelular(removeSpecialCharacters(record.celular()));
+        produtor.setCpf(removeSpecialCharacters(record.cpf()));
         produtor.setUsername(record.email());
 
         if (Objects.isNull(produtor.getId())) {
@@ -32,7 +33,7 @@ public class ProdutorMapper {
         }
         produtor.setPermissao(Permissao.PRODUTOR);
         produtor.setAtivo(true);
-        produtor.setEmpresa(empresaService.findById(record.empresa()).orElse(null));
+        produtor.setEmpresa(empresaService.findById(record.empresa().id()).orElse(null));
 
         return produtor;
     }

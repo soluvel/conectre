@@ -13,7 +13,7 @@
   </mat-tab>
 
   <mat-tab label="Técnicos"
-           *ngIf="storage.getRole() === 'ADM_TREVISAN' || storage.getRole() === 'TECNICO' || storage.getRole() === 'EMPRESA'">
+           *ngIf="storage.getRole() === 'ADM_TREVISAN' || storage.getRole() === 'EMPRESA'">
     <div class="tab-container">
       <div class="column">
         <h4>Técnicos</h4>
@@ -22,7 +22,8 @@
     </div>
   </mat-tab>
 
-  <mat-tab label="Produtores">
+  <mat-tab label="Produtores"
+           *ngIf="storage.getRole() === 'ADM_TREVISAN' || storage.getRole() === 'TECNICO' || storage.getRole() === 'EMPRESA'">
     <div class="tab-container">
       <div class="column">
         <h4>Produtores</h4>

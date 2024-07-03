@@ -9,7 +9,7 @@
     <form [formGroup]="form">
       <div class="row g-3">
         <div class="col-3">
-          <label id="avatar" for="avatarInput" class="form-label required">Foto</label>
+          <label id="avatar" for="avatarInput" class="form-label">Foto</label>
           <div class="input-group">
             <input type="file" id="avatarInput" (change)="handleImageUpload($event)" accept="image/*"
                    style="display: none">
@@ -23,7 +23,7 @@
         </div>
       </div>
       <div class="row g-3">
-        <div class="col-5">
+        <div class="col-3">
           <label id="nome" for="nome" class="form-label required">Nome</label>
           <div class="input-group">
             <input type="text" class="form-control" formControlName="nome"
@@ -42,7 +42,7 @@
           </span>
           </div>
         </div>
-        <div class="col-4">
+        <div class="col-3">
           <label id="celular" for="celular" class="form-label required">Celular</label>
           <div class="input-group">
             <input type="text" class="form-control" formControlName="celular"
@@ -52,13 +52,23 @@
           </span>
           </div>
         </div>
+        <div class="col-3">
+          <label id="email" for="email" class="form-label required">E-mail</label>
+          <div class="input-group">
+            <input type="text" class="form-control" formControlName="email"
+                   aria-describedby="empresaImage">
+            <span class="input-group-text">
+          <img src="assets/pen.svg" alt="Imagem" *ngIf="isEditando">
+          </span>
+          </div>
+        </div>
       </div>
 
       <div class="row g-3">
-        <div class="col-4">
+        <div class="col-3">
           <label id="empresa" for="empresa" class="form-label required">Empresa</label>
           <select class="form-select" formControlName="empresa">
-            <option *ngFor="let empresa of empresas" [value]="empresa.id">{{ empresa.razaoSocial }}</option>
+            <option *ngFor="let empresa of empresas" [value]="empresa">{{ empresa.razaoSocial }}</option>
           </select>
         </div>
       </div>
