@@ -1,10 +1,14 @@
 <div class="container-filter">
-  <input class="input-search" type="text" placeholder="O que você procura?" [(ngModel)]="filter">
-  <mat-icon class="icon-search material-symbols-rounded" (click)="search()">search</mat-icon>
-  <button type="button" class="button-geral" style="margin-right: 10px" (click)="redirectToEmpresa()">Nova Empresa</button>
-  <button type="button" class="button-white filter-button" (click)="exibirQuadrado()">Filtrar
-    <mat-icon class="icon-filter material-symbols-rounded">filter_list</mat-icon>
-  </button>
+  <div class="input-search-box">
+    <input class="input-search" type="text" placeholder="O que você procura?" [(ngModel)]="filter">
+    <mat-icon class="icon-search material-symbols-rounded" (click)="search()">search</mat-icon>
+  </div>
+  <div class="buttons-box">
+    <button type="button" class="button-geral" style="margin-right: 10px" (click)="redirectToEmpresa()">Nova empresa</button>
+    <button type="button" class="button-white filter-button" (click)="exibirQuadrado()">Filtrar
+      <mat-icon class="icon-filter material-symbols-rounded">filter_list</mat-icon>
+    </button>
+  </div>
 </div>
 
 

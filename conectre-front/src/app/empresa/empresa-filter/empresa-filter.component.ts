@@ -17,11 +17,18 @@ export class EmpresaFilterComponent implements OnInit {
   checkedCidades: any[] = [];
   checkedRazaoSocial: any[] = [];
   checkedPlanos: string[] = [];
+  nenhumSelecionado: boolean;
+  checkboxesAtivos: { [key: string]: boolean } = {};
 
   constructor(private empresa: EmpresaService) {
+
+    this.opcoes.forEach(opcao => {
+      this.checkboxesAtivos[opcao] = false;
+    });
   }
 
   ngOnInit() {
+    this.nenhumSelecionado = true;
     this.empresa.getCidades().subscribe({
       next: (cidades) => {
         this.cidades = cidades
@@ -58,6 +65,13 @@ export class EmpresaFilterComponent implements OnInit {
     } else {
       this.checkedPlanos.splice(index, 1);
     }
+
+    if (this.checkedPlanos.length === 0) {
+      this.nenhumSelecionado = true;
+    } else {
+      this.nenhumSelecionado = false;
+    }
+
   }
 
   toggleCidade(cidade: string): void {
@@ -74,6 +88,10 @@ export class EmpresaFilterComponent implements OnInit {
     } else {
       this.checkedRazaoSocial.push(empresa);
     }
+  }
+
+  desativarCheckbox(item: string) {
+    this.checkboxesAtivos[item] = false;
   }
 
 }

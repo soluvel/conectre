@@ -17,6 +17,8 @@ table td, th {
 table th {
   color: $grey;
   background: #F4F4F5;
+  border-top-left-radius: $size-px-20;
+  border-top-right-radius: $size-px-20;
 }
 
 table td {
@@ -33,6 +35,10 @@ mat-paginator {
 .mat-elevation-z2 {
   border: 1px solid #ddd;
   border-radius: $size-px-20;
+  box-shadow: 
+  0px -1px 1px -10px rgba(0, 0, 0, 0.25),
+  0px 2px 2px 0px rgba(0, 0, 0, 0.14),
+  0px 1px 5px 0px rgba(0, 0, 0, 0.12);
 }
 
 #adm, #cnpj, #grupo {
@@ -72,19 +78,24 @@ mat-paginator {
   position: relative;
   width: 100%;
   height: $size-px-30;
-  justify-content: flex-end;
+  justify-content: space-between;
+}
+
+.input-search-box {
+  width: 25%;
+  display: flex;
+  position: relative;
 }
 
 .input-search {
-  width: 25%;
+  width: 100%;
   padding: 10px;
   border: 1px solid #ddd;
+  border-bottom: 1px solid #585858;
   border-radius: 5px;
   left: 0;
   top: 0;
   height: 100%;
-  position: absolute;
-  margin-right: $size-px-30;
   outline: none;
 }
 
@@ -93,16 +104,23 @@ mat-paginator {
   justify-content: center;
   align-items: center;
   height: 100%;
+  width: auto;
   font-size: 20px;
   position: absolute;
-  left: 23%;
+  right: 0;
+  padding-right: 10px;
   cursor: pointer;
+}
+
+.buttons-box {
+  display: flex;
 }
 
 .filter-button {
   display: flex;
   justify-content: space-around;
   align-items: center;
+  padding: 5px 8px;
 }
 
 .icon-filter {

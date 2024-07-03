@@ -1,27 +1,62 @@
 $border-botton-color: #E0E0E0;
+$border-botton-color-focus: #313131;
 $background-color: #fafafa;
+$lines-color: #E0E0E0;
 
 .container-form {
   width: 100%;
   padding: 20px 40px 20px 40px;
 }
 
-
 .container-header {
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-between;
   padding: 5px 0 10px 0;
+  color: #27272A;
+  font-size: 14px;
 }
 
-.container-header span {
-  font-weight: 600 ;
+.back-box {
+  display: flex;
 }
+
+.register-info {
+  position: absolute;
+  right: 0;
+  font-size: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.tec-info {
+  color: #27272A;
+  border: 1px solid #D1D1D1;
+  padding: 5px 8px;
+  border-radius: 4px;
+}
+
+.date-info {
+  color: #71717A;
+  padding-top: 5px;
+}
+
+.tec-name {
+  text-decoration: underline;
+}
+
+.tec-name,
+.edited-date {
+  font-weight: 600;
+}
+
 
 #adm-titel {
   margin-right: auto;
 }
 
 .form-control {
+  position: relative;
   border: none;
   border-bottom: 1px solid $border-botton-color;
   border-radius: unset;
@@ -37,6 +72,11 @@ $background-color: #fafafa;
   margin-bottom: 0.25rem;
 }
 
+.edit-icon {
+  position: absolute;
+  right: 0;
+  z-index: 999;
+}
 
 textarea:focus, input:focus, select:focus {
   box-shadow: 0 0 0 0;
@@ -53,13 +93,17 @@ label.required::after {
 .form-label, .form-control, option, select{
   padding-top: 0.10rem;
   padding-bottom: 0.10rem;
-  font-size: 0.800rem;
+  // font-size: 0.800rem;
+  font-size: 14px;
   margin-bottom: 5px;
 }
 
-
 .row.g-3 > .col-3 {
   margin-bottom: 20px;
+}
+
+.row > * {
+  padding-right: 20px;
 }
 
 .actions-footer {
@@ -98,8 +142,13 @@ label.required::after {
   width: 100%;
 }
 
+.button-no-border {
+  padding-right: 20px;
+}
+
 .button-disabled {
-  background-color: grey;
+  background-color: #F0F0F0;
+  color: #BDBDBD;
   cursor: not-allowed;
 }
 
@@ -121,12 +170,12 @@ select:focus {
 }
 
 .icon {
-  color: #838383;
+  color: #616161;
 }
 
 .back-icon {
-  color: #333333;
   cursor: pointer;
+  font-weight: 200;
 }
 
 .back-icon:hover {
@@ -155,7 +204,7 @@ select:focus {
 }
 
 .tanque-infos {
-  background: #E4E4E7;
+  background: #FAFAFA;
   padding: 15px 40px 0 40px;
   border-radius: 20px;
   height: 475px;
@@ -168,7 +217,7 @@ select:focus {
   justify-content: space-between;
   margin-bottom: 20px;
   padding-bottom: 10px;
-  border-bottom: 1px solid #000;
+  border-bottom: 1px solid $lines-color;
 }
 
 .header-infos > span {
@@ -185,6 +234,7 @@ select:focus {
   cursor: pointer;
   white-space: nowrap;
   transition: .3s;
+  color: #3F3F46;
 }
 
 .select-title-open {
@@ -218,6 +268,7 @@ select:focus {
 }
 
 .select-infos span {
+  color: #616161;
   padding: 10px;
 }
 
@@ -227,6 +278,7 @@ select:focus {
 
 .select-infos ul li {
   margin-bottom: 10px;
+  color: #424242;
   cursor: pointer;
 }
 
@@ -250,4 +302,16 @@ select:focus {
   display: flex;
   justify-content: center;
   align-items: center;
+  color: #A1A1AA;
+  font-size: 12px;
+}
+
+.date-info-footer {
+  font-weight: 600;
+}
+
+textarea:focus, input:focus, select:focus {
+  box-shadow: 0 0 0 0;
+  border-bottom: 1px solid $border-botton-color-focus;
+  outline: 0;
 }

@@ -1,10 +1,13 @@
-$background-color: #E4E4E7;
+// $background-color: #E4E4E7;
+$background-color: #FAFAFA;
 $border-botton-color: #313131;
 $border-radius: 10px;
 $size-30: 30px;
 $weight-500: 500;
 $weight-700: 700;
 $active-tab-color: #27272A;
+$lines-color: #E0E0E0;
+
 
 h4 {
   font-size: 12px;
@@ -23,8 +26,8 @@ h4 {
   height: 100px;
   width: 100%;
   background-color: $background-color;
-  border-bottom-left-radius: $border-radius;
-  border-bottom-right-radius: $border-radius;
+  // border-bottom-left-radius: $border-radius;
+  // border-bottom-right-radius: $border-radius;
 }
 
 ::ng-deep {
@@ -59,12 +62,14 @@ h4 {
   .mat-mdc-tab.mdc-tab--active {
     background-color: $background-color;
     border-bottom: 2px solid #068fff;
+    color: #242424;
   }
 }
 
 ::ng-deep {
   .mat-mdc-tab-header {
     --mdc-tab-indicator-active-indicator-height: 0px !important;
+    padding-bottom: 10px;
   }
 }
 
@@ -101,24 +106,25 @@ mat-tab {
 }
 
 .icon-tabs {
+  // color: #242424;
   margin-right: 5px;
 }
 
 .form-control {
   border: none;
-  border-bottom: 1px solid $border-botton-color;
+  border-bottom: 1px solid $lines-color;
   border-radius: unset;
   background-color: $background-color;
+}
+
+.form-label {
+  color: #242424;
+  font-size: 14px;
+  font-weight: 400;
 }
 
 textarea:focus, input:focus, select:focus {
   box-shadow: 0 0 0 0;
   border-bottom: 1px solid $border-botton-color;
   outline: 0;
-}
-
-.form-label, .form-control, option, select{
-  padding-top: 0.10rem;
-  padding-bottom: 0.10rem;
-  margin-bottom: 5px;
 }
