@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-ConectreApplication<conectre>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.soluvel.conectre.ConectreApplication",
+            "projectName": "conectre",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}
