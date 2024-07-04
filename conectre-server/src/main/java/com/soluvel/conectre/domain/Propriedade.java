@@ -53,4 +53,7 @@ public class Propriedade implements Serializable {
     )
     private List<Equipamento> equipamentos = new ArrayList<>();
 
+    @OneToMany(mappedBy = "propriedade", fetch = FetchType.LAZY)
+    private List<Tanque> tanques;
+
 }

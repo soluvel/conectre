@@ -6,6 +6,8 @@ import com.soluvel.conectre.domain.Equipamento;
 import com.soluvel.conectre.domain.Propriedade;
 import com.soluvel.conectre.domain.records.EquipamentoResponseRecords;
 import com.soluvel.conectre.repository.PropriedadeRepository;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -29,4 +31,7 @@ public class PropriedadeService extends CrudService<Propriedade, Long> {
         return repository.findEquipamentosResponse();
     }
 
+    public Page<Propriedade> findAllByProdutorId(Long produtorId) {
+        return repository.findAllByProdutorId(produtorId, PageRequest.of(0, 5));
+    }
 }

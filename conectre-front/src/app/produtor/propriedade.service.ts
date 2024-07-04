@@ -21,8 +21,8 @@ export class PropriedadeService {
     return this.http.get<any>(`${this.apiUrl}`, { headers: this.headers });
   }
 
-  getCidades(): Observable<string[]> {
-    return this.http.get<any>(`${this.apiUrl}/cidades`, { headers: this.headers });
+  getPropriedadesByProdutor(produtor: number): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/by-produtor/${produtor}`, { headers: this.headers });
   }
 
   save(data: any): Observable<Propriedade> {
