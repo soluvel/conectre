@@ -34,7 +34,7 @@ mat-paginator {
 
 #empresa {
   border-top-left-radius: 20px;
-  width: 10%;
+  width: 20%;
 }
 
 #header-right {
@@ -79,40 +79,24 @@ mat-paginator {
   outline: none;
 }
 
-.icon-search {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-  font-size: 20px;
+.input-img {
+  height: 80%;
   position: absolute;
   left: 23%;
-  cursor: pointer;
+  padding-top: 5px;
 }
 
 #overlay {
   display: none;
   position: fixed;
-  top: 0;
-  right: 0;
-  padding: 30px;
-  width: 30%;
-  height: 100%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 45%;
+  height: 50%;
   background-color: white;
   z-index: 9999;
-}
-
-.filter-button {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-}
-
-.icon-filter {
-  font-size: 20px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  border-radius: 10px;
 }
 
 @media screen and (max-width: 600px) {
@@ -121,4 +105,4 @@ mat-paginator {
   }
 }
 
-/*# sourceMappingURL=empresa-table.component.css.map */
+/*# sourceMappingURL=table-propriedade-vinculado.component.css.map */

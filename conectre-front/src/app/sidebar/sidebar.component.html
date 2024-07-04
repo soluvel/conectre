@@ -15,9 +15,9 @@
           <mat-icon class="arrow-icon material-symbols-rounded hidden-effect invisible-effect">keyboard_arrow_down</mat-icon>
         </a>
         <div class="dropdown-content">
-          <a href="empresa/cadastrar"><img src="../../assets/subitem-icon.svg" alt="Cadastros">Empresa</a>
-          <a href="tecnico/cadastrar"><img src="../../assets/subitem-icon.svg" alt="Cadastros">Técnico</a>
-          <a href="produtor/cadastrar"><img src="../../assets/subitem-icon.svg" alt="Cadastros">Produtor</a>
+          <a href="empresa/cadastrar" *ngIf="storage.getRole() === 'ADM_TREVISAN' || storage.getRole() === 'EMPRESA'"><img src="../../assets/subitem-icon.svg" alt="Cadastros">Empresa</a>
+          <a href="tecnico/cadastrar" *ngIf="storage.getRole() === 'ADM_TREVISAN' || storage.getRole() === 'EMPRESA'"><img src="../../assets/subitem-icon.svg" alt="Cadastros">Técnico</a>
+          <a href="produtor/cadastrar" *ngIf="storage.getRole() === 'ADM_TREVISAN' || storage.getRole() === 'TECNICO' || storage.getRole() === 'EMPRESA'"><img src="../../assets/subitem-icon.svg" alt="Cadastros">Produtor</a>
         </div>
       </li>
     </ul>

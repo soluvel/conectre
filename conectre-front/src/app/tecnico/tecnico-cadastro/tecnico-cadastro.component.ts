@@ -54,7 +54,7 @@ export class TecnicoCadastroComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
       this.tecnicoId = params.get('id');
-      this.getEmpresa();
+      this.getTecnico();
     });
 
     this.empresaService.getEmpresasReduce().subscribe(data => {
@@ -62,7 +62,7 @@ export class TecnicoCadastroComponent implements OnInit, OnDestroy {
     });
   }
 
-  getEmpresa(): void {
+  getTecnico(): void {
     this.service.getTecnico(parseInt(this.tecnicoId)).subscribe(data => {
       this.form.patchValue(data);
       this.form.get('celular').setValue(StringNumberFormats.formatCelular(this.form.get('celular').value))

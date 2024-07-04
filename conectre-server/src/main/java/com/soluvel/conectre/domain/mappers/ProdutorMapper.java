@@ -32,6 +32,7 @@ public class ProdutorMapper implements Mapper<Produtor, ProdutorRecords> {
         GenericMapper.map(record, produtor);
 
         produtor.setCelular(removeSpecialCharacters(record.celular()));
+        produtor.setCpf(removeSpecialCharacters(record.cpf()));
         produtor.setUsername(record.email());
 
         if (Objects.isNull(produtor.getId())) {

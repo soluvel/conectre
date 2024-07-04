@@ -3,12 +3,11 @@ package com.soluvel.conectre.service;
 import com.soluvel.conectre.core.CrudRepository;
 import com.soluvel.conectre.core.CrudService;
 import com.soluvel.conectre.domain.Produtor;
-import com.soluvel.conectre.domain.Tecnico;
+import com.soluvel.conectre.domain.records.ProdutorReduceRecords;
 import com.soluvel.conectre.repository.ProdutorRepository;
-import com.soluvel.conectre.repository.TecnicoRepository;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class ProdutorService extends CrudService<Produtor, Long> {
@@ -19,5 +18,9 @@ public class ProdutorService extends CrudService<Produtor, Long> {
                            ProdutorRepository produtorRepository) {
         super(repository);
         this.repository = produtorRepository;
+    }
+
+    public List<ProdutorReduceRecords> findAllReduce() {
+        return repository.findAllReduce();
     }
 }

@@ -31,10 +31,9 @@
 
         <div class="col-6">
           <label id="produtorLabel" for="produtor" class="form-label required">Produtor</label>
-          <div class="input-group">
-            <input type="text" class="form-control" formControlName="produtor" id="produtor">
-            <mat-icon class="icon edit-icon material-symbols-rounded">edit</mat-icon>
-          </div>
+          <select  class="form-select" formControlName="produtor" id="produtor">
+            <option *ngFor="let produtor of produtores" [value]="produtor.id">{{ produtor.nome }}</option>
+          </select>
         </div>
       </div>
 
@@ -50,7 +49,7 @@
         <div class="col-2" formGroupName="endereco">
           <label for="cep" class="form-label required">CEP</label>
           <div class="input-group">
-            <input type="text" class="form-control required" formControlName="cep" id="cep" appCepMask [maxLength]="9">
+            <input type="text" class="form-control required" formControlName="cep" id="cep" appCepMask  (blur)="getEnderecoViaCep()" [maxLength]="9">
             <mat-icon class="icon edit-icon material-symbols-rounded">edit</mat-icon>
           </div>
         </div>
@@ -128,7 +127,7 @@
       <span> Piscicultura Nascente</span>
     </div>
 
-    <app-tabs-tanque class="table-infos" (tabChange)="onTabChange($event)"></app-tabs-tanque>
+    <app-tabs-tanque class="table-infos" [tanqueId]="1"></app-tabs-tanque>
 
     <span class="footer-infos">
       <span>

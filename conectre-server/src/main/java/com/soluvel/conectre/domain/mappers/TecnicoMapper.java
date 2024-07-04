@@ -34,6 +34,7 @@ public class TecnicoMapper implements Mapper<Tecnico, TecnicoRecords> {
         GenericMapper.map(record, tecnico);
 
         tecnico.setCelular(removeSpecialCharacters(record.celular()));
+        tecnico.setCpf(removeSpecialCharacters(record.cpf()));
         tecnico.setUsername(record.email());
 
         if (Objects.isNull(tecnico.getId())) {

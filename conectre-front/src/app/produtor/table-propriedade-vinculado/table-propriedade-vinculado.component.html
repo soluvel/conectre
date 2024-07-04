@@ -1,0 +1,50 @@
+<div class="container-filter">
+  <input class="input-search" type="text" placeholder="Buscar propriedade?" [(ngModel)]="razaoSocial">
+  <img src="../../../assets/search.svg" class="input-img" (click)="search()" alt="search">
+  <button type="button" class="button-white" (click)="exibirQuadrado()">Filtrar
+    <img src="../../../assets/filter.svg" alt="Imagem Redonda" style="padding-left: 10px">
+  </button>
+</div>
+
+
+<div class="mat-elevation-z2">
+  <table mat-table [dataSource]="dataSource">
+
+    <ng-container matColumnDef="nome">
+      <th mat-header-cell *matHeaderCellDef id="nome">Nome</th>
+      <td mat-cell *matCellDef="let element"> {{ element.nome }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="local">
+      <th mat-header-cell *matHeaderCellDef id="local">Local</th>
+      <td mat-cell *matCellDef="let element"> {{ element?.endereco?.localidade}}/{{element?.endereco?.uf}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="tanques">
+      <th mat-header-cell *matHeaderCellDef id="tanques">Tanques</th>
+      <td mat-cell *matCellDef="let element"> {{ element.tanques?.length }} {{ element.tanques?.length > 1 ? 'tanques' : 'tanque' }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="detalhe">
+      <th mat-header-cell *matHeaderCellDef id="header-right">Detalhes</th>
+      <td mat-cell *matCellDef="let element" id="detalhe">
+        <img class="icon-size-30" src="../../../assets/search.svg" alt="search"></td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+  <div id="paginacao" class="flex-align-itens-center">
+    <img class="icon-size-30" src="../../../assets/paginacao-esquerda.svg" (click)="nextOrBack(false)"
+         alt="paginacao-esquerda">
+    <div class="flex-align-itens-center">
+      <ng-container *ngFor="let number of getSequence(totalPage)">
+        <span id="paginacao-number" (click)="paginado(number)">{{ number }}</span>
+      </ng-container>
+    </div>
+    <img class="icon-size-30" src="../../../assets/paginacao-direita.svg" (click)="nextOrBack(true)"
+         alt="paginacao-direita">
+  </div>
+</div>
+

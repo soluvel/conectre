@@ -9,7 +9,6 @@ h4 {
 
 .tab-container {
   display: flex;
-  padding-left: 30px;
   align-items: center;
   justify-content: flex-start;
   height: 100px;
@@ -26,7 +25,7 @@ h4 {
 }
 
 ::ng-deep .mat-mdc-tab-labels {
-  width: 0%;
+  width: 100%;
   flex-grow: 0 !important;
 }
 
@@ -34,6 +33,11 @@ h4 {
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
   font-weight: 500;
+  width: 33% !important;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  padding-left: 5px;
 }
 
 ::ng-deep .mat-mdc-tab.mdc-tab--active {
@@ -46,7 +50,7 @@ h4 {
 }
 
 ::ng-deep .mat-mdc-tab-list {
-  width: 0% !important;
+  width: 100% !important;
   flex-grow: 0 !important;
 }
 
@@ -55,4 +59,45 @@ h4 {
   --mat-tab-header-inactive-ripple-color: transparent;
 }
 
-/*# sourceMappingURL=tabs.component.css.map */
+.mat-mdc-tab-group {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+}
+
+.row-full-line {
+  width: 100%;
+  display: flex;
+  justify-content: end;
+}
+
+mat-tab {
+  display: flex;
+  text-align: start;
+}
+
+.icon-tabs {
+  margin-right: 5px;
+}
+
+.form-control {
+  border: none;
+  border-bottom: 1px solid #313131;
+  border-radius: unset;
+  background-color: #E4E4E7;
+}
+
+textarea:focus, input:focus, select:focus {
+  box-shadow: 0 0 0 0;
+  border-bottom: 1px solid #313131;
+  outline: 0;
+}
+
+.form-label, .form-control, option, select {
+  padding-top: 0.1rem;
+  padding-bottom: 0.1rem;
+  margin-bottom: 5px;
+}
+
+/*# sourceMappingURL=tabs-tanque.component.css.map */

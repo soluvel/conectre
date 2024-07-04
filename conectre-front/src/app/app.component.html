@@ -2,7 +2,7 @@
   <mat-sidenav-container>
     <mat-sidenav class="transition-effect" opened mode="side" [style.width]="sidenavWidth()">
       <app-sidebar [collapse]="collapsed()"></app-sidebar>
-      
+
       <div class="sidebar-button" (click)="openSideMenu()" (click)="collapsed.set(!collapsed())">
         <span class="menu-icon-line first-line"></span>
         <span class="menu-icon-line second-line"></span>

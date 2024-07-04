@@ -32,6 +32,24 @@ export class TabsComponent implements OnInit {
   }
 
   ngOnInit() {
+
+    this.count();
+
+    switch (this.storage.getRole()) {
+      case 'TECNICO':
+        this.tabChange.emit('Produtores');
+        break;
+      case 'PRODUTOR':
+        this.tabChange.emit('Produtores');
+        break;
+      default:
+        this.tabChange.emit('Empresas');
+        break;
+    }
+
+  }
+
+  count() {
     this.empresaService.count().subscribe(qnt => {
       this.empresaQnt = qnt
     });

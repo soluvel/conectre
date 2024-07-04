@@ -52,6 +52,9 @@ import { CelularPipe } from "./pipes/celular";
 import { ProdutorFilterComponent } from "./produtor/produtor-filter/produtor-filter.component";
 import { PropriedadeCadastroComponent } from "./produtor/propriedade-cadastro/propriedade-cadastro.component";
 import { TabsTanqueComponent } from './tabs-tanque/tabs-tanque.component';
+import {
+  TablePropriedadeVinculadoComponent
+} from "./produtor/table-propriedade-vinculado/table-propriedade-vinculado.component";
 
 @NgModule({
   declarations: [
@@ -80,7 +83,8 @@ import { TabsTanqueComponent } from './tabs-tanque/tabs-tanque.component';
     ProdutorCadastroComponent,
     NotificacaoComponent,
     ProdutorFilterComponent,
-    PropriedadeCadastroComponent
+    PropriedadeCadastroComponent,
+    TablePropriedadeVinculadoComponent
   ],
   imports: [
     BrowserModule,

@@ -10,6 +10,7 @@ import com.soluvel.conectre.domain.records.EquipamentoResponseRecords;
 import com.soluvel.conectre.domain.records.PropriedadeRecords;
 import com.soluvel.conectre.service.EquipamentoService;
 import com.soluvel.conectre.service.PropriedadeService;
+import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -73,6 +74,11 @@ public class PropriedadeController extends CrudController<Propriedade, Proprieda
     @GetMapping("/equipamentos")
     public ResponseEntity<List<EquipamentoResponseRecords>> equipamentosDisponiveis() {
         return new ResponseEntity<>(service.listEquipamentoResponse(), HttpStatus.OK);
+    }
+
+    @GetMapping("/by-produtor/{produtor}")
+    public ResponseEntity<Page<Propriedade>> findAllByProdutorId(@PathVariable("produtor") Long produtor) {
+        return new ResponseEntity<>(service.findAllByProdutorId(produtor), HttpStatus.OK);
     }
 
     private PropriedadeRecords castObjectToRecord(Object object) {
