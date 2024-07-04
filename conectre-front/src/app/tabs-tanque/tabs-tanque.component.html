@@ -3,7 +3,7 @@
   <mat-tab label="Peixes" *ngIf="storage.getRole() === 'ADM_TREVISAN' || storage.getRole() === 'PEIXE'">
     <ng-template mat-tab-label>
       <mat-icon class="icon-tabs material-symbols-rounded">set_meal</mat-icon>
-      Peixes
+      <span>Peixes</span>
     </ng-template>
     <div class="tab-container">
       <div class="row g-3 row-full-line">
@@ -87,7 +87,7 @@
   <mat-tab label="Ambiente" *ngIf="storage.getRole() === 'ADM_TREVISAN' || storage.getRole() === 'AMBIENTE' || storage.getRole() === 'PEIXE'">
     <ng-template mat-tab-label>
       <mat-icon class="icon-tabs material-symbols-rounded">humidity_low</mat-icon>
-      Ambiente
+      <span>Ambiente</span>
     </ng-template>
     
     <div class="tab-container">
@@ -172,7 +172,7 @@
   <mat-tab label="Ração">
     <ng-template mat-tab-label>
       <mat-icon class="icon-tabs material-symbols-rounded">package_2</mat-icon>
-      Ração
+      <span>Ração</span>
     </ng-template>
     
     <div class="tab-container">
