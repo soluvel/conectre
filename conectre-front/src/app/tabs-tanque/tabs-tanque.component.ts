@@ -64,7 +64,9 @@ export class TabsTanqueComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-
+    this.medicaoService.findOneByTanque(parseInt(this.tanqueId)).subscribe(data => {
+      this.form.patchValue(data);
+    });
   }
 
   onSubmit() {

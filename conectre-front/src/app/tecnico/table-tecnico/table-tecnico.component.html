@@ -31,15 +31,6 @@
       <td mat-cell *matCellDef="let element"> {{ element.celular | celular }}</td>
     </ng-container>
 
-    <ng-container matColumnDef="produtores">
-      <th mat-header-cell *matHeaderCellDef id="grupo">Produtores</th>
-      <td mat-cell *matCellDef="let element">
-        <ng-container *ngFor="let img of element.produtores">
-          <img src="../../../assets/avatar.svg" class="conjunto-avatar" alt="{{ img.nome }}">
-        </ng-container>
-      </td>
-    </ng-container>
-
     <ng-container matColumnDef="detalhe">
       <th mat-header-cell *matHeaderCellDef id="header-right">Detalhes</th>
       <td mat-cell *matCellDef="let element" id="detalhe">

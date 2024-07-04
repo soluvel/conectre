@@ -1,17 +1,18 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatTableDataSource } from "@angular/material/table";
 import { MatPaginator } from "@angular/material/paginator";
-import { EmpresaService } from "../../empresa/empresa.service";
+import { ProdutorService } from "../produtor.service";
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-table-produtor-vinculado',
   templateUrl: './table-produtor-vinculado.component.html',
   styleUrls: ['./table-produtor-vinculado.component.scss']
 })
-export class TableProdutorVinculadoComponent {
+export class TableProdutorVinculadoComponent implements OnInit {
 
   dataSource = new MatTableDataSource<any>;
-  displayedColumns: string[] = ['nome', 'empresa', 'tecnico', 'propriedade', 'equipamento', 'contato', 'detalhe'];
+  displayedColumns: string[] = ['nome', 'empresa', 'propriedade', 'contato', 'detalhe'];
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   pageNumber: number = 0;
@@ -19,7 +20,8 @@ export class TableProdutorVinculadoComponent {
   size: number = 3;
   razaoSocial: string;
 
-  constructor(private service: EmpresaService) {
+  constructor(private service: ProdutorService,
+              private router: Router) {
   }
 
   ngOnInit(): void {
@@ -74,6 +76,10 @@ export class TableProdutorVinculadoComponent {
       }, error: () => {
       }
     });
+  }
+
+  redirectToDetails(id: any) {
+    this.router.navigate(['/produtor/editar', id]);
   }
 }
 

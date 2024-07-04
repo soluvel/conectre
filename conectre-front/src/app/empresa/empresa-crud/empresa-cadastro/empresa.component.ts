@@ -54,17 +54,19 @@ export class EmpresaComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
       this.empresaId = params.get('id');
+      if (this.empresaId != null) {
+        this.isEditando = true;
+      }
       this.getEmpresa();
     });
 
-    this.msgButton = this.form.valid ? "Cadastrar Empresa" : "Salvar Alterações"
+    this.msgButton = !this.isEditando ? "Cadastrar Empresa" : "Salvar Alterações"
   }
 
   getEmpresa(): void {
     this.service.getEmpresa(parseInt(this.empresaId)).subscribe(data => {
       this.form.patchValue(data);
       this.form.get('cnpjCpf').setValue(StringNumberFormats.formatCpfCnpj(this.form.get('cnpjCpf').value));
-      this.isEditando = true;
     });
   }
 

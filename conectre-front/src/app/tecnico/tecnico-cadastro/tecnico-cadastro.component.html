@@ -16,7 +16,6 @@
             <label for="avatarInput" class="input-group-text" style="cursor: pointer;">
               <div
                 style="width: 40px; height: 40px; border-radius: 50%; background-color: #ccc; display: flex; justify-content: center; align-items: center;">
-                <img src="assets/pen.svg" alt="Imagem" *ngIf="isEditando" style="width: 50px; height: 50px;">
               </div>
             </label>
           </div>
@@ -28,9 +27,7 @@
           <div class="input-group">
             <input type="text" class="form-control" formControlName="nome"
                    aria-describedby="nome">
-            <span class="input-group-text">
-          <img src="assets/pen.svg" alt="Imagem" *ngIf="isEditando">
-          </span>
+            <mat-icon class="icon edit-icon material-symbols-rounded" *ngIf="isEditando">edit</mat-icon>
           </div>
         </div>
         <div class="col-2">
@@ -38,9 +35,7 @@
           <div class="input-group">
             <input type="text" class="form-control" formControlName="cpf" appCnpjCpfMask [maxLength]="14"
                    aria-describedby="empresaImage">
-            <span class="input-group-text">
-          <img src="assets/pen.svg" alt="Imagem" *ngIf="isEditando">
-          </span>
+            <mat-icon class="icon edit-icon material-symbols-rounded" *ngIf="isEditando">edit</mat-icon>
           </div>
         </div>
         <div class="col-3">
@@ -48,18 +43,14 @@
           <div class="input-group">
             <input type="text" class="form-control" formControlName="celular" appCelularMask [maxLength]="15"
                    aria-describedby="empresaImage">
-            <span class="input-group-text">
-          <img src="assets/pen.svg" alt="Imagem" *ngIf="isEditando">
-          </span>
+            <mat-icon class="icon edit-icon material-symbols-rounded" *ngIf="isEditando">edit</mat-icon>
           </div>
         </div>
         <div class="col-3">
           <label for="email" class="form-label required">E-mail</label>
           <div class="input-group">
             <input type="email" class="form-control" formControlName="email" id="email">
-            <span class="input-group-text">
-          <img src="assets/pen.svg" alt="Imagem" *ngIf="isEditando">
-          </span>
+            <mat-icon class="icon edit-icon material-symbols-rounded" *ngIf="isEditando">edit</mat-icon>
           </div>
         </div>
       </div>
@@ -67,41 +58,36 @@
       <div class="row g-3">
         <div class="col-4">
           <label id="empresa" for="empresa" class="form-label required">Empresa</label>
-          <select  class="form-select" formControlName="empresa">
+          <select class="form-select" formControlName="empresa">
             <option *ngFor="let empresa of empresas" [value]="empresa.id">{{ empresa.razaoSocial }}</option>
           </select>
         </div>
 
         <ng-container formGroupName="endereco">
-        <div class="col-2">
-          <label id="cep" for="cep" class="form-label required">CEP</label>
-          <div class="input-group">
-            <input type="text" class="form-control required" formControlName="cep" appCepMask (blur)="getEnderecoViaCep()">
-            <span class="input-group-text">
-          <img src="assets/pen.svg" alt="Imagem" *ngIf="isEditando">
-          </span>
+          <div class="col-2">
+            <label id="cep" for="cep" class="form-label required">CEP</label>
+            <div class="input-group">
+              <input type="text" class="form-control required" formControlName="cep" appCepMask
+                     (blur)="getEnderecoViaCep()">
+              <mat-icon class="icon edit-icon material-symbols-rounded" *ngIf="isEditando">edit</mat-icon>
+            </div>
           </div>
-        </div>
 
-        <div class="col-3">
-          <label id="localidade" for="localidade" class="form-label required">Cidade</label>
-          <div class="input-group">
-            <input type="text" class="form-control" formControlName="localidade">
-            <span class="input-group-text">
-          <img src="assets/pen.svg" alt="Imagem" *ngIf="isEditando">
-          </span>
+          <div class="col-3">
+            <label id="localidade" for="localidade" class="form-label required">Cidade</label>
+            <div class="input-group">
+              <input type="text" class="form-control" formControlName="localidade">
+              <mat-icon class="icon edit-icon material-symbols-rounded" *ngIf="isEditando">edit</mat-icon>
+            </div>
           </div>
-        </div>
 
-        <div class="col-3">
-          <label id="logradouro" for="logradouro" class="form-label required">Logradouro</label>
-          <div class="input-group">
-            <input type="text" class="form-control" formControlName="logradouro">
-            <span class="input-group-text">
-          <img src="assets/pen.svg" alt="Imagem" *ngIf="isEditando">
-          </span>
+          <div class="col-3">
+            <label id="logradouro" for="logradouro" class="form-label required">Logradouro</label>
+            <div class="input-group">
+              <input type="text" class="form-control" formControlName="logradouro">
+              <mat-icon class="icon edit-icon material-symbols-rounded" *ngIf="isEditando">edit</mat-icon>
+            </div>
           </div>
-        </div>
         </ng-container>
       </div>
 
@@ -110,9 +96,7 @@
           <label for="bairro" class="form-label required">Bairro</label>
           <div class="input-group">
             <input type="text" class="form-control" formControlName="bairro" id="bairro">
-            <span class="input-group-text">
-          <img src="assets/pen.svg" alt="Imagem" *ngIf="isEditando">
-          </span>
+            <mat-icon class="icon edit-icon material-symbols-rounded" *ngIf="isEditando">edit</mat-icon>
           </div>
         </div>
 
@@ -120,9 +104,7 @@
           <label id="numero" for="numero" class="form-label required">Número</label>
           <div class="input-group">
             <input type="text" class="form-control" formControlName="numero">
-            <span class="input-group-text">
-          <img src="assets/pen.svg" alt="Imagem" *ngIf="isEditando">
-          </span>
+            <mat-icon class="icon edit-icon material-symbols-rounded" *ngIf="isEditando">edit</mat-icon>
           </div>
         </div>
 
@@ -130,9 +112,7 @@
           <label for="uf" class="form-label required">Estado</label>
           <div class="input-group">
             <input type="text" class="form-control" formControlName="uf" id="uf">
-            <span class="input-group-text">
-          <img src="assets/pen.svg" alt="Imagem" *ngIf="isEditando">
-          </span>
+            <mat-icon class="icon edit-icon material-symbols-rounded" *ngIf="isEditando">edit</mat-icon>
           </div>
         </div>
 
@@ -141,9 +121,7 @@
           <div class="input-group" style="padding-bottom: 0">
             <input type="text" class="form-control" formControlName="complemento" id="complemento"
                    style="margin-bottom: 0">
-            <span class="input-group-text">
-          <img src="assets/pen.svg" alt="Imagem" *ngIf="isEditando">
-          </span>
+            <mat-icon class="icon edit-icon material-symbols-rounded" *ngIf="isEditando">edit</mat-icon>
           </div>
         </div>
       </div>
@@ -152,8 +130,7 @@
 
   <div class="actions-footer">
     <button class="button-no-border" style="margin-right: 10px">Limpar dados</button>
-    <button [disabled]="!form.valid" (click)="onSubmit()" [ngClass]="{'button-disabled': !form.valid}">Cadastrar
-      Técnico
+    <button [disabled]="!form.valid" (click)="onSubmit()" [ngClass]="{'button-disabled': !form.valid}">{{ isEditando ? 'Salvar Alterações' : 'Cadastrar Técnico' }}
     </button>
   </div>
 

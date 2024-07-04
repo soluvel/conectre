@@ -32,11 +32,6 @@
       <td mat-cell *matCellDef="let element"> {{ element.propriedades.length }}</td>
     </ng-container>
 
-    <ng-container matColumnDef="equipamento">
-      <th mat-header-cell *matHeaderCellDef id="equipamento">Equipamentos</th>
-      <td mat-cell *matCellDef="let element"> {{ element.propriedades.length }}</td>
-    </ng-container>
-
     <ng-container matColumnDef="contato">
       <th mat-header-cell *matHeaderCellDef id="contato">Contato</th>
       <td mat-cell *matCellDef="let element"> {{ element.celular | celular }}</td>

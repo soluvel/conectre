@@ -1,8 +1,8 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { MatTableDataSource } from "@angular/material/table";
 import { MatPaginator } from "@angular/material/paginator";
-import { EmpresaService } from "../../empresa/empresa.service";
 import { PropriedadeService } from "../propriedade.service";
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-table-propriedade-vinculado',
@@ -11,6 +11,7 @@ import { PropriedadeService } from "../propriedade.service";
 })
 export class TablePropriedadeVinculadoComponent implements OnInit {
 
+  @Input() produtorId: any;
   dataSource = new MatTableDataSource<any>;
   displayedColumns: string[] = ['nome', 'local', 'tanques', 'detalhe'];
 
@@ -18,12 +19,14 @@ export class TablePropriedadeVinculadoComponent implements OnInit {
   pageNumber: number = 0;
   totalPage: number;
   size: number = 3;
-  razaoSocial: string;
+  filter: string;
 
-  constructor(private service: PropriedadeService) {}
+  constructor(private service: PropriedadeService,
+              private router: Router) {
+  }
 
   ngOnInit(): void {
-    this.service.getPropriedadesByProdutor(3).subscribe({
+    this.service.getPropriedadesByProdutor(this.produtorId).subscribe({
       next: (page) => {
         this.dataSource.data = page.content
         this.pageNumber = page.pageable.pageNumber
@@ -35,15 +38,30 @@ export class TablePropriedadeVinculadoComponent implements OnInit {
   }
 
   search() {
-
+    this.service.page(0, this.size, this.filter, ['nome', 'endereco.localidade']).subscribe({
+      next: (page) => {
+        this.dataSource.data = page.content
+        this.pageNumber = page.pageable.pageNumber
+        this.totalPage = page.totalPages
+      }, error: () => {
+      }
+    });
   }
 
   exibirQuadrado() {
 
   }
 
-  nextOrBack(b: boolean) {
+  nextOrBack(isAvancar: boolean) {
+    let page = isAvancar ? this.pageNumber + 1 : this.pageNumber - 1;
 
+    this.service.page(page, this.size, '', []).subscribe({
+      next: (page) => {
+        this.dataSource.data = page.content
+        this.pageNumber = page.pageable.pageNumber
+      }, error: () => {
+      }
+    });
   }
 
   getSequence(num: number): number[] {
@@ -51,7 +69,18 @@ export class TablePropriedadeVinculadoComponent implements OnInit {
   }
 
   paginado(number: any) {
+    this.service.page(number - 1, this.size, '', []).subscribe({
+      next: (page) => {
+        this.dataSource.data = page.content
+        this.pageNumber = page.pageable.pageNumber
+        this.totalPage = page.totalPages
+      }, error: () => {
+      }
+    });
+  }
 
+  redirectToDetails(id: any) {
+    this.router.navigate(['/propriedade/editar', id]);
   }
 }
 

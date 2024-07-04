@@ -12,6 +12,7 @@ export class AdministradorComponent implements OnInit {
   isPanelExpanded: boolean = false;
   administradores: any[] = [];
   admId: any;
+  empresaId: any;
 
   constructor(private service: AdministradorService,
               private route: ActivatedRoute) {
@@ -20,6 +21,7 @@ export class AdministradorComponent implements OnInit {
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
       this.service.getAdministradores(params.get('id')).subscribe(data => {
+        this.empresaId = params.get('id');
         this.administradores = data;
       })
     });

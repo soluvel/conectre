@@ -17,4 +17,8 @@ public class MedicaoService extends CrudService<Medicao, Long> {
         this.medicaoRepository = tanqueRepository;
     }
 
+    public Medicao findByMaxId(Long tanqueId) {
+        return medicaoRepository.findMedicaoWithMaxId(tanqueId);
+    }
+
 }

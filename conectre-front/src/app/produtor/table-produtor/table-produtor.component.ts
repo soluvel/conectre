@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatTableDataSource } from "@angular/material/table";
 import { MatPaginator } from "@angular/material/paginator";
 import { ProdutorService } from "../produtor.service";
@@ -9,10 +9,10 @@ import { Router } from "@angular/router";
   templateUrl: './table-produtor.component.html',
   styleUrls: ['./table-produtor.component.scss']
 })
-export class TableProdutorComponent {
+export class TableProdutorComponent implements OnInit {
 
   dataSource = new MatTableDataSource<any>;
-  displayedColumns: string[] = ['nome', 'empresa', 'propriedade', 'equipamento', 'contato', 'detalhe'];
+  displayedColumns: string[] = ['nome', 'empresa', 'propriedade', 'contato', 'detalhe'];
   quantiaPropriedade: any[] = [];
   quantiaEquipamento: any[] = [];
 
@@ -43,7 +43,7 @@ export class TableProdutorComponent {
     var overlay = document.getElementById('overlay-filter');
     overlay.style.display = 'block';
   }
-  
+
   exibirQuadrado() {
     var overlay = document.getElementById('overlay');
     overlay.style.display = 'block';
@@ -102,11 +102,11 @@ export class TableProdutorComponent {
   extractRange(str: string, list: any[]) {
     switch (str) {
       case "1 a 4":
-        return list.push({ start: 1, end: 4 });
+        return list.push({start: 1, end: 4});
       case "5 a 10":
-        return list.push({ start: 5, end: 10 });
+        return list.push({start: 5, end: 10});
       case "11 ou mais":
-        return list.push({ start: 11, end: 999});
+        return list.push({start: 11, end: 999});
       default:
         return null;
     }

@@ -55,6 +55,7 @@ import { TabsTanqueComponent } from './tabs-tanque/tabs-tanque.component';
 import {
   TablePropriedadeVinculadoComponent
 } from "./produtor/table-propriedade-vinculado/table-propriedade-vinculado.component";
+import { AcessoNegadoComponent } from "./acesso-negado/acesso-negado.component";
 
 @NgModule({
   declarations: [
@@ -84,7 +85,8 @@ import {
     NotificacaoComponent,
     ProdutorFilterComponent,
     PropriedadeCadastroComponent,
-    TablePropriedadeVinculadoComponent
+    TablePropriedadeVinculadoComponent,
+    AcessoNegadoComponent
   ],
   imports: [
     BrowserModule,

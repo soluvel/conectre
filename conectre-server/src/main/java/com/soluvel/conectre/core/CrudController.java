@@ -31,13 +31,18 @@ public abstract class CrudController<T, R, ID extends Serializable> {
         this(service, null, entityClass);
     }
 
-    @GetMapping
-    public ResponseEntity<List<?>> findAll() {
+    @GetMapping("/record")
+    public ResponseEntity<List<?>> findAllRecord() {
         List<T> entityList = service.findAll();
         List<Object> recordList = entityList.stream()
                 .map(entity -> mapper != null ? mapper.toRecord(entity) : entity)
                 .collect(Collectors.toList());
         return new ResponseEntity<>(recordList, HttpStatus.OK);
+    }
+
+    @GetMapping("")
+    public ResponseEntity<List<?>> findAll() {
+        return new ResponseEntity<>(service.findAll(), HttpStatus.OK);
     }
 
     @GetMapping("/count")

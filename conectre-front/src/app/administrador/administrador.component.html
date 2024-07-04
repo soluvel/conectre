@@ -2,11 +2,11 @@
   <mat-expansion-panel-header>
     <mat-panel-title>
       <span style="font-size: 16px">Administradores cadastrados</span>
-      <span *ngIf="!isPanelExpanded" class="license-info">5 / 5 licenças utilizadas</span>
+      <span *ngIf="!isPanelExpanded" class="license-info">{{ administradores?.length }} / 5 licenças utilizadas</span>
     </mat-panel-title>
   </mat-expansion-panel-header>
 
-  <span style="margin: 20px 20px 40px 20px"><b>Plano start:</b> 5/5 licenças</span>
+  <span style="margin: 20px 20px 40px 20px"><b>Plano start: </b>{{ administradores?.length }}/5 licenças</span>
   <button class="button-white license-info" (click)="adicionarAdm()">Novo administrador</button>
 
 

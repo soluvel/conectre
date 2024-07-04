@@ -8,6 +8,8 @@ import com.soluvel.conectre.service.TanqueService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -43,15 +45,14 @@ public class MedicaoController extends CrudController<Medicao, Medicao, Long> {
 
         if (medicao.getRacao().getDtColeta() == null) {
             medicao.setRacao(null);
+        } else {
+            medicao.getRacao().setMedicao(medicao);
         }
         return new ResponseEntity<>(medicaoService.save(medicao), HttpStatus.CREATED);
     }
 
-    private Medicao castObjectToMedicao(Object object) {
-        try {
-            return (Medicao) object;
-        } catch (ClassCastException e) {
-            throw new IllegalArgumentException("Failed to cast object to Medicao", e);
-        }
+    @GetMapping("by-tanque/{tanqueId}")
+    public ResponseEntity<Medicao> getByTanqueAndIdMax(@PathVariable("tanqueId") Long tanqueId) {
+        return new ResponseEntity<>(medicaoService.findByMaxId(tanqueId), HttpStatus.OK);
     }
 }

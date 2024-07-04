@@ -16,49 +16,58 @@ import { ExcelService } from "../../excel.service";
 export class PropriedadeCadastroComponent implements OnInit, OnDestroy {
 
   isEditando: boolean = false;
+  propriedadeId: any;
   private destroy$ = new Subject<void>();
   msgButton: string;
   form: FormGroup;
   produtores: any;
 
   constructor(private formBuilder: FormBuilder,
-    private service: PropriedadeService,
-    private produtorService: ProdutorService,
-    private excelService: ExcelService,
-    private toastr: ToastrService,
-    private viaCepService: ViaCepService,
-    private route: ActivatedRoute,
-    private router: Router) {
-      this.form = this.formBuilder.group({
-        id: [],
-        nome: ['', Validators.required],
-        produtor: ['', Validators.required],
-        endereco: this.formBuilder.group({
-          cep: [''],
-          logradouro: [''],
-          numero: [''],
-          complemento: [''],
-          bairro: [''],
-          localidade: [''],
-          uf: [''],
-        }),
-      });
+              private service: PropriedadeService,
+              private produtorService: ProdutorService,
+              private excelService: ExcelService,
+              private toastr: ToastrService,
+              private viaCepService: ViaCepService,
+              private route: ActivatedRoute,
+              private router: Router) {
+    this.form = this.formBuilder.group({
+      id: [],
+      nome: ['', Validators.required],
+      produtor: ['', Validators.required],
+      endereco: this.formBuilder.group({
+        cep: [''],
+        logradouro: [''],
+        numero: [''],
+        complemento: [''],
+        bairro: [''],
+        localidade: [''],
+        uf: [''],
+      }),
+    });
   }
 
   ngOnInit() {
+    this.route.paramMap.subscribe(params => {
+      this.propriedadeId = params.get('id');
+      this.getPropriedade();
+    });
+
     this.produtorService.getProdutorReduce().subscribe(data => {
       this.produtores = data;
     });
-
-    this.route.paramMap.subscribe(params => {
-    });
-
-    this.msgButton = this.form.valid ? "Cadastrar Propriedade" : "Salvar Alterações"
   }
 
   ngOnDestroy() {
     this.destroy$.next();
     this.destroy$.complete();
+  }
+
+  getPropriedade(): void {
+    this.service.getPropriedade(parseInt(this.propriedadeId)).subscribe(data => {
+      this.form.patchValue(data);
+      this.isEditando = true;
+      this.msgButton = !this.isEditando ? "Cadastrar Propriedade" : "Salvar Alterações"
+    });
   }
 
   onSubmit() {

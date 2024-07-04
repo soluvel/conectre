@@ -1,6 +1,6 @@
 package com.soluvel.conectre.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -20,9 +20,7 @@ import lombok.Setter;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 @Entity
 @Getter
@@ -40,8 +38,8 @@ public class Propriedade implements Serializable {
     @Embedded
     private Endereco endereco;
 
-    @JsonIgnore
     @ManyToOne(fetch = FetchType.EAGER)
+    @JsonIgnoreProperties("propriedades")
     @JoinColumn(name = "produtor_id", nullable = false)
     private Produtor produtor;
 
