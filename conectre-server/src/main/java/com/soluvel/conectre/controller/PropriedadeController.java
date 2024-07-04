@@ -46,14 +46,6 @@ public class PropriedadeController extends CrudController<Propriedade, Proprieda
         return new ResponseEntity<>(service.save(propriedade), HttpStatus.CREATED);
     }
 
-//    @Override
-//    public ResponseEntity<?> create(Object object) {
-//        PropriedadeRecords propriedadeRecords = castObjectToRecord(object);
-//        var propriedade = GenericMapper.map(propriedadeRecords, new Propriedade());
-//        propriedade.setProdutor(Produtor.builder().id(propriedadeRecords.id()).build());
-//        return super.create(propriedade);
-//    }
-
     @PostMapping("/{id}/equipamentos")
     public Propriedade adicionarEquipamentos(@PathVariable Long id, @RequestBody List<Long> equipamentos) {
         Propriedade propriedade = service.findById(id).orElseThrow();

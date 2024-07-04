@@ -5,6 +5,7 @@ import { HttpClient, HttpHeaders, HttpParams } from "@angular/common/http";
 import { Observable } from "rxjs";
 import { StorageService } from "../storage.service";
 import { Propriedade } from "./propriedade";
+import { Empresa } from "../empresa/empresa";
 
 @Injectable({
   providedIn: 'root'
@@ -21,6 +22,10 @@ export class PropriedadeService {
     return this.http.get<any>(`${this.apiUrl}`, { headers: this.headers });
   }
 
+  getPropriedade(id: any): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/${id}`, { headers: this.headers });
+  }
+
   getPropriedadesByProdutor(produtor: number): Observable<any> {
     return this.http.get<any>(`${this.apiUrl}/by-produtor/${produtor}`, { headers: this.headers });
   }
@@ -33,4 +38,20 @@ export class PropriedadeService {
     return this.http.get<any>(`${this.apiUrl}/count`, {headers: this.headers});
   }
 
+  page(numb: number, size: number, filter: string, attributes: string[]): Observable<any> {
+    let params = new HttpParams();
+    if (filter) {
+      params = params.set('filter', filter);
+    }
+
+    attributes.forEach(attribute => {
+      params = params.append('attributes', attribute);
+    });
+
+    return this.http.get<any>(`${this.apiUrl}/page/${numb}/${size}`, {
+      params: params,
+      headers: this.headers
+    });
+
+  }
 }

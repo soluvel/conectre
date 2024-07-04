@@ -1,7 +1,6 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatTableDataSource } from "@angular/material/table";
 import { MatPaginator } from "@angular/material/paginator";
-import { EmpresaService } from "../../empresa/empresa.service";
 import { TecnicoService } from "../tecnico.service";
 import { Router } from "@angular/router";
 
@@ -10,10 +9,10 @@ import { Router } from "@angular/router";
   templateUrl: './table-tecnico.component.html',
   styleUrls: ['./table-tecnico.component.scss']
 })
-export class TableTecnicoComponent {
+export class TableTecnicoComponent implements OnInit {
 
   dataSource = new MatTableDataSource<Tecnico>;
-  displayedColumns: string[] = ['nome', 'empresa', 'contato', 'produtores', 'detalhe'];
+  displayedColumns: string[] = ['nome', 'empresa', 'contato', 'detalhe'];
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   pageNumber: number = 0;

@@ -13,18 +13,15 @@
           <div class="input-group">
             <input type="text" class="form-control" formControlName="razaoSocial" id="nomeEmpresa"
                    aria-describedby="empresaImage">
-            <span class="input-group-text">
-          <img src="assets/pen.svg" alt="Imagem" *ngIf="isEditando">
-          </span>
+            <mat-icon class="icon edit-icon material-symbols-rounded" *ngIf="isEditando">edit</mat-icon>
           </div>
         </div>
         <div class="col-6">
           <label id="cnpj" for="cnpjCpf" class="form-label required">CNPJ/CPF</label>
           <div class="input-group">
-            <input type="text" class="form-control" formControlName="cnpjCpf" id="cnpjCpf" appCnpjCpfMask [maxLength]="18">
-            <span class="input-group-text">
-          <img src="assets/pen.svg" alt="Imagem" *ngIf="isEditando">
-          </span>
+            <input type="text" class="form-control" formControlName="cnpjCpf" id="cnpjCpf" appCnpjCpfMask
+                   [maxLength]="18">
+            <mat-icon class="icon edit-icon material-symbols-rounded" *ngIf="isEditando">edit</mat-icon>
           </div>
         </div>
       </div>
@@ -34,19 +31,16 @@
           <label for="email" class="form-label required">E-mail</label>
           <div class="input-group">
             <input type="email" class="form-control" formControlName="email" id="email">
-            <span class="input-group-text">
-          <img src="assets/pen.svg" alt="Imagem" *ngIf="isEditando">
-          </span>
+            <mat-icon class="icon edit-icon material-symbols-rounded" *ngIf="isEditando">edit</mat-icon>
           </div>
         </div>
 
         <div class="col-2" formGroupName="endereco">
           <label for="cep" class="form-label required">CEP</label>
           <div class="input-group">
-            <input type="text" class="form-control required" formControlName="cep" id="cep" appCepMask (blur)="getEnderecoViaCep()" [maxLength]="9">
-            <span class="input-group-text">
-          <img src="assets/pen.svg" alt="Imagem" *ngIf="isEditando">
-          </span>
+            <input type="text" class="form-control required" formControlName="cep" id="cep" appCepMask
+                   (blur)="getEnderecoViaCep()" [maxLength]="9">
+            <mat-icon class="icon edit-icon material-symbols-rounded" *ngIf="isEditando">edit</mat-icon>
           </div>
         </div>
 
@@ -54,9 +48,7 @@
           <label for="localidade" class="form-label required">Cidade</label>
           <div class="input-group">
             <input type="text" class="form-control" formControlName="localidade" id="localidade">
-            <span class="input-group-text">
-          <img src="assets/pen.svg" alt="Imagem" *ngIf="isEditando">
-          </span>
+            <mat-icon class="icon edit-icon material-symbols-rounded" *ngIf="isEditando">edit</mat-icon>
           </div>
         </div>
       </div>
@@ -66,9 +58,7 @@
           <label for="logradouro" class="form-label required">Logradouro</label>
           <div class="input-group">
             <input type="text" class="form-control" formControlName="logradouro" id="logradouro">
-            <span class="input-group-text">
-          <img src="assets/pen.svg" alt="Imagem" *ngIf="isEditando">
-          </span>
+            <mat-icon class="icon edit-icon material-symbols-rounded" *ngIf="isEditando">edit</mat-icon>
           </div>
         </div>
 
@@ -76,9 +66,7 @@
           <label for="numero" class="form-label required">Número</label>
           <div class="input-group">
             <input type="text" class="form-control" formControlName="numero" id="numero">
-            <span class="input-group-text">
-          <img src="assets/pen.svg" alt="Imagem" *ngIf="isEditando">
-          </span>
+            <mat-icon class="icon edit-icon material-symbols-rounded" *ngIf="isEditando">edit</mat-icon>
           </div>
         </div>
 
@@ -86,9 +74,7 @@
           <label for="bairro" class="form-label required">Bairro</label>
           <div class="input-group">
             <input type="text" class="form-control" formControlName="bairro" id="bairro">
-            <span class="input-group-text">
-          <img src="assets/pen.svg" alt="Imagem" *ngIf="isEditando">
-          </span>
+            <mat-icon class="icon edit-icon material-symbols-rounded" *ngIf="isEditando">edit</mat-icon>
           </div>
         </div>
 
@@ -96,9 +82,7 @@
           <label for="uf" class="form-label required">Estado</label>
           <div class="input-group">
             <input type="text" class="form-control" formControlName="uf" id="uf" [maxLength]="2">
-            <span class="input-group-text">
-          <img src="assets/pen.svg" alt="Imagem" *ngIf="isEditando">
-          </span>
+            <mat-icon class="icon edit-icon material-symbols-rounded" *ngIf="isEditando">edit</mat-icon>
           </div>
         </div>
       </div>
@@ -109,9 +93,7 @@
           <div class="input-group" style="padding-bottom: 0">
             <input type="text" class="form-control" formControlName="complemento" id="complemento"
                    style="margin-bottom: 0">
-            <span class="input-group-text">
-          <img src="assets/pen.svg" alt="Imagem" *ngIf="isEditando">
-          </span>
+            <mat-icon class="icon edit-icon material-symbols-rounded" *ngIf="isEditando">edit</mat-icon>
           </div>
         </div>
         <span style="margin-top: 5px">Em caso de área rural, informar latitude e longitude</span>
@@ -126,8 +108,8 @@
             <select id="plano" class="form-select" formControlName="plano">
               <option selected></option>
               <option value="START">Start</option>
-              <option>Start</option>
-              <option>Start</option>
+              <option>Standard</option>
+              <option>Enterprise</option>
             </select>
           </div>
 
@@ -153,7 +135,9 @@
 
   <div class="actions-footer">
     <button class="button-no-border" style="margin-right: 10px">Limpar dados</button>
-    <button [disabled]="!form.valid" (click)="onSubmit()"  [ngClass]="{'button-disabled': !form.valid}"> {{ msgButton }} </button>
+    <button [disabled]="!form.valid" (click)="onSubmit()"
+            [ngClass]="{'button-disabled': !form.valid}"> {{ msgButton }}
+    </button>
   </div>
 
 </div>

@@ -18,7 +18,6 @@ export class ProdutorCadastroComponent implements OnInit, OnDestroy {
   produtorId: any;
   private destroy$ = new Subject<void>();
   empresas: any[] = [];
-  empresaSelecionada: any;
 
   constructor(private formBuilder: FormBuilder,
               private toastr: ToastrService,
@@ -44,16 +43,11 @@ export class ProdutorCadastroComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
       this.produtorId = params.get('id');
+      this.getProdutor();
+    });
 
-      if (!this.produtorId) {
-        this.empresaService.getEmpresasReduce().subscribe(data => {
-          this.empresas = data;
-        });
-      } else {
-        this.getProdutor();
-
-      }
-
+    this.empresaService.getEmpresasReduce().subscribe(data => {
+      this.empresas = data;
     });
   }
 

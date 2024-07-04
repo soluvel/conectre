@@ -102,6 +102,7 @@
     </form>
 
     <div class="container-buttons">
+      <button class="button-no-border" style="margin-right: 10px" (click)="onDownload()">Download Medições</button>
       <button class="button-no-border" style="margin-right: 10px">Limpar</button>
       <button [disabled]="!form.valid" (click)="onSubmit()" [ngClass]="{'button-disabled': !form.valid}">
         Salvar alteração

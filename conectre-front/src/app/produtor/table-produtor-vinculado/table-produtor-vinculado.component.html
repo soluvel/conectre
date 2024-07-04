@@ -1,9 +1,9 @@
 <div class="container-filter">
   <input class="input-search" type="text" placeholder="Buscar produtor?" [(ngModel)]="razaoSocial">
   <img src="../../../assets/search.svg" class="input-img" (click)="search()" alt="search">
-  <button type="button" class="button-white" (click)="exibirQuadrado()">Filtrar
-    <img src="../../../assets/filter.svg" alt="Imagem Redonda" style="padding-left: 10px">
-  </button>
+<!--  <button type="button" class="button-white" (click)="exibirQuadrado()">Filtrar-->
+<!--    <img src="../../../assets/filter.svg" alt="Imagem Redonda" style="padding-left: 10px">-->
+<!--  </button>-->
 </div>
 
 
@@ -11,43 +11,30 @@
   <table mat-table [dataSource]="dataSource">
 
     <ng-container matColumnDef="nome">
-      <th mat-header-cell *matHeaderCellDef id="empresa">Nome</th>
-      <td mat-cell *matCellDef="let element">
-        <img style="margin-right: 10px" class="icon-size-30" src="../../../assets/avatar.svg"
-             alt="search">{{ element.razaoSocial }}
-      </td>
+      <th mat-header-cell *matHeaderCellDef id="nome">Nome</th>
+      <td mat-cell *matCellDef="let element"> {{ element?.nome }}</td>
     </ng-container>
 
     <ng-container matColumnDef="empresa">
       <th mat-header-cell *matHeaderCellDef id="adm">Empresa</th>
-      <td mat-cell *matCellDef="let element"> {{ element.razaoSocial }}</td>
+      <td mat-cell *matCellDef="let element"> {{ element?.empresa?.razaoSocial }}</td>
     </ng-container>
 
-    <ng-container matColumnDef="tecnico">
-      <th mat-header-cell *matHeaderCellDef id="tecnico">Técnico</th>
-      <td mat-cell *matCellDef="let element"> {{ element.razaoSocial }}</td>
-    </ng-container>
 
     <ng-container matColumnDef="propriedade">
       <th mat-header-cell *matHeaderCellDef id="propriedade">Propriedades</th>
-      <td mat-cell *matCellDef="let element"> {{ element.cnpjCpf }}</td>
+      <td mat-cell *matCellDef="let element"> {{ element.propriedades?.length }}</td>
     </ng-container>
 
     <ng-container matColumnDef="contato">
       <th mat-header-cell *matHeaderCellDef id="contato">Contato</th>
-      <td mat-cell *matCellDef="let element"> {{ element.razaoSocial }}</td>
+      <td mat-cell *matCellDef="let element"> {{ element?.celular | celular}}</td>
     </ng-container>
-
-    <ng-container matColumnDef="equipamento">
-      <th mat-header-cell *matHeaderCellDef id="equipamento">Equipamentos</th>
-      <td mat-cell *matCellDef="let element"> {{ element.cnpjCpf }}</td>
-    </ng-container>
-
 
     <ng-container matColumnDef="detalhe">
       <th mat-header-cell *matHeaderCellDef id="header-right">Detalhes</th>
       <td mat-cell *matCellDef="let element" id="detalhe">
-        <img class="icon-size-30" src="../../../assets/search.svg" alt="search"></td>
+        <img class="icon-size-30" src="../../../assets/search.svg" alt="search" (click)="redirectToDetails(element?.id)"></td>
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
