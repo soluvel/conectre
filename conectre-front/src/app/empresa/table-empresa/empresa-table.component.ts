@@ -66,6 +66,9 @@ export class EmpresaTableComponent {
   exibirQuadrado() {
     var overlay = document.getElementById('overlay');
     overlay.style.display = 'block';
+  
+    var filterWall = document.getElementById('filter-wall');
+    filterWall.style.display = 'block';
   }
 
   nextOrBack(isAvancar: boolean) {

@@ -24,7 +24,9 @@
       <th mat-header-cell *matHeaderCellDef id="adm">Administrador</th>
       <td mat-cell *matCellDef="let element">
         <ng-container *ngFor="let img of element.administradores">
-          <img src="assets/avatar.svg" class="conjunto-avatar" alt="{{ img.nome }}">
+          <img src="assets/avatar_icon.svg" class="conjunto-avatar" alt="{{ img.nome }}">
+          <img src="assets/avatar_icon.svg" class="conjunto-avatar" alt="{{ img.nome }}">
+          <img src="assets/avatar_icon.svg" class="conjunto-avatar" alt="{{ img.nome }}">
         </ng-container>
       </td>
     </ng-container>
@@ -47,7 +49,8 @@
     <ng-container matColumnDef="detalhe">
       <th mat-header-cell *matHeaderCellDef id="header-right">Detalhes</th>
       <td mat-cell *matCellDef="let element" id="detalhe">
-        <img class="icon-size-30" src="../../../assets/search.svg" alt="search" (click)="redirectToDetails(element?.id)"></td>
+        <mat-icon class="icon-search-info material-symbols-rounded" (click)="redirectToDetails(element?.id)">search</mat-icon>
+      </td>
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
@@ -55,17 +58,19 @@
   </table>
 
   <div id="paginacao" class="flex-align-itens-center">
-    <img class="icon-size-30" src="../../../assets/paginacao-esquerda.svg" (click)="nextOrBack(false)" alt="paginacao-esquerda">
+    <mat-icon class="arrow-table-back material-symbols-rounded" (click)="nextOrBack(false)">outbound</mat-icon>
     <div class="flex-align-itens-center">
       <ng-container *ngFor="let number of getSequence(totalPage)">
         <span id="paginacao-number" (click)="paginado(number)">{{ number }}</span>
       </ng-container>
     </div>
-    <img class="icon-size-30" src="../../../assets/paginacao-direita.svg" (click)="nextOrBack(true)" alt="paginacao-direita">
+    <mat-icon class="arrow-table-next material-symbols-rounded" (click)="nextOrBack(true)">outbound</mat-icon>
   </div>
 </div>
 
 
 <div id="overlay">
-  <app-empresa-filter (filtroAlterado)="onFiltroAlterado($event)"></app-empresa-filter>
+  <app-empresa-filter (filtroAlterado)="onFiltroAlterado($event)" style="position: relative; height: 100%; display: block;"></app-empresa-filter>
 </div>
+
+<div id="filter-wall"></div>

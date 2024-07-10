@@ -1,5 +1,4 @@
 $size-px-14: 14px;
-$size-px-20: 20px;
 $size-px-30: 30px;
 $size-percent-10: 10%;
 $size-percent-15: 15%;
@@ -17,24 +16,24 @@ table td, th {
 table th {
   color: $grey;
   background: #F4F4F5;
-  border-top-left-radius: $size-px-20;
-  border-top-right-radius: $size-px-20;
+  height: 44px !important;
 }
 
 table td {
   color: #09090B;
   font-weight: 500;
+  height: 72px;
 }
 
 mat-paginator {
-  border-bottom-right-radius: $size-px-20;
-  border-bottom-left-radius: $size-px-20;
+  border-bottom-right-radius: 8px;
+  border-bottom-left-radius: 8px;
   justify-content: center;
 }
 
 .mat-elevation-z2 {
   border: 1px solid #ddd;
-  border-radius: $size-px-20;
+  border-radius: 8px;
   box-shadow: 
   0px -1px 1px -10px rgba(0, 0, 0, 0.25),
   0px 2px 2px 0px rgba(0, 0, 0, 0.14),
@@ -46,23 +45,30 @@ mat-paginator {
 }
 
 #empresa {
-  border-top-left-radius: $size-px-20;
+  border-top-left-radius: 8px;
   width: 20%
 }
 
 #header-right {
-  border-top-right-radius: $size-px-20;
+  border-top-right-radius: 8px;
   text-align: right;
+  padding-right: 40px;
+}
+
+#nome {
+  border-top-left-radius: 8px;
+  min-width: 20%;
 }
 
 #paginacao {
   justify-content: space-between;
-  padding: 15px 10px 15px 10px;
+  padding: 15px;
+  border-top: 1px solid #E7E7E7;
 }
 
 #detalhe {
   text-align: right;
-  padding-right: $size-px-30
+  padding-right: 50px;
 }
 
 #paginacao-number {
@@ -140,6 +146,58 @@ mat-paginator {
   height: 100%;
   background-color: white;
   z-index: 9999;
+}
+
+#filter-wall {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: #000000;
+  opacity: 18%;
+  z-index: 9998;
+}
+
+.arrow-table-next,
+.arrow-table-back {
+  border-radius: 50%;
+  height: auto;
+  width: auto;
+  font-size: 34px;
+  font-weight: 200;
+  color: #3F3F46;
+  cursor: pointer;
+}
+
+.arrow-table-next {
+  transform: rotate(45deg);
+}
+
+.arrow-table-back {
+  transform: rotate(-135deg);
+}
+
+.arrow-table-next:hover,
+.arrow-table-back:hover {
+  color: #000;
+}
+
+.icon-search-info {
+  height: auto;
+  width: auto;
+  color: #3F3F46;
+  background: #F4F4F5;
+  padding: 5px;
+  font-size: 22px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.icon-search-info:hover {
+  color: #000;
+  background: #dadada;
 }
 
 @media screen and (max-width: 600px) {

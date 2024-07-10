@@ -1,0 +1,50 @@
+.icon-close {
+  font-weight: 300;
+  color: #424242;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.icon-close:hover {
+  font-weight: 400;
+  color: #000;
+}
+
+.overlay-header {
+  display: flex;
+  height: 32px;
+  justify-content: space-between;
+  // border-radius: 8px 8px 0 0;
+}
+
+.overlay-header span {
+  font-size: 14px;
+  font-weight: 600;
+  color: #52525B;
+}
+
+.overlay-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 190px;
+}
+
+.overlay-text {
+  font-size: 14px;
+  font-weight: 400;
+  color: #242424;
+  padding-top: 30px;
+}
+
+.overlay-buttons {
+  display: flex;
+  flex-direction: column;
+}
+
+.button-white {
+  margin: 10px 0 0 0 !important;
+}

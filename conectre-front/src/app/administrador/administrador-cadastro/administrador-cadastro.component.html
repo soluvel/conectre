@@ -1,42 +1,43 @@
 <div class="container-header">
   <h4 id="titulo">Novo Administrador</h4>
-  <img src="assets/close.svg" alt="Imagem Redonda" style="width: 15px" (click)="closeModal()">
+  <mat-icon class="icon-close material-symbols-rounded" (click)="closeModal()">close</mat-icon>
 </div>
 
 <div class="container-form">
   <form [formGroup]="form">
     <div class="row g-3">
       <div class="col-3">
-        <label id="avatar" for="avatarInput" class="form-label required">Foto</label>
-        <div class="input-group">
-          <input type="file" id="avatarInput" (change)="handleImageUpload($event)" accept="image/*"
-                 style="display: none">
-          <label for="avatarInput" class="input-group-text" style="cursor: pointer;">
-            <div
-              style="width: 40px; height: 40px; border-radius: 50%; background-color: #ccc; display: flex; justify-content: center; align-items: center;">
-            </div>
+        <label id="avatar" for="avatarInput" class="form-label required">Foto de Perfil</label>
+        <div class="input-group" style="width: 72px; border-radius: 50%;">
+          <div class="icon-add-image">
+            <input type="file" id="avatarInput" (change)="handleImageUpload($event)" accept="image/*" style="display: none">
+            <label for="avatarInput" class="avatar-input-Label input-group-text" style="cursor: pointer;">
+              <div class="none-image"></div>
+            <mat-icon class="icon-image_1 material-symbols-rounded">person</mat-icon>
+            <mat-icon class="icon-image_2 material-symbols-rounded">add</mat-icon>
           </label>
+        </div>
         </div>
       </div>
     </div>
     <div class="row g-3">
       <div class="col-6">
-        <label for="nome" class="form-label required">Nome</label>
-        <input type="text" class="form-control" formControlName="nome" id="nome">
+        <label for="nome" class="form-label small-label required">Nome</label>
+        <input type="text" class="form-control form-adm" formControlName="nome" id="nome" placeholder="EX.: João da Silva">
       </div>
       <div class="col-6">
-        <label for="email" class="form-label required">E-mail</label>
-        <input type="text" class="form-control" formControlName="email" id="email">
+        <label for="email" class="form-label small-label required">E-mail</label>
+        <input type="text" class="form-control form-adm" formControlName="email" id="email" placeholder="EX.: Grupo Tilápia">
       </div>
     </div>
     <div class="row g-3">
       <div class="col-6">
-        <label for="celular" class="form-label required">Celular</label>
-        <input type="text" class="form-control" formControlName="celular" id="celular" appCelularMask [maxLength]="15">
+        <label for="celular" class="form-label small-label required">Celular</label>
+        <input type="text" class="form-control form-adm" formControlName="celular" id="celular" placeholder="EX.: (44) 99999-9999" appCelularMask [maxLength]="15">
       </div>
       <div class="col-6">
-        <label for="cargo" class="form-label required">Cargo</label>
-        <input type="text" class="form-control" formControlName="cargo" id="cargo">
+        <label for="cargo" class="form-label small-label required">Cargo</label>
+        <input type="text" class="form-control form-adm" formControlName="cargo" id="cargo" placeholder="EX.: Diretor comercial">
       </div>
     </div>
   </form>

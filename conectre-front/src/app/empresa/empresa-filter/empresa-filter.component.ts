@@ -1,4 +1,5 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
+import { MatAccordion, MatExpansionPanel } from '@angular/material/expansion';
 import { EmpresaService } from "../empresa.service";
 
 @Component({
@@ -9,6 +10,8 @@ import { EmpresaService } from "../empresa.service";
 export class EmpresaFilterComponent implements OnInit {
 
   @Output() filtroAlterado = new EventEmitter<{ listaOpcoes: string[], listaCidades: string[], listaEmpresas: string[] }>();
+  @ViewChild(MatExpansionPanel) pannel?: MatExpansionPanel;
+  @ViewChild(MatAccordion) accordion?: MatAccordion;
 
 
   opcoes: string[] = ['Start', 'Standard', 'Enterprise'];
@@ -29,6 +32,7 @@ export class EmpresaFilterComponent implements OnInit {
 
   ngOnInit() {
     this.nenhumSelecionado = true;
+
     this.empresa.getCidades().subscribe({
       next: (cidades) => {
         this.cidades = cidades
@@ -51,6 +55,11 @@ export class EmpresaFilterComponent implements OnInit {
   fecharQuadrado() {
     var overlay = document.getElementById('overlay');
     overlay.style.display = 'none';
+
+    var filterWall = document.getElementById('filter-wall');
+    filterWall.style.display = 'none';
+
+    this.fecharPaineis()
   }
 
   filter() {
@@ -71,7 +80,6 @@ export class EmpresaFilterComponent implements OnInit {
     } else {
       this.nenhumSelecionado = false;
     }
-
   }
 
   toggleCidade(cidade: string): void {
@@ -79,6 +87,12 @@ export class EmpresaFilterComponent implements OnInit {
       this.checkedCidades = this.checkedCidades.filter(item => item !== cidade);
     } else {
       this.checkedCidades.push(cidade);
+    }
+
+    if (this.checkedCidades.length === 0) {
+      this.nenhumSelecionado = true;
+    } else {
+      this.nenhumSelecionado = false;
     }
   }
 
@@ -88,10 +102,35 @@ export class EmpresaFilterComponent implements OnInit {
     } else {
       this.checkedRazaoSocial.push(empresa);
     }
+
+    if (this.checkedRazaoSocial.length === 0) {
+      this.nenhumSelecionado = true;
+    } else {
+      this.nenhumSelecionado = false;
+    }
   }
 
   desativarCheckbox(item: string) {
     this.checkboxesAtivos[item] = false;
+  }
+
+  limparDados() {
+    for (const key in this.checkboxesAtivos) {
+      if (Object.prototype.hasOwnProperty.call(this.checkboxesAtivos, key)) {
+        this.checkboxesAtivos[key] = false;
+      }
+    }
+    this.checkedPlanos = [];
+    this.checkedCidades = [];
+    this.checkedRazaoSocial = [];
+
+    this.nenhumSelecionado = true;
+    this.fecharPaineis()
+  }
+
+  fecharPaineis() {
+    if (!this.accordion) { return }
+    this.accordion.closeAll();
   }
 
 }

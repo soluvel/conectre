@@ -24,13 +24,36 @@ $background-color: #fafafa;
   font-weight: 600 ;
 }
 
+.back-icon {
+  display: flex;
+  align-items: center;
+  font-weight: 200;
+  color: #333333;
+  cursor: pointer;
+}
+
+.back-icon:hover {
+  color: #000;
+  font-weight: 300;
+}
+
+.back-text {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  font-weight: 400 !important;
+  color: #27272A;
+  padding-left: 10px;
+}
+
 #adm-titel {
   margin-right: auto;
 }
 
+.form-select,
 .form-control {
   border: none;
-  border-bottom: 1px solid $border-botton-color;
+  border-bottom: 1px solid #616161 !important;
   border-radius: unset;
   background-color: $background-color;
 }
@@ -77,7 +100,7 @@ label.required::after {
   margin-bottom: 0.25rem;
 }
 
-.input-group-text, .form-select {
+.input-group-text {
   padding-top: 0.10rem;
   padding-bottom: 0.10rem;
   margin-bottom: 0.25rem;
@@ -89,10 +112,10 @@ label.required::after {
 
 .actions-footer {
   display: flex;
-  justify-content: flex-end;
-  position: absolute;
-  bottom: 0;
+  justify-content: space-between;
+  align-items: center;
   width: 100%;
+  padding: 30px 40px 5px 40px;
 }
 
 #btn-grupo {
@@ -127,4 +150,57 @@ label.required::after {
 
 .license-info {
   margin-left: auto;
+}
+
+#filterWall {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: #000000;
+  opacity: 18%;
+  z-index: 9998;
+}
+
+#overlayConfirm {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 320px;
+  height: 270px !important;
+  padding: 24px;
+  background-color: white;
+  z-index: 9999;
+  border-radius: 8px;
+}
+
+.exclude-button {
+  display: flex;
+  justify-content: center;
+  color: #CD0000;
+  background: none;
+  text-decoration: none;
+  padding: 0;
+}
+
+.exclude-button span {
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: underline;
+}
+
+.exclude-icon {
+  display: flex;
+  justify-content: start;
+  font-weight: 300;
+  font-size: 22px;
+}
+
+.exclude-disabled {
+  color: light-dark(#1010104d, #ffffff4d) !important;
+  cursor: not-allowed !important;
 }
