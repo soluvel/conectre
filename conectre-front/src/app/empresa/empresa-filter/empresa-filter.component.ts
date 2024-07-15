@@ -75,11 +75,7 @@ export class EmpresaFilterComponent implements OnInit {
       this.checkedPlanos.splice(index, 1);
     }
 
-    if (this.checkedPlanos.length === 0) {
-      this.nenhumSelecionado = true;
-    } else {
-      this.nenhumSelecionado = false;
-    }
+    this.checkNenhumSelecionado();
   }
 
   toggleCidade(cidade: string): void {
@@ -89,11 +85,7 @@ export class EmpresaFilterComponent implements OnInit {
       this.checkedCidades.push(cidade);
     }
 
-    if (this.checkedCidades.length === 0) {
-      this.nenhumSelecionado = true;
-    } else {
-      this.nenhumSelecionado = false;
-    }
+    this.checkNenhumSelecionado();
   }
 
   toggleRazaoSocial(empresa: string): void {
@@ -103,7 +95,11 @@ export class EmpresaFilterComponent implements OnInit {
       this.checkedRazaoSocial.push(empresa);
     }
 
-    if (this.checkedRazaoSocial.length === 0) {
+    this.checkNenhumSelecionado();
+  }
+
+  checkNenhumSelecionado() {
+    if (this.checkedPlanos.length === 0 && this.checkedCidades.length === 0 && this.checkedRazaoSocial.length === 0) {
       this.nenhumSelecionado = true;
     } else {
       this.nenhumSelecionado = false;
