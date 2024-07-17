@@ -6,7 +6,7 @@
 
   <div class="container-header">
     <h4>Filtragem</h4>
-    <h4 id="text-limpar">Limpar todos</h4>
+    <h4 id="text-limpar" (click)="limparDados()">Limpar todos</h4>
   </div>
 
   <mat-divider></mat-divider>
@@ -22,7 +22,23 @@
     <mat-chip *ngFor="let chip of checkedPlanos">
       <span class="filter-type">Planos</span>
       {{ chip }}
-      <mat-icon class="icon-filter-remove material-symbols-rounded" (click)="toggleChip(chip)" (click)="desativarCheckbox(chip)" >close</mat-icon>
+      <mat-icon class="icon-filter-remove material-symbols-rounded" (click)="toggleChip(chip)" (click)="desativarCheckbox(chip)">close</mat-icon>
+    </mat-chip>
+  </mat-chip-set>
+  
+  <mat-chip-set>
+    <mat-chip *ngFor="let chip of checkedCidades">
+      <span class="filter-type">Local</span>
+      {{ chip }}
+      <mat-icon class="icon-filter-remove material-symbols-rounded" (click)="toggleCidade(chip)" (click)="desativarCheckbox(chip)">close</mat-icon>
+    </mat-chip>
+  </mat-chip-set>
+  
+  <mat-chip-set>
+    <mat-chip *ngFor="let chip of checkedRazaoSocial">
+      <span class="filter-type">Empresa</span>
+      {{ chip }}
+      <mat-icon class="icon-filter-remove material-symbols-rounded" (click)="toggleRazaoSocial(chip)" (click)="desativarCheckbox(chip)">close</mat-icon>
     </mat-chip>
   </mat-chip-set>
 </div>
@@ -51,7 +67,8 @@
       </mat-expansion-panel-header>
 
       <div class="checkbox-container">
-        <mat-checkbox class="checkbox-item" *ngFor="let cidade of cidades; let i = index" (change)="toggleCidade(cidade)">{{ cidade }}
+        <mat-checkbox class="checkbox-item" *ngFor="let cidade of cidades; let i = index" (change)="toggleCidade(cidade)" [(ngModel)]="checkboxesAtivos[cidade]">
+          {{ cidade }}
         </mat-checkbox>
       </div>
     </mat-expansion-panel>
@@ -64,7 +81,8 @@
       </mat-expansion-panel-header>
 
       <div class="checkbox-container">
-        <mat-checkbox class="checkbox-item" *ngFor="let empresa of razaoSocial; let i = index" (change)="toggleRazaoSocial(empresa)">{{ empresa }}
+        <mat-checkbox class="checkbox-item" *ngFor="let empresa of razaoSocial; let i = index" (change)="toggleRazaoSocial(empresa)" [(ngModel)]="checkboxesAtivos[empresa]">
+          {{ empresa }}
         </mat-checkbox>
       </div>
     </mat-expansion-panel>

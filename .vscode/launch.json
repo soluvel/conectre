@@ -9,6 +9,16 @@
             "projectName": "conectre",
             "args": "",
             "envFile": "${workspaceFolder}/.env"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-ConectreApplication<conectre-conectre-server>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.soluvel.conectre.ConectreApplication",
+            "projectName": "conectre-conectre-server",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
         }
     ]
 }

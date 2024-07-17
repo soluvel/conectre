@@ -1,16 +1,27 @@
-<mat-expansion-panel style="margin-top: 20px" [(expanded)]="isPanelExpanded">
-  <mat-expansion-panel-header>
+<mat-expansion-panel style="margin: 40px 40px 0 40px; background: transparent;" [(expanded)]="isPanelExpanded">
+  <mat-expansion-panel-header (click)="animationArrow()">
     <mat-panel-title>
       <span style="font-size: 16px">Administradores cadastrados</span>
-      <span *ngIf="!isPanelExpanded" class="license-info">{{ administradores?.length }} / 5 licenças utilizadas</span>
+      <div class="nmr-licencas">
+        <span class="license-info">{{ administradores?.length }} / 5 licenças utilizadas</span>
+        <mat-icon class="license-arrow-icon material-symbols-rounded">keyboard_arrow_down</mat-icon>
+      </div>
     </mat-panel-title>
   </mat-expansion-panel-header>
 
-  <span style="margin: 20px 20px 40px 20px"><b>Plano start: </b>{{ administradores?.length }}/5 licenças</span>
-  <button class="button-white license-info" (click)="adicionarAdm()">Novo administrador</button>
+  <div class="panel-contents" style="margin: 20px 20px 40px 20px;">
+    <div class="infos-content" style="color: #52525B;">
+      <span style="margin-bottom: 20px;"><b>Plano start: </b>{{ administradores?.length }}/5 licenças</span>
+      <span style="font-size: 12px;">Nenhum administrador cadastrado</span>
+    </div>
+    
+    <div class="buttons">
+      <button class="button-no-border exclude-button">Excluir</button>
+      <button class="button-white license-info" (click)="adicionarAdm()">Novo administrador</button>
+    </div>
+  </div>
 
-
-  <div class="container-adms" style="margin: 20px">
+  <div class="container-adms" style="margin: 0px">
     <div *ngFor="let item of administradores" class="avatar">
       <div class="avatar-circle" (click)="editarAdm(item.id)">{{ getInitials(item.nome) }}</div>
       <p>{{ item.nome }}</p>
@@ -23,4 +34,4 @@
   <app-administrador-cadastro [admId]="admId"></app-administrador-cadastro>
 </div>
 
-
+<div id="filter-wall"></div>

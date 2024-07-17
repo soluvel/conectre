@@ -36,10 +36,17 @@ export class AdministradorComponent implements OnInit {
   adicionarAdm() {
     var overlay = document.getElementById('overlayAdm');
     overlay.style.display = 'block';
+    
+    var filterWall = document.getElementById('filter-wall');
+    filterWall.style.display = 'block';
   }
 
   editarAdm(admId: any) {
     this.admId = admId;
     this.adicionarAdm();
+  }
+
+  animationArrow() {
+    document.querySelector('.license-arrow-icon').classList.toggle('license-arrow-icon-open');
   }
 }

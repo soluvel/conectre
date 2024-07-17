@@ -102,4 +102,13 @@ export class EmpresaComponent implements OnInit, OnDestroy {
       }
     });
   }
+
+  openConfirm() {
+    var overlay = document.getElementById('overlayConfirm');
+    overlay.style.display = 'block';
+
+    var filterWall = document.getElementById('filterWall');
+    filterWall.style.display = 'block';
+  }
+
 }
