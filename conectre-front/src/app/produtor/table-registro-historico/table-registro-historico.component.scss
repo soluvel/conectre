@@ -1,0 +1,118 @@
+$size-px-14: 14px;
+$size-px-20: 20px;
+$size-px-30: 30px;
+$size-percent-10: 10%;
+$size-percent-15: 15%;
+$grey: #6D6D6D;
+
+table {
+  width: 100%;
+  border-radius: $size-px-30;
+}
+
+table td, th {
+  font-size: $size-px-14;
+}
+
+table th {
+  color: $grey;
+  background: #F4F4F5;
+}
+
+table td {
+  color: #09090B;
+  font-weight: 500;
+}
+
+mat-paginator {
+  border-bottom-right-radius: $size-px-20;
+  border-bottom-left-radius: $size-px-20;
+  justify-content: center;
+}
+
+.mat-elevation-z2 {
+  border: 1px solid #ddd;
+  border-radius: $size-px-20;
+}
+
+#adm, #cnpj, #grupo {
+  width: $size-percent-15;
+}
+
+#empresa {
+  border-top-left-radius: $size-px-20;
+  width: 20%
+}
+
+#header-right {
+  border-top-right-radius: $size-px-20;
+  text-align: right;
+}
+
+#paginacao {
+  justify-content: space-between;
+  padding: 15px 10px 15px 10px;
+}
+
+#detalhe {
+  text-align: right;
+  padding-right: $size-px-30
+}
+
+#paginacao-number {
+  padding: 0 10px 0 10px;
+  color: $grey;
+}
+
+//estilização da parte de consulta -------------------------------------
+
+.container-filter {
+  display: flex;
+  margin-bottom: $size-px-30;
+  position: relative;
+  width: 100%;
+  height: $size-px-30;
+  justify-content: flex-end;
+}
+
+.input-search {
+  width: 25%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  left: 0;
+  top: 0;
+  height: 100%;
+  position: absolute;
+  margin-right: $size-px-30;
+  outline: none;
+}
+
+.input-img {
+  height: 80%;
+  position: absolute;
+  left: 23%;
+  padding-top: 5px;
+}
+
+// estilização do filtro
+
+#overlay {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 45%;
+  height: 50%;
+  background-color: white;
+  z-index: 9999;
+  border-radius: 10px;
+}
+
+
+@media screen and (max-width: 600px) {
+  .input-img {
+    display: none;
+  }
+}

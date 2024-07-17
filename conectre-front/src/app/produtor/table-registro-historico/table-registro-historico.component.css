@@ -1,0 +1,108 @@
+table {
+  width: 100%;
+  border-radius: 30px;
+}
+
+table td, th {
+  font-size: 14px;
+}
+
+table th {
+  color: #6D6D6D;
+  background: #F4F4F5;
+}
+
+table td {
+  color: #09090B;
+  font-weight: 500;
+}
+
+mat-paginator {
+  border-bottom-right-radius: 20px;
+  border-bottom-left-radius: 20px;
+  justify-content: center;
+}
+
+.mat-elevation-z2 {
+  border: 1px solid #ddd;
+  border-radius: 20px;
+}
+
+#adm, #cnpj, #grupo {
+  width: 15%;
+}
+
+#empresa {
+  border-top-left-radius: 20px;
+  width: 20%;
+}
+
+#header-right {
+  border-top-right-radius: 20px;
+  text-align: right;
+}
+
+#paginacao {
+  justify-content: space-between;
+  padding: 15px 10px 15px 10px;
+}
+
+#detalhe {
+  text-align: right;
+  padding-right: 30px;
+}
+
+#paginacao-number {
+  padding: 0 10px 0 10px;
+  color: #6D6D6D;
+}
+
+.container-filter {
+  display: flex;
+  margin-bottom: 30px;
+  position: relative;
+  width: 100%;
+  height: 30px;
+  justify-content: flex-end;
+}
+
+.input-search {
+  width: 25%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  left: 0;
+  top: 0;
+  height: 100%;
+  position: absolute;
+  margin-right: 30px;
+  outline: none;
+}
+
+.input-img {
+  height: 80%;
+  position: absolute;
+  left: 23%;
+  padding-top: 5px;
+}
+
+#overlay {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 45%;
+  height: 50%;
+  background-color: white;
+  z-index: 9999;
+  border-radius: 10px;
+}
+
+@media screen and (max-width: 600px) {
+  .input-img {
+    display: none;
+  }
+}
+
+/*# sourceMappingURL=table-registro-historico.component.css.map */

@@ -56,6 +56,11 @@ import {
   TablePropriedadeVinculadoComponent
 } from "./produtor/table-propriedade-vinculado/table-propriedade-vinculado.component";
 import { AcessoNegadoComponent } from "./acesso-negado/acesso-negado.component";
+import { ProdutorHomeComponent } from './home/produtor-home/produtor-home.component';
+import {
+  TableRegistroHistoricoComponent
+} from "./produtor/table-registro-historico/table-registro-historico.component";
+import { HistoricoComponent } from './produtor/historico/historico.component';
 
 @NgModule({
   declarations: [
@@ -86,7 +91,10 @@ import { AcessoNegadoComponent } from "./acesso-negado/acesso-negado.component";
     ProdutorFilterComponent,
     PropriedadeCadastroComponent,
     TablePropriedadeVinculadoComponent,
-    AcessoNegadoComponent
+    AcessoNegadoComponent,
+    ProdutorHomeComponent,
+    TableRegistroHistoricoComponent,
+    HistoricoComponent
   ],
   imports: [
     BrowserModule,

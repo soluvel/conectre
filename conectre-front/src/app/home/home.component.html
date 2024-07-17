@@ -1,11 +1,16 @@
-<app-tabs (tabChange)="onTabChange($event)"></app-tabs>
-<div class="tipography">
-  <h3>{{ activeMessage }}</h3>
-</div>
+<ng-container *ngIf="storage.getRole() != 'PRODUTOR'">
+  <app-tabs (tabChange)="onTabChange($event)" *ngIf="storage.getRole() == 'ADM_TREVISAN'"></app-tabs>
+  <div class="tipography">
+    <h3>{{ activeMessage }}</h3>
+  </div>
 
-<div [ngSwitch]="getActiveComponent()">
-  <app-table-empresa *ngSwitchCase="'Empresas'"></app-table-empresa>
-  <app-table-tecnico *ngSwitchCase="'Técnicos'"></app-table-tecnico>
-  <app-table-produtor *ngSwitchCase="'Produtores'"></app-table-produtor>
-  <app-table-empresa *ngSwitchDefault></app-table-empresa>
-</div>
+  <div [ngSwitch]="getActiveComponent()">
+    <app-table-empresa *ngSwitchCase="'Empresas'"></app-table-empresa>
+    <app-table-tecnico *ngSwitchCase="'Técnicos'"></app-table-tecnico>
+    <app-table-produtor *ngSwitchCase="'Produtores'"></app-table-produtor>
+    <app-table-empresa *ngSwitchDefault></app-table-empresa>
+  </div>
+</ng-container>
+<ng-container *ngIf="storage.getRole() == 'PRODUTOR'">
+  <app-produtor-home></app-produtor-home>
+</ng-container>
