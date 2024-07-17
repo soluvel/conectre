@@ -6,6 +6,7 @@ import { ActivatedRoute, Router } from "@angular/router";
 import { Subject, takeUntil } from "rxjs";
 import { ProdutorService } from "../produtor.service";
 import { StringNumberFormats } from "../../utils/StringNumberFormats";
+import { StorageService } from "../../storage.service";
 
 @Component({
   selector: 'app-produtor-cadastro',
@@ -24,7 +25,8 @@ export class ProdutorCadastroComponent implements OnInit, OnDestroy {
               private route: ActivatedRoute,
               private service: ProdutorService,
               private empresaService: EmpresaService,
-              private router: Router) {
+              private router: Router,
+              public storage: StorageService) {
     this.form = this.formBuilder.group({
       id: [],
       nome: ['', Validators.required],

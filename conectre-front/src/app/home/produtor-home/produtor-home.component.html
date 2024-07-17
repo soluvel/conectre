@@ -1,0 +1,25 @@
+<div class="tanque-infos">
+  <div class="header-infos">
+    <select id="tanque" [(ngModel)]="selectedTanque">
+      <option *ngFor="let tanque of tanques" [value]="tanque.id">{{ tanque.nome }}</option>
+    </select>
+    <span>{{ selectedTanqueName }}</span>
+  </div>
+
+  <app-tabs-tanque class="table-infos" [tanqueId]="selectedTanque"></app-tabs-tanque>
+
+  <span class="footer-infos">
+      <span>
+        Registro realizado em:
+        <span class="date-info-footer">
+          08 de Maio, 2024 às 19h40
+        </span>
+      </span>
+    </span>
+</div>
+
+
+<div class="tipography">
+  <h3>Histórico de registro</h3>
+</div>
+<app-table-registro-historico></app-table-registro-historico>

@@ -100,4 +100,10 @@ textarea:focus, input:focus, select:focus {
   outline: 0;
 }
 
+.actions-footer {
+  display: flex;
+  justify-content: flex-end;
+  padding: 20px 40px 20px 40px;
+}
+
 /*# sourceMappingURL=tabs-tanque.component.css.map */

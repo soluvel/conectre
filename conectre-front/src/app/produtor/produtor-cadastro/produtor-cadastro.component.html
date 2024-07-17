@@ -34,7 +34,7 @@
           <label for="cpf" class="form-label required">CPF</label>
           <div class="input-group">
             <input type="email" class="form-control" formControlName="cpf" id="cpf" appCnpjCpfMask [maxLength]="14">
-                       <mat-icon class="icon edit-icon material-symbols-rounded" *ngIf="isEditando">edit</mat-icon>
+            <mat-icon class="icon edit-icon material-symbols-rounded" *ngIf="isEditando">edit</mat-icon>
           </div>
         </div>
         <div class="col-3">
@@ -42,7 +42,7 @@
           <div class="input-group">
             <input type="text" class="form-control" formControlName="celular"
                    aria-describedby="empresaImage" appCelularMask [maxLength]="15">
-                       <mat-icon class="icon edit-icon material-symbols-rounded" *ngIf="isEditando">edit</mat-icon>
+            <mat-icon class="icon edit-icon material-symbols-rounded" *ngIf="isEditando">edit</mat-icon>
           </div>
         </div>
         <div class="col-3">
@@ -50,7 +50,7 @@
           <div class="input-group">
             <input type="text" class="form-control" formControlName="email"
                    aria-describedby="empresaImage">
-                       <mat-icon class="icon edit-icon material-symbols-rounded" *ngIf="isEditando">edit</mat-icon>
+            <mat-icon class="icon edit-icon material-symbols-rounded" *ngIf="isEditando">edit</mat-icon>
           </div>
         </div>
       </div>
@@ -68,14 +68,17 @@
 
   <div class="actions-footer">
     <button class="button-no-border" style="margin-right: 10px">Limpar dados</button>
-    <button [disabled]="!form.valid" (click)="onSubmit()" [ngClass]="{'button-disabled': !form.valid}">{{ isEditando ? 'Salvar Alterações' : 'Cadastrar Produtor' }}
+    <button [disabled]="!form.valid" (click)="onSubmit()"
+            [ngClass]="{'button-disabled': !form.valid}">{{ isEditando ? 'Salvar Alterações' : 'Cadastrar Produtor' }}
     </button>
   </div>
 
-  <div class="tipography">
-    <h3>Propriedades vinculadas</h3>
-  </div>
+  <ng-container *ngIf="produtorId != null">
+    <div class="tipography">
+      <h3>Propriedades vinculadas</h3>
+    </div>
 
-  <app-table-propriedade-vinculado [produtorId]="produtorId"></app-table-propriedade-vinculado>
+    <app-table-propriedade-vinculado [produtorId]="produtorId"></app-table-propriedade-vinculado>
+  </ng-container>
 
 </div>

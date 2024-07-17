@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.3.xsd">
+
+    <changeSet id="1" author="kassia.zama">
+        <preConditions onFail="MARK_RAN" onFailMessage="A tabela empresa_aud já existe no database">
+            <not>
+                <tableExists tableName="empresa_aud"/>
+            </not>
+        </preConditions>
+
+        <createTable tableName="empresa_aud">
+            <column name="id" type="int"/>
+            <column name="razao_social" type="varchar(255)"/>
+            <column name="cnpj_cpf" type="varchar(15)"/>
+            <column name="email" type="varchar(255)"/>
+            <column name="cep" type="varchar(9)"/>
+            <column name="logradouro" type="varchar(255)"/>
+            <column name="numero" type="varchar(10)"/>
+            <column name="complemento" type="varchar(255)"/>
+            <column name="bairro" type="varchar(255)"/>
+            <column name="localidade" type="varchar(255)"/>
+            <column name="uf" type="varchar(2)"/>
+            <column name="plano" type="varchar(30)"/>
+            <column name="grupo_id" type="int"/>
+            <column name="audit_date" type="timestamp" defaultValueComputed="CURRENT_TIMESTAMP"/>
+        </createTable>
+
+    </changeSet>
+</databaseChangeLog>

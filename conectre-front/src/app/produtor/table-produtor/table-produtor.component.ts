@@ -3,6 +3,7 @@ import { MatTableDataSource } from "@angular/material/table";
 import { MatPaginator } from "@angular/material/paginator";
 import { ProdutorService } from "../produtor.service";
 import { Router } from "@angular/router";
+import { StorageService } from "../../storage.service";
 
 @Component({
   selector: 'app-table-produtor',
@@ -24,7 +25,8 @@ export class TableProdutorComponent implements OnInit {
   filter: string;
 
   constructor(private service: ProdutorService,
-              private router: Router) {
+              private router: Router,
+              public storage: StorageService) {
   }
 
   ngOnInit(): void {
@@ -133,6 +135,10 @@ export class TableProdutorComponent implements OnInit {
       }
     });
     this.dataSource.data = filteredData;
+  }
+
+  redirectToProdutor() {
+    this.router.navigate(['/produtor/cadastrar']);
   }
 }
 

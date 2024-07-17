@@ -233,3 +233,11 @@
     </mat-tab>
   </form>
 </mat-tab-group>
+
+<div class="actions-footer">
+  <button class="button-no-border" style="margin-right: 10px">Limpar dados</button>
+  <button (click)="onSubmit()" [ngClass]="{'button-disabled': !form.valid}">Cadastrar
+  </button>
+</div>
+
+
