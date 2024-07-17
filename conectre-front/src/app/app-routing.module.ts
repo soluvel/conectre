@@ -17,7 +17,7 @@ const routes: Routes = [
   {path: 'inicio', component: HomeComponent, canActivate: [AuthGuard]},
   {path: 'login', component: LoginComponent},
   {path: 'redefinir-senha/:token', component: RedefinirSenhaComponent},
-  {path: 'empresa/cadastrar', component: EmpresaComponent, data: {role: ['ADM_TREVISAN']}, canActivate: [AuthGuard]},
+  {path: 'empresa/cadastrar', component: EmpresaComponent, data: {role: ['ADM_TREVISAN', 'PRODUTOR']}, canActivate: [AuthGuard]},
   {path: 'empresa/editar/:id', component: EmpresaComponent, data: {role: ['ADM_TREVISAN']}, canActivate: [AuthGuard]},
   {path: 'tecnico/cadastrar', component: TecnicoCadastroComponent, data: {role: ['ADM_TREVISAN']}, canActivate: [AuthGuard]},
   {path: 'tecnico/editar/:id', component: TecnicoCadastroComponent, data: {role: ['ADM_TREVISAN']}, canActivate: [AuthGuard]},
