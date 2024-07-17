@@ -1,103 +1,51 @@
-h4 {
-  font-size: 12px;
-  font-weight: 500;
-}
-
-.column {
-  padding-right: 50px;
-}
-
-.tab-container {
+.icon-close {
+  font-weight: 300;
+  color: #424242;
+  cursor: pointer;
   display: flex;
   align-items: center;
-  justify-content: flex-start;
-  height: 100px;
-  width: 100%;
-  background-color: #FAFAFA;
+  justify-content: center;
+  text-align: center;
 }
 
-::ng-deep .mat-mdc-tab.mdc-tab--active .mdc-tab__text-label {
-  color: #27272A !important;
-  font-weight: 700;
+.icon-close:hover {
+  font-weight: 400;
+  color: #000;
+}
+
+.overlay-header {
+  display: flex;
+  height: 32px;
+  justify-content: space-between;
+}
+
+.overlay-header span {
   font-size: 14px;
+  font-weight: 600;
+  color: #52525B;
 }
 
-::ng-deep .mat-mdc-tab-labels {
-  width: 100%;
-  flex-grow: 0 !important;
-}
-
-::ng-deep .mat-mdc-tab-group.mat-mdc-tab-group-stretch-tabs > .mat-mdc-tab-header .mat-mdc-tab {
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
-  font-weight: 500;
-  width: 33% !important;
-  display: flex;
-  align-items: center;
-  justify-content: start;
-  padding-left: 5px;
-}
-
-::ng-deep .mat-mdc-tab.mdc-tab--active {
-  background-color: #FAFAFA;
-  border-bottom: 2px solid #068fff;
-  color: #242424;
-}
-
-::ng-deep .mat-mdc-tab-header {
-  --mdc-tab-indicator-active-indicator-height: 0px !important;
-  padding-bottom: 10px;
-}
-
-::ng-deep .mat-mdc-tab-list {
-  width: 100% !important;
-  flex-grow: 0 !important;
-}
-
-::ng-deep .mat-mdc-tab-group, ::ng-deep .mat-mdc-tab-nav-bar {
-  --mat-tab-header-active-ripple-color: transparent;
-  --mat-tab-header-inactive-ripple-color: transparent;
-}
-
-.mat-mdc-tab-group {
+.overlay-content {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  width: 100%;
+  justify-content: space-between;
+  height: 190px;
 }
 
-.row-full-line {
-  width: 100%;
-  display: flex;
-  justify-content: end;
-}
-
-mat-tab {
-  display: flex;
-  text-align: start;
-}
-
-.icon-tabs {
-  margin-right: 5px;
-}
-
-.form-control {
-  border: none;
-  border-bottom: 1px solid #E0E0E0;
-  border-radius: unset;
-  background-color: #FAFAFA;
-}
-
-.form-label {
-  color: #242424;
+.overlay-text {
   font-size: 14px;
   font-weight: 400;
+  color: #242424;
+  padding-top: 30px;
 }
 
-textarea:focus, input:focus, select:focus {
-  box-shadow: 0 0 0 0;
-  border-bottom: 1px solid #313131;
-  outline: 0;
+.overlay-buttons {
+  display: flex;
+  flex-direction: column;
 }
 
-/*# sourceMappingURL=tabs-tanque.component.css.map */
+.button-white {
+  margin: 10px 0 0 0 !important;
+}
+
+/*# sourceMappingURL=overlay-confirmacao.component.css.map */
