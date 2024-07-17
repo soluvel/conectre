@@ -11,6 +11,7 @@ import { MatTabsModule } from "@angular/material/tabs";
 import { EmpresaTableComponent } from './empresa/table-empresa/empresa-table.component';
 import { MatTableModule } from "@angular/material/table";
 import { EmpresaComponent } from './empresa/empresa-crud/empresa-cadastro/empresa.component';
+import { OverlayConfirmacaoComponent } from './overlay-confirmacao/overlay-confirmacao.component';
 import { HttpClientModule } from "@angular/common/http";
 import { CpfCnpjPipe } from "./pipes/cpf-cnpj";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
@@ -36,13 +37,9 @@ import { EquipamentoComponent } from "./produtor/equipamento/equipamento.compone
 import { ToastrModule } from "ngx-toastr";
 import { CnpjCpfMaskDirective } from './diretiva/cnpj-cpf-mask.directive';
 import { AdministradorComponent } from './administrador/administrador.component';
-import {
-  AdministradorCadastroComponent
-} from './administrador/administrador-cadastro/administrador-cadastro.component';
+import { AdministradorCadastroComponent } from './administrador/administrador-cadastro/administrador-cadastro.component';
 import { TecnicoCadastroComponent } from './tecnico/tecnico-cadastro/tecnico-cadastro.component';
-import {
-  TableProdutorVinculadoComponent
-} from "./produtor/table-produtor-vinculado/table-produtor-vinculado.component";
+import { TableProdutorVinculadoComponent } from "./produtor/table-produtor-vinculado/table-produtor-vinculado.component";
 import { TecnicoFilterComponent } from "./tecnico/tecnico-filter/tecnico-filter.component";
 import { ProdutorCadastroComponent } from "./produtor/produtor-cadastro/produtor-cadastro.component";
 import { NotificacaoComponent } from './notificacao/notificacao.component';
@@ -52,9 +49,7 @@ import { CelularPipe } from "./pipes/celular";
 import { ProdutorFilterComponent } from "./produtor/produtor-filter/produtor-filter.component";
 import { PropriedadeCadastroComponent } from "./produtor/propriedade-cadastro/propriedade-cadastro.component";
 import { TabsTanqueComponent } from './tabs-tanque/tabs-tanque.component';
-import {
-  TablePropriedadeVinculadoComponent
-} from "./produtor/table-propriedade-vinculado/table-propriedade-vinculado.component";
+import { TablePropriedadeVinculadoComponent } from "./produtor/table-propriedade-vinculado/table-propriedade-vinculado.component";
 import { AcessoNegadoComponent } from "./acesso-negado/acesso-negado.component";
 import { ProdutorHomeComponent } from './home/produtor-home/produtor-home.component';
 import {
@@ -92,6 +87,7 @@ import { HistoricoComponent } from './produtor/historico/historico.component';
     PropriedadeCadastroComponent,
     TablePropriedadeVinculadoComponent,
     AcessoNegadoComponent,
+    OverlayConfirmacaoComponent,
     ProdutorHomeComponent,
     TableRegistroHistoricoComponent,
     HistoricoComponent

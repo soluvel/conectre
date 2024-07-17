@@ -1,31 +1,44 @@
 <div>
-
   <div class="button-close-div">
     <mat-icon class="icon-close material-symbols-rounded" (click)="fecharQuadrado()">close</mat-icon>
   </div>
 
   <div class="container-header">
     <h4>Filtragem</h4>
-    <h4 id="text-limpar">Limpar todos</h4>
+    <h4 id="text-limpar" (click)="limparDados()">Limpar todos</h4>
   </div>
 
   <mat-divider></mat-divider>
 
   <div class="container-sub-header">
     <h4 id="text-filtro">Filtros aplicados</h4>
-    <h4>Nenhum selecionado</h4>
+    <h4 *ngIf="nenhumSelecionado">Nenhum selecionado</h4>
   </div>
 </div>
 
 <div class="container-chips">
   <mat-chip-set>
-    <mat-chip *ngFor="let chip of checkedRazaoSocial">{{ chip }}</mat-chip>
+    <mat-chip *ngFor="let chip of checkedRazaoSocial">
+      <span class="filter-type">Empresa</span>
+      {{ chip }}
+      <mat-icon class="icon-filter-remove material-symbols-rounded" (click)="toggleChip(chip, checkedRazaoSocial)" (click)="desativarCheckbox(chip, '')">close</mat-icon>
+    </mat-chip>
   </mat-chip-set>
+
   <mat-chip-set>
-    <mat-chip *ngFor="let chip of checkedQntEquipamentos">{{ chip }}</mat-chip>
+    <mat-chip *ngFor="let chip of checkedQntEquipamentos">
+      <span class="filter-type">Equipamentos</span>
+      {{ chip }}
+      <mat-icon class="icon-filter-remove material-symbols-rounded" (click)="toggleChip(chip, checkedQntEquipamentos)" (click)="desativarCheckbox(chip, 'equipamento')">close</mat-icon>
+    </mat-chip>
   </mat-chip-set>
+
   <mat-chip-set>
-    <mat-chip *ngFor="let chip of checkedQntPropriedades">{{ chip }}</mat-chip>
+    <mat-chip *ngFor="let chip of checkedQntPropriedades">
+      <span class="filter-type">Propriedades</span>
+      {{ chip }}
+      <mat-icon class="icon-filter-remove material-symbols-rounded" (click)="toggleChip(chip, checkedQntPropriedades)" (click)="desativarCheckbox(chip, 'propriedade')">close</mat-icon>
+    </mat-chip>
   </mat-chip-set>
 </div>
 
@@ -39,10 +52,12 @@
       </mat-expansion-panel-header>
 
       <div class="checkbox-container">
-        <mat-checkbox class="checkbox-item" *ngFor="let empresa of razaoSocial; let i = index" (change)="toggleRazaoSocial(empresa)">{{ empresa }}
+        <mat-checkbox [color]="'accent'" class="checkbox-item" *ngFor="let empresa of razaoSocial; let i = index" (change)="toggleChip(empresa, checkedRazaoSocial)" [(ngModel)]="checkboxesAtivos[empresa]">
+          {{ empresa }}
         </mat-checkbox>
       </div>
     </mat-expansion-panel>
+
     <mat-expansion-panel>
       <mat-expansion-panel-header>
         <mat-panel-title>
@@ -51,11 +66,12 @@
       </mat-expansion-panel-header>
 
       <div class="checkbox-container">
-        <mat-checkbox [color]="'accent'" class="checkbox-item" *ngFor="let opcao of qnts"
-                      (change)="toggleChip(opcao, checkedQntEquipamentos)">{{ opcao }}
+        <mat-checkbox [color]="'accent'" class="checkbox-item" *ngFor="let opcao of qntEquipamento" (change)="toggleChip(opcao, checkedQntEquipamentos)" [(ngModel)]="checkboxesAtivos['equipamento' + opcao]">
+          {{ opcao }}
         </mat-checkbox>
       </div>
     </mat-expansion-panel>
+
     <mat-expansion-panel>
       <mat-expansion-panel-header>
         <mat-panel-title>
@@ -64,8 +80,8 @@
       </mat-expansion-panel-header>
 
       <div class="checkbox-container">
-        <mat-checkbox [color]="'accent'" class="checkbox-item" *ngFor="let opcao of qnts"
-                      (change)="toggleChip(opcao, checkedQntPropriedades)">{{ opcao }}
+        <mat-checkbox [color]="'accent'" class="checkbox-item" *ngFor="let opcao of qntPropriedade" (change)="toggleChip(opcao, checkedQntPropriedades)" [(ngModel)]="checkboxesAtivos['propriedade' + opcao]">
+          {{ opcao }}
         </mat-checkbox>
       </div>
     </mat-expansion-panel>

@@ -44,6 +44,9 @@ export class TableProdutorComponent implements OnInit {
   exibirFiltro() {
     var overlay = document.getElementById('overlay-filter');
     overlay.style.display = 'block';
+  
+    var filterWall = document.getElementById('filter-wall');
+    filterWall.style.display = 'block';
   }
 
   exibirQuadrado() {

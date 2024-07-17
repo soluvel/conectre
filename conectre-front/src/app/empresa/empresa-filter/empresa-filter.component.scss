@@ -3,9 +3,10 @@ $grey-color: #71717A;
 #container-footer {
   height: 30px;
   width: 100%;
-  margin-top: 30%;
   display: flex;
   justify-content: center;
+  position: absolute;
+  bottom: 0;
 }
 
 .checkbox-container {
@@ -13,7 +14,11 @@ $grey-color: #71717A;
   flex-direction: column;
 }
 
-.container-chips, .container-header {
+.container-header  {
+  margin-top: 30px;
+}
+
+.container-chips {
   margin: 30px 0;
 }
 
@@ -41,12 +46,15 @@ mat-expansion-panel {
 .container-header h4 {
   font-size: 18px;
   font-weight: 500;
+  font-weight: 600;
 }
 
 #text-limpar {
   color: $grey-color;
   font-size: 14px;
+  font-weight: 600;
   text-decoration: underline;
+  cursor: pointer;
 }
 
 .button-close-div {
@@ -63,7 +71,7 @@ mat-expansion-panel {
 }
 
 mat-divider {
-  margin: 30px 0;
+  margin: 15px 0 28px 0;
 }
 
 .container-sub-header h4 {
@@ -92,6 +100,11 @@ mat-divider {
   align-items: center;
   font-weight: 300;
   cursor: pointer;
+}
+
+.container-options {
+  max-height: 55%;
+  overflow-x: hidden;
 }
 
 ::ng-deep {

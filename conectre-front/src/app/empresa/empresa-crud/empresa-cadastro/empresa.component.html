@@ -1,7 +1,7 @@
 <div style="position: relative; min-height: 85vh">
   <div class="container-header">
-    <img src="../../../../assets/left-arrow.svg" alt="">
-    <span style="padding-left: 10px">Voltar para a página principal</span>
+    <a href="/inicio"><mat-icon class="icon back-icon material-symbols-rounded">arrow_back</mat-icon></a>
+    <span class="back-text">Voltar para a página principal</span>
   </div>
 
   <div class="container-form">
@@ -63,17 +63,17 @@
         </div>
 
         <div class="col-2">
-          <label for="numero" class="form-label required">Número</label>
+          <label for="bairro" class="form-label required">Bairro</label>
           <div class="input-group">
-            <input type="text" class="form-control" formControlName="numero" id="numero">
+            <input type="text" class="form-control" formControlName="bairro" id="bairro">
             <mat-icon class="icon edit-icon material-symbols-rounded" *ngIf="isEditando">edit</mat-icon>
           </div>
         </div>
 
         <div class="col-2">
-          <label for="bairro" class="form-label required">Bairro</label>
+          <label for="numero" class="form-label required">Número</label>
           <div class="input-group">
-            <input type="text" class="form-control" formControlName="bairro" id="bairro">
+            <input type="text" class="form-control" formControlName="numero" id="numero">
             <mat-icon class="icon edit-icon material-symbols-rounded" *ngIf="isEditando">edit</mat-icon>
           </div>
         </div>
@@ -88,7 +88,7 @@
       </div>
 
       <div class="row g-3" formGroupName="endereco">
-        <div class="col-12">
+        <div class="col-6">
           <label for="complemento" class="form-label">Complemento</label>
           <div class="input-group" style="padding-bottom: 0">
             <input type="text" class="form-control" formControlName="complemento" id="complemento"
@@ -134,10 +134,23 @@
   <app-administrador></app-administrador>
 
   <div class="actions-footer">
-    <button class="button-no-border" style="margin-right: 10px">Limpar dados</button>
-    <button [disabled]="!form.valid" (click)="onSubmit()"
-            [ngClass]="{'button-disabled': !form.valid}"> {{ msgButton }}
+    <button class="exclude-button" [disabled]="!isEditando" [ngClass]="{'exclude-disabled': !isEditando}" (click)="openConfirm()">
+      <mat-icon class="exclude-icon material-symbols-rounded">delete</mat-icon>
+      <span>Excluir empresa</span>
     </button>
+
+    <div class="buttons">
+      <button class="button-no-border" style="margin-right: 10px">Limpar dados</button>
+      <button [disabled]="!form.valid" (click)="openConfirm()" [ngClass]="{'button-disabled': !form.valid}">
+        {{ msgButton }}
+      </button>
+    </div>
   </div>
+
+  <div id="overlayConfirm">
+  <app-overlay-confirmacao></app-overlay-confirmacao>
+  </div>
+
+  <div id="filterWall"></div>
 
 </div>

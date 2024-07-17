@@ -9,6 +9,11 @@ mat-sidenav {
   border-radius: 8px;
   margin-right: 2vh;
   left: 2vh;
+  z-index: 999;
+}
+
+.mat-drawer-content {
+  position: static;
 }
 
 // transition effect ---------------------------

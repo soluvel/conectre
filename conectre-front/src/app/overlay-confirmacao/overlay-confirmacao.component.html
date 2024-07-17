@@ -1,0 +1,12 @@
+
+<div class="overlay-header">
+  <span>Atenção!</span>
+  <mat-icon class="icon-close material-symbols-rounded" (click)="closeConfirm()">close</mat-icon>
+</div>
+<div class="overlay-content">
+  <span class="overlay-text">Você deseja salvar a sua alteração do perfil da empresa C. Vale</span>
+  <div class="overlay-buttons">
+    <button (click)="onSubmit()">Salvar</button>
+    <button class="button-white" style="margin-right: 10px" (click)="closeConfirm()">Descartar alteração</button>
+  </div>
+</div>
