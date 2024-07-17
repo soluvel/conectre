@@ -104,5 +104,9 @@ mat-paginator {
     display: none;
   }
 }
+.flex-align-itens-center {
+  display: flex;
+  align-items: center;
+}
 
 /*# sourceMappingURL=table-registro-historico.component.css.map */

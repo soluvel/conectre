@@ -8,13 +8,17 @@ import { TanqueService } from "../../tanque.service";
 })
 export class ProdutorHomeComponent implements OnInit {
   selectedTanque: string = '';
-  tanques: any;
+  tanques: any[];
 
   constructor(private tanqueService: TanqueService) {
+
   }
 
   get selectedTanqueName(): string {
-    const selectedTanque = this.tanques.find(tanque => tanque.id == this.selectedTanque);
+    let selectedTanque;
+    if (this.tanques != undefined) {
+      selectedTanque = this.tanques.find(tanque => tanque.id == this.selectedTanque);
+    }
     return selectedTanque ? selectedTanque.nome : '';
   }
 

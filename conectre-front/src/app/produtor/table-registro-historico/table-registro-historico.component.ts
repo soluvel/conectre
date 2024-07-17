@@ -1,8 +1,9 @@
-import { Component, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatTableDataSource } from "@angular/material/table";
 import { MatPaginator } from "@angular/material/paginator";
-import { PropriedadeService } from "../propriedade.service";
 import { Router } from "@angular/router";
+import { MedicaoService } from "../medicao.service";
+import { StorageService } from "../../storage.service";
 
 @Component({
   selector: 'app-table-registro-historico',
@@ -11,9 +12,8 @@ import { Router } from "@angular/router";
 })
 export class TableRegistroHistoricoComponent implements OnInit {
 
-  @Input() produtorId: any;
   dataSource = new MatTableDataSource<any>;
-  displayedColumns: string[] = ['tanque', 'propriedade', 'carbono', 'gpd', 'temperatura','oxigenio', 'racao', 'coleta', 'registro', 'detalhe'];
+  displayedColumns: string[] = ['tanque', 'propriedade', 'convAlimentar', 'gpd', 'temperatura', 'oxigenio', 'racao', 'coleta', 'registro', 'detalhe'];
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   pageNumber: number = 0;
@@ -21,12 +21,13 @@ export class TableRegistroHistoricoComponent implements OnInit {
   size: number = 3;
   filter: string;
 
-  constructor(private service: PropriedadeService,
+  constructor(private service: MedicaoService,
+              private storage: StorageService,
               private router: Router) {
   }
 
   ngOnInit(): void {
-    this.service.getPropriedadesByProdutor(this.produtorId).subscribe({
+    this.service.findHistorico(this.storage.getUserId(), this.pageNumber, this.size).subscribe({
       next: (page) => {
         this.dataSource.data = page.content
         this.pageNumber = page.pageable.pageNumber
@@ -35,17 +36,6 @@ export class TableRegistroHistoricoComponent implements OnInit {
       }
     });
 
-  }
-
-  search() {
-    this.service.page(0, this.size, this.filter, ['nome', 'endereco.localidade']).subscribe({
-      next: (page) => {
-        this.dataSource.data = page.content
-        this.pageNumber = page.pageable.pageNumber
-        this.totalPage = page.totalPages
-      }, error: () => {
-      }
-    });
   }
 
   exibirQuadrado() {
@@ -55,7 +45,7 @@ export class TableRegistroHistoricoComponent implements OnInit {
   nextOrBack(isAvancar: boolean) {
     let page = isAvancar ? this.pageNumber + 1 : this.pageNumber - 1;
 
-    this.service.page(page, this.size, '', []).subscribe({
+    this.service.findHistorico(this.storage.getUserId(), page, this.size).subscribe({
       next: (page) => {
         this.dataSource.data = page.content
         this.pageNumber = page.pageable.pageNumber
@@ -69,7 +59,7 @@ export class TableRegistroHistoricoComponent implements OnInit {
   }
 
   paginado(number: any) {
-    this.service.page(number - 1, this.size, '', []).subscribe({
+    this.service.findHistorico(this.storage.getUserId(), number - 1, this.size).subscribe({
       next: (page) => {
         this.dataSource.data = page.content
         this.pageNumber = page.pageable.pageNumber

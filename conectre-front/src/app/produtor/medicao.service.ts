@@ -21,4 +21,8 @@ export class MedicaoService {
   findOneByTanque(tanqueId: any): Observable<any> {
     return this.http.get<any>(`${this.apiUrl}/by-tanque/${tanqueId}`, { headers: this.headers });
   }
+
+  findHistorico(produtorId, number, size): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/historico/${produtorId}/${number}/${size}`, { headers: this.headers });
+  }
 }

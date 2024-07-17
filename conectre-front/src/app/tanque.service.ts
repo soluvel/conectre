@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { StorageService } from "./storage.service";
 import { Observable } from "rxjs";
-import { Empresa } from "./empresa/empresa";
 
 @Injectable({
   providedIn: 'root'

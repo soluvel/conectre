@@ -56,6 +56,9 @@ import {
   TableRegistroHistoricoComponent
 } from "./produtor/table-registro-historico/table-registro-historico.component";
 import { HistoricoComponent } from './produtor/historico/historico.component';
+import { DatePipe } from "@angular/common";
+import { DateFormatPipe } from "./pipes/dateFormat";
+import { TimeFormatPipe } from "./pipes/timeFormat";
 
 @NgModule({
   declarations: [
@@ -116,8 +119,10 @@ import { HistoricoComponent } from './produtor/historico/historico.component';
     MatProgressBarModule,
     ToastrModule.forRoot(),
     CelularPipe,
+    DateFormatPipe,
+    TimeFormatPipe
   ],
-  providers: [],
+  providers: [DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule {

@@ -76,6 +76,7 @@ export class TabsTanqueComponent implements OnInit, OnDestroy {
     this.medicaoService.save(this.form.getRawValue()).pipe(takeUntil(this.destroy$)
     ).subscribe({
       next: response => {
+        window.location.reload();
       },
       error: error => {
         console.error('Erro:', error);
