@@ -3,6 +3,7 @@ import { StorageService } from "../storage.service";
 import { FormBuilder, FormGroup } from "@angular/forms";
 import { MedicaoService } from "../produtor/medicao.service";
 import { Subject, takeUntil } from "rxjs";
+// import { logout } from '../app.component';
 
 @Component({
   selector: 'app-overlay-confirmacao',
@@ -10,13 +11,17 @@ import { Subject, takeUntil } from "rxjs";
   styleUrls: ['./overlay-confirmacao.component.scss']
 })
 export class OverlayConfirmacaoComponent {
-
+  buttonPopUpAction = 'logout';
 
   constructor() {}
 
-  onSubmit() {
+  onSubmit(buttonPopUpAction: string) {
+    if (buttonPopUpAction === "logout") {
+      // logout();
+    }
     
   }
+
 
   closeConfirm() {
     var overlay = document.getElementById('overlayConfirm');

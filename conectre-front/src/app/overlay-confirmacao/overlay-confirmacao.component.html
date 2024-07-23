@@ -4,9 +4,9 @@
   <mat-icon class="icon-close material-symbols-rounded" (click)="closeConfirm()">close</mat-icon>
 </div>
 <div class="overlay-content">
-  <span class="overlay-text">Você deseja salvar a sua alteração do perfil da empresa C. Vale</span>
+  <span class="overlay-text">Alterar texto via TS</span>
   <div class="overlay-buttons">
-    <button (click)="onSubmit()">Salvar</button>
-    <button class="button-white" style="margin-right: 10px" (click)="closeConfirm()">Descartar alteração</button>
+    <button class="confirm-button" (click)="onSubmit(buttonPopUpAction)">Alterar texto via TS</button>
+    <button class="cancel-button button-white" style="margin-right: 10px" (click)="closeConfirm()">Alterar texto via TS</button>
   </div>
 </div>
