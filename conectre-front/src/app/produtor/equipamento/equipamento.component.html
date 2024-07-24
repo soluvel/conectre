@@ -17,14 +17,6 @@
           </div>
         </div>
         <div class="row g-3">
-          <div class="col-12">
-            <label id="propriedade" for="propriedade" class="form-label required">Onde está o equipamento?</label>
-            <select class="form-select" formControlName="propriedade">
-              <option *ngFor="let propriedade of propriedades" [value]="propriedade">{{ propriedade.nome }}</option>
-            </select>
-          </div>
-        </div>
-        <div class="row g-3">
           <div class="col-6">
             <label for="codigo" class="form-label required">Código</label>
             <input type="text" class="form-control" id="codigo" aria-describedby="empresaImage"
