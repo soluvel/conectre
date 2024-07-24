@@ -25,6 +25,10 @@ export class TableTecnicoComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.getTableInfo();
+  }
+
+  getTableInfo() {
     this.service.page(this.pageNumber, this.size).subscribe({
       next: (page) => {
         this.dataSource.data = page.content
@@ -33,7 +37,6 @@ export class TableTecnicoComponent implements OnInit {
       }, error: () => {
       }
     });
-
   }
 
   exibirQuadrado() {
@@ -69,6 +72,11 @@ export class TableTecnicoComponent implements OnInit {
       }, error: () => {
       }
     });
+  }
+
+  clearSearch() {
+    this.getTableInfo();
+    this.razaoSocial = '';
   }
 
   redirectToDetails(id: number) {

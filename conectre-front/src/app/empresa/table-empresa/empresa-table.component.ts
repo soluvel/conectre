@@ -26,6 +26,11 @@ export class EmpresaTableComponent {
   }
 
   ngOnInit(): void {
+    this.getTableInfo();
+
+  }
+
+  getTableInfo() {
     this.service.page(this.pageNumber, this.size, '', []).subscribe({
       next: (page) => {
         this.dataSource.data = page.content
@@ -34,8 +39,8 @@ export class EmpresaTableComponent {
       }, error: () => {
       }
     });
-
   }
+
 
   onFiltroAlterado(event: { listaOpcoes: string[], listaCidades: string[], listaEmpresas: string[] }): void {
     let localidade = StringNumberFormats.removeBeforeHifen(event.listaCidades);
@@ -108,6 +113,11 @@ export class EmpresaTableComponent {
       }, error: () => {
       }
     });
+  }
+
+  clearSearch() {
+    this.getTableInfo();
+    this.filter = '';
   }
 
   redirectToDetails(id: number) {

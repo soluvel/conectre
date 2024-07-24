@@ -11,6 +11,7 @@ import { AuthService } from "./auth.service";
 export class AppComponent {
   title = 'Conectre';
   isLoggedIn: boolean = true;
+  buttonPopUpAction = 'logout';
 
   constructor(public storage: StorageService,
               private _router: Router,
@@ -25,17 +26,19 @@ export class AppComponent {
   }
 
   collapsed = signal(true);
-  sidenavWidth = computed(() => (this.collapsed() ? "70px" : "270px"));
+  sidenavWidth = computed(() => (this.collapsed() ? "70px" : "272px"));
 
   openMenu() {
     document.querySelector('.user-menu').classList.toggle('user-menu-open')
     document.querySelector('.menu-arrow-icon').classList.toggle('menu-open-arrow-icon')
   }
 
-  logout() {
+  logoutUser() {
+    alert('chamou a função')
     this.isLoggedIn = false;
     this.storage.clear();
     this._router.navigate(['/login']);
+    this.collapsed.set(true);
   }
   
   openSideMenu() {
@@ -47,4 +50,21 @@ export class AppComponent {
       topic.classList.toggle('invisible-effect');
     });
   }
+
+  openConfirm() {
+    var overlay = document.getElementById('overlayConfirm');
+    overlay.style.display = 'block';
+
+    var filterWall = document.getElementById('filterWall');
+    filterWall.style.display = 'block';
+
+    document.querySelector('.overlay-text').innerHTML = 'Você deseja realmente fazer logout de seu usuário?';
+    document.querySelector('.confirm-button').innerHTML = 'Fazer logout';
+    document.querySelector('.confirm-button').setAttribute("style", "background:#CD0000;");
+    document.querySelector('.cancel-button').innerHTML = 'Cancelar';
+  }
 }
+
+// export function logout() {
+//   AppComponent.prototype.logoutUser();
+// }

@@ -74,6 +74,7 @@ mat-paginator {
 #paginacao-number {
   padding: 0 10px 0 10px;
   color: $grey;
+  pointer-events: none;
 }
 
 //estilização da parte de consulta -------------------------------------
@@ -120,6 +121,8 @@ mat-paginator {
 
 .buttons-box {
   display: flex;
+  width: 75%;
+  justify-content: space-between;
 }
 
 .filter-button {
@@ -199,6 +202,25 @@ mat-paginator {
   color: #000;
   background: #dadada;
 }
+
+
+@media screen and (max-width: 1200px) {
+  .input-search-box {
+    width: 35%;
+  }
+
+  .buttons-box {
+    width: 65%;
+  }
+}
+
+
+@media screen and (max-width: 950px) {
+  .input-search-box {
+    width: auto;
+  }
+}
+
 
 @media screen and (max-width: 600px) {
   .input-img {
