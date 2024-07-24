@@ -1,12 +1,13 @@
 .container-header {
-  height: 15%;
+  height: 44px;
   width: 100%;
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
   background: #E4E4E7;
-  border-top-left-radius: 5px;
-  border-top-right-radius: 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
   padding-right: 30px;
 }
 
@@ -30,15 +31,22 @@
   padding: 40px 30px 20px 0;
 }
 
+#avatar {
+  font-size: 14px;
+  font-weight: 500;
+  color: #242424;
+}
+
 #close {
   background: #E4E4E7;
 }
 
 #titulo {
-  margin-right: auto;
   padding-left: 20px;
+  margin: 0;
   color: #6D6D6D;
-  font-size: 18px;
+  font-weight: 500;
+  font-size: 16px;
 }
 
 label.required::after {
@@ -50,9 +58,13 @@ label {
   margin-top: 2%;
 }
 
+.small-label {
+  font-size: 12px;
+}
+
 textarea:focus, input:focus {
   box-shadow: 0 0 0 0;
-  border-bottom: 1px solid #E0E0E0;
+  border-bottom: 1px solid #000;
   outline: 0;
 }
 
@@ -65,11 +77,91 @@ textarea:focus, input:focus {
   margin-bottom: 0.25rem;
 }
 
+.icon-close {
+  font-weight: 300;
+  color: #242424;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.icon-close:hover {
+  font-weight: 400;
+  color: #000;
+}
+
 .form-label, .form-control {
   padding-top: 0.1rem;
   padding-bottom: 0.1rem;
   font-size: 0.8rem;
   margin-bottom: 0.25rem;
+}
+
+.form-adm {
+  border-bottom: 1px solid #616161;
+  font-size: 14px;
+  font-weight: 400;
+  padding: 7px 5px;
+}
+
+.icon-add-image {
+  height: 72px;
+  width: 72px;
+}
+
+.icon-image_1,
+.icon-image_2 {
+  position: absolute;
+}
+
+.icon-image_1 {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 45px;
+  height: auto;
+  width: auto;
+  font-weight: 300;
+  color: #616161;
+}
+
+.icon-image_2 {
+  bottom: 0;
+  right: 0;
+  font-size: 20px;
+  height: auto;
+  width: auto;
+  font-weight: 200;
+  color: #fff;
+  background: #27272A;
+  border-radius: 50%;
+  border: 2px solid #fff;
+}
+
+#avatarInput {
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin: 0;
+  padding: 0;
+}
+
+.avatar-input-Label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin: 0;
+  padding: 0;
+  border-radius: 50%;
+}
+
+.none-image {
+  height: 72px;
+  width: 72px;
+  border-radius: 50%;
+  background-color: #E6E6E6;
 }
 
 .row.g-3 {

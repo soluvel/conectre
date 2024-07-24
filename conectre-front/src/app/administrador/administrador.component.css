@@ -32,14 +32,30 @@
 }
 
 .license-info {
-  margin-left: auto;
+  margin-left: 5px;
+}
+
+.exclude-button {
+  text-decoration: none;
+  color: #CD0000;
+  font-weight: 600;
 }
 
 mat-expansion-panel {
   border: none;
+}
+
+mat-panel-title {
+  display: flex;
+  height: 44px;
+  justify-content: space-between;
+  align-items: start;
+  text-align: center;
   border-radius: unset !important;
   border-bottom: 1px solid #52525B;
   background-color: transparent;
+  padding: 0;
+  margin: 0;
 }
 
 .mat-accordion .mat-expansion-panel:last-of-type {
@@ -51,14 +67,74 @@ mat-expansion-panel {
   box-shadow: none;
 }
 
+.nmr-licencas {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.license-arrow-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 36px;
+  margin-left: 20px;
+  font-weight: 300;
+  transition: 0.5s;
+}
+
+.license-arrow-icon-open {
+  transform: rotateX(180deg);
+}
+
+::ng-deep .mat-expansion-indicator {
+  display: none;
+}
+
+::ng-deep .mat-expansion-panel-header {
+  height: 44px !important;
+  display: flex;
+  align-items: start !important;
+  padding-right: 0 !important;
+  padding-left: 0 !important;
+}
+
+.panel-contents {
+  display: flex;
+  justify-content: space-between;
+}
+
+.infos-content {
+  display: flex;
+  flex-direction: column;
+}
+
+::ng-deep .mat-expansion-panel-body {
+  padding: 16px 24px !important;
+}
+
+#filter-wall {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: #000000;
+  opacity: 18%;
+  z-index: 9998;
+}
+
 #overlayAdm {
   display: none;
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 45%;
-  height: 55%;
+  min-width: 30%;
+  min-height: 400px;
+  height: auto;
   background-color: white;
   z-index: 9999;
   border-radius: 10px;

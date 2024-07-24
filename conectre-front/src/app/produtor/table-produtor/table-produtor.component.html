@@ -7,10 +7,18 @@
   <div class="buttons-box">
     <button type="button" class="button-no-border filter-button" style="padding-left: 12px;">Limpar pesquisa</button>
     <div class="box-buttons-2">
+      <ng-container *ngIf="storage.getRole() != 'TECNICO'">
       <button type="button" class="button-geral" data-bs-toggle="modal" data-bs-target="#overlay"
       style="margin-right: 10px" (click)="exibirQuadrado()">
       Novo equipamento
     </button>
+      </ng-container>
+      <ng-container *ngIf="storage.getRole() == 'TECNICO'">
+        <button type="button" class="button-geral" data-bs-toggle="modal" data-bs-target="#overlay"
+                style="margin-right: 10px" (click)="redirectToProdutor()">
+          Cadastrar Produtor
+        </button>
+      </ng-container>
     <button type="button" class="button-white filter-button" (click)="exibirFiltro()">Filtrar
       <mat-icon class="icon-filter material-symbols-rounded">filter_list</mat-icon>
     </button>

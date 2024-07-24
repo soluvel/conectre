@@ -1,4 +1,4 @@
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { StorageService } from "../storage.service";
 import { FormBuilder, FormGroup } from "@angular/forms";
 import { MedicaoService } from "../produtor/medicao.service";
@@ -64,9 +64,11 @@ export class TabsTanqueComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.medicaoService.findOneByTanque(parseInt(this.tanqueId)).subscribe(data => {
-      this.form.patchValue(data);
-    });
+    if (this.tanqueId != null) {
+      this.medicaoService.findOneByTanque(parseInt(this.tanqueId)).subscribe(data => {
+        this.form.patchValue(data);
+      });
+    }
   }
 
   onSubmit() {
@@ -74,6 +76,7 @@ export class TabsTanqueComponent implements OnInit, OnDestroy {
     this.medicaoService.save(this.form.getRawValue()).pipe(takeUntil(this.destroy$)
     ).subscribe({
       next: response => {
+        window.location.reload();
       },
       error: error => {
         console.error('Erro:', error);
