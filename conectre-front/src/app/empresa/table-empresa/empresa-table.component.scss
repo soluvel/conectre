@@ -69,6 +69,7 @@ mat-paginator {
 #paginacao-number {
   padding: 0 10px 0 10px;
   color: $grey;
+  pointer-events: none;
 }
 
 //estilização da parte de consulta -------------------------------------
@@ -113,7 +114,33 @@ mat-paginator {
   cursor: pointer;
 }
 
+.icon-circle {
+  position: absolute;
+  color: #aaaaaa;
+  background: #fff;
+  font-size: 30px;
+  font-weight: 300;
+  height: auto;
+  width: auto;
+}
+
+.number-resting {
+  position: absolute;
+  top: 0;
+  right: -20px;
+  z-index: 999;
+  font-size: 12px;
+  font-weight: 600;
+  color: #242424;
+}
+
 .buttons-box {
+  display: flex;
+  width: 75%;
+  justify-content: space-between;
+}
+
+.box-buttons-2 {
   display: flex;
 }
 
@@ -198,6 +225,25 @@ mat-paginator {
   color: #000;
   background: #dadada;
 }
+
+
+@media screen and (max-width: 1200px) {
+  .input-search-box {
+    width: 35%;
+  }
+
+  .buttons-box {
+    width: 65%;
+  }
+}
+
+
+@media screen and (max-width: 950px) {
+  .input-search-box {
+    width: auto;
+  }
+}
+
 
 @media screen and (max-width: 600px) {
   .input-img {

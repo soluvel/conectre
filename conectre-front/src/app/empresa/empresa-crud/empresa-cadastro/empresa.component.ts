@@ -18,6 +18,7 @@ export class EmpresaComponent implements OnInit, OnDestroy {
   empresaId: any;
   private destroy$ = new Subject<void>();
   msgButton: string;
+  buttonPopUpAction = 'por escolher'; //vou puxar esse nome para ativar a função noo popUp
 
   constructor(private formBuilder: FormBuilder,
               private service: EmpresaService,
@@ -109,6 +110,11 @@ export class EmpresaComponent implements OnInit, OnDestroy {
 
     var filterWall = document.getElementById('filterWall');
     filterWall.style.display = 'block';
+
+    document.querySelector('.overlay-text').innerHTML = 'Você deseja salvar a sua alteração do perfil da empresa (Colocar nome da empresa)';
+    document.querySelector('.confirm-button').innerHTML = 'Salvar';
+    document.querySelector('.confirm-button').setAttribute("style", "background:#068FFF;");
+    document.querySelector('.cancel-button').innerHTML = 'Descartar alteração';
   }
 
 }

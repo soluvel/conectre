@@ -30,6 +30,10 @@ export class TableProdutorComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.getTableInfo();
+  }
+
+  getTableInfo() {
     this.service.page(this.pageNumber, this.size, '', []).subscribe({
       next: (page) => {
         this.dataSource.data = page.content
@@ -38,7 +42,6 @@ export class TableProdutorComponent implements OnInit {
       }, error: () => {
       }
     });
-
   }
 
   exibirFiltro() {
@@ -91,6 +94,11 @@ export class TableProdutorComponent implements OnInit {
       }, error: () => {
       }
     });
+  }
+
+  clearSearch() {
+    this.getTableInfo();
+    this.filter = '';
   }
 
   redirectToDetails(id: number) {
