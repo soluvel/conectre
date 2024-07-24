@@ -13,7 +13,7 @@ import { StringNumberFormats } from "../../utils/StringNumberFormats";
 export class EmpresaTableComponent {
 
   dataSource = new MatTableDataSource<Empresa>;
-  displayedColumns: string[] = ['razaoSocial', 'administradores', 'cnpjCpf', 'grupo', 'plano', 'detalhe'];
+  displayedColumns: string[] = ['razaoSocial', 'administradores', 'cnpjCpf', 'cidade', 'detalhe'];
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   pageNumber: number = 0;
@@ -71,7 +71,7 @@ export class EmpresaTableComponent {
   exibirQuadrado() {
     var overlay = document.getElementById('overlay');
     overlay.style.display = 'block';
-  
+
     var filterWall = document.getElementById('filter-wall');
     filterWall.style.display = 'block';
   }
@@ -105,7 +105,7 @@ export class EmpresaTableComponent {
   }
 
   search() {
-    this.service.page(0, this.size, this.filter, ['razaoSocial', 'cnpjCpf', 'grupo.nome']).subscribe({
+    this.service.page(0, this.size, this.filter, ['razaoSocial', 'cnpjCpf']).subscribe({
       next: (page) => {
         this.dataSource.data = page.content
         this.pageNumber = page.pageable.pageNumber
@@ -136,7 +136,6 @@ export interface Empresa {
   administradores: [],
   cnpjCpf: string;
   grupo: string;
-  plano: string;
   detalhe: string;
 }
 

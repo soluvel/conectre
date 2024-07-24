@@ -35,7 +35,7 @@
             VALUES(5, 'Tecnico2', 'tecnico2@tecnico.com', '$2a$12$aF/ipnbJ8ObkhmvFZ7QzeuPPBmJ9jS/Qeum9.6GQ1cDOMVwtdhHEe', true, 'TECNICO');
             INSERT INTO public.usuario
                 (id, nome, username, "password", ativo, permissao)
-            VALUES(6, 'Produtor', 'produtor1@produtor.com', '$2a$12$aF/ipnbJ8ObkhmvFZ7QzeuPPBmJ9jS/Qeum9.6GQ1cDOMVwtdhHEe', true, 'PRODUTOR');
+            VALUES(6, 'Produtor', 'produtor', '$2a$12$aF/ipnbJ8ObkhmvFZ7QzeuPPBmJ9jS/Qeum9.6GQ1cDOMVwtdhHEe', true, 'PRODUTOR');
 
             ALTER SEQUENCE public.usuario_id_seq MINVALUE 7 START 7 RESTART 7;
 
@@ -96,7 +96,7 @@
             VALUES(1, '2024-07-02', '08:30:00', 10, 10, 10, 10.60, 10, 26.80, 10, 1);
             INSERT INTO public.ambiente
             (id, dt_coleta, hr_coleta, ph, amonia, nitrito, alcalinidade, transparencia_agua, temperatura, oxigenio, medicao_id)
-            VALUES(2, '2024-07-03', '08:30:00', 10, 10, 10, 10.60, 10, 26.80, 10, 2);
+            VALUES(2, '2024-07-03', '08:30:00', 10, 10, 10, 10.60, 10, 22, 10, 2);
             INSERT INTO public.ambiente
             (id, dt_coleta, hr_coleta, ph, amonia, nitrito, alcalinidade, transparencia_agua, temperatura, oxigenio, medicao_id)
             VALUES(3, '2024-07-04', '08:30:00', 10, 10, 10, 10.60, 10, 26.80, 10, 3);
