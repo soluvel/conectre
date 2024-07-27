@@ -160,6 +160,12 @@ mat-divider {
   }
 }
 
+.button-disabled {
+  background-color: #BDBDBD !important;
+  cursor: not-allowed !important;
+  color: #F0F0F0 !important;
+}
+
 @media screen and (max-width: 1200px) {
   .container-header {
     font-size: 10px;

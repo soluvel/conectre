@@ -11,7 +11,9 @@
       style="margin-right: 10px" (click)="exibirQuadrado()">
       Novo equipamento
     </button>
-    <button type="button" class="button-white filter-button" (click)="exibirFiltro()">Filtrar
+    <button type="button" class="button-white filter-button" (click)="exibirFiltro()">
+      <div class="filters-numbers" *ngIf="filterQtd > 0">{{ filterQtd }}</div>
+      Filtrar
       <mat-icon class="icon-filter material-symbols-rounded">filter_list</mat-icon>
     </button>
     </div>

@@ -7,7 +7,9 @@
     <button type="button" class="button-no-border filter-button" style="padding-left: 12px;" (click)="clearSearch()">Limpar pesquisa</button>
     <div class="box-buttons-2">
       <button type="button" class="button-geral" style="margin-right: 10px" (click)="redirectToEmpresa()">Nova empresa</button>
-      <button type="button" class="button-white filter-button" (click)="exibirQuadrado()">Filtrar
+      <button type="button" class="button-white filter-button" (click)="exibirQuadrado()">
+        <div class="filters-numbers" *ngIf="filterQtd > 0">{{ filterQtd }}</div>
+        Filtrar
         <mat-icon class="icon-filter material-symbols-rounded">filter_list</mat-icon>
       </button>
     </div>

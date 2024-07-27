@@ -18,7 +18,7 @@ export class EmpresaComponent implements OnInit, OnDestroy {
   empresaId: any;
   private destroy$ = new Subject<void>();
   msgButton: string;
-  buttonPopUpAction = 'por escolher'; //vou puxar esse nome para ativar a função noo popUp
+  buttonPopUpAction = 'por escolher'; //vou puxar esse nome para ativar a função no popUp
 
   constructor(private formBuilder: FormBuilder,
               private service: EmpresaService,

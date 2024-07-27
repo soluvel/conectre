@@ -22,6 +22,7 @@
             <div class="user-menu">
               <button class="menu-button">Sobre o plano</button>
               <button class="menu-button">Suporte</button>
+              <!-- <button class="menu-button" (click)="logoutUser()">Logout</button> -->
               <button class="menu-button" (click)="openConfirm()">Logout</button>
             </div>
           </div>
@@ -38,7 +39,7 @@
 </ng-container>
 
 <div id="overlayConfirm">
-  <app-overlay-confirmacao></app-overlay-confirmacao>
+  <app-overlay-confirmacao (onLogout)="onLogout()"></app-overlay-confirmacao>
 </div>
 
 <div id="filterWall"></div>

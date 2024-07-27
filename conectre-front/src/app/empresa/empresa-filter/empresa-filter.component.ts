@@ -121,7 +121,8 @@ export class EmpresaFilterComponent implements OnInit {
     this.checkedRazaoSocial = [];
 
     this.nenhumSelecionado = true;
-    this.fecharPaineis()
+    this.fecharPaineis();
+    this.enviarFiltro();
   }
 
   fecharPaineis() {

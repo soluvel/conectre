@@ -5,7 +5,9 @@
   </div>
   <div class="buttons-box">
     <button type="button" class="button-no-border filter-button" style="padding-left: 12px;">Limpar pesquisa</button>
-    <button type="button" class="button-white filter-button" (click)="exibirQuadrado()">Filtrar
+    <button type="button" class="button-white filter-button" (click)="exibirQuadrado()">
+      <div class="filters-numbers" *ngIf="filterQtd > 0">{{ filterQtd }}</div>
+      Filtrar
       <mat-icon class="icon-filter material-symbols-rounded">filter_list</mat-icon>
     </button>
   </div>

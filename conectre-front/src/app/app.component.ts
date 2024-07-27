@@ -9,6 +9,7 @@ import { AuthService } from "./auth.service";
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+  teste: boolean = false;
   title = 'Conectre';
   isLoggedIn: boolean = true;
   buttonPopUpAction = 'logout';
@@ -32,12 +33,9 @@ export class AppComponent {
     document.querySelector('.user-menu').classList.toggle('user-menu-open')
     document.querySelector('.menu-arrow-icon').classList.toggle('menu-open-arrow-icon')
   }
-
-  logoutUser() {
-    alert('chamou a função')
+  
+  onLogout() {
     this.isLoggedIn = false;
-    this.storage.clear();
-    this._router.navigate(['/login']);
     this.collapsed.set(true);
   }
   
@@ -64,7 +62,3 @@ export class AppComponent {
     document.querySelector('.cancel-button').innerHTML = 'Cancelar';
   }
 }
-
-// export function logout() {
-//   AppComponent.prototype.logoutUser();
-// }

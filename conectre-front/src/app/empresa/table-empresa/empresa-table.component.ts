@@ -20,6 +20,7 @@ export class EmpresaTableComponent {
   totalPage: number;
   size: number = 3;
   filter: string;
+  filterQtd: number = 0;
 
   constructor(private service: EmpresaService,
               private router: Router) {
@@ -65,6 +66,8 @@ export class EmpresaTableComponent {
     });
 
     this.dataSource.data = filteredData;
+
+    this.filterQtd = (planoList.length + localidadeList.length + empresaList.length);
 
   }
 

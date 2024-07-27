@@ -6,11 +6,11 @@
         <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
           <h1 style="padding-bottom: 40px">Login</h1>
           <div class="form-group">
-            <input type="email" formControlName="username" placeholder="E-mail" required>
+            <input type="email" class="form-control" name="username" id="username" formControlName="username" placeholder="E-mail" required>
           </div>
           <div class="form-group">
-            <input type="password" id="password" formControlName="password" placeholder="Senha" required>
-            <img class="toggle-password" src="assets/eye-password.svg" (click)="togglePasswordVisibility()">
+            <input type="password" class="form-control" name="password" id="password" formControlName="password" placeholder="Senha" required>
+            <mat-icon class="icon-visibility-password toggle-password material-symbols-rounded" (click)="togglePasswordVisibility()">{{ iconStatus }}</mat-icon>
           </div>
           <div *ngIf="isLogged" class="error-message">
             E-mail ou Senha incorretos.
@@ -19,10 +19,10 @@
             E-mail não cadastrado.
           </div>
           <div class="form-group">
-            <input type="submit" value="Entrar">
+            <input type="submit" value="Entrar" [disabled]="!loginForm.valid" [ngClass]="{'button-disabled': !loginForm.valid}">
           </div>
         </form>
-        <a (click)="showForgotPassword()">Esqueci minha senha</a>
+        <a class="forgot-password" (click)="showForgotPassword()">Esqueci minha senha</a>
       </div>
     </ng-container>
     <ng-container *ngIf="showForgotPasswordContent">
@@ -35,7 +35,7 @@
             <input type="email" formControlName="username" placeholder="E-mail" required>
           </div>
           <div class="form-group">
-            <input type="submit" value="Enviar link de redefinição" (click)="redefinePassword()">
+            <input type="submit" value="Enviar link de redefinição" (click)="redefinePassword()" [disabled]="!forgotPasswordForm.valid" [ngClass]="{'button-disabled': !forgotPasswordForm.valid}">
           </div>
         </form>
       </div>

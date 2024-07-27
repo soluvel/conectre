@@ -19,6 +19,7 @@ export class TableTecnicoComponent implements OnInit {
   totalPage: number;
   size: number = 3;
   razaoSocial: string;
+  filterQtd: number = 0;
 
   constructor(private service: TecnicoService,
               private router: Router) {
@@ -91,6 +92,8 @@ export class TableTecnicoComponent implements OnInit {
     //   }, error: () => {
     //   }
     // });
+
+    this.filterQtd = event.listaEmpresas.length;
   }
 }
 
