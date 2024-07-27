@@ -9,6 +9,7 @@ export class StorageService {
   private TOKEN_KEY= 'jwtToken';
   private ROLE_KEY = 'role';
   private USER_KEY = 'user';
+  private USER_ID = 'user_id';
 
   constructor(private router: Router) {
   }
@@ -17,6 +18,7 @@ export class StorageService {
     localStorage.setItem(this.TOKEN_KEY, JSON.stringify(auth.token));
     localStorage.setItem(this.ROLE_KEY, auth.role);
     localStorage.setItem(this.USER_KEY, auth.nome);
+    localStorage.setItem(this.USER_ID, auth.id);
   }
 
   public getToken() {
@@ -39,6 +41,10 @@ export class StorageService {
     return localStorage.getItem(this.USER_KEY);
   }
 
+  public getUserId(): string | null {
+    return localStorage.getItem(this.USER_ID);
+  }
+
   isTokenValido() {
     if (this.getToken()) {
       const tokenPayload = jwtDecode(this.getToken())
@@ -54,5 +60,6 @@ export class StorageService {
     localStorage.removeItem(this.TOKEN_KEY);
     localStorage.removeItem(this.ROLE_KEY);
     localStorage.removeItem(this.USER_KEY);
+    localStorage.removeItem(this.USER_ID);
   }
 }

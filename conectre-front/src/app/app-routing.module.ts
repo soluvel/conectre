@@ -10,13 +10,14 @@ import { TecnicoCadastroComponent } from "./tecnico/tecnico-cadastro/tecnico-cad
 import { ProdutorCadastroComponent } from "./produtor/produtor-cadastro/produtor-cadastro.component";
 import { NotificacaoComponent } from "./notificacao/notificacao.component";
 import { PropriedadeCadastroComponent } from "./produtor/propriedade-cadastro/propriedade-cadastro.component";
+import { HistoricoComponent } from "./produtor/historico/historico.component";
 
 const routes: Routes = [
   {path: '', redirectTo: 'inicio', pathMatch: 'full'},
   {path: 'inicio', component: HomeComponent, canActivate: [AuthGuard]},
   {path: 'login', component: LoginComponent},
   {path: 'redefinir-senha/:token', component: RedefinirSenhaComponent},
-  {path: 'empresa/cadastrar', component: EmpresaComponent, data: {role: ['ADM_TREVISAN']}, canActivate: [AuthGuard]},
+  {path: 'empresa/cadastrar', component: EmpresaComponent, data: {role: ['ADM_TREVISAN', 'PRODUTOR']}, canActivate: [AuthGuard]},
   {path: 'empresa/editar/:id', component: EmpresaComponent, data: {role: ['ADM_TREVISAN']}, canActivate: [AuthGuard]},
   {path: 'tecnico/cadastrar', component: TecnicoCadastroComponent, data: {role: ['ADM_TREVISAN']}, canActivate: [AuthGuard]},
   {path: 'tecnico/editar/:id', component: TecnicoCadastroComponent, data: {role: ['ADM_TREVISAN']}, canActivate: [AuthGuard]},
@@ -24,6 +25,7 @@ const routes: Routes = [
   {path: 'produtor/editar/:id', component: ProdutorCadastroComponent, data: {role: ['ADM_TREVISAN', 'TECNICO']}, canActivate: [AuthGuard]},
   {path: 'propriedade/cadastrar', component: PropriedadeCadastroComponent, data: {role: ['ADM_TREVISAN', 'TECNICO']}, canActivate: [AuthGuard]},
   {path: 'propriedade/editar/:id', component: PropriedadeCadastroComponent, data: {role: ['ADM_TREVISAN', 'TECNICO']}, canActivate: [AuthGuard]},
+  {path: 'historico/:id', component: HistoricoComponent, data: {role: ['ADM_TREVISAN', 'TECNICO', 'PRODUTOR']}, canActivate: [AuthGuard]},
   {path: 'notificacao', component: NotificacaoComponent, data: {role: ['ADM_TREVISAN', 'TECNICO']}, canActivate: [AuthGuard]},
   {path: 'acesso-negado', component: AcessoNegadoComponent},
   {path: '**', redirectTo: 'acesso-negado'}

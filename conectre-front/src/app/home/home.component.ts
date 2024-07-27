@@ -1,13 +1,24 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { StorageService } from "../storage.service";
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
-export class HomeComponent {
+export class HomeComponent implements OnInit {
   activeMessage: string = 'Empresas cadastradas';
   activeComponent: string;
+
+  constructor(public storage: StorageService) {
+  }
+
+  ngOnInit() {
+    if (this.storage.getRole() == 'TECNICO') {
+      this.activeComponent = 'Produtores';
+      this.activeMessage = 'Produtores cadastrados';
+    }
+  }
 
   onTabChange(tabLabel: string) {
     this.changeMessage(tabLabel);

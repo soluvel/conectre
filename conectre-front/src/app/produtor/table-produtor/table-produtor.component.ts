@@ -3,6 +3,7 @@ import { MatTableDataSource } from "@angular/material/table";
 import { MatPaginator } from "@angular/material/paginator";
 import { ProdutorService } from "../produtor.service";
 import { Router } from "@angular/router";
+import { StorageService } from "../../storage.service";
 
 @Component({
   selector: 'app-table-produtor',
@@ -25,7 +26,8 @@ export class TableProdutorComponent implements OnInit {
   filterQtd: number = 0;
 
   constructor(private service: ProdutorService,
-              private router: Router) {
+              private router: Router,
+              public storage: StorageService) {
   }
 
   ngOnInit(): void {
@@ -147,6 +149,10 @@ export class TableProdutorComponent implements OnInit {
 
     // this.filterQtd = (listaPropriedades.length + listaEquipamentos.length + listaEmpresas.length);
     this.filterQtd = (listaEmpresas.length);
+  }
+
+  redirectToProdutor() {
+    this.router.navigate(['/produtor/cadastrar']);
   }
 }
 

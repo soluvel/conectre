@@ -1,0 +1,71 @@
+.tanque-infos {
+  background: #FAFAFA;
+  padding: 15px 40px 0 40px;
+  border-radius: 20px;
+  height: 475px;
+  margin: 0 35px 0 35px;
+}
+
+.header-infos {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #E0E0E0;
+}
+
+.select-title {
+  position: relative;
+  font-weight: 600;
+  width: 10%;
+  justify-content: space-between;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: 0.3s;
+  color: #3F3F46;
+}
+
+.menu-arrow-icon-select {
+  transition: 0.3s;
+}
+
+.select-infos {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 100%;
+  width: 33.3%;
+  height: 0px;
+  z-index: 999;
+  transition: 0.3s;
+  background: #fff;
+  margin-left: 0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 4px 8px rgba(0, 0, 0, 0.1), 0 8px 16px rgba(0, 0, 0, 0.1), 0 16px 32px rgba(0, 0, 0, 0.1);
+  overflow-x: hidden;
+}
+
+.table-infos {
+  display: flex;
+  height: auto;
+  width: 100%;
+}
+
+.footer-infos {
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  right: 0;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #A1A1AA;
+  font-size: 12px;
+}
+
+.date-info-footer {
+  font-weight: 600;
+}
+
+/*# sourceMappingURL=produtor-home.component.css.map */

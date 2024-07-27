@@ -35,7 +35,7 @@ public class AuthenticationController {
 
         var token = tokenService.generateToken((Usuario) auth.getPrincipal());
 
-        return ResponseEntity.ok(new DadosTokenJWT(token, ((Usuario) auth.getPrincipal()).getPermissao(), ((Usuario) auth.getPrincipal()).getNome()));
+        return ResponseEntity.ok(new DadosTokenJWT(token, ((Usuario) auth.getPrincipal()).getPermissao(), ((Usuario) auth.getPrincipal()).getNome(), ((Usuario) auth.getPrincipal()).getId()));
     }
 
     @PostMapping("/redefinir-senha")

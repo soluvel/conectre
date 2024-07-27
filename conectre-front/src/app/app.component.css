@@ -9,6 +9,11 @@ mat-sidenav {
   border-radius: 8px;
   margin-right: 2vh;
   left: 2vh;
+  z-index: 999;
+}
+
+.mat-drawer-content {
+  position: static;
 }
 
 .transition-effect {
@@ -130,6 +135,32 @@ img.img-avatar {
 
 .container > * {
   margin-left: 10px;
+}
+
+#filterWall {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: #000000;
+  opacity: 18%;
+  z-index: 9998;
+}
+
+#overlayConfirm {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 320px;
+  height: 270px !important;
+  padding: 24px;
+  background-color: white;
+  z-index: 9999;
+  border-radius: 8px;
 }
 
 .sidebar-button {

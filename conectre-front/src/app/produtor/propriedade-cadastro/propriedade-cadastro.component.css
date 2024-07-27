@@ -15,6 +15,28 @@
   display: flex;
 }
 
+.back-icon {
+  display: flex;
+  align-items: center;
+  font-weight: 200;
+  color: #333333;
+  cursor: pointer;
+}
+
+.back-icon:hover {
+  color: #000;
+  font-weight: 300;
+}
+
+.back-text {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  font-weight: 400 !important;
+  color: #27272A;
+  padding-left: 10px;
+}
+
 .register-info {
   position: absolute;
   right: 0;

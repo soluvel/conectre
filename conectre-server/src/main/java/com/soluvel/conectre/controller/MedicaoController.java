@@ -3,8 +3,11 @@ package com.soluvel.conectre.controller;
 import com.soluvel.conectre.core.CrudController;
 import com.soluvel.conectre.core.CrudService;
 import com.soluvel.conectre.domain.Medicao;
+import com.soluvel.conectre.domain.records.HistoricoRegistroRecords;
 import com.soluvel.conectre.service.MedicaoService;
 import com.soluvel.conectre.service.TanqueService;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -35,12 +38,10 @@ public class MedicaoController extends CrudController<Medicao, Medicao, Long> {
     public ResponseEntity<Medicao> create(@RequestBody Medicao medicao) {
         tanqueService.findById((medicao.getTanqueId())).ifPresent(medicao::setTanque);
 
-        if (medicao.getPeixe() != null) {
+        if (medicao.getPeixe().getDtColeta() == null) {
+            medicao.setPeixe(null);
+        } else {
             medicao.getPeixe().setMedicao(medicao);
-        }
-
-        if (medicao.getAmbiente() != null) {
-            medicao.getAmbiente().setMedicao(medicao);
         }
 
         if (medicao.getRacao().getDtColeta() == null) {
@@ -48,11 +49,25 @@ public class MedicaoController extends CrudController<Medicao, Medicao, Long> {
         } else {
             medicao.getRacao().setMedicao(medicao);
         }
+
+        if (medicao.getAmbiente().getDtColeta() == null) {
+            medicao.setAmbiente(null);
+        } else {
+            medicao.getAmbiente().setMedicao(medicao);
+        }
+
         return new ResponseEntity<>(medicaoService.save(medicao), HttpStatus.CREATED);
     }
 
     @GetMapping("by-tanque/{tanqueId}")
     public ResponseEntity<Medicao> getByTanqueAndIdMax(@PathVariable("tanqueId") Long tanqueId) {
         return new ResponseEntity<>(medicaoService.findByMaxId(tanqueId), HttpStatus.OK);
+    }
+
+    @GetMapping("historico/{produtorId}/{number}/{size}")
+    public ResponseEntity<Page<HistoricoRegistroRecords>> findHistorico(@PathVariable("produtorId") Long produtorId,
+                                                                        @PathVariable("number") int number,
+                                                                        @PathVariable("size") int size) {
+        return new ResponseEntity<>(medicaoService.findHistorico(produtorId, PageRequest.of(number, size)), HttpStatus.OK);
     }
 }

@@ -128,3 +128,9 @@ textarea:focus, input:focus, select:focus {
   border-bottom: 1px solid $border-botton-color;
   outline: 0;
 }
+
+.actions-footer {
+  display: flex;
+  justify-content: flex-end;
+  padding: 20px 40px 20px 40px;
+}

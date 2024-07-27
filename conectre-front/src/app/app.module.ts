@@ -51,6 +51,14 @@ import { PropriedadeCadastroComponent } from "./produtor/propriedade-cadastro/pr
 import { TabsTanqueComponent } from './tabs-tanque/tabs-tanque.component';
 import { TablePropriedadeVinculadoComponent } from "./produtor/table-propriedade-vinculado/table-propriedade-vinculado.component";
 import { AcessoNegadoComponent } from "./acesso-negado/acesso-negado.component";
+import { ProdutorHomeComponent } from './home/produtor-home/produtor-home.component';
+import {
+  TableRegistroHistoricoComponent
+} from "./produtor/table-registro-historico/table-registro-historico.component";
+import { HistoricoComponent } from './produtor/historico/historico.component';
+import { DatePipe } from "@angular/common";
+import { DateFormatPipe } from "./pipes/dateFormat";
+import { TimeFormatPipe } from "./pipes/timeFormat";
 
 @NgModule({
   declarations: [
@@ -82,7 +90,10 @@ import { AcessoNegadoComponent } from "./acesso-negado/acesso-negado.component";
     PropriedadeCadastroComponent,
     TablePropriedadeVinculadoComponent,
     AcessoNegadoComponent,
-    OverlayConfirmacaoComponent
+    OverlayConfirmacaoComponent,
+    ProdutorHomeComponent,
+    TableRegistroHistoricoComponent,
+    HistoricoComponent
   ],
   imports: [
     BrowserModule,
@@ -108,8 +119,10 @@ import { AcessoNegadoComponent } from "./acesso-negado/acesso-negado.component";
     MatProgressBarModule,
     ToastrModule.forRoot(),
     CelularPipe,
+    DateFormatPipe,
+    TimeFormatPipe
   ],
-  providers: [],
+  providers: [DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule {
