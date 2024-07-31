@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { HttpClient, HttpHeaders, HttpParams } from "@angular/common/http";
 import { StorageService } from "../storage.service";
 import { Observable } from "rxjs";
 import { Empresa } from "../empresa/empresa";
@@ -18,9 +18,22 @@ export class TecnicoService {
     return this.http.post<any>(`${this.apiUrl}/save/record`, data, { headers: this.headers });
   }
 
-  page(numb: number, size: number): Observable<any> {
-    return this.http.get<any>(`${this.apiUrl}/page/${numb}/${size}`, { headers: this.headers });
-  };
+  page(numb: number, size: number, filter: string, attributes: string[]): Observable<any> {
+    let params = new HttpParams();
+    if (filter) {
+      params = params.set('filter', filter);
+    }
+
+    attributes.forEach(attribute => {
+      params = params.append('attributes', attribute);
+    });
+
+    return this.http.get<any>(`${this.apiUrl}/page/${numb}/${size}`, {
+      params: params,
+      headers: this.headers
+    });
+
+  }
 
   getTecnico(id: any): Observable<any> {
     return this.http.get<any>(`${this.apiUrl}/${id}`, { headers: this.headers });

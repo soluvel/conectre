@@ -5,7 +5,7 @@
   </div>
 
   <div class="buttons-box">
-    <button type="button" class="button-no-border filter-button" style="padding-left: 12px;">Limpar pesquisa</button>
+    <button type="button" class="button-no-border filter-button" style="padding-left: 12px;" (click)="clearSearch()">Limpar pesquisa</button>
     <div class="box-buttons-2">
       <ng-container *ngIf="storage.getRole() != 'TECNICO'">
       <button type="button" class="button-geral" data-bs-toggle="modal" data-bs-target="#overlay"
@@ -42,6 +42,11 @@
     <ng-container matColumnDef="propriedade">
       <th mat-header-cell *matHeaderCellDef id="propriedade">Propriedades</th>
       <td mat-cell *matCellDef="let element"> {{ element.propriedades.length }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="equipamento">
+      <th mat-header-cell *matHeaderCellDef id="equipamento">Equipamentos</th>
+      <td mat-cell *matCellDef="let element"> {{ getTotalEquipamentos(element) }}</td>
     </ng-container>
 
     <ng-container matColumnDef="contato">

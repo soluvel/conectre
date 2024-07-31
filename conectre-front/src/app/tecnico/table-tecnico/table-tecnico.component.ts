@@ -3,6 +3,7 @@ import { MatTableDataSource } from "@angular/material/table";
 import { MatPaginator } from "@angular/material/paginator";
 import { TecnicoService } from "../tecnico.service";
 import { Router } from "@angular/router";
+import { filter } from "rxjs";
 
 @Component({
   selector: 'app-table-tecnico',
@@ -19,6 +20,7 @@ export class TableTecnicoComponent implements OnInit {
   totalPage: number;
   size: number = 3;
   razaoSocial: string;
+  filter: string;
 
   constructor(private service: TecnicoService,
               private router: Router) {
@@ -29,7 +31,7 @@ export class TableTecnicoComponent implements OnInit {
   }
 
   getTableInfo() {
-    this.service.page(this.pageNumber, this.size).subscribe({
+    this.service.page(this.pageNumber, this.size,'', []).subscribe({
       next: (page) => {
         this.dataSource.data = page.content
         this.pageNumber = page.pageable.pageNumber
@@ -51,7 +53,7 @@ export class TableTecnicoComponent implements OnInit {
 
     let page = isAvancar ? this.pageNumber + 1 : this.pageNumber - 1;
 
-    this.service.page(page, this.size).subscribe({
+    this.service.page(page, this.size,'', []).subscribe({
       next: (page) => {
         this.dataSource.data = page.content
         this.pageNumber = page.pageable.pageNumber
@@ -65,7 +67,7 @@ export class TableTecnicoComponent implements OnInit {
   }
 
   paginado(number: number) {
-    this.service.page(number - 1, this.size).subscribe({
+    this.service.page(number - 1, this.size,'', []).subscribe({
       next: (page) => {
         this.dataSource.data = page.content
         this.pageNumber = page.pageable.pageNumber
@@ -83,14 +85,35 @@ export class TableTecnicoComponent implements OnInit {
     this.router.navigate(['/tecnico/editar', id]);
   }
 
+  concatFilter(objList, empresaList) {
+    let filteredData = [];
+
+    objList.filter(obj => {
+      const empresa = obj.empresa.razaoSocial.trim().toLowerCase();
+
+      const empresaMatch = empresaList.some(e => e.trim().toLowerCase() === empresa) || empresaList.length == 0;
+
+      if (empresaMatch) {
+        filteredData.push(obj);
+      }
+    });
+
+    this.dataSource.data = filteredData;
+
+  }
   onFiltroAlterado(event: { listaEmpresas: string[] }): void {
-    // this.service.filter(this.pageNumber, this.size, event.listaOpcoes, event.listaCidades, event.listaEmpresas).subscribe({
-    //   next: (page) => {
-    //     this.dataSource.data = page.content
-    //     this.pageNumber = page.pageable.pageNumber
-    //   }, error: () => {
-    //   }
-    // });
+    return this.concatFilter(this.dataSource.filteredData, event.listaEmpresas)
+  }
+
+  search() {
+    this.service.page(0, this.size, this.filter, ['nome','celular', 'empresa.razaoSocial']).subscribe({
+      next: (page) => {
+        this.dataSource.data = page.content
+        this.pageNumber = page.pageable.pageNumber
+        this.totalPage = page.totalPages
+      }, error: () => {
+      }
+    });
   }
 }
 

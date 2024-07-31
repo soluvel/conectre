@@ -33,9 +33,7 @@ export class TecnicoFilterComponent implements OnInit {
   }
 
   enviarFiltro(): void {
-    this.filtroAlterado.emit({
-      listaEmpresas: this.checkedRazaoSocial
-    });
+    this.filtroAlterado.emit({listaEmpresas: this.checkedRazaoSocial});
   }
 
   fecharQuadrado() {
@@ -44,21 +42,13 @@ export class TecnicoFilterComponent implements OnInit {
 
     var filterWall = document.getElementById('filter-wall');
     filterWall.style.display = 'none';
-  
+
     this.fecharPaineis()
   }
 
   filter() {
     this.enviarFiltro();
     this.fecharQuadrado();
-  }
-
-  toggleRazaoSocial(empresa: string): void {
-    if (this.checkedRazaoSocial.includes(empresa)) {
-      this.checkedRazaoSocial = this.checkedRazaoSocial.filter(item => item !== empresa);
-    } else {
-      this.checkedRazaoSocial.push(empresa);
-    }
   }
 
   toggleChip(item: string) {
@@ -83,12 +73,12 @@ export class TecnicoFilterComponent implements OnInit {
   limparDados() {
     for (const key in this.checkboxesAtivos) {
       if (Object.prototype.hasOwnProperty.call(this.checkboxesAtivos, key)) {
-        this.checkboxesAtivos[key] = false;  
+        this.checkboxesAtivos[key] = false;
       }
     }
     this.checkedRazaoSocial = [];
     this.nenhumSelecionado = true;
-  
+
     this.fecharPaineis()
   }
 

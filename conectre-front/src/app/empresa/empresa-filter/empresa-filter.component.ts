@@ -67,32 +67,11 @@ export class EmpresaFilterComponent implements OnInit {
     this.fecharQuadrado();
   }
 
-  toggleChip(item: string) {
-    const index = this.checkedPlanos.indexOf(item);
-    if (index === -1) {
-      this.checkedPlanos.push(item);
-    } else {
-      this.checkedPlanos.splice(index, 1);
-    }
-
-    this.checkNenhumSelecionado();
-  }
-
   toggleCidade(cidade: string): void {
     if (this.checkedCidades.includes(cidade)) {
       this.checkedCidades = this.checkedCidades.filter(item => item !== cidade);
     } else {
       this.checkedCidades.push(cidade);
-    }
-
-    this.checkNenhumSelecionado();
-  }
-
-  toggleRazaoSocial(empresa: string): void {
-    if (this.checkedRazaoSocial.includes(empresa)) {
-      this.checkedRazaoSocial = this.checkedRazaoSocial.filter(item => item !== empresa);
-    } else {
-      this.checkedRazaoSocial.push(empresa);
     }
 
     this.checkNenhumSelecionado();
