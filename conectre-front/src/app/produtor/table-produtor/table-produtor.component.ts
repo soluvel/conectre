@@ -23,6 +23,7 @@ export class TableProdutorComponent implements OnInit {
   size: number = 3;
   razaoSocial: string;
   filter: string;
+  filterQtd: number = 0;
 
   constructor(private service: ProdutorService,
               private router: Router,
@@ -143,6 +144,11 @@ export class TableProdutorComponent implements OnInit {
       }
     });
     this.dataSource.data = filteredData;
+
+    console.log(objList.length)
+
+    // this.filterQtd = (listaPropriedades.length + listaEquipamentos.length + listaEmpresas.length);
+    this.filterQtd = (listaEmpresas.length);
   }
 
   redirectToProdutor() {

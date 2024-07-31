@@ -101,7 +101,8 @@ export class ProdutorFilterComponent implements OnInit {
     
     this.nenhumSelecionado = true;
 
-    this.fecharPaineis()
+    this.fecharPaineis();
+    this.enviarFiltro();
   }
 
   fecharPaineis() {

@@ -18,7 +18,6 @@ export class EmpresaComponent implements OnInit, OnDestroy {
   empresaId: any;
   private destroy$ = new Subject<void>();
   msgButton: string;
-  buttonPopUpAction = 'por escolher'; //vou puxar esse nome para ativar a função noo popUp
 
   constructor(private formBuilder: FormBuilder,
               private service: EmpresaService,
@@ -102,6 +101,21 @@ export class EmpresaComponent implements OnInit, OnDestroy {
         console.error('Erro:', error);
       }
     });
+  }
+
+  enableEdit(inputId: string): void {
+    const allInputs = document.querySelectorAll('.form-control');
+    const editingInput = document.getElementById(inputId);
+
+    allInputs.forEach(input => {
+      if (input !== editingInput) {
+        input.classList.add('click-disabled');
+        input.classList.remove('focus-editing-input');
+      }
+    });
+
+    editingInput.classList.toggle('click-disabled');
+    editingInput.classList.toggle('focus-editing-input');
   }
 
   openConfirm() {

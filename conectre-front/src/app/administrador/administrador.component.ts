@@ -10,6 +10,7 @@ import { AdministradorService } from "./administrador.service";
 })
 export class AdministradorComponent implements OnInit {
   isPanelExpanded: boolean = false;
+  existAdm: boolean = true;
   administradores: any[] = [];
   admId: any;
   empresaId: any;
@@ -23,6 +24,7 @@ export class AdministradorComponent implements OnInit {
       this.service.getAdministradores(params.get('id')).subscribe(data => {
         this.empresaId = params.get('id');
         this.administradores = data;
+        this.existAdm = this.administradores.length > 0;
       })
     });
 

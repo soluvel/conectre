@@ -24,6 +24,24 @@ $background-color: #fafafa;
   font-weight: 600 ;
 }
 
+.input-group {
+  margin-bottom: 25px;
+}
+
+.edit-icon {
+  position: absolute;
+  top: -15%;
+  right: 0;
+  height: 100%;
+  color: #616161;
+  z-index: 999;
+  cursor: pointer;
+}
+
+.edit-icon:hover {
+  color: #333333;
+}
+
 .back-icon {
   display: flex;
   align-items: center;
@@ -53,9 +71,22 @@ $background-color: #fafafa;
 .form-select,
 .form-control {
   border: none;
-  border-bottom: 1px solid #616161 !important;
+  border-bottom: 1px solid #E0E0E0 !important;
   border-radius: unset;
   background-color: $background-color;
+}
+
+.click-disabled {
+  pointer-events: none;
+}
+
+.focus-editing-input {
+  border-bottom: 1px solid #616161 !important;
+}
+
+.form-select:focus,
+.form-control:focus {
+  border-bottom: 1px solid #616161 !important;
 }
 
 .input-group-text {
@@ -63,7 +94,11 @@ $background-color: #fafafa;
   border: none;
   border-bottom: 1px solid $border-botton-color;
   border-radius: unset;
+  padding-top: 0.10rem;
+  padding-bottom: 0.10rem;
+  margin-bottom: 0.25rem;
 }
+
 span {
   font-size: 12px;
 }
@@ -97,12 +132,6 @@ label.required::after {
   padding-top: 0.10rem;
   padding-bottom: 0.10rem;
   font-size: 0.800rem;
-  margin-bottom: 0.25rem;
-}
-
-.input-group-text {
-  padding-top: 0.10rem;
-  padding-bottom: 0.10rem;
   margin-bottom: 0.25rem;
 }
 

@@ -120,10 +120,31 @@ img.toggle-password {
   text-decoration: underline;
 }
 
+.icon-visibility-password {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translate(-50%, -50%);
+  color: #616161;
+  font-weight: 300;
+  cursor: pointer;
+}
+
+.button-disabled {
+  background-color: #BDBDBD !important;
+  cursor: not-allowed !important;
+  color: #F0F0F0 !important;
+}
+
+.forgot-password {
+  cursor: pointer;
+}
+
 .back {
   position: absolute;
   bottom: 3vh;
   left: 3vh;
+  cursor: pointer;
 }
 
 .error-message {

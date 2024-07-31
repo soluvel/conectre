@@ -46,5 +46,5 @@
 
 
 <div id="container-footer">
-  <button class="button-geral-full" type="button" (click)="filter()">Ver resultados</button>
+  <button class="button-geral-full" type="button" (click)="filter()" [disabled]="nenhumSelecionado" [ngClass]="{'button-disabled': nenhumSelecionado}">Ver resultados</button>
 </div>

@@ -25,6 +25,29 @@ table td {
   height: 72px;
 }
 
+.nome-column,
+.razaoSocial-column,
+.contato-column {
+  max-width: 160px !important;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis !important;
+  box-sizing: border-box;
+}
+
+.contato-column {
+  max-width: 100px !important;
+}
+
+.detalhe-column {
+  width: 140px !important;
+}
+
+.nome-cell {
+  display: flex;
+  align-items: center;
+}
+
 mat-paginator {
   border-bottom-right-radius: 8px;
   border-bottom-left-radius: 8px;
@@ -40,13 +63,8 @@ mat-paginator {
   0px 1px 5px 0px rgba(0, 0, 0, 0.12);
 }
 
-#adm, #cnpj, #grupo {
-  width: $size-percent-15;
-}
-
 #empresa {
   border-top-left-radius: 8px;
-  width: 20%
 }
 
 #header-right {
@@ -57,7 +75,6 @@ mat-paginator {
 
 #nome {
   border-top-left-radius: 8px;
-  min-width: 20%;
 }
 
 #paginacao {
@@ -75,6 +92,20 @@ mat-paginator {
   padding: 0 10px 0 10px;
   color: $grey;
   pointer-events: none;
+}
+
+.perfil-img {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 10px;
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  font-size: 14px;
+  font-weight: 600;
+  color: #0F61BE;
+  background: #D7F2FF;
 }
 
 //estilização da parte de consulta -------------------------------------
@@ -137,6 +168,20 @@ mat-paginator {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.filters-numbers {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 20px;
+  width: 20px;
+  color: #fff;
+  background: #068FFF;
+  border-radius: 50%;
+  margin-right: 6px;
+  font-size: 12px;
+  font-weight: 600;
 }
 
 #overlay {
@@ -202,7 +247,6 @@ mat-paginator {
   color: #000;
   background: #dadada;
 }
-
 
 @media screen and (max-width: 1200px) {
   .input-search-box {

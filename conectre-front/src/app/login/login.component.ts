@@ -19,11 +19,21 @@ export class LoginComponent implements OnInit {
   showLogin: boolean = true;
   error: boolean;
   isLogged: boolean = false;
+  iconStatus = "visibility_off";
 
-  constructor(private fb: FormBuilder,
+  constructor(private formBuilder: FormBuilder,
               public authService: AuthService,
               private _tokenService: StorageService,
               private router: Router) {
+
+      this.loginForm = this.formBuilder.group({
+        username: ['', [Validators.required]],
+        password: ['', Validators.required]
+      });
+  
+      this.forgotPasswordForm = this.formBuilder.group({
+        username: ['', [Validators.required, Validators.email]]
+      });
   }
 
   ngOnInit(): void {
@@ -31,14 +41,7 @@ export class LoginComponent implements OnInit {
       this.router.navigate(['/inicio']);
     }
 
-    this.loginForm = this.fb.group({
-      username: ['', [Validators.required, Validators.email]],
-      password: ['', Validators.required]
-    });
 
-    this.forgotPasswordForm = this.fb.group({
-      username: ['', [Validators.required, Validators.email]]
-    });
   }
 
 
@@ -46,6 +49,9 @@ export class LoginComponent implements OnInit {
     this.hide = !this.hide;
     const passwordInput = document.getElementById('password') as HTMLInputElement;
     passwordInput.type = this.hide ? 'password' : 'text';
+    
+    this.iconStatus = (this.iconStatus === 'visibility_off') ? 'visibility' : 'visibility_off';
+
   }
 
   onSubmit() {

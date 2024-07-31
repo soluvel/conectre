@@ -9,7 +9,8 @@ table {
   border-radius: $size-px-30;
 }
 
-table td, th {
+table td,
+th {
   font-size: $size-px-14;
 }
 
@@ -25,6 +26,24 @@ table td {
   height: 72px;
 }
 
+.nome-column,
+.local-column,
+.tanque-column {
+  max-width: 260px !important;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis !important;
+  box-sizing: border-box;
+}
+
+.tanque-column {
+  width: 200px !important;
+}
+
+.detalhe-column {
+  width: 140px !important;
+}
+
 mat-paginator {
   justify-content: center;
 }
@@ -32,13 +51,15 @@ mat-paginator {
 .mat-elevation-z2 {
   border: 1px solid #ddd;
   border-radius: 8px;
-  box-shadow: 
-  0px -1px 1px -10px rgba(0, 0, 0, 0.25),
-  0px 2px 2px 0px rgba(0, 0, 0, 0.14),
-  0px 1px 5px 0px rgba(0, 0, 0, 0.12);
+  box-shadow:
+    0px -1px 1px -10px rgba(0, 0, 0, 0.25),
+    0px 2px 2px 0px rgba(0, 0, 0, 0.14),
+    0px 1px 5px 0px rgba(0, 0, 0, 0.12);
 }
 
-#adm, #cnpj, #grupo {
+#adm,
+#cnpj,
+#grupo {
   width: $size-percent-15;
 }
 
@@ -173,6 +194,39 @@ mat-paginator {
   color: #000;
   background: #dadada;
 }
+
+@media screen and (max-width: 1200px) {
+  .input-search-box {
+    width: 35%;
+  }
+
+  .buttons-box {
+    width: 65%;
+  }
+
+  .nome-column,
+  .local-column,
+  .tanque-column {
+    max-width: 200px !important;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis !important;
+    box-sizing: border-box;
+  }
+
+  .tanque-column {
+    width: 100px !important;
+    background: red;
+  }
+}
+
+
+@media screen and (max-width: 950px) {
+  .input-search-box {
+    width: auto;
+  }
+}
+
 
 @media screen and (max-width: 600px) {
   .input-img {

@@ -19,6 +19,7 @@ export class TableTecnicoComponent implements OnInit {
   totalPage: number;
   size: number = 3;
   razaoSocial: string;
+  filterQtd: number = 0;
 
   constructor(private service: TecnicoService,
               private router: Router) {
@@ -26,6 +27,11 @@ export class TableTecnicoComponent implements OnInit {
 
   ngOnInit(): void {
     this.getTableInfo();
+  }
+
+  getInitials(name: string): string {
+    const names = name.split(' ');
+    return names.map(name => name.charAt(0)).join('').toUpperCase();
   }
 
   getTableInfo() {
@@ -91,6 +97,8 @@ export class TableTecnicoComponent implements OnInit {
     //   }, error: () => {
     //   }
     // });
+
+    this.filterQtd = event.listaEmpresas.length;
   }
 }
 

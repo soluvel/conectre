@@ -15,7 +15,7 @@
         <h2 class="titulo">Visualização Geral</h2>
 
         <div class="user-box">
-          <img src="assets/avatar.svg" class="img-avatar" alt="Imagem Redonda">
+          <img src="assets/avatar_icon.svg" class="img-avatar" alt="Imagem Redonda">
           <div class="user-name-and-icon-box">
             <h2 class="user-msg">Olá, <b>{{ storage.getUser() }}</b></h2>
             <mat-icon class="menu-arrow-icon material-symbols-rounded" (click)="openMenu()">keyboard_arrow_down</mat-icon>
@@ -38,7 +38,7 @@
 </ng-container>
 
 <div id="overlayConfirm">
-  <app-overlay-confirmacao></app-overlay-confirmacao>
+  <app-overlay-confirmacao (onLogout)="onLogout()"></app-overlay-confirmacao>
 </div>
 
 <div id="filterWall"></div>

@@ -12,7 +12,7 @@
   <div class="panel-contents" style="margin: 20px 20px 40px 20px;">
     <div class="infos-content" style="color: #52525B;">
       <span style="margin-bottom: 20px;"><b>Plano start: </b>{{ administradores?.length }}/5 licenças</span>
-      <span style="font-size: 12px;">Nenhum administrador cadastrado</span>
+      <span style="font-size: 12px;" *ngIf="!existAdm">Nenhum administrador cadastrado</span>
     </div>
     
     <div class="buttons">

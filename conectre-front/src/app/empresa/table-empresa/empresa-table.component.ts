@@ -20,6 +20,7 @@ export class EmpresaTableComponent {
   totalPage: number;
   size: number = 3;
   filter: string;
+  filterQtd: number = 0;
 
   constructor(private service: EmpresaService,
               private router: Router) {
@@ -28,6 +29,11 @@ export class EmpresaTableComponent {
   ngOnInit(): void {
     this.getTableInfo();
 
+  }
+
+  getInitials(name: string): string {
+    const names = name.split(' ');
+    return names.map(name => name.charAt(0)).join('').toUpperCase();
   }
 
   getTableInfo() {
@@ -65,6 +71,8 @@ export class EmpresaTableComponent {
     });
 
     this.dataSource.data = filteredData;
+
+    this.filterQtd = (planoList.length + localidadeList.length + empresaList.length);
 
   }
 
