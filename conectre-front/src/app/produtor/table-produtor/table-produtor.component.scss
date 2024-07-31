@@ -26,6 +26,16 @@ table td {
   height: 72px;
 }
 
+.nome-column,
+.razaoSocial-column,
+.contato-column {
+  max-width: 150px !important;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis !important;
+  box-sizing: border-box;
+}
+
 mat-paginator {
   border-bottom-right-radius: 8px;
   border-bottom-left-radius: 8px;
@@ -39,10 +49,6 @@ mat-paginator {
   0px -1px 1px -10px rgba(0, 0, 0, 0.25),
   0px 2px 2px 0px rgba(0, 0, 0, 0.14),
   0px 1px 5px 0px rgba(0, 0, 0, 0.12);
-}
-
-#adm, #cnpj, #grupo {
-  width: $size-percent-15;
 }
 
 
@@ -252,6 +258,13 @@ mat-paginator {
   }
 }
 
+@media screen and (max-width: 1050px) {
+  .nome-column,
+  .razaoSocial-column,
+  .contato-column {
+    max-width: 120px !important;
+  }
+}
 
 @media screen and (max-width: 950px) {
   .input-search-box {

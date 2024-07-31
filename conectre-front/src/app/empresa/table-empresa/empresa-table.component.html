@@ -21,37 +21,30 @@
   <table mat-table [dataSource]="dataSource">
 
     <ng-container matColumnDef="razaoSocial">
-      <th mat-header-cell *matHeaderCellDef id="empresa">Empresa</th>
-      <td mat-cell *matCellDef="let element"> {{ element.razaoSocial }}</td>
+      <th mat-header-cell class="razaoSocial-column" *matHeaderCellDef id="empresa">Empresa</th>
+      <td mat-cell class="razaoSocial-column" *matCellDef="let element">{{ element.razaoSocial }}</td>
     </ng-container>
 
     <ng-container matColumnDef="administradores">
       <th mat-header-cell *matHeaderCellDef id="adm">Administrador</th>
-      <td mat-cell *matCellDef="let element">
+      <td mat-cell *matCellDef="let element" class="img-group">
         <ng-container *ngIf="element.administradores && element.administradores.length > 0">
-          <ng-container *ngFor="let img of element.administradores; let i=index">
-            <img *ngIf="i < 4" src="assets/avatar_icon.svg" class="conjunto-avatar" alt="{{ img.nome }}">
+          <ng-container *ngFor="let admin of element.administradores; let i=index">
+            <div class="perfil-img" *ngIf="i < 4">{{ getInitials(admin.nome) }}</div>
           </ng-container>
         
           <ng-container *ngIf="element.administradores.length > 4">
-            <ng-container *ngIf="element.administradores.length - 4 === 1; else moreThanOne">
-              <span style="position: relative;">
-                <mat-icon class="icon-circle conjunto-avatar material-symbols-rounded">circle</mat-icon>
-                <span class="number-resting">+{{ element.administradores.length - 4 }}</span>
-              </span>
-            </ng-container>
-
-            <ng-template #moreThanOne>
-              <span>+</span> {{ element.administradores.length - 4 }}
-            </ng-template>
+            <div class="number-resting-box">
+              <span class="number-resting">+{{ element.administradores.length - 4 }}</span>
+            </div>
           </ng-container>
         </ng-container>
       </td>
     </ng-container>
 
     <ng-container matColumnDef="cnpjCpf">
-      <th mat-header-cell *matHeaderCellDef id="cnpj">CNPJ/CPF</th>
-      <td mat-cell *matCellDef="let element"> {{ element.cnpjCpf | cpfCnpj }}</td>
+      <th mat-header-cell class="cnpj-column" *matHeaderCellDef id="cnpj">CNPJ/CPF</th>
+      <td mat-cell class="cnpj-column" *matCellDef="let element"> {{ element.cnpjCpf | cpfCnpj }}</td>
     </ng-container>
 
     <ng-container matColumnDef="grupo">
@@ -60,7 +53,7 @@
     </ng-container>
 
     <ng-container matColumnDef="plano">
-      <th mat-header-cell *matHeaderCellDef>Plano</th>
+      <th mat-header-cell *matHeaderCellDef id="plano">Plano</th>
       <td mat-cell *matCellDef="let element"> {{ element?.plano }}</td>
     </ng-container>
 

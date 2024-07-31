@@ -29,6 +29,11 @@ export class TableTecnicoComponent implements OnInit {
     this.getTableInfo();
   }
 
+  getInitials(name: string): string {
+    const names = name.split(' ');
+    return names.map(name => name.charAt(0)).join('').toUpperCase();
+  }
+
   getTableInfo() {
     this.service.page(this.pageNumber, this.size).subscribe({
       next: (page) => {

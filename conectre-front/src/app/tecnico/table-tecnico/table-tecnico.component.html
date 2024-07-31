@@ -17,26 +17,28 @@
   <table mat-table [dataSource]="dataSource">
 
     <ng-container matColumnDef="nome">
-      <th mat-header-cell *matHeaderCellDef id="nome">Nome</th>
-      <td mat-cell *matCellDef="let element">
-        <img style="margin-right: 10px" class="icon-size-30" src="../../../assets/avatar_icon.svg" alt="search">
-        {{ element.nome }}
+      <th mat-header-cell class="nome-column" *matHeaderCellDef id="nome">Nome</th>
+      <td mat-cell class="nome-column" *matCellDef="let element">
+        <div class="nome-cell">  
+          <div class="perfil-img">{{ getInitials(element.nome) }}</div>
+          {{ element.nome }}
+        </div>
       </td>
     </ng-container>
 
     <ng-container matColumnDef="empresa">
-      <th mat-header-cell *matHeaderCellDef id="adm">Empresa</th>
-      <td mat-cell *matCellDef="let element"> {{ element.empresa.razaoSocial }}</td>
+      <th mat-header-cell class="razaoSocial-column" *matHeaderCellDef id="adm">Empresa</th>
+      <td mat-cell class="razaoSocial-column" *matCellDef="let element"> {{ element.empresa.razaoSocial }}</td>
     </ng-container>
 
     <ng-container matColumnDef="contato">
-      <th mat-header-cell *matHeaderCellDef id="contato">Contato</th>
-      <td mat-cell *matCellDef="let element"> {{ element.celular | celular }}</td>
+      <th mat-header-cell class="contato-column" *matHeaderCellDef id="contato">Contato</th>
+      <td mat-cell class="contato-column" *matCellDef="let element"> {{ element.celular | celular }}</td>
     </ng-container>
 
     <ng-container matColumnDef="detalhe">
-      <th mat-header-cell *matHeaderCellDef id="header-right">Detalhes</th>
-      <td mat-cell *matCellDef="let element" id="detalhe">
+      <th mat-header-cell class="detalhe-column" *matHeaderCellDef id="header-right">Detalhes</th>
+      <td mat-cell class="detalhe-column" *matCellDef="let element" id="detalhe">
         <mat-icon class="icon-search-info material-symbols-rounded" (click)="redirectToDetails(element?.id)">search</mat-icon>
       </td>
     </ng-container>
