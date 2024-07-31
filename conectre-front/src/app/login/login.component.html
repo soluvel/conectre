@@ -16,7 +16,7 @@
             E-mail ou Senha incorretos.
           </div>
           <div *ngIf="error" class="error-message">
-            E-mail não cadastrado.
+            E-mail ou senha não cadastrado.
           </div>
           <div class="form-group">
             <input type="submit" value="Entrar" [disabled]="!loginForm.valid" [ngClass]="{'button-disabled': !loginForm.valid}">

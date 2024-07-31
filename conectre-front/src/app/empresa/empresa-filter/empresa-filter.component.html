@@ -18,14 +18,7 @@
 </div>
 
 <div class="container-chips">
-  <mat-chip-set>
-    <mat-chip *ngFor="let chip of checkedPlanos">
-      <span class="filter-type">Planos</span>
-      {{ chip }}
-      <mat-icon class="icon-filter-remove material-symbols-rounded" (click)="toggleChip(chip)" (click)="desativarCheckbox(chip)">close</mat-icon>
-    </mat-chip>
-  </mat-chip-set>
-  
+
   <mat-chip-set>
     <mat-chip *ngFor="let chip of checkedCidades">
       <span class="filter-type">Local</span>
@@ -33,7 +26,7 @@
       <mat-icon class="icon-filter-remove material-symbols-rounded" (click)="toggleCidade(chip)" (click)="desativarCheckbox(chip)">close</mat-icon>
     </mat-chip>
   </mat-chip-set>
-  
+
   <mat-chip-set>
     <mat-chip *ngFor="let chip of checkedRazaoSocial">
       <span class="filter-type">Empresa</span>
@@ -45,20 +38,6 @@
 
 <div class="container-options">
   <mat-accordion multi>
-    <mat-expansion-panel>
-      <mat-expansion-panel-header>
-        <mat-panel-title>
-          Planos
-        </mat-panel-title>
-      </mat-expansion-panel-header>
-
-      <div class="checkbox-container">
-        <mat-checkbox [color]="'accent'" class="checkbox-item" *ngFor="let opcao of opcoes" (change)="toggleChip(opcao)" [(ngModel)]="checkboxesAtivos[opcao]">
-          {{ opcao }}
-        </mat-checkbox>
-      </div>
-    </mat-expansion-panel>
-
     <mat-expansion-panel>
       <mat-expansion-panel-header>
         <mat-panel-title>

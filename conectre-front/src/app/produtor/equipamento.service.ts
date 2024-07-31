@@ -16,7 +16,7 @@ export class EquipamentoService {
   }
 
   save(data: any): Observable<any> {
-    return this.http.post<any>(`${this.apiUrl}/save`, data, { headers: this.headers });
+    return this.http.post<any>(`${this.apiUrl}/save/entity`, data, { headers: this.headers });
   }
 
   count(): Observable<number> {
