@@ -25,32 +25,29 @@
         <div class="col-4">
           <label id="nome" for="nome" class="form-label required">Nome</label>
           <div class="input-group">
-            <input type="text" class="form-control" formControlName="nome"
-                   aria-describedby="nome">
-            <mat-icon class="icon edit-icon material-symbols-rounded" *ngIf="isEditando">edit</mat-icon>
+            <input id="nomeInput" type="text" class="form-control" [ngClass]="{'click-disabled': isEditando}" formControlName="nome" aria-describedby="nome">
+            <mat-icon class="icon edit-icon material-symbols-rounded" *ngIf="isEditando" (click)="enableEdit('nomeInput')">edit</mat-icon>
           </div>
         </div>
         <div class="col-2">
           <label id="cpf" for="cpf" class="form-label required">CPF</label>
           <div class="input-group">
-            <input type="text" class="form-control" formControlName="cpf" appCnpjCpfMask [maxLength]="14"
-                   aria-describedby="empresaImage">
-            <mat-icon class="icon edit-icon material-symbols-rounded" *ngIf="isEditando">edit</mat-icon>
+            <input id="cpfInput" type="text" class="form-control" [ngClass]="{'click-disabled': isEditando}" formControlName="cpf" appCnpjCpfMask [maxLength]="14" aria-describedby="empresaImage">
+            <mat-icon class="icon edit-icon material-symbols-rounded" *ngIf="isEditando" (click)="enableEdit('cpfInput')">edit</mat-icon>
           </div>
         </div>
         <div class="col-3">
           <label id="celular" for="celular" class="form-label required">Celular</label>
           <div class="input-group">
-            <input type="text" class="form-control" formControlName="celular" appCelularMask [maxLength]="15"
-                   aria-describedby="empresaImage">
-            <mat-icon class="icon edit-icon material-symbols-rounded" *ngIf="isEditando">edit</mat-icon>
+            <input id="celularInput" type="text" class="form-control" [ngClass]="{'click-disabled': isEditando}" formControlName="celular" appCelularMask [maxLength]="15" aria-describedby="empresaImage">
+            <mat-icon class="icon edit-icon material-symbols-rounded" *ngIf="isEditando" (click)="enableEdit('celularInput')">edit</mat-icon>
           </div>
         </div>
         <div class="col-3">
           <label for="email" class="form-label required">E-mail</label>
           <div class="input-group">
-            <input type="email" class="form-control" formControlName="email" id="email">
-            <mat-icon class="icon edit-icon material-symbols-rounded" *ngIf="isEditando">edit</mat-icon>
+            <input id="email" type="email" class="form-control" [ngClass]="{'click-disabled': isEditando}" formControlName="email" id="email">
+            <mat-icon class="icon edit-icon material-symbols-rounded" *ngIf="isEditando" (click)="enableEdit('email')">edit</mat-icon>
           </div>
         </div>
       </div>
@@ -67,25 +64,24 @@
           <div class="col-2">
             <label id="cep" for="cep" class="form-label required">CEP</label>
             <div class="input-group">
-              <input type="text" class="form-control required" formControlName="cep" appCepMask
-                     (blur)="getEnderecoViaCep()">
-              <mat-icon class="icon edit-icon material-symbols-rounded" *ngIf="isEditando">edit</mat-icon>
+              <input id="cepInput" type="text" class="form-control required" [ngClass]="{'click-disabled': isEditando}" formControlName="cep" appCepMask (blur)="getEnderecoViaCep()">
+              <mat-icon class="icon edit-icon material-symbols-rounded" *ngIf="isEditando" (click)="enableEdit('cepInput')">edit</mat-icon>
             </div>
           </div>
 
           <div class="col-3">
             <label id="localidade" for="localidade" class="form-label required">Cidade</label>
             <div class="input-group">
-              <input type="text" class="form-control" formControlName="localidade">
-              <mat-icon class="icon edit-icon material-symbols-rounded" *ngIf="isEditando">edit</mat-icon>
+              <input id="localidadeInput" type="text" class="form-control" [ngClass]="{'click-disabled': isEditando}" formControlName="localidade">
+              <mat-icon class="icon edit-icon material-symbols-rounded" *ngIf="isEditando" (click)="enableEdit('localidadeInput')">edit</mat-icon>
             </div>
           </div>
 
           <div class="col-3">
             <label id="logradouro" for="logradouro" class="form-label required">Logradouro</label>
             <div class="input-group">
-              <input type="text" class="form-control" formControlName="logradouro">
-              <mat-icon class="icon edit-icon material-symbols-rounded" *ngIf="isEditando">edit</mat-icon>
+              <input id="logradouroInput" type="text" class="form-control" [ngClass]="{'click-disabled': isEditando}" formControlName="logradouro">
+              <mat-icon class="icon edit-icon material-symbols-rounded" *ngIf="isEditando" (click)="enableEdit('logradouroInput')">edit</mat-icon>
             </div>
           </div>
         </ng-container>
@@ -95,33 +91,32 @@
         <div class="col-4">
           <label for="bairro" class="form-label required">Bairro</label>
           <div class="input-group">
-            <input type="text" class="form-control" formControlName="bairro" id="bairro">
-            <mat-icon class="icon edit-icon material-symbols-rounded" *ngIf="isEditando">edit</mat-icon>
+            <input id="bairro" type="text" class="form-control" [ngClass]="{'click-disabled': isEditando}" formControlName="bairro">
+            <mat-icon class="icon edit-icon material-symbols-rounded" *ngIf="isEditando" (click)="enableEdit('bairro')">edit</mat-icon>
           </div>
         </div>
 
         <div class="col-1">
-          <label id="numero" for="numero" class="form-label required">Número</label>
+          <label id="" for="" class="form-label required">Número</label>
           <div class="input-group">
-            <input type="text" class="form-control" formControlName="numero">
-            <mat-icon class="icon edit-icon material-symbols-rounded" *ngIf="isEditando">edit</mat-icon>
+            <input id="numero" type="text" class="form-control" [ngClass]="{'click-disabled': isEditando}" formControlName="numero">
+            <mat-icon class="icon edit-icon material-symbols-rounded" *ngIf="isEditando" (click)="enableEdit('numero')">edit</mat-icon>
           </div>
         </div>
 
         <div class="col-1">
           <label for="uf" class="form-label required">Estado</label>
           <div class="input-group">
-            <input type="text" class="form-control" formControlName="uf" id="uf">
-            <mat-icon class="icon edit-icon material-symbols-rounded" *ngIf="isEditando">edit</mat-icon>
+            <input id="uf" type="text" class="form-control" [ngClass]="{'click-disabled': isEditando}" formControlName="uf">
+            <mat-icon class="icon edit-icon material-symbols-rounded" *ngIf="isEditando" (click)="enableEdit('uf')">edit</mat-icon>
           </div>
         </div>
 
         <div class="col-6">
           <label for="complemento" class="form-label">Complemento</label>
           <div class="input-group" style="padding-bottom: 0">
-            <input type="text" class="form-control" formControlName="complemento" id="complemento"
-                   style="margin-bottom: 0">
-            <mat-icon class="icon edit-icon material-symbols-rounded" *ngIf="isEditando">edit</mat-icon>
+            <input id="complemento" type="text" class="form-control" [ngClass]="{'click-disabled': isEditando}" formControlName="complemento" style="margin-bottom: 0">
+            <mat-icon class="icon edit-icon material-symbols-rounded" *ngIf="isEditando" (click)="enableEdit('complemento')">edit</mat-icon>
           </div>
         </div>
       </div>

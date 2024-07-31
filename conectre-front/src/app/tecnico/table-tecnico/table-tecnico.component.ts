@@ -1,9 +1,8 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatTableDataSource } from "@angular/material/table";
-import { MatPaginator } from "@angular/material/paginator";
-import { TecnicoService } from "../tecnico.service";
-import { Router } from "@angular/router";
-import { filter } from "rxjs";
+import {Component, OnInit, ViewChild} from '@angular/core';
+import {MatTableDataSource} from "@angular/material/table";
+import {MatPaginator} from "@angular/material/paginator";
+import {TecnicoService} from "../tecnico.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-table-tecnico',
@@ -21,6 +20,7 @@ export class TableTecnicoComponent implements OnInit {
   size: number = 3;
   razaoSocial: string;
   filter: string;
+  filterQtd: number = 0;
 
   constructor(private service: TecnicoService,
               private router: Router) {
@@ -28,6 +28,11 @@ export class TableTecnicoComponent implements OnInit {
 
   ngOnInit(): void {
     this.getTableInfo();
+  }
+
+  getInitials(name: string): string {
+    const names = name.split(' ');
+    return names.map(name => name.charAt(0)).join('').toUpperCase();
   }
 
   getTableInfo() {
@@ -102,6 +107,7 @@ export class TableTecnicoComponent implements OnInit {
 
   }
   onFiltroAlterado(event: { listaEmpresas: string[] }): void {
+    this.filterQtd = event.listaEmpresas.length;
     return this.concatFilter(this.dataSource.filteredData, event.listaEmpresas)
   }
 

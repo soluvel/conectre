@@ -51,6 +51,14 @@ export class TecnicoFilterComponent implements OnInit {
     this.fecharQuadrado();
   }
 
+  toggleRazaoSocial(empresa: string): void {
+    if (this.checkedRazaoSocial.includes(empresa)) {
+      this.checkedRazaoSocial = this.checkedRazaoSocial.filter(item => item !== empresa);
+    } else {
+      this.checkedRazaoSocial.push(empresa);
+    }
+  }
+
   toggleChip(item: string) {
     const index = this.checkedRazaoSocial.indexOf(item);
     if (index === -1) {
@@ -79,7 +87,8 @@ export class TecnicoFilterComponent implements OnInit {
     this.checkedRazaoSocial = [];
     this.nenhumSelecionado = true;
 
-    this.fecharPaineis()
+    this.fecharPaineis();
+    this.enviarFiltro();
   }
 
   fecharPaineis() {

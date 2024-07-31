@@ -62,6 +62,21 @@ export class TecnicoCadastroComponent implements OnInit, OnDestroy {
     });
   }
 
+  enableEdit(inputId: string): void {
+    const allInputs = document.querySelectorAll('.form-control');
+    const editingInput = document.getElementById(inputId);
+
+    allInputs.forEach(input => {
+      if (input !== editingInput) {
+        input.classList.add('click-disabled');
+        input.classList.remove('focus-editing-input');
+      }
+    });
+
+    editingInput.classList.toggle('click-disabled');
+    editingInput.classList.toggle('focus-editing-input');
+  }
+
   getTecnico(): void {
     this.service.getTecnico(parseInt(this.tecnicoId)).subscribe(data => {
       this.form.patchValue(data);
