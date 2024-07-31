@@ -13,7 +13,7 @@ import { StorageService } from "../../storage.service";
 export class TableProdutorComponent implements OnInit {
 
   dataSource = new MatTableDataSource<any>;
-  displayedColumns: string[] = ['nome', 'empresa', 'propriedade', 'contato', 'detalhe'];
+  displayedColumns: string[] = ['nome', 'empresa', 'propriedade', 'equipamento', 'contato', 'detalhe'];
   quantiaPropriedade: any[] = [];
   quantiaEquipamento: any[] = [];
 
@@ -45,10 +45,18 @@ export class TableProdutorComponent implements OnInit {
     });
   }
 
+  getTotalEquipamentos(produtor): number {
+    let total = 0;
+    produtor.propriedades.forEach(propriedade => {
+        total += propriedade.equipamentos.length;
+      });
+    return total;
+  }
+
   exibirFiltro() {
     var overlay = document.getElementById('overlay-filter');
     overlay.style.display = 'block';
-  
+
     var filterWall = document.getElementById('filter-wall');
     filterWall.style.display = 'block';
   }
@@ -107,6 +115,8 @@ export class TableProdutorComponent implements OnInit {
   }
 
   onFiltroAlterado(event: { listaPropriedades: string[], listaEquipamentos: string[], listaEmpresas: string[] }): void {
+    this.quantiaEquipamento = [];
+    this.quantiaPropriedade = [];
 
     event.listaPropriedades.forEach(i => this.extractRange(i, this.quantiaPropriedade));
     event.listaEquipamentos.forEach(i => this.extractRange(i, this.quantiaEquipamento));
@@ -132,14 +142,14 @@ export class TableProdutorComponent implements OnInit {
 
     objList.filter(obj => {
       const empresa = obj.empresa.razaoSocial.trim().toLowerCase();
-      // const equipamento = obj.equipamentos.length;
+      const equipamento = this.getTotalEquipamentos(obj);
       const propriedade = obj.propriedades.length;
 
       const propriedadeMatch = listaPropriedades.some(p => propriedade >= p.start && propriedade <= p.end) || listaPropriedades.length == 0;
-      // const equipamentoMatch = listaEquipamentos.some(p => p.start >= equipamento && p.end <= equipamento) || listaEquipamentos.length == 0;
+      const equipamentoMatch = listaEquipamentos.some(p => equipamento >= p.start && equipamento <= p.end) || listaEquipamentos.length == 0;
       const empresaMatch = listaEmpresas.some(e => e.trim().toLowerCase() === empresa) || listaEmpresas.length == 0;
 
-      if (propriedadeMatch && empresaMatch) {
+      if (propriedadeMatch && empresaMatch && equipamentoMatch) {
         filteredData.push(obj);
       }
     });
