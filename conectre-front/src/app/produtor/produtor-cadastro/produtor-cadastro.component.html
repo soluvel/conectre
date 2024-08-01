@@ -25,32 +25,29 @@
         <div class="col-3">
           <label id="nome" for="nome" class="form-label required">Nome</label>
           <div class="input-group">
-            <input type="text" class="form-control" formControlName="nome"
-                   aria-describedby="nome">
-            <mat-icon class="icon edit-icon material-symbols-rounded" *ngIf="isEditando">edit</mat-icon>
+            <input type="text" id="nomeInput" class="form-control" [ngClass]="{'click-disabled': isEditando}" formControlName="nome" aria-describedby="nome">
+            <mat-icon class="icon edit-icon material-symbols-rounded" *ngIf="isEditando" (click)="enableEdit('nomeInput')">edit</mat-icon>
           </div>
         </div>
         <div class="col-3">
           <label for="cpf" class="form-label required">CPF</label>
           <div class="input-group">
-            <input type="email" class="form-control" formControlName="cpf" id="cpf" appCnpjCpfMask [maxLength]="14">
-            <mat-icon class="icon edit-icon material-symbols-rounded" *ngIf="isEditando">edit</mat-icon>
+            <input type="email" id="cpf" class="form-control" [ngClass]="{'click-disabled': isEditando}" formControlName="cpf" appCnpjCpfMask [maxLength]="14">
+            <mat-icon class="icon edit-icon material-symbols-rounded" *ngIf="isEditando" (click)="enableEdit('cpf')">edit</mat-icon>
           </div>
         </div>
         <div class="col-3">
           <label id="celular" for="celular" class="form-label required">Celular</label>
           <div class="input-group">
-            <input type="text" class="form-control" formControlName="celular"
-                   aria-describedby="empresaImage" appCelularMask [maxLength]="15">
-            <mat-icon class="icon edit-icon material-symbols-rounded" *ngIf="isEditando">edit</mat-icon>
+            <input type="text" id="celularInput" class="form-control" [ngClass]="{'click-disabled': isEditando}" formControlName="celular" aria-describedby="empresaImage" appCelularMask [maxLength]="15">
+            <mat-icon class="icon edit-icon material-symbols-rounded" *ngIf="isEditando" (click)="enableEdit('celularInput')">edit</mat-icon>
           </div>
         </div>
         <div class="col-3">
           <label id="email" for="email" class="form-label required">E-mail</label>
           <div class="input-group">
-            <input type="text" class="form-control" formControlName="email"
-                   aria-describedby="empresaImage">
-            <mat-icon class="icon edit-icon material-symbols-rounded" *ngIf="isEditando">edit</mat-icon>
+            <input type="text" id="emailInput" class="form-control" [ngClass]="{'click-disabled': isEditando}" formControlName="email" aria-describedby="empresaImage">
+            <mat-icon class="icon edit-icon material-symbols-rounded" *ngIf="isEditando" (click)="enableEdit('emailInput')">edit</mat-icon>
           </div>
         </div>
       </div>
@@ -68,8 +65,7 @@
 
   <div class="actions-footer">
     <button class="button-no-border" style="margin-right: 10px">Limpar dados</button>
-    <button [disabled]="!form.valid" (click)="onSubmit()"
-            [ngClass]="{'button-disabled': !form.valid}">{{ isEditando ? 'Salvar Alterações' : 'Cadastrar Produtor' }}
+    <button [disabled]="!form.valid" (click)="onSubmit()" [ngClass]="{'button-disabled': !form.valid}">{{ isEditando ? 'Salvar Alterações' : 'Cadastrar Produtor' }}
     </button>
   </div>
 

@@ -1,5 +1,6 @@
 import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { StorageService } from "../storage.service";
+import { AppComponent } from '../app.component';
 
 @Component({
   selector: 'app-sidebar',
@@ -12,7 +13,7 @@ export class SidebarComponent implements OnChanges {
   sideNavCollapsed: boolean;
   logoCollapsed: string
 
-  constructor(public storage: StorageService) {}
+  constructor(public storage: StorageService, private appComponent: AppComponent) {}
 
   ngOnChanges(changes: SimpleChanges) {
     // this.sideNavCollapsed = this.collapse;
@@ -45,9 +46,11 @@ export class SidebarComponent implements OnChanges {
   }
 
   openDropdown() {
-    if (document.querySelector('.container-full').clientWidth > 70) {
-      document.querySelector('.dropdown-content').classList.toggle('dropdown-content-open');
+    if (document.querySelector('.container-full').clientWidth < 250) {
+      this.openSideMenu();
+      this.appComponent.collapsed.set(false);
     }
+    document.querySelector('.dropdown-content').classList.toggle('dropdown-content-open');
   }
 
 }

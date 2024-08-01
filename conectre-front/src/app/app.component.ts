@@ -47,6 +47,10 @@ export class AppComponent {
     document.querySelectorAll('.hidden-effect').forEach(topic => {
       topic.classList.toggle('invisible-effect');
     });
+
+    if (document.querySelector('.container-full').clientWidth > 70) {
+      document.querySelector('.dropdown-content').classList.remove('dropdown-content-open');
+    }
   }
 
   openConfirm() {
