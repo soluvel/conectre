@@ -53,6 +53,7 @@ $lines-color: #E0E0E0;
 
 .table-infos {
   display: flex;
+  flex-direction: column;
   height: auto;
   width: 100%;
 }
@@ -72,4 +73,31 @@ $lines-color: #E0E0E0;
 
 .date-info-footer {
   font-weight: 600;
+}
+
+#tanque {
+  font-size: 14px;
+  font-weight: 600;
+  color: #3F3F46;
+  background: transparent;
+  border: none;
+  outline: none;
+  padding: 5px;
+}
+
+.select-placeholder {
+  display: none;
+}
+
+.selected-tanque-name {
+  font-size: 12px;
+  font-weight: 400;
+  color: #52525B;
+}
+
+.historic-title {
+  font-size: 16px;
+  font-weight: 400;
+  color: #27272A;
+  margin-bottom: 20px;
 }

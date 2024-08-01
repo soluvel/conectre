@@ -69,6 +69,10 @@ export class TableRegistroHistoricoComponent implements OnInit {
     });
   }
 
+  search() {
+    
+  }
+
   redirectToDetails(id: any) {
     this.router.navigate(['/propriedade/editar', id]);
   }
