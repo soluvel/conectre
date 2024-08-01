@@ -1,5 +1,8 @@
 <div class="container-filter">
-  <input class="input-search" type="text" placeholder="Buscar registro?" [(ngModel)]="filter">
+  <div class="input-search-box">
+    <input class="input-search" type="text" placeholder="Buscar registro?" [(ngModel)]="filter">
+    <mat-icon class="icon-search material-symbols-rounded" (click)="search()">search</mat-icon>
+  </div>
 </div>
 
 
@@ -7,14 +10,13 @@
   <table mat-table [dataSource]="dataSource">
 
     <ng-container matColumnDef="tanque">
-      <th mat-header-cell *matHeaderCellDef id="tanque">Tanque</th>
-      <td mat-cell *matCellDef="let element"> {{ element.tanqueNome }}</td>
+      <th mat-header-cell class="tanque-column" *matHeaderCellDef id="tanque">Tanque</th>
+      <td mat-cell class="tanque-column" *matCellDef="let element"> {{ element.tanqueNome }}</td>
     </ng-container>
 
     <ng-container matColumnDef="propriedade">
-      <th mat-header-cell *matHeaderCellDef id="local">Propriedade</th>
-      <td mat-cell *matCellDef="let element"> {{ element.propriedadeNome }}</td>
-      <td mat-cell *matCellDef="let element"></td>
+      <th mat-header-cell class="propriedade-column" *matHeaderCellDef id="local">Propriedade</th>
+      <td mat-cell class="propriedade-column" *matCellDef="let element"> {{ element.propriedadeNome }}</td>
     </ng-container>
 
     <ng-container matColumnDef="convAlimentar">
@@ -38,25 +40,25 @@
     </ng-container>
 
     <ng-container matColumnDef="racao">
-      <th mat-header-cell *matHeaderCellDef id="racao">Ração</th>
-      <td mat-cell *matCellDef="let element">{{ element.racao }}</td>
+      <th mat-header-cell class="racao-column" *matHeaderCellDef id="racao">Ração</th>
+      <td mat-cell class="racao-column" *matCellDef="let element">{{ element.racao }}</td>
     </ng-container>
 
     <ng-container matColumnDef="coleta">
-      <th mat-header-cell *matHeaderCellDef id="coleta">Data Coleta</th>
-      <td mat-cell *matCellDef="let element">{{ element.coleta | dateFormat}}</td>
+      <th mat-header-cell class="data-coleta-column" *matHeaderCellDef id="coleta">Data Coleta</th>
+      <td mat-cell class="data-coleta-column" *matCellDef="let element">{{ element.coleta | dateFormat}}</td>
     </ng-container>
 
     <ng-container matColumnDef="registro">
-      <th mat-header-cell *matHeaderCellDef id="registro">Hora Coleta</th>
-      <td mat-cell *matCellDef="let element">{{ element.hrColeta | timeFormatPipe }}</td>
+      <th mat-header-cell class="hora-coleta-column" *matHeaderCellDef id="registro">Hora Coleta</th>
+      <td mat-cell class="hora-coleta-column" *matCellDef="let element">{{ element.hrColeta | timeFormatPipe }}</td>
     </ng-container>
 
     <ng-container matColumnDef="detalhe">
-      <th mat-header-cell *matHeaderCellDef id="header-right">Detalhes</th>
-      <td mat-cell *matCellDef="let element" id="detalhe">
-        <img class="icon-size-30" src="../../../assets/search.svg" alt="search"
-             (click)="redirectToDetails(element?.id)"></td>
+      <th mat-header-cell class="detalhe-column" *matHeaderCellDef id="header-right">Detalhes</th>
+      <td mat-cell class="detalhe-column" *matCellDef="let element" id="detalhe">
+        <mat-icon class="icon-search-info material-symbols-rounded" (click)="redirectToDetails(element?.id)">search</mat-icon>
+      </td>
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

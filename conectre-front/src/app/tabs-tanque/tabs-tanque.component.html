@@ -235,9 +235,12 @@
 </mat-tab-group>
 
 <div class="actions-footer">
-  <button class="button-no-border" style="margin-right: 10px">Limpar dados</button>
-  <button (click)="onSubmit()" [ngClass]="{'button-disabled': !form.valid}">Cadastrar
-  </button>
+  <button class="button-white" style="margin-right: 10px">Novo tanque</button>
+  <div class="buttons-box">
+    <button class="button-no-border" style="margin-right: 10px">Limpar dados</button>
+    <button (click)="onSubmit()" [ngClass]="{'button-disabled': !form.valid}">Salvar Registro</button>
+  </div>
 </div>
 
 
+ 
