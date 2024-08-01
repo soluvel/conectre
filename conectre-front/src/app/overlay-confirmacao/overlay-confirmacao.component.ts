@@ -12,6 +12,9 @@ import { Router } from '@angular/router';
 })
 export class OverlayConfirmacaoComponent implements OnChanges {
   @Output() onLogout: EventEmitter<boolean> = new EventEmitter<boolean>();
+  @Output() onSave: EventEmitter<any> = new EventEmitter<any>();
+  @Output() onDelete: EventEmitter<any> = new EventEmitter<any>();
+  @Input() action: string;
 
   constructor(
       public storage: StorageService,
@@ -24,7 +27,22 @@ export class OverlayConfirmacaoComponent implements OnChanges {
   }
 
   onSubmit() {
-    this.logoutUser();
+    switch (this.action) {
+      case 'salvar':
+        this.closeConfirm();
+        this.onSave.emit();
+        break;
+      case 'deletar':
+        this.closeConfirm();
+        this.onDelete.emit();
+        break;
+      case 'logout':
+        this.logoutUser();
+        break;
+      default:
+        break;
+    }
+
   }
 
   logoutUser() {

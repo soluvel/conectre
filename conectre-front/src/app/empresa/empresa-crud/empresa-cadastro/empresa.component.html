@@ -100,8 +100,9 @@
     </form>
   </div>
 
-
-  <app-administrador></app-administrador>
+  <ng-container *ngIf="empresaId">
+    <app-administrador></app-administrador>
+  </ng-container>
 
   <div class="actions-footer">
     <button class="exclude-button" [disabled]="!isEditando" [ngClass]="{'exclude-disabled': !isEditando}" (click)="openConfirm()">
@@ -118,7 +119,7 @@
   </div>
 
   <div id="overlayConfirm">
-    <app-overlay-confirmacao></app-overlay-confirmacao>
+    <app-overlay-confirmacao [action]=" 'salvar'" (onSave)="onSubmit()"></app-overlay-confirmacao>
   </div>
 
   <div id="filterWall"></div>

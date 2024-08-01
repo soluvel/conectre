@@ -4,6 +4,7 @@ package com.soluvel.conectre.domain.mappers;
 import com.soluvel.conectre.core.GenericMapper;
 import com.soluvel.conectre.core.Mapper;
 import com.soluvel.conectre.domain.Empresa;
+import com.soluvel.conectre.domain.Plano;
 import com.soluvel.conectre.domain.records.EmpresaRecords;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
@@ -25,7 +26,7 @@ public class EmpresaMapper implements Mapper<Empresa, EmpresaRecords> {
         Empresa empresa = new Empresa();
         GenericMapper.map(record, empresa);
 
-        empresa.getEndereco().setUf("PR");
+        empresa.setPlano(Plano.START);
 
         if (Objects.isNull(record.grupoId())) {
             empresa.setGrupo(null);

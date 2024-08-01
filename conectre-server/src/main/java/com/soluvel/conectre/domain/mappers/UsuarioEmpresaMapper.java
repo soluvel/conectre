@@ -6,6 +6,7 @@ import com.soluvel.conectre.core.Mapper;
 import com.soluvel.conectre.domain.Empresa;
 import com.soluvel.conectre.domain.Permissao;
 import com.soluvel.conectre.domain.UsuarioEmpresa;
+import com.soluvel.conectre.domain.records.EmpresaRecords;
 import com.soluvel.conectre.domain.records.UsuarioEmpresaRecords;
 import com.soluvel.conectre.utils.GenerateRandomKeyUtils;
 import lombok.AllArgsConstructor;
@@ -19,7 +20,7 @@ public class UsuarioEmpresaMapper implements Mapper<UsuarioEmpresa, UsuarioEmpre
 
     @Override
     public UsuarioEmpresaRecords toRecord(UsuarioEmpresa entity) {
-        return null;
+        return new UsuarioEmpresaRecords(entity.getId(), entity.getNome(), entity.getCelular(), entity.getEmail(), entity.getCargo(), entity.getEmpresa().getId());
     }
 
     public UsuarioEmpresa toEntity(UsuarioEmpresaRecords record) {

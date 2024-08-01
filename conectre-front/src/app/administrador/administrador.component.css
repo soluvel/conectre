@@ -126,6 +126,7 @@ mat-panel-title {
   z-index: 9998;
 }
 
+#overlayExclusion,
 #overlayAdm {
   display: none;
   position: fixed;
