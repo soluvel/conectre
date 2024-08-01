@@ -13,6 +13,20 @@
   font-weight: 600;
 }
 
+.edit-icon {
+  position: absolute;
+  top: -15%;
+  right: 0;
+  height: 100%;
+  color: #616161;
+  z-index: 999;
+  cursor: pointer;
+}
+
+.edit-icon:hover {
+  color: #333333;
+}
+
 .back-icon {
   display: flex;
   align-items: center;
@@ -39,11 +53,20 @@
   margin-right: auto;
 }
 
+.form-select,
 .form-control {
   border: none;
-  border-bottom: 1px solid #E0E0E0;
+  border-bottom: 1px solid #E0E0E0 !important;
   border-radius: unset;
   background-color: #fafafa;
+}
+
+.click-disabled {
+  pointer-events: none;
+}
+
+.focus-editing-input {
+  border-bottom: 1px solid #616161 !important;
 }
 
 .input-group-text {
@@ -128,6 +151,24 @@ option, select {
 
 select:focus {
   border-bottom: 2px solid #0F6CBD;
+}
+
+#overlayConfirm {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 320px;
+  height: 270px !important;
+  padding: 24px;
+  background-color: white;
+  z-index: 9999 !important;
+  border-radius: 8px;
+}
+
+#filterWall {
+  z-index: 9998 !important;
 }
 
 /*# sourceMappingURL=tecnico-cadastro.component.css.map */

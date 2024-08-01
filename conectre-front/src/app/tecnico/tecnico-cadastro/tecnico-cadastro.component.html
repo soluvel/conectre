@@ -125,7 +125,8 @@
 
   <div class="actions-footer">
     <button class="button-no-border" style="margin-right: 10px">Limpar dados</button>
-    <button [disabled]="!form.valid" (click)="onSubmit()" [ngClass]="{'button-disabled': !form.valid}">{{ isEditando ? 'Salvar Alterações' : 'Cadastrar Técnico' }}
+      <button [disabled]="!form.valid" (click)="openConfirm()" [ngClass]="{'button-disabled': !form.valid}">
+        {{ isEditando ? 'Salvar Alterações' : 'Cadastrar Técnico' }}
     </button>
   </div>
 
@@ -136,3 +137,9 @@
   <app-table-produtor-vinculado></app-table-produtor-vinculado>
 
 </div>
+
+<div id="overlayConfirm">
+  <app-overlay-confirmacao [action]=" 'salvar'" (onSave)="onSubmit()"></app-overlay-confirmacao>
+</div>
+
+

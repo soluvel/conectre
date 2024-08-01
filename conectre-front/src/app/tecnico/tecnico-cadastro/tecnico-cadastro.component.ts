@@ -135,4 +135,17 @@ export class TecnicoCadastroComponent implements OnInit, OnDestroy {
   handleImageUpload($event: Event) {
 
   }
+
+  openConfirm() {
+    var overlay = document.getElementById('overlayConfirm');
+    overlay.style.display = 'block';
+
+    var filterWall = document.getElementById('filterWall');
+    filterWall.style.display = 'block';
+
+    document.querySelector('.overlay-text').innerHTML = `Você deseja salvar o Técnico ${this.form.get('nome').value}`;
+    document.querySelector('.confirm-button').innerHTML = 'Salvar';
+    document.querySelector('.confirm-button').setAttribute("style", "background:#068FFF;");
+    document.querySelector('.cancel-button').innerHTML = 'Descartar alteração';
+  }
 }

@@ -3,6 +3,7 @@ import {MatTableDataSource} from "@angular/material/table";
 import {MatPaginator} from "@angular/material/paginator";
 import {TecnicoService} from "../tecnico.service";
 import {Router} from "@angular/router";
+import { StorageService } from "../../storage.service";
 
 @Component({
   selector: 'app-table-tecnico',
@@ -24,7 +25,8 @@ export class TableTecnicoComponent implements OnInit {
   lastPage: boolean = false;
 
   constructor(private service: TecnicoService,
-              private router: Router) {
+              private router: Router,
+              public storage: StorageService) {
   }
 
   ngOnInit(): void {
@@ -37,7 +39,7 @@ export class TableTecnicoComponent implements OnInit {
   }
 
   getTableInfo() {
-    this.service.page(this.pageNumber, this.size,'', []).subscribe({
+    this.service.page(this.pageNumber, this.size,'1', ['empresa.id']).subscribe({
       next: (page) => {
         this.dataSource.data = page.content
         this.pageNumber = page.pageable.pageNumber
@@ -129,6 +131,10 @@ export class TableTecnicoComponent implements OnInit {
       }
     });
   }
+
+    redirectToTecnico() {
+      this.router.navigate(['/tecnico/cadastrar']);
+    }
 }
 
 export interface Tecnico {

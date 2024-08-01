@@ -72,23 +72,23 @@ export class AdministradorComponent implements OnInit, OnDestroy {
   callDeletePopUp(id, nome) {
     this.deleteAdmId = id;
     this.deleteAdmNome = nome;
-    // this.openConfirm()
+    this.openConfirm()
 
   }
 
   //TODO: Dantas, esse é o pop up de excluir que está desformatado. Pelo jeito é alguma interferência do css, né?
-  // openConfirm() {
-  //   var overlay = document.getElementById('overlayExclusion');
-  //   overlay.style.display = 'block';
-  //
-  //   var filterWall = document.getElementById('filterWall');
-  //   filterWall.style.display = 'block';
-  //
-  //   document.querySelector('.overlay-text').innerHTML = `Deseja realmente excluir o administrador ${this.deleteAdmNome}`;
-  //   document.querySelector('.confirm-button').innerHTML = 'Excluir';
-  //   document.querySelector('.confirm-button').setAttribute("style", "background:#068FFF;");
-  //   document.querySelector('.cancel-button').innerHTML = 'Descartar alteração';
-  // }
+  openConfirm() {
+    var overlay = document.getElementById('overlayExclusion');
+    overlay.style.display = 'block';
+
+    var filterWall = document.getElementById('filterWall');
+    filterWall.style.display = 'block';
+
+    document.querySelector('.overlay-text').innerHTML = `Deseja realmente excluir o administrador ${this.deleteAdmNome}`;
+    document.querySelector('.confirm-button').innerHTML = 'Excluir';
+    document.querySelector('.confirm-button').setAttribute("style", "background:#068FFF;");
+    document.querySelector('.cancel-button').innerHTML = 'Descartar alteração';
+  }
 
   onDelete() {
     if (this.deletAdm != null) {

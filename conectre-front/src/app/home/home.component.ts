@@ -18,6 +18,11 @@ export class HomeComponent implements OnInit {
       this.activeComponent = 'Produtores';
       this.activeMessage = 'Produtores cadastrados';
     }
+
+    if (this.storage.getRole() == 'EMPRESA') {
+      this.activeComponent = 'Técnicos';
+      this.activeMessage = 'Técnicos cadastrados';
+    }
   }
 
   onTabChange(tabLabel: string) {
