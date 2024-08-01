@@ -6,12 +6,14 @@ import com.soluvel.conectre.domain.UsuarioEmpresa;
 import com.soluvel.conectre.domain.mappers.UsuarioEmpresaMapper;
 import com.soluvel.conectre.domain.records.UsuarioEmpresaRecords;
 import com.soluvel.conectre.service.UsuarioEmpresaService;
+import org.springframework.beans.BeanUtils;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -41,5 +43,18 @@ public class UsuarioEmpresaController extends CrudController<UsuarioEmpresa, Usu
     @PostMapping("save/record")
     public ResponseEntity<UsuarioEmpresa> create(@RequestBody UsuarioEmpresaRecords records) {
         return new ResponseEntity<>(service.save(this.mapper.toEntity(records)), HttpStatus.CREATED);
+    }
+
+    @PutMapping("user/{id}")
+    public ResponseEntity<UsuarioEmpresaRecords> updateUser(@PathVariable("id") Long id, @RequestBody UsuarioEmpresaRecords records) {
+        return service.findById(id)
+                .map(value -> {
+                    String pass = value.getPassword();
+                    BeanUtils.copyProperties(mapper.toEntity(records), value);
+                    value.setPassword(pass);
+                    var save = service.save(value);
+                    return new ResponseEntity<>(mapper.toRecord(save), HttpStatus.OK);
+                })
+                .orElseGet(() -> ResponseEntity.status(HttpStatus.NOT_FOUND).build());
     }
 }

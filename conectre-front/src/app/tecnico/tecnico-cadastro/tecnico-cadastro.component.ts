@@ -87,6 +87,27 @@ export class TecnicoCadastroComponent implements OnInit, OnDestroy {
   }
 
   onSubmit() {
+    if (this.isEditando) {
+     this.isEditing();
+    } else {
+     this.isSaving();
+    }
+  }
+
+  isEditing() {
+    this.service.edit(this.form.getRawValue(), this.form.get('id').value).pipe(takeUntil(this.destroy$)
+    ).subscribe({
+      next: response => {
+        this.toastr.success('Formulário salvo com sucesso!');
+        this.router.navigate(['/inicio']);
+      },
+      error: error => {
+        console.error('Erro:', error);
+      }
+    });
+  }
+
+  isSaving() {
     this.service.save(this.form.getRawValue()).pipe(takeUntil(this.destroy$)
     ).subscribe({
       next: response => {
@@ -97,7 +118,6 @@ export class TecnicoCadastroComponent implements OnInit, OnDestroy {
         console.error('Erro:', error);
       }
     });
-
   }
 
   getEnderecoViaCep() {

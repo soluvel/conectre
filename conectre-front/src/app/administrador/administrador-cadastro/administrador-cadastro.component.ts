@@ -65,7 +65,29 @@ export class AdministradorCadastroComponent implements OnInit, OnDestroy, OnChan
 
   onSubmit() {
     this.form.get('empresa').setValue(this.empresaId);
+    if (this.form.get('id').value) {
+      this.isEditing();
+    } else {
+      this.isSaving();
+    }
 
+    this.form.reset();
+  }
+
+  isEditing() {
+    this.service.edit(this.form.getRawValue(), this.form.get('id').value).pipe(takeUntil(this.destroy$)
+    ).subscribe({
+      next: response => {
+        this.closeModal();
+        this.onSave.emit();
+      },
+      error: error => {
+        console.error('Erro:', error);
+      }
+    });
+  }
+
+  isSaving() {
     this.service.save(this.form.getRawValue()).pipe(takeUntil(this.destroy$)
     ).subscribe({
       next: response => {
@@ -76,7 +98,6 @@ export class AdministradorCadastroComponent implements OnInit, OnDestroy, OnChan
         console.error('Erro:', error);
       }
     });
-
-    this.form.reset();
   }
+
 }

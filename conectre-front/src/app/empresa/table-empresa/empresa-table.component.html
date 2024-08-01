@@ -67,7 +67,7 @@
     <mat-icon class="arrow-table-back material-symbols-rounded" (click)="nextOrBack(false)">outbound</mat-icon>
     <div class="flex-align-itens-center">
       <ng-container *ngFor="let number of getSequence(totalPage)">
-        <span id="paginacao-number" (click)="paginado(number)">{{ number }}</span>
+        <span id="paginacao-number" (click)="paginado(number)" [ngClass]="{'current-page': number === pageNumber + 1}">{{ number }}</span>
       </ng-container>
     </div>
     <mat-icon class="arrow-table-next material-symbols-rounded" (click)="nextOrBack(true)">outbound</mat-icon>

@@ -18,7 +18,7 @@ export class EmpresaTableComponent {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   pageNumber: number = 0;
   totalPage: number;
-  size: number = 3;
+  size: number = 5;
   lastPage: boolean = false;
   filter: string;
   filterQtd: number = 0;
