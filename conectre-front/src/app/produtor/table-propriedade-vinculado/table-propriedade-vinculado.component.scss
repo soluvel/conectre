@@ -215,8 +215,11 @@ mat-paginator {
   }
 
   .tanque-column {
-    width: 100px !important;
-    background: red;
+    max-width: 150px !important;
+  }
+  
+  .detalhe-column {
+    max-width: 100px !important;
   }
 }
 

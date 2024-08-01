@@ -48,8 +48,8 @@
     </ng-container>
 
     <ng-container matColumnDef="cidade">
-      <th mat-header-cell *matHeaderCellDef id="cidade">Local</th>
-      <td mat-cell *matCellDef="let element"> {{ element?.endereco?.localidade }} - {{ element?.endereco?.uf }}</td>
+      <th mat-header-cell class="cidade-column" *matHeaderCellDef id="cidade">Local</th>
+      <td mat-cell class="cidade-column" *matCellDef="let element"> {{ element?.endereco?.localidade }} - {{ element?.endereco?.uf }}</td>
     </ng-container>
 
     <ng-container matColumnDef="detalhe">
