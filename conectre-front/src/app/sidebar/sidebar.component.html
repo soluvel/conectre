@@ -10,7 +10,7 @@
       </ng-container>
       <li class="dropdown">
         <a class="cadastros-button" (click)="openDropdown()">
-          <mat-icon class="icon material-symbols-rounded">person_add</mat-icon> 
+          <mat-icon class="icon material-symbols-rounded">person_add</mat-icon>
           <span class="item" *ngIf="!sideNavCollapsed">Cadastros</span>
           <mat-icon class="arrow-icon material-symbols-rounded hidden-effect invisible-effect">keyboard_arrow_down</mat-icon>
         </a>
@@ -23,15 +23,15 @@
     </ul>
   </div>
 
-  <div class="itens">
-    <h4 class="topic topic-child-2 hidden-effect invisible-effect">Sistema</h4>
-    <ul>
-      <ng-container *ngFor="let g of sistemaItems()">
-        <li class="sidemenu-secondary"><a href="{{ g.route }}"><mat-icon class="icon material-symbols-rounded">{{ g.icon }}</mat-icon>
-            <span class="item" *ngIf="!sideNavCollapsed">{{ g.title }}</span></a></li>
-      </ng-container>
-    </ul>
-  </div>
+<!--  <div class="itens">-->
+<!--    <h4 class="topic topic-child-2 hidden-effect invisible-effect">Sistema</h4>-->
+<!--    <ul>-->
+<!--      <ng-container *ngFor="let g of sistemaItems()">-->
+<!--        <li class="sidemenu-secondary"><a href="{{ g.route }}"><mat-icon class="icon material-symbols-rounded">{{ g.icon }}</mat-icon>-->
+<!--            <span class="item" *ngIf="!sideNavCollapsed">{{ g.title }}</span></a></li>-->
+<!--      </ng-container>-->
+<!--    </ul>-->
+<!--  </div>-->
 
   <!-- <div class="menu-button" (click)="openSideMenu()">
     <span class="menu-icon-line first-line"></span>

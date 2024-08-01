@@ -19,6 +19,20 @@ table td {
   height: 72px;
 }
 
+.cnpj-column,
+.razaoSocial-column,
+.cidade-column {
+  max-width: 150px !important;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis !important;
+  box-sizing: border-box;
+}
+
+.razaoSocial-column {
+  max-width: 250px !important;
+}
+
 mat-paginator {
   border-bottom-right-radius: 8px;
   border-bottom-left-radius: 8px;
@@ -31,13 +45,20 @@ mat-paginator {
   box-shadow: 0px -1px 1px -10px rgba(0, 0, 0, 0.25), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
 }
 
-#adm, #cnpj, #grupo {
+#adm {
+  width: 200px;
+}
+
+#grupo {
   width: 15%;
+}
+
+#plano {
+  width: 8%;
 }
 
 #empresa {
   border-top-left-radius: 8px;
-  width: 10%;
 }
 
 #header-right {
@@ -103,24 +124,43 @@ mat-paginator {
   cursor: pointer;
 }
 
-.icon-circle {
-  position: absolute;
-  color: #aaaaaa;
+.number-resting-box {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 28px;
+  width: 28px;
   background: #fff;
-  font-size: 30px;
-  font-weight: 300;
-  height: auto;
-  width: auto;
+  border: 2px solid transparent;
+  box-shadow: inset 0 0 0 2px #aaaaaa;
+  border-radius: 50%;
 }
 
 .number-resting {
-  position: absolute;
-  top: 0;
-  right: -20px;
-  z-index: 999;
   font-size: 12px;
   font-weight: 600;
-  color: #242424;
+  color: #3f3f3f;
+}
+
+.img-group {
+  display: flex;
+  align-items: center;
+}
+
+.perfil-img {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: -7px;
+  height: 28px;
+  width: 28px;
+  border-radius: 50%;
+  font-size: 12px;
+  font-weight: 600;
+  color: #fff;
+  background: #818181;
+  border: 2px solid #fff;
 }
 
 .buttons-box {
@@ -161,6 +201,20 @@ mat-paginator {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.filters-numbers {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 20px;
+  width: 20px;
+  color: #fff;
+  background: #068FFF;
+  border-radius: 50%;
+  margin-right: 6px;
+  font-size: 12px;
+  font-weight: 600;
 }
 
 #filter-wall {
@@ -221,6 +275,18 @@ mat-paginator {
   }
   .buttons-box {
     width: 65%;
+  }
+}
+@media screen and (max-width: 1050px) {
+  .razaoSocial-column,
+  .cnpj-column {
+    max-width: 130px !important;
+  }
+  #adm {
+    max-width: 150px !important;
+  }
+  #detalhe {
+    width: 130px !important;
   }
 }
 @media screen and (max-width: 950px) {

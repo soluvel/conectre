@@ -18,6 +18,10 @@ export class TecnicoService {
     return this.http.post<any>(`${this.apiUrl}/save/record`, data, { headers: this.headers });
   }
 
+  edit(data: any, id): Observable<any> {
+    return this.http.put<any>(`${this.apiUrl}/user/${id}`, data, { headers: this.headers });
+  }
+
   page(numb: number, size: number, filter: string, attributes: string[]): Observable<any> {
     let params = new HttpParams();
     if (filter) {

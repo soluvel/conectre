@@ -7,11 +7,14 @@ import com.soluvel.conectre.domain.mappers.ProdutorMapper;
 import com.soluvel.conectre.domain.records.ProdutorRecords;
 import com.soluvel.conectre.domain.records.ProdutorReduceRecords;
 import com.soluvel.conectre.service.ProdutorService;
+import org.springframework.beans.BeanUtils;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -40,6 +43,19 @@ public class ProdutorController extends CrudController<Produtor, ProdutorRecords
     @GetMapping("/reduce")
     public ResponseEntity<List<ProdutorReduceRecords>> getProdutorReduce() {
         return ResponseEntity.ok(produtorService.findAllReduce());
+    }
+
+    @PutMapping("user/{id}")
+    public ResponseEntity<ProdutorRecords> updateUser(@PathVariable("id") Long id, @RequestBody ProdutorRecords records) {
+        return produtorService.findById(id)
+                .map(value -> {
+                    String pass = value.getPassword();
+                    BeanUtils.copyProperties(mapper.toEntity(records), value);
+                    value.setPassword(pass);
+                    var save = produtorService.save(value);
+                    return new ResponseEntity<>(mapper.toRecord(save), HttpStatus.OK);
+                })
+                .orElseGet(() -> ResponseEntity.status(HttpStatus.NOT_FOUND).build());
     }
 
 }

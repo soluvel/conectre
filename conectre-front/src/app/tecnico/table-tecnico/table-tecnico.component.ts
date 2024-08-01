@@ -17,10 +17,11 @@ export class TableTecnicoComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   pageNumber: number = 0;
   totalPage: number;
-  size: number = 3;
+  size: number = 5;
   razaoSocial: string;
   filter: string;
   filterQtd: number = 0;
+  lastPage: boolean = false;
 
   constructor(private service: TecnicoService,
               private router: Router) {
@@ -41,6 +42,7 @@ export class TableTecnicoComponent implements OnInit {
         this.dataSource.data = page.content
         this.pageNumber = page.pageable.pageNumber
         this.totalPage = page.totalPages
+        this.lastPage = page.last
       }, error: () => {
       }
     });
@@ -55,6 +57,9 @@ export class TableTecnicoComponent implements OnInit {
   }
 
   nextOrBack(isAvancar: boolean) {
+    if (this.lastPage && isAvancar) {
+      return
+    }
 
     let page = isAvancar ? this.pageNumber + 1 : this.pageNumber - 1;
 
@@ -62,6 +67,7 @@ export class TableTecnicoComponent implements OnInit {
       next: (page) => {
         this.dataSource.data = page.content
         this.pageNumber = page.pageable.pageNumber
+        this.lastPage = page.last
       }, error: () => {
       }
     });
@@ -76,6 +82,7 @@ export class TableTecnicoComponent implements OnInit {
       next: (page) => {
         this.dataSource.data = page.content
         this.pageNumber = page.pageable.pageNumber
+        this.lastPage = page.last
       }, error: () => {
       }
     });
@@ -117,6 +124,7 @@ export class TableTecnicoComponent implements OnInit {
         this.dataSource.data = page.content
         this.pageNumber = page.pageable.pageNumber
         this.totalPage = page.totalPages
+        this.lastPage = page.last
       }, error: () => {
       }
     });

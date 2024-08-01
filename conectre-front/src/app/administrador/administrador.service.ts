@@ -18,6 +18,10 @@ export class AdministradorService {
     return this.http.post<any>(`${this.apiUrl}/save/record`, data, { headers: this.headers });
   }
 
+  edit(data: any, id): Observable<any> {
+    return this.http.put<any>(`${this.apiUrl}/user/${id}`, data, { headers: this.headers });
+  }
+
   getAdministradores(empresaId: any): Observable<any[]> {
     return this.http.get<any>(`${this.apiUrl}/adm-empresa/${empresaId}`, { headers: this.headers });
   }
