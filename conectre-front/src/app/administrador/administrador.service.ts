@@ -25,4 +25,8 @@ export class AdministradorService {
   getAdministrador(id: any): Observable<any> {
     return this.http.get<any>(`${this.apiUrl}/${id}`, { headers: this.headers });
   }
+
+  deleteAdministrador(id: any): Observable<any> {
+    return this.http.delete<any>(`${this.apiUrl}/${id}`, { headers: this.headers });
+  }
 }

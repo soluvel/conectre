@@ -38,7 +38,7 @@
 </ng-container>
 
 <div id="overlayConfirm">
-  <app-overlay-confirmacao (onLogout)="onLogout()"></app-overlay-confirmacao>
+  <app-overlay-confirmacao [action]=" 'logout' " (onLogout)="onLogout()"></app-overlay-confirmacao>
 </div>
 
 <div id="filterWall"></div>

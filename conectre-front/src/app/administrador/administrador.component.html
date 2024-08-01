@@ -14,10 +14,11 @@
       <span style="margin-bottom: 20px;"><b>Plano start: </b>{{ administradores?.length }}/5 licenças</span>
       <span style="font-size: 12px;" *ngIf="!existAdm">Nenhum administrador cadastrado</span>
     </div>
-    
+
+<!--    TODO: Dantas, tentei aplicar o ngClass e não funcionou nesse caso. Cheghuei a criar um .button-disabled-mudar em style.css, mas não funfou.-->
     <div class="buttons">
-      <button class="button-no-border exclude-button">Excluir</button>
-      <button class="button-white license-info" (click)="adicionarAdm()">Novo administrador</button>
+      <button class="button-no-border exclude-button" (click)="deletAdm = !deletAdm">Excluir</button>
+      <button [disabled]="administradores.length >= 5" class="button-white license-info" (click)="adicionarAdm()" [ngClass]="{'button-disabled-mudar':  administradores.length >= 5}">Novo administrador</button>
     </div>
   </div>
 
@@ -25,13 +26,20 @@
     <div *ngFor="let item of administradores" class="avatar">
       <div class="avatar-circle" (click)="editarAdm(item.id)">{{ getInitials(item.nome) }}</div>
       <p>{{ item.nome }}</p>
+      <ng-container *ngIf="deletAdm">
+      <mat-icon class="exclude-icon material-symbols-rounded" (click)="callDeletePopUp(item.id, item.nome)">delete</mat-icon>
+      </ng-container>
     </div>
   </div>
 
 </mat-expansion-panel>
 
 <div id="overlayAdm">
-  <app-administrador-cadastro [admId]="admId"></app-administrador-cadastro>
+  <app-administrador-cadastro [admId]="admId" (onSave)="reloadAdm()"></app-administrador-cadastro>
 </div>
 
 <div id="filter-wall"></div>
+
+<!--<div id="overlayExclusion">-->
+<!--  <app-overlay-confirmacao [action]=" 'deletar'" (onDelete)="onDelete()"></app-overlay-confirmacao>-->
+<!--</div>-->

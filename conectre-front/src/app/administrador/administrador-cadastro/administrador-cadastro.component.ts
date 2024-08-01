@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnDestroy, OnInit, Output, SimpleChanges } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { ActivatedRoute } from "@angular/router";
 import { Subject, takeUntil } from "rxjs";
@@ -14,6 +14,7 @@ export class AdministradorCadastroComponent implements OnInit, OnDestroy, OnChan
   form: FormGroup;
   empresaId: any;
   private destroy$ = new Subject<void>();
+  @Output() onSave: EventEmitter<any> = new EventEmitter<any>();
 
   constructor(
     private fb: FormBuilder,
@@ -22,7 +23,7 @@ export class AdministradorCadastroComponent implements OnInit, OnDestroy, OnChan
     this.form = this.fb.group({
       id: [''],
       nome: ['', Validators.required],
-      email: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
       cargo: ['', Validators.required],
       celular: ['', Validators.required],
       empresa: [''],
@@ -37,8 +38,9 @@ export class AdministradorCadastroComponent implements OnInit, OnDestroy, OnChan
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    if (this.admId != null) {
-      this.service.getAdministrador(this.admId).subscribe(data => {
+
+    if (changes['admId'].currentValue != null) {
+      this.service.getAdministrador(changes['admId'].currentValue).subscribe(data => {
         this.form.patchValue(data);
       });
     }
@@ -61,17 +63,20 @@ export class AdministradorCadastroComponent implements OnInit, OnDestroy, OnChan
 
   }
 
-  onSubmmit() {
+  onSubmit() {
     this.form.get('empresa').setValue(this.empresaId);
 
     this.service.save(this.form.getRawValue()).pipe(takeUntil(this.destroy$)
     ).subscribe({
       next: response => {
-        this.closeModal()
+        this.closeModal();
+        this.onSave.emit();
       },
       error: error => {
         console.error('Erro:', error);
       }
     });
+
+    this.form.reset();
   }
 }

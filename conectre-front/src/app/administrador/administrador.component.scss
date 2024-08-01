@@ -88,13 +88,13 @@ mat-panel-title {
   transform: rotateX(180deg);
 }
 
-::ng-deep { 
+::ng-deep {
   .mat-expansion-indicator {
     display: none;
   }
 }
 
-::ng-deep { 
+::ng-deep {
   .mat-expansion-panel-header {
     height: 44px !important;
     display: flex;
@@ -104,7 +104,7 @@ mat-panel-title {
   }
 }
 
-// ::ng-deep { 
+// ::ng-deep {
 //   .mat-expansion-panel-content {
 //     margin: 0 24px;
 //   }
@@ -120,7 +120,7 @@ mat-panel-title {
   flex-direction: column;
 }
 
-::ng-deep { 
+::ng-deep {
   .mat-expansion-panel-body {
     padding: 16px 24px !important;
   }
@@ -138,6 +138,7 @@ mat-panel-title {
   z-index: 9998;
 }
 
+#overlayExclusion,
 #overlayAdm {
   display: none;
   position: fixed;
@@ -151,3 +152,5 @@ mat-panel-title {
   z-index: 9999;
   border-radius: 10px;
 }
+
+

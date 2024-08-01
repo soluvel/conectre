@@ -31,17 +31,13 @@ export class EmpresaComponent implements OnInit, OnDestroy {
       cnpjCpf: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       endereco: this.formBuilder.group({
-        cep: [''],
-        logradouro: [''],
-        numero: [''],
+        cep: ['', Validators.required],
+        logradouro: ['', Validators.required],
+        numero: ['', Validators.required],
         complemento: [''],
-        bairro: [''],
-        localidade: [''],
-        uf: [''],
-      }),
-      plano: [''],
-      grupo: this.formBuilder.group({
-        id: ['']
+        bairro: ['', Validators.required],
+        localidade: ['', Validators.required],
+        uf: ['', Validators.required],
       }),
     });
   }
@@ -125,7 +121,7 @@ export class EmpresaComponent implements OnInit, OnDestroy {
     var filterWall = document.getElementById('filterWall');
     filterWall.style.display = 'block';
 
-    document.querySelector('.overlay-text').innerHTML = 'Você deseja salvar a sua alteração do perfil da empresa (Colocar nome da empresa)';
+    document.querySelector('.overlay-text').innerHTML = `Você deseja salvar a sua alteração do perfil da empresa ${this.form.get('razaoSocial').value}`;
     document.querySelector('.confirm-button').innerHTML = 'Salvar';
     document.querySelector('.confirm-button').setAttribute("style", "background:#068FFF;");
     document.querySelector('.cancel-button').innerHTML = 'Descartar alteração';

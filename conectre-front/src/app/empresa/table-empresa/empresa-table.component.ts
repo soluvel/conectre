@@ -19,6 +19,7 @@ export class EmpresaTableComponent {
   pageNumber: number = 0;
   totalPage: number;
   size: number = 3;
+  lastPage: boolean = false;
   filter: string;
   filterQtd: number = 0;
 
@@ -42,6 +43,7 @@ export class EmpresaTableComponent {
         this.dataSource.data = page.content
         this.pageNumber = page.pageable.pageNumber
         this.totalPage = page.totalPages
+        this.lastPage = page.last
       }, error: () => {
       }
     });
@@ -85,6 +87,10 @@ export class EmpresaTableComponent {
   }
 
   nextOrBack(isAvancar: boolean) {
+    if (this.lastPage && isAvancar) {
+      //TODO: Dantas, adicionar aqui uma variável ou algo que faça mudar a cor do ícone de avançar paginação para o usuáio entender que chegou na última página.
+     return
+    }
 
     let page = isAvancar ? this.pageNumber + 1 : this.pageNumber - 1;
 
@@ -92,6 +98,7 @@ export class EmpresaTableComponent {
       next: (page) => {
         this.dataSource.data = page.content
         this.pageNumber = page.pageable.pageNumber
+        this.lastPage = page.last
       }, error: () => {
       }
     });
@@ -107,6 +114,7 @@ export class EmpresaTableComponent {
         this.dataSource.data = page.content
         this.pageNumber = page.pageable.pageNumber
         this.totalPage = page.totalPages
+        this.lastPage = page.last
       }, error: () => {
       }
     });
@@ -118,6 +126,7 @@ export class EmpresaTableComponent {
         this.dataSource.data = page.content
         this.pageNumber = page.pageable.pageNumber
         this.totalPage = page.totalPages
+        this.lastPage = page.last
       }, error: () => {
       }
     });
