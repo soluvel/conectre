@@ -16,4 +16,11 @@ export class HistoricoComponent {
                           'Transparência', 'Temperatura', 'Oxigênio'];
    
 
+
+
+  revealExplication() {
+    document.querySelector('.info-explication').classList.toggle('hidden-element');
+  }
+
+
 }

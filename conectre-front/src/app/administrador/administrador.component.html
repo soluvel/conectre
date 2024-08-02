@@ -15,7 +15,6 @@
       <span style="font-size: 12px;" *ngIf="!existAdm">Nenhum administrador cadastrado</span>
     </div>
 
-<!--    TODO: Dantas, tentei aplicar o ngClass e não funcionou nesse caso. Cheghuei a criar um .button-disabled-mudar em style.css, mas não funfou.-->
     <div class="buttons">
       <button class="button-no-border exclude-button" (click)="deletAdm = !deletAdm">Excluir</button>
       <button [disabled]="administradores.length >= 5" class="button-white license-info" (click)="adicionarAdm()" [ngClass]="{'button-disabled-mudar':  administradores.length >= 5}">Novo administrador</button>
@@ -40,6 +39,18 @@
 
 <div id="filter-wall"></div>
 
-<!--<div id="overlayExclusion">-->
-<!--  <app-overlay-confirmacao [action]=" 'deletar'" (onDelete)="onDelete()"></app-overlay-confirmacao>-->
-<!--</div>-->
+<div id="overlayExclusion">
+ <!-- <app-overlay-confirmacao [action]=" 'deletar'" (onDelete)="onDelete()"></app-overlay-confirmacao> -->
+
+ <div class="overlay-delete-header">
+  <span>Atenção!</span>
+  <mat-icon class="icon-close material-symbols-rounded" (click)="closeConfirm()">close</mat-icon>
+</div>
+<div class="overlay-delete-content">
+  <span class="overlay-delete-text">Deseja realmente excluir o administrador {{ deleteAdmNome }}?</span>
+  <div class="overlay-delete-buttons">
+    <button class="confirm-delete-button" (click)="onDelete()">Excluir</button>
+    <button class="cancel-delete-button button-white" (click)="closeConfirm()">Cancelar</button>
+  </div>
+</div>
+</div>

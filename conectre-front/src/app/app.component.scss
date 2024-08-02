@@ -74,6 +74,8 @@ button {
   transform: rotatex(180deg);
 }
 
+
+
 img.img-avatar {
   width: 40px;
   height: 40px;
@@ -92,8 +94,9 @@ img.img-avatar {
 .user-menu {
   display: flex;
   flex-direction: column;
+  justify-content: end;
   position: absolute;
-  top: 90%;
+  top: 120%;
   right: 0;
   background: #fff;
   width: 100%;
@@ -109,21 +112,38 @@ img.img-avatar {
 }
 
 .user-menu-open {
-  height: 100px;
-  border-top: 2px solid #068fff;
+  height: 33px;
+  // border-top: 2px solid #068fff;
 }
 
 .menu-button {
-  background: transparent;
+  background: #fff;
   display: flex;
-  flex-direction: column;
-  border-radius: 0;
+  align-items: center;
   justify-content: left;
+  // height: 33px;
+  border-radius: 0;
+  border-top: 2px solid #068fff;
   transition: .4s;
 }
 
 .menu-button:hover {
   background: #d3d3d3;
+}
+
+.logout-icon {
+  height: 20px;
+  width: 20px;
+  font-size: 20px;
+  font-size: auto;
+  color: #CD0000;
+  margin-right: 5px;
+}
+
+.logout-span {
+  font-size: 14px;
+  font-weight: 600;
+  color: #CD0000;
 }
 
 .content {
@@ -142,6 +162,21 @@ img.img-avatar {
   margin-left: 10px;
 }
 
+.icon-close {
+  font-weight: 300;
+  color: #424242;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.icon-close:hover {
+  font-weight: 400;
+  color: #000;
+}
+
 #filterWall {
   display: none;
   position: fixed;
@@ -154,7 +189,7 @@ img.img-avatar {
   z-index: 9998;
 }
 
-#overlayConfirm {
+#overlayLogoutConfirm {
   display: none;
   position: fixed;
   top: 50%;
@@ -166,6 +201,46 @@ img.img-avatar {
   background-color: white;
   z-index: 9999;
   border-radius: 8px;
+}
+
+.overlay-logout-header {
+  display: flex;
+  height: 32px;
+  justify-content: space-between;
+}
+
+.overlay-logout-header span {
+  font-size: 14px;
+  font-weight: 600;
+  color: #52525B;
+}
+
+.overlay-logout-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  height: 190px;
+}
+
+.overlay-logout-text {
+  font-size: 14px;
+  font-weight: 400;
+  color: #242424;
+  padding-top: 30px;
+}
+
+.overlay-logout-buttons {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+}
+
+.confirm-logout-button {
+  color: #fff;
+  background: #CD0000;
+  margin-bottom: 5px;
 }
 
 .sidebar-button {

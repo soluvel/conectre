@@ -5,16 +5,28 @@
     <span style="padding-left: 10px">Voltar para a página principal</span>
   </div>
 
-
-
-
-
+  <div class="tanque-infos">
+    <!-- <div class="header-infos">
+      <select id="tanque" [(ngModel)]="selectedTanque">
+        <option class="select-placeholder" value="" disabled selected>Selecione um tanque...</option>
+        <option *ngFor="let tanque of tanques" [value]="tanque.id">{{ tanque.nome }}</option>
+      </select>
+      <span class="selected-tanque-name">{{ selectedTanqueName }}</span>
+    </div> -->
+  
+    <!-- <app-tabs-tanque class="table-infos" [tanqueId]="selectedTanque"></app-tabs-tanque> -->
+    <app-tabs-tanque class="table-infos"></app-tabs-tanque>
+  </div>
   
 
   <div class="second-header">
     <div class="title-box">
       <span class="title">Histórico</span>
-      <mat-icon class="icon info-icon material-symbols-rounded">error</mat-icon>
+      <mat-icon class="icon info-icon material-symbols-rounded" (click)="revealExplication()">error</mat-icon>
+      <div class="info-explication hidden-element" >
+        <div class="triangle-detail"></div>
+        <div class="info-explication-content">Compare os resultados do seu último registro com o atual.</div>
+      </div>
     </div>
 
     <div class="buttons-box">

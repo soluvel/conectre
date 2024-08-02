@@ -72,23 +72,24 @@ export class AdministradorComponent implements OnInit, OnDestroy {
   callDeletePopUp(id, nome) {
     this.deleteAdmId = id;
     this.deleteAdmNome = nome;
-    // this.openConfirm()
-
+    this.openConfirmExclude()
   }
 
-  //TODO: Dantas, esse é o pop up de excluir que está desformatado. Pelo jeito é alguma interferência do css, né?
-  // openConfirm() {
-  //   var overlay = document.getElementById('overlayExclusion');
-  //   overlay.style.display = 'block';
-  //
-  //   var filterWall = document.getElementById('filterWall');
-  //   filterWall.style.display = 'block';
-  //
-  //   document.querySelector('.overlay-text').innerHTML = `Deseja realmente excluir o administrador ${this.deleteAdmNome}`;
-  //   document.querySelector('.confirm-button').innerHTML = 'Excluir';
-  //   document.querySelector('.confirm-button').setAttribute("style", "background:#068FFF;");
-  //   document.querySelector('.cancel-button').innerHTML = 'Descartar alteração';
-  // }
+  openConfirmExclude() {
+    var overlay = document.getElementById('overlayExclusion');
+    overlay.style.display = 'block';
+  
+    var filterWall = document.getElementById('filterWall');
+    filterWall.style.display = 'block';
+  }
+
+  closeConfirm() {
+    var overlay = document.getElementById('overlayExclusion');
+    overlay.style.display = 'none';
+  
+    var filterWall = document.getElementById('filterWall');
+    filterWall.style.display = 'none';
+  }
 
   onDelete() {
     if (this.deletAdm != null) {
