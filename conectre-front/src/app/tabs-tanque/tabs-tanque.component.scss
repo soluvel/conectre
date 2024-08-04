@@ -1,5 +1,5 @@
 // $background-color: #E4E4E7;
-$background-color: #FAFAFA;
+$background-color: #f0f0f0;
 $border-botton-color: #313131;
 $border-radius: 10px;
 $size-30: 30px;
@@ -69,7 +69,7 @@ h4 {
 ::ng-deep {
   .mat-mdc-tab-header {
     --mdc-tab-indicator-active-indicator-height: 0px !important;
-    padding-bottom: 10px;
+    // padding-bottom: 10px;
   }
 }
 
@@ -131,6 +131,104 @@ textarea:focus, input:focus, select:focus {
 
 .actions-footer {
   display: flex;
-  justify-content: flex-end;
-  padding: 20px 40px 20px 40px;
+  justify-content: space-between;
+  padding: 20px 0;
+  padding-right: 15px;
+}
+
+#filterWall {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: #000000;
+  opacity: 18%;
+  z-index: 9998;
+}
+
+#overlayObservacao,
+#overlayNovoTanque {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 510px;
+  height: 310px !important;
+  background-color: white;
+  z-index: 9999;
+  border-radius: 8px;
+}
+
+.icon-close {
+  font-weight: 300;
+  color: #424242;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.icon-close:hover {
+  font-weight: 400;
+  color: #000;
+}
+
+.header-overlay-novo-tanque,
+.header-overlay-observacao {
+  display: flex;
+  justify-content: space-between;
+  border-radius: 8px 8px 0 0;
+  padding: 12px 16px;
+  background: #E4E4E7;
+}
+
+.title-observacao-novo-tanque,
+.title-observacao-box {
+  font-size: 14px;
+  font-weight: 600;
+  color: #6D6D6D;
+}
+
+.content-overlay-novo-tanque,
+.content-overlay-observacao {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 245px;
+  padding: 24px;
+}
+
+.title-novo-tanque,
+.title-observacao {
+  font-size: 14px;
+  font-weight: 600;
+  color: #242424;
+  margin-bottom: 5px;
+}
+
+.buttons-box-novo-tanque,
+.buttons-box-observacao {
+  display: flex;
+  justify-content: end;
+  width: 100%;
+  margin-top: 10px;
+}
+
+.message {
+  resize: none;
+  width: 100%;
+  height: 136px;
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #D1D1D1;
+  border-bottom: 1px solid #616161;
+  border-radius: 4px; 
+}
+
+.form-control {
+  background: transparent;
 }

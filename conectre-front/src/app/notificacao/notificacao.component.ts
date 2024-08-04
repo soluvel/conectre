@@ -14,4 +14,20 @@ export class NotificacaoComponent {
   onTabChange($event: MatTabChangeEvent) {
 
   }
+
+  openMessage() {
+    var overlay = document.getElementById('popMessage');
+    overlay.style.display = 'block';
+
+    var filterWall = document.getElementById('popMessageWall');
+    filterWall.style.display = 'block';
+  }
+  
+  closeMessage() {
+    var overlay = document.getElementById('popMessage');
+    overlay.style.display = 'none';
+
+    var filterWall = document.getElementById('popMessageWall');
+    filterWall.style.display = 'none';
+  }
 }

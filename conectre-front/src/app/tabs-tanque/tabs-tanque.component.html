@@ -11,8 +11,8 @@
             <div class="col-4">
               <label for="dataColeta" class="form-label">Data da coleta</label>
               <div class="input-group" style="padding-bottom: 0">
-                <input type="date" class="form-control" id="dataColeta" formControlName="dtColeta"
-                       style="margin-bottom: 0">
+                <input type="date" class="form-control" id="dataColeta" formControlName="d  tColeta"
+                  style="margin-bottom: 0">
               </div>
             </div>
 
@@ -38,7 +38,7 @@
               <label for="volPeixes" class="form-label">Volume de peixes</label>
               <div class="input-group" style="padding-bottom: 0">
                 <input type="number" class="form-control" id="volPeixes" formControlName="volume"
-                       style="margin-bottom: 0">
+                  style="margin-bottom: 0">
               </div>
             </div>
 
@@ -64,7 +64,7 @@
               <label for="biomassa" class="form-label">Biomassa total</label>
               <div class="input-group" style="padding-bottom: 0">
                 <input type="number" class="form-control" id="biomassa" formControlName="biomassa"
-                       style="margin-bottom: 0">
+                  style="margin-bottom: 0">
               </div>
             </div>
 
@@ -98,7 +98,7 @@
               <label for="dataColetaAmbiente" class="form-label">Data da coleta</label>
               <div class="input-group" style="padding-bottom: 0">
                 <input type="date" class="form-control" id="dataColetaAmbiente" formControlName="dtColeta"
-                       style="margin-bottom: 0">
+                  style="margin-bottom: 0">
               </div>
             </div>
 
@@ -123,8 +123,7 @@
             <div class="col-4">
               <label for="amonia" class="form-label">Amônia</label>
               <div class="input-group" style="padding-bottom: 0">
-                <input type="number" class="form-control" id="amonia" formControlName="amonia"
-                       style="margin-bottom: 0">
+                <input type="number" class="form-control" id="amonia" formControlName="amonia" style="margin-bottom: 0">
               </div>
             </div>
 
@@ -150,7 +149,7 @@
               <label for="transparenciaAgua" class="form-label">Transparência da água</label>
               <div class="input-group" style="padding-bottom: 0">
                 <input type="number" class="form-control" id="transparenciaAgua" formControlName="transparenciaAgua"
-                       style="margin-bottom: 0">
+                  style="margin-bottom: 0">
               </div>
             </div>
 
@@ -184,7 +183,7 @@
               <label for="dataColetaRacao" class="form-label">Data da coleta</label>
               <div class="input-group" style="padding-bottom: 0">
                 <input type="date" class="form-control" id="dataColetaRacao" formControlName="dtColeta"
-                       style="margin-bottom: 0">
+                  style="margin-bottom: 0">
               </div>
             </div>
 
@@ -210,7 +209,7 @@
               <label for="oxigenioRacao" class="form-label">Oxigênio</label>
               <div class="input-group" style="padding-bottom: 0">
                 <input type="number" class="form-control" id="oxigenioRacao" formControlName="oxigenio"
-                       style="margin-bottom: 0">
+                  style="margin-bottom: 0">
               </div>
             </div>
 
@@ -234,10 +233,49 @@
   </form>
 </mat-tab-group>
 
+
 <div class="actions-footer">
-  <button class="button-no-border" style="margin-right: 10px">Limpar dados</button>
-  <button (click)="onSubmit()" [ngClass]="{'button-disabled': !form.valid}">Cadastrar
-  </button>
+  <button class="button-white" (click)="openOverlayTanque()" style="margin-right: 10px">Novo tanque</button>
+  <div class="buttons-box">
+    <button class="button-no-border" style="margin-right: 10px">Limpar dados</button>
+    <button (click)="onSubmit()" [ngClass]="{'button-disabled': !form.valid}">Salvar Registro</button>
+    <button (click)="openMessageBox()" style="margin-left: 10px">Fazer Observação</button>
+  </div>
 </div>
 
+<div id="filterWall"></div>
 
+<div id="overlayObservacao">
+  <div class="header-overlay-observacao">
+    <span class="title-observacao-box">Novo tanque</span>
+    <mat-icon class="icon-close material-symbols-rounded" (click)="closeConfirm()">close</mat-icon>
+  </div>
+  <div class="content-overlay-observacao">
+    <span class="title-observacao">Faça sua observação</span>
+    <div class="text-box">
+      <textarea id="message" class="message" name="message"></textarea>
+    </div>
+    <div class="buttons-box-observacao">
+      <button class="button-white" style="margin-right: 10px">Limpar</button>
+      <button class="button-geral" (click)="sendMessage()">Enviar</button>
+    </div>
+  </div>
+</div>
+
+<div id="overlayNovoTanque">
+  <div class="header-overlay-novo-tanque">
+    <span class="title-novo-tanque-box">Novo tanque</span>
+    <mat-icon class="icon-close material-symbols-rounded" (click)="closeConfirm()">close</mat-icon>
+  </div>
+  <div class="content-overlay-novo-tanque">
+    <span class="title-novo-tanque">Nome do tanque</span>
+    <input type="text" class="form-control">
+    <span class="title-novo-tanque" style="margin-top: 10px;">Propriedade vinculada</span>
+    <input type="text" class="form-control">
+    
+    <div class="buttons-box-novo-tanque" style="margin-top: 20px;">
+      <button class="button-white" (click)="closeConfirm()" style="margin-right: 10px">Cancelar</button>
+      <button class="button-geral" (click)="sendMessage()">Cadastrar</button>
+    </div>
+  </div>
+</div>

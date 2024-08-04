@@ -8,23 +8,52 @@
 
   <mat-tab-group animationDuration="0ms" (selectedTabChange)="onTabChange($event)">
     <mat-tab label="Novos">
-      <ng-template mat-tab-label>
-        Novos
-      </ng-template>
-      
-      <div class="message-container">
+      <ng-template mat-tab-label>Novos</ng-template>
+
+      <!-- As mensagens (provavelmente) terão um ID, esse ID será passado na função "openMessage()" para abrir o Pop-up com os dados certos -->
+      <div class="message-container" (click)="openMessage()">
         <div class="user">
           <img src="assets/avatar.svg" alt="" class="user-perfil-image">
           <span class="user-name">Diogo Garbo</span>
         </div>
-        
-        <div class="message">"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</div>
-        
+
+        <div class="message">
+          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+          ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+          aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore
+          eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+          mollit anim id est laborum."
+        </div>
+
         <div class="message-date">09/05/2024 às 10h24</div>
       </div>
     </mat-tab>
 
     <mat-tab label="Lidos">
     </mat-tab>
+
   </mat-tab-group>
+
+</div>
+
+<div id="popMessageWall"></div>
+
+<div id="popMessage">
+  <div class="popMessage-box">
+    <mat-icon class="icon-close popMessage-close material-symbols-rounded" (click)="closeMessage()">close</mat-icon>
+
+    <div class="popMessage-header">
+      <div class="popMessage-owner">Diogo Garbo</div>
+      <div class="popMessage-date">09/05/2024 às 10h24</div>
+    </div>
+    <div class="popMessage-content">
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+      ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+      aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore
+      eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+      mollit anim id est laborum."
+    </div>
+
+    <button class="button-geral popMessage-closeButton" (click)="closeMessage()">Fechar</button>
+  </div>
 </div>

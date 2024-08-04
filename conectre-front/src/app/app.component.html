@@ -20,10 +20,10 @@
             <h2 class="user-msg">Olá, <b>{{ storage.getUser() }}</b></h2>
             <mat-icon class="menu-arrow-icon material-symbols-rounded" (click)="openMenu()">keyboard_arrow_down</mat-icon>
             <div class="user-menu">
-<!--              TODO: Dantas -> favor, conferir o tamanho fixo desse menu e ao invés de logout, no Figma está como Sair e um icone de porta-->
-<!--              <button class="menu-button">Sobre o plano</button>-->
-<!--              <button class="menu-button">Suporte</button>-->
-              <button class="menu-button" (click)="openConfirm()">Logout</button>
+              <button class="menu-button" (click)="openConfirmLogout()">
+                <mat-icon class="logout-icon material-symbols-rounded">door_open</mat-icon>
+                <span class="logout-span">Sair</span>
+              </button>
             </div>
           </div>
         </div>
@@ -38,8 +38,19 @@
   <router-outlet></router-outlet>
 </ng-container>
 
-<div id="overlayConfirm">
-  <app-overlay-confirmacao [action]=" 'logout' " (onLogout)="onLogout()"></app-overlay-confirmacao>
+<div id="overlayLogoutConfirm">
+  <!-- <app-overlay-confirmacao [action]=" 'logout' " (onLogout)="onLogout()"></app-overlay-confirmacao> -->
+  <div class="overlay-logout-header">
+    <span>Atenção!</span>
+    <mat-icon class="icon-close material-symbols-rounded" (click)="closeConfirm()">close</mat-icon>
+  </div>
+  <div class="overlay-logout-content">
+    <span class="overlay-logout-text">Você deseja realmente fazer logout de seu usuário?</span>
+    <div class="overlay-logout-buttons">
+      <button class="confirm-logout-button" (click)="onLogout()">Fazer logout</button>
+      <button class="cancel-logout-button button-white" (click)="closeConfirm()">Cancelar</button>
+    </div>
+  </div>
 </div>
 
 <div id="filterWall"></div>

@@ -42,7 +42,7 @@ export class OverlayConfirmacaoComponent implements OnChanges {
       default:
         break;
     }
-
+    alert(this.action);
   }
 
   logoutUser() {
@@ -53,10 +53,20 @@ export class OverlayConfirmacaoComponent implements OnChanges {
   }
 
   closeConfirm() {
-    var overlay = document.getElementById('overlayConfirm');
-    overlay.style.display = 'none';
-
     var filterWall = document.getElementById('filterWall');
     filterWall.style.display = 'none';
+
+    try {
+      var overlay = document.getElementById('overlayConfirm');
+      overlay.style.display = 'none';
+    } catch (error) {}
+
+    try {
+      var overlay = document.getElementById('overlayExclusion');
+      overlay.style.display = 'none';
+    } catch (error) {}
+
+
+
   }
 }
