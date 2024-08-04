@@ -39,7 +39,7 @@ export class TableTecnicoComponent implements OnInit {
   }
 
   getTableInfo() {
-    this.service.page(this.pageNumber, this.size,'1', ['empresa.id']).subscribe({
+    this.service.page(this.pageNumber, this.size, '', 'empresa.id', '1', []).subscribe({
       next: (page) => {
         this.dataSource.data = page.content
         this.pageNumber = page.pageable.pageNumber
@@ -65,7 +65,7 @@ export class TableTecnicoComponent implements OnInit {
 
     let page = isAvancar ? this.pageNumber + 1 : this.pageNumber - 1;
 
-    this.service.page(page, this.size,'', []).subscribe({
+    this.service.page(page, this.size, '', '', '', []).subscribe({
       next: (page) => {
         this.dataSource.data = page.content
         this.pageNumber = page.pageable.pageNumber
@@ -80,7 +80,7 @@ export class TableTecnicoComponent implements OnInit {
   }
 
   paginado(number: number) {
-    this.service.page(number - 1, this.size,'', []).subscribe({
+    this.service.page(number - 1, this.size,'', '', '', []).subscribe({
       next: (page) => {
         this.dataSource.data = page.content
         this.pageNumber = page.pageable.pageNumber
@@ -121,7 +121,7 @@ export class TableTecnicoComponent implements OnInit {
   }
 
   search() {
-    this.service.page(0, this.size, this.filter, ['nome','celular', 'empresa.razaoSocial']).subscribe({
+    this.service.page(0, this.size, this.filter,  'empresa.id', '1',['nome','celular', 'empresa.razaoSocial']).subscribe({
       next: (page) => {
         this.dataSource.data = page.content
         this.pageNumber = page.pageable.pageNumber

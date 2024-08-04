@@ -125,7 +125,7 @@
 
   <div class="actions-footer">
     <button class="button-no-border" style="margin-right: 10px">Limpar dados</button>
-      <button [disabled]="!form.valid" (click)="openConfirm()" [ngClass]="{'button-disabled': !form.valid}">
+      <button [disabled]="!form.valid" (click)="onSubmit()" [ngClass]="{'button-disabled': !form.valid}">
         {{ isEditando ? 'Salvar Alterações' : 'Cadastrar Técnico' }}
     </button>
   </div>
