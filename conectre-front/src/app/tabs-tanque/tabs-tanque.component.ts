@@ -16,8 +16,8 @@ export class TabsTanqueComponent implements OnInit, OnDestroy {
   private destroy$ = new Subject<void>();
 
   constructor(public storage: StorageService,
-              private formBuilder: FormBuilder,
-              private medicaoService: MedicaoService) {
+    private formBuilder: FormBuilder,
+    private medicaoService: MedicaoService) {
     this.form = this.formBuilder.group({
       id: [],
       tanque: this.formBuilder.group({
@@ -82,5 +82,40 @@ export class TabsTanqueComponent implements OnInit, OnDestroy {
         console.error('Erro:', error);
       }
     });
+  }
+
+  sendMessage() {
+
+  }
+
+  openMessageBox() {
+    var filterWall = document.getElementById('filterWall');
+    filterWall.style.display = 'block';
+
+    var overlay = document.getElementById('overlayObservacao');
+    overlay.style.display = 'block';
+  }
+  
+  openOverlayTanque() {
+    var filterWall = document.getElementById('filterWall');
+    filterWall.style.display = 'block';
+
+    var overlay = document.getElementById('overlayNovoTanque');
+    overlay.style.display = 'block';
+  }
+
+  closeConfirm() {
+    var filterWall = document.getElementById('filterWall');
+    filterWall.style.display = 'none';
+
+    try {
+      var overlay = document.getElementById('overlayObservacao');
+      overlay.style.display = 'none';
+    } catch (error) { }
+
+    try {
+      var overlay = document.getElementById('overlayNovoTanque');
+      overlay.style.display = 'none';
+    } catch (error) { }
   }
 }
