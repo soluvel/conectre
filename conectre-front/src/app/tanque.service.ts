@@ -14,7 +14,7 @@ export class TanqueService {
               private storage: StorageService) {
   }
 
-  getTanques(): Observable<any> {
-    return this.http.get<any>(`${this.apiUrl}`, { headers: this.headers });
+  getTanques(produtorId: any): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/by-produtor/${produtorId}`, { headers: this.headers });
   }
 }

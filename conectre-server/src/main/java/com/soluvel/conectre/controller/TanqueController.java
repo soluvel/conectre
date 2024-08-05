@@ -8,10 +8,14 @@ import com.soluvel.conectre.service.TanqueService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/tanque")
@@ -34,6 +38,11 @@ public class TanqueController extends CrudController<Tanque, Tanque, Long> {
     public ResponseEntity<Tanque> create(@RequestBody Tanque entity) {
         propriedadeService.findById(entity.getPropriedadeId()).ifPresent(entity::setPropriedade);
         return new ResponseEntity<>(tanqueService.save(entity), HttpStatus.CREATED);
+    }
+
+    @GetMapping("by-produtor/{id}")
+    public ResponseEntity<List<Tanque>> findByProdutor(@PathVariable("id") Long id) {
+        return new ResponseEntity<>(tanqueService.findByProdutorId(id), HttpStatus.CREATED);
     }
 
     @Override

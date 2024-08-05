@@ -18,7 +18,7 @@ export class TableRegistroHistoricoComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   pageNumber: number = 0;
   totalPage: number;
-  size: number = 3;
+  size: number = 5;
   filter: string;
 
   constructor(private service: MedicaoService,
@@ -70,11 +70,11 @@ export class TableRegistroHistoricoComponent implements OnInit {
   }
 
   search() {
-    
+
   }
 
   redirectToDetails(id: any) {
-    this.router.navigate(['/propriedade/editar', id]);
+    this.router.navigate(['/historico', id]);
   }
 }
 

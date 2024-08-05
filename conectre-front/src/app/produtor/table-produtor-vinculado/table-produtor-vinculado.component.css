@@ -15,6 +15,34 @@ table th {
 table td {
   color: #09090B;
   font-weight: 500;
+  height: 72px;
+}
+
+.nome-column,
+.razaoSocial-column,
+.contato-column {
+  max-width: 160px !important;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis !important;
+  box-sizing: border-box;
+}
+
+.nome-column {
+  max-width: 120px !important;
+}
+
+.contato-column {
+  max-width: 100px !important;
+}
+
+.detalhe-column {
+  width: 140px !important;
+}
+
+.nome-cell {
+  display: flex;
+  align-items: center;
 }
 
 mat-paginator {
@@ -34,7 +62,6 @@ mat-paginator {
 
 #empresa {
   border-top-left-radius: 20px;
-  width: 20%;
 }
 
 #header-right {
@@ -53,8 +80,9 @@ mat-paginator {
 }
 
 #paginacao-number {
-  padding: 0 10px 0 10px;
+  padding: 0 10px;
   color: #6D6D6D;
+  pointer-events: none;
 }
 
 .container-filter {
@@ -63,20 +91,38 @@ mat-paginator {
   position: relative;
   width: 100%;
   height: 30px;
-  justify-content: flex-end;
+  justify-content: flex-start;
+}
+
+.input-search-box {
+  width: 25%;
+  display: flex;
+  position: relative;
 }
 
 .input-search {
-  width: 25%;
+  width: 100%;
   padding: 10px;
   border: 1px solid #ddd;
+  border-bottom: 1px solid #585858;
   border-radius: 5px;
   left: 0;
   top: 0;
   height: 100%;
-  position: absolute;
-  margin-right: 30px;
   outline: none;
+}
+
+.icon-search {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: auto;
+  font-size: 20px;
+  position: absolute;
+  right: 0;
+  padding-right: 10px;
+  cursor: pointer;
 }
 
 .input-img {
@@ -99,6 +145,59 @@ mat-paginator {
   border-radius: 10px;
 }
 
+.arrow-table-next,
+.arrow-table-back {
+  border-radius: 50%;
+  height: auto;
+  width: auto;
+  font-size: 34px;
+  font-weight: 200;
+  color: #3F3F46;
+  cursor: pointer;
+}
+
+.arrow-table-next {
+  transform: rotate(45deg);
+}
+
+.arrow-table-back {
+  transform: rotate(-135deg);
+}
+
+.arrow-table-next:hover,
+.arrow-table-back:hover {
+  color: #000;
+}
+
+.icon-search-info {
+  height: auto;
+  width: auto;
+  color: #3F3F46;
+  background: #F4F4F5;
+  padding: 5px;
+  font-size: 22px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.icon-search-info:hover {
+  color: #000;
+  background: #dadada;
+}
+
+@media screen and (max-width: 1200px) {
+  .input-search-box {
+    width: 35%;
+  }
+  .buttons-box {
+    width: 65%;
+  }
+}
+@media screen and (max-width: 950px) {
+  .input-search-box {
+    width: auto;
+  }
+}
 @media screen and (max-width: 600px) {
   .input-img {
     display: none;

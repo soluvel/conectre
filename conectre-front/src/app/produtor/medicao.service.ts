@@ -22,6 +22,10 @@ export class MedicaoService {
     return this.http.get<any>(`${this.apiUrl}/by-tanque/${tanqueId}`, { headers: this.headers });
   }
 
+  findOne(medicao: any): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/${medicao}`, { headers: this.headers });
+  }
+
   findHistorico(produtorId, number, size): Observable<any> {
     return this.http.get<any>(`${this.apiUrl}/historico/${produtorId}/${number}/${size}`, { headers: this.headers });
   }

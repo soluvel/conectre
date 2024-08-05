@@ -1,23 +1,28 @@
-import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
+import { Component, Input, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
 import { StorageService } from "../storage.service";
 import { FormBuilder, FormGroup } from "@angular/forms";
 import { MedicaoService } from "../produtor/medicao.service";
 import { Subject, takeUntil } from "rxjs";
+import { ActivatedRoute } from "@angular/router";
 
 @Component({
   selector: 'app-tabs-tanque',
   templateUrl: './tabs-tanque.component.html',
   styleUrls: ['./tabs-tanque.component.scss']
 })
-export class TabsTanqueComponent implements OnInit, OnDestroy {
+export class TabsTanqueComponent implements OnInit, OnDestroy{
 
   @Input() tanqueId: any;
+  @Input() medicao: any;
   form: FormGroup;
   private destroy$ = new Subject<void>();
+  observacao: boolean = true;
+  historico: boolean = false;
 
   constructor(public storage: StorageService,
-    private formBuilder: FormBuilder,
-    private medicaoService: MedicaoService) {
+              private formBuilder: FormBuilder,
+              private route: ActivatedRoute,
+              private medicaoService: MedicaoService) {
     this.form = this.formBuilder.group({
       id: [],
       tanque: this.formBuilder.group({
@@ -64,10 +69,25 @@ export class TabsTanqueComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    if (this.tanqueId != null) {
+    if (this.tanqueId != '') {
       this.medicaoService.findOneByTanque(parseInt(this.tanqueId)).subscribe(data => {
         this.form.patchValue(data);
       });
+    }
+
+    if (this.medicao != '') {
+      this.medicaoService.findOne(parseInt(this.medicao)).subscribe(data => {
+        this.form.patchValue(data);
+      });
+    }
+
+    const url = this.route.snapshot.url.join('/');
+    if (url.includes('inicio')) {
+      this.observacao = false;
+    }
+
+    if (url.includes('historico')) {
+      this.historico = true;
     }
   }
 
@@ -95,7 +115,7 @@ export class TabsTanqueComponent implements OnInit, OnDestroy {
     var overlay = document.getElementById('overlayObservacao');
     overlay.style.display = 'block';
   }
-  
+
   openOverlayTanque() {
     var filterWall = document.getElementById('filterWall');
     filterWall.style.display = 'block';
@@ -111,11 +131,13 @@ export class TabsTanqueComponent implements OnInit, OnDestroy {
     try {
       var overlay = document.getElementById('overlayObservacao');
       overlay.style.display = 'none';
-    } catch (error) { }
+    } catch (error) {
+    }
 
     try {
       var overlay = document.getElementById('overlayNovoTanque');
       overlay.style.display = 'none';
-    } catch (error) { }
+    } catch (error) {
+    }
   }
 }

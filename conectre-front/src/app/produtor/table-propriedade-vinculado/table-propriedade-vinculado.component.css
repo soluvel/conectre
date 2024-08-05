@@ -78,8 +78,9 @@ mat-paginator {
 }
 
 #paginacao-number {
-  padding: 0 10px 0 10px;
+  padding: 0 10px;
   color: #6D6D6D;
+  pointer-events: none;
 }
 
 .container-filter {

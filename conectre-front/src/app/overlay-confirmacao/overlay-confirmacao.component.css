@@ -1,3 +1,18 @@
+#overlayConfirm,
+#overlayExclusion {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 320px;
+  height: 270px !important;
+  padding: 24px;
+  background-color: white;
+  z-index: 9999;
+  border-radius: 8px;
+}
+
 .icon-close {
   font-weight: 300;
   color: #424242;

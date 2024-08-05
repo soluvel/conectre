@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TanqueService } from "../../tanque.service";
+import { StorageService } from "../../storage.service";
 
 @Component({
   selector: 'app-produtor-home',
@@ -10,7 +11,8 @@ export class ProdutorHomeComponent implements OnInit {
   selectedTanque: string = '';
   tanques: any[];
 
-  constructor(private tanqueService: TanqueService) {
+  constructor(private tanqueService: TanqueService,
+              private storage: StorageService) {
 
   }
 
@@ -23,7 +25,7 @@ export class ProdutorHomeComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.tanqueService.getTanques().subscribe(data => {
+    this.tanqueService.getTanques(this.storage.getUserId()).subscribe(data => {
       this.tanques = data;
     });
   }

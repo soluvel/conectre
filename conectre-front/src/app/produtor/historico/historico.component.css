@@ -22,6 +22,7 @@
 .second-header {
   display: flex;
   justify-content: space-between;
+  margin-top: 50px;
 }
 
 .title-box {
@@ -49,6 +50,45 @@
   font-size: 14px;
   color: #242424;
   transform: rotate(180deg);
+  cursor: pointer;
+}
+
+.triangle-detail {
+  position: absolute;
+  top: -10%;
+  left: 10%;
+  width: 16px;
+  height: 16px;
+  transform: rotate(45deg);
+  background: #e6e6e6;
+}
+
+.info-explication {
+  position: absolute;
+  top: 60%;
+  right: -180%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 212px;
+  height: 64px;
+  border-radius: 10px;
+  background: #e6e6e6;
+}
+
+.info-explication-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 16px;
+  color: #3F3F46;
+}
+
+.hidden-element {
+  display: none;
 }
 
 .table-info {
