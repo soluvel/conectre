@@ -122,7 +122,7 @@ $accent-color: #27272A;
 
 button {
   background: #068FFF;
-  color: #fff;
+  color: white;
   border: none;
   cursor: pointer;
   font-size: 14px;
@@ -138,14 +138,13 @@ button {
 }
 
 .button-disabled-mudar {
-  background-color: var(--bs-danger) !important;
-  color: #fff !important;
-  cursor: not-allowed;
+  background-color: #9d1212 !important;
+  color: #9d1212 !important;
 }
 
 .button-geral-full {
   background-color: #068FFF;
-  color: #fff;
+  color: white;
   border: none;
   cursor: pointer;
   font-size: 14px;

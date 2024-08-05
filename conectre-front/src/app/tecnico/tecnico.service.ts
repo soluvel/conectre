@@ -22,10 +22,15 @@ export class TecnicoService {
     return this.http.put<any>(`${this.apiUrl}/user/${id}`, data, { headers: this.headers });
   }
 
-  page(numb: number, size: number, filter: string, attributes: string[]): Observable<any> {
+  page(numb: number, size: number, filter: string, campo: string, valor: string, attributes: string[]): Observable<any> {
     let params = new HttpParams();
     if (filter) {
       params = params.set('filter', filter);
+    }
+
+    if (campo) {
+      params = params.set('campo', campo);
+      params = params.set('valor', valor);
     }
 
     attributes.forEach(attribute => {

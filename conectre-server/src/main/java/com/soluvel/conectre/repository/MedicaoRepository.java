@@ -17,8 +17,13 @@ public interface MedicaoRepository extends CrudRepository<Medicao, Long> {
             "m.peixe.ganhoPeso, m.ambiente.temperatura, m.ambiente.oxigenio, m.racao.racaoTotal, " +
             "coalesce(m.peixe.dtColeta, m.racao.dtColeta, m.ambiente.dtColeta), coalesce(m.peixe.hrColeta, m.racao.hrColeta, m.ambiente.hrColeta)) " +
             "FROM Medicao m " +
-            "where m.tanque.propriedade.produtor.id = :produtorId " +
-            "order by coalesce(m.peixe.dtColeta, m.racao.dtColeta, m.ambiente.dtColeta) desc")
+            "LEFT JOIN m.peixe p " +
+            "LEFT JOIN m.ambiente a " +
+            "LEFT JOIN m.racao r " +
+            "WHERE m.tanque.propriedade.produtor.id = :produtorId " +
+            "ORDER BY coalesce(p.dtColeta, r.dtColeta, a.dtColeta) desc")
     Page<HistoricoRegistroRecords> findHistorico(Long produtorId, Pageable pageable);
+
+
 
 }

@@ -1,5 +1,6 @@
 package com.soluvel.conectre.core;
 
+import jakarta.persistence.criteria.Path;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
@@ -79,13 +81,38 @@ public abstract class CrudController<T, R, ID extends Serializable> {
     @GetMapping("/page/{number}/{size}")
     public ResponseEntity<Page<T>> page(@PathVariable int number, @PathVariable int size,
                                         @RequestParam(value = "filter", required = false) String filter,
+                                        @RequestParam(value = "campo", required = false) String campo,
+                                        @RequestParam(value = "valor", required = false) String valor,
                                         @RequestParam(value = "attributes", required = false) List<String> attributes) {
-        if (Objects.nonNull(filter)) {
-            return ResponseEntity.ok(service.findByAttributes(attributes, filter, PageRequest.of(number, size), entityClass));
+
+        if (Objects.nonNull(filter) || Objects.nonNull(campo)) {
+            List<GenericSpecification.FixedCondition<T>> fixedConditions = new ArrayList<>();
+
+            if (attributes == null) {
+                attributes = new ArrayList<>();
+            }
+
+            if (Objects.nonNull(campo) && Objects.nonNull(valor)) {
+                String[] parts = campo.split("\\.");
+
+                // Adiciona uma condição fixa para o campo dinâmico
+                fixedConditions.add((root, query, criteriaBuilder) -> {
+                    Path<?> path = root.get(parts[0]);
+
+                    for (int i = 1; i < parts.length; i++) {
+                        path = path.get(parts[i]);
+                    }
+
+                    return criteriaBuilder.equal(path, valor);
+                });
+            }
+
+            return ResponseEntity.ok(service.findByAttributes(attributes, filter, PageRequest.of(number, size), entityClass, fixedConditions));
         }
 
         return ResponseEntity.ok(service.page(PageRequest.of(number, size)));
     }
+
 
     @SuppressWarnings("unchecked")
     private T castObjectToT(Object object) {

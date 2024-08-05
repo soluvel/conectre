@@ -6,18 +6,9 @@
   </div>
 
   <div class="tanque-infos">
-    <!-- <div class="header-infos">
-      <select id="tanque" [(ngModel)]="selectedTanque">
-        <option class="select-placeholder" value="" disabled selected>Selecione um tanque...</option>
-        <option *ngFor="let tanque of tanques" [value]="tanque.id">{{ tanque.nome }}</option>
-      </select>
-      <span class="selected-tanque-name">{{ selectedTanqueName }}</span>
-    </div> -->
-  
-    <!-- <app-tabs-tanque class="table-infos" [tanqueId]="selectedTanque"></app-tabs-tanque> -->
-    <app-tabs-tanque class="table-infos"></app-tabs-tanque>
+    <app-tabs-tanque class="table-infos" [medicao]="medicaoId"></app-tabs-tanque>
   </div>
-  
+
 
   <div class="second-header">
     <div class="title-box">
@@ -54,7 +45,7 @@
       </div>
     </div>
   </div>
-  
+
   <div class="table-info">
     <span class="table-title">Ambiente</span>
 
@@ -74,5 +65,5 @@
       </div>
     </div>
   </div>
-  
+
 </div>

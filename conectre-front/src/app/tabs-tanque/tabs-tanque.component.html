@@ -11,7 +11,7 @@
             <div class="col-4">
               <label for="dataColeta" class="form-label">Data da coleta</label>
               <div class="input-group" style="padding-bottom: 0">
-                <input type="date" class="form-control" id="dataColeta" formControlName="d  tColeta"
+                <input type="date" class="form-control" id="dataColeta" formControlName="dtColeta"
                   style="margin-bottom: 0">
               </div>
             </div>
@@ -235,11 +235,13 @@
 
 
 <div class="actions-footer">
-  <button class="button-white" (click)="openOverlayTanque()" style="margin-right: 10px">Novo tanque</button>
+  <button class="button-white" [disabled]="historico == true" (click)="openOverlayTanque()" style="margin-right: 10px" [ngClass]="{'button-disabled': historico == true}">Novo tanque</button>
   <div class="buttons-box">
     <button class="button-no-border" style="margin-right: 10px">Limpar dados</button>
-    <button (click)="onSubmit()" [ngClass]="{'button-disabled': !form.valid}">Salvar Registro</button>
+    <button [disabled]="tanqueId == ''" (click)="onSubmit()" [ngClass]="{'button-disabled': !form.valid || tanqueId == ''}">Salvar Registro</button>
+    <ng-container *ngIf="tanqueId != '' && observacao == true ">
     <button (click)="openMessageBox()" style="margin-left: 10px">Fazer Observação</button>
+    </ng-container>
   </div>
 </div>
 
@@ -272,7 +274,7 @@
     <input type="text" class="form-control">
     <span class="title-novo-tanque" style="margin-top: 10px;">Propriedade vinculada</span>
     <input type="text" class="form-control">
-    
+
     <div class="buttons-box-novo-tanque" style="margin-top: 20px;">
       <button class="button-white" (click)="closeConfirm()" style="margin-right: 10px">Cancelar</button>
       <button class="button-geral" (click)="sendMessage()">Cadastrar</button>

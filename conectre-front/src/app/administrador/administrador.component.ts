@@ -78,7 +78,7 @@ export class AdministradorComponent implements OnInit, OnDestroy {
   openConfirmExclude() {
     var overlay = document.getElementById('overlayExclusion');
     overlay.style.display = 'block';
-  
+
     var filterWall = document.getElementById('filterWall');
     filterWall.style.display = 'block';
   }
@@ -86,7 +86,7 @@ export class AdministradorComponent implements OnInit, OnDestroy {
   closeConfirm() {
     var overlay = document.getElementById('overlayExclusion');
     overlay.style.display = 'none';
-  
+
     var filterWall = document.getElementById('filterWall');
     filterWall.style.display = 'none';
   }

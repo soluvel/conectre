@@ -159,4 +159,22 @@ select:focus {
   border-bottom: 2px solid #0F6CBD;
 }
 
+#overlayConfirm {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 320px;
+  height: 270px !important;
+  padding: 24px;
+  background-color: white;
+  z-index: 9999 !important;
+  border-radius: 8px;
+}
+
+#filterWall{
+  z-index: 9998 !important;
+}
+
 

@@ -10,6 +10,7 @@ export class StorageService {
   private ROLE_KEY = 'role';
   private USER_KEY = 'user';
   private USER_ID = 'user_id';
+  private EMPRESA = 'empresa';
 
   constructor(private router: Router) {
   }
@@ -19,6 +20,20 @@ export class StorageService {
     localStorage.setItem(this.ROLE_KEY, auth.role);
     localStorage.setItem(this.USER_KEY, auth.nome);
     localStorage.setItem(this.USER_ID, auth.id);
+
+    switch (auth.role) {
+      case 'EMPRESA':
+
+        localStorage.setItem(this.EMPRESA, auth.role);
+        break;
+      case 'TECNICO':
+
+        break;
+      default:
+        break;
+    }
+
+
   }
 
   public getToken() {

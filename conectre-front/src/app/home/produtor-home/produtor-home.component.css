@@ -2,8 +2,7 @@
   background: #FAFAFA;
   padding: 15px 40px 0 40px;
   border-radius: 20px;
-  height: 475px;
-  margin: 0 35px 0 35px;
+  margin: 0 35px;
 }
 
 .header-infos {
@@ -47,6 +46,7 @@
 
 .table-infos {
   display: flex;
+  flex-direction: column;
   height: auto;
   width: 100%;
 }
@@ -66,6 +66,33 @@
 
 .date-info-footer {
   font-weight: 600;
+}
+
+#tanque {
+  font-size: 14px;
+  font-weight: 600;
+  color: #3F3F46;
+  background: transparent;
+  border: none;
+  outline: none;
+  padding: 5px;
+}
+
+.select-placeholder {
+  display: none;
+}
+
+.selected-tanque-name {
+  font-size: 12px;
+  font-weight: 400;
+  color: #52525B;
+}
+
+.historic-title {
+  font-size: 16px;
+  font-weight: 400;
+  color: #27272A;
+  margin-bottom: 20px;
 }
 
 /*# sourceMappingURL=produtor-home.component.css.map */

@@ -32,8 +32,8 @@ public abstract class CrudService<T, ID extends Serializable> {
         return repository.count();
     }
 
-    public Page<T> findByAttributes(List<String> attributes, String value, Pageable pageable, Class<T> clazz) {
-        Specification<T> spec = new GenericSpecification<>(attributes, value, clazz).buildSpecification();
+    public Page<T> findByAttributes(List<String> attributes, String value, Pageable pageable, Class<T> clazz, List<GenericSpecification.FixedCondition<T>> fixedConditions) {
+        Specification<T> spec = new GenericSpecification<>(attributes, value, clazz, fixedConditions).buildSpecification();
         return repository.findAll(spec, pageable);
     }
 

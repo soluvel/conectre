@@ -6,6 +6,8 @@ import com.soluvel.conectre.domain.Tanque;
 import com.soluvel.conectre.repository.TanqueRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class TanqueService extends CrudService<Tanque, Long> {
 
@@ -15,6 +17,10 @@ public class TanqueService extends CrudService<Tanque, Long> {
                          TanqueRepository tanqueRepository) {
         super(repository);
         this.repository = tanqueRepository;
+    }
+
+    public List<Tanque> findByProdutorId(Long produtorId) {
+        return repository.findByPropriedadeProdutorId(produtorId);
     }
 
 }
