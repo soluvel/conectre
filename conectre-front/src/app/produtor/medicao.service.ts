@@ -26,6 +26,14 @@ export class MedicaoService {
     return this.http.get<any>(`${this.apiUrl}/${medicao}`, { headers: this.headers });
   }
 
+  findOneByData(tanqueId: any, data: any): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/by-data/${tanqueId}?data=${data}`, { headers: this.headers });
+  }
+
+  findAnteriorByData(tanqueId: any, data: any): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/anterior-by-data/${tanqueId}?data=${data}`, { headers: this.headers });
+  }
+
   findHistorico(produtorId, number, size): Observable<any> {
     return this.http.get<any>(`${this.apiUrl}/historico/${produtorId}/${number}/${size}`, { headers: this.headers });
   }

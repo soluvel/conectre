@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnDestroy, OnInit, Output, SimpleChanges } from '@angular/core';
 import { StorageService } from "../storage.service";
 import { FormBuilder, FormGroup } from "@angular/forms";
 import { MedicaoService } from "../produtor/medicao.service";
@@ -14,6 +14,9 @@ export class TabsTanqueComponent implements OnInit, OnDestroy{
 
   @Input() tanqueId: any;
   @Input() medicao: any;
+  @Output() tanque = new EventEmitter<any>();
+  @Output() data = new EventEmitter<any>();
+
   form: FormGroup;
   private destroy$ = new Subject<void>();
   observacao: boolean = true;
@@ -78,6 +81,8 @@ export class TabsTanqueComponent implements OnInit, OnDestroy{
     if (this.medicao != '') {
       this.medicaoService.findOne(parseInt(this.medicao)).subscribe(data => {
         this.form.patchValue(data);
+        this.tanque.emit(this.form.get('tanque').value.id)
+        this.data.emit(this.form.get('peixe').value.dtColeta)
       });
     }
 

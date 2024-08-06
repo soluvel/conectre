@@ -39,7 +39,8 @@ export class TableTecnicoComponent implements OnInit {
   }
 
   getTableInfo() {
-    this.service.page(this.pageNumber, this.size, '', 'empresa.id', '1', []).subscribe({
+    let campo = this.storage.getRole() == 'EMPRESA' ? 'empresa.id' : '';
+    this.service.page(this.pageNumber, this.size, '', campo, '1', []).subscribe({
       next: (page) => {
         this.dataSource.data = page.content
         this.pageNumber = page.pageable.pageNumber

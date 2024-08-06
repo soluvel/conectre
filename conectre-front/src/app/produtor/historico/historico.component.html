@@ -6,7 +6,7 @@
   </div>
 
   <div class="tanque-infos">
-    <app-tabs-tanque class="table-infos" [medicao]="medicaoId"></app-tabs-tanque>
+    <app-tabs-tanque class="table-infos" [medicao]="medicaoId" (tanque)="getTanqueId($event)" (data)="getData($event)"></app-tabs-tanque>
   </div>
 
 
@@ -21,7 +21,8 @@
     </div>
 
     <div class="buttons-box">
-      <button type="button" class="button-white see-hist-button">Ver histórico anterior</button>
+      <input type="date" class="form-control" id="dataColeta"  [(ngModel)]="selectedDate">
+      <button type="button" class="button-white see-hist-button" (click)="findByDate()">Consultar histórico</button>
       <button type="button" class="button-geral export-button" style="margin-left: 10px">Exportar</button>
     </div>
   </div>
@@ -30,16 +31,120 @@
     <span class="table-title">Peixes</span>
 
     <div class="table-row">
-      <div class="cell" *ngFor="let cellName of tablePeixe;">
-        <span class="cell-title">{{ cellName }}</span>
+      <div class="cell">
+        <span class="cell-title">Volume de peixe</span>
         <div class="cell-content">
           <span class="previous-info">
             Anterior
-            <span class="previous-value">400</span>
+            <span class="previous-value">{{ medicaoAnterior?.peixe?.volume }}</span>
           </span>
           <span class="current-info">
             Atual
-            <span class="current-value">400</span>
+            <span class="current-value">{{ medicao?.peixe?.volume }}</span>
+          </span>
+        </div>
+      </div>
+      <div class="cell">
+        <span class="cell-title">Nº de peixes por amostra</span>
+        <div class="cell-content">
+          <span class="previous-info">
+            Anterior
+            <span class="previous-value">{{ medicaoAnterior?.peixe?.qntAmostra }}</span>
+          </span>
+          <span class="current-info">
+            Atual
+            <span class="current-value">{{ medicao?.peixe?.qntAmostra }}</span>
+          </span>
+        </div>
+      </div>
+      <div class="cell">
+        <span class="cell-title">Mortalidade</span>
+        <div class="cell-content">
+          <span class="previous-info">
+            Anterior
+            <span class="previous-value">{{ medicaoAnterior?.peixe?.mortalidade }}</span>
+          </span>
+          <span class="current-info">
+            Atual
+            <span class="current-value">{{ medicao?.peixe?.mortalidade }}</span>
+          </span>
+        </div>
+      </div>
+      <div class="cell">
+        <span class="cell-title">Peso médio (Kg)</span>
+        <div class="cell-content">
+          <span class="previous-info">
+            Anterior
+            <span class="previous-value">{{ medicaoAnterior?.peixe?.pesoMedio }}</span>
+          </span>
+          <span class="current-info">
+            Atual
+            <span class="current-value">{{ medicao?.peixe?.pesoMedio }}</span>
+          </span>
+        </div>
+      </div>
+      <div class="cell">
+        <span class="cell-title">Biomassa total (Kg)</span>
+        <div class="cell-content">
+          <span class="previous-info">
+            Anterior
+            <span class="previous-value">{{ medicaoAnterior?.peixe?.biomassa }}</span>
+          </span>
+          <span class="current-info">
+            Atual
+            <span class="current-value">{{ medicao?.peixe?.biomassa }}</span>
+          </span>
+        </div>
+      </div>
+      <div class="cell">
+        <span class="cell-title">Ganho de peso (Kg)</span>
+        <div class="cell-content">
+          <span class="previous-info">
+            Anterior
+            <span class="previous-value">{{ medicaoAnterior?.peixe?.ganhoPeso }}</span>
+          </span>
+          <span class="current-info">
+            Atual
+            <span class="current-value">{{ medicao?.peixe?.ganhoPeso }}</span>
+          </span>
+        </div>
+      </div>
+      <div class="cell">
+        <span class="cell-title">Ração</span>
+        <div class="cell-content">
+          <span class="previous-info">
+            Anterior
+            <span class="previous-value">{{ medicaoAnterior?.peixe?.kgRacaoOfertada }}</span>
+          </span>
+          <span class="current-info">
+            Atual
+            <span class="current-value">{{ medicao?.peixe?.kgRacaoOfertada }}</span>
+          </span>
+        </div>
+      </div>
+      <div class="cell">
+        <span class="cell-title">C.A (Conversão alimentar)</span>
+        <div class="cell-content">
+          <span class="previous-info">
+            Anterior
+            <span class="previous-value">{{ medicaoAnterior?.peixe?.volume }}</span>
+          </span>
+          <span class="current-info">
+            Atual
+            <span class="current-value">{{ medicao?.peixe?.volume }}</span>
+          </span>
+        </div>
+      </div>
+      <div class="cell">
+        <span class="cell-title">GPD (Ganho de peso diário)</span>
+        <div class="cell-content">
+          <span class="previous-info">
+            Anterior
+            <span class="previous-value">{{ medicaoAnterior?.peixe?.ganhoPeso }}</span>
+          </span>
+          <span class="current-info">
+            Atual
+            <span class="current-value">{{ medicao?.peixe?.ganhoPeso }}</span>
           </span>
         </div>
       </div>
@@ -50,16 +155,120 @@
     <span class="table-title">Ambiente</span>
 
     <div class="table-row">
-      <div class="cell" *ngFor="let cellName of tableAmbiente;">
-        <span class="cell-title">{{ cellName }}</span>
+      <div class="cell">
+        <span class="cell-title">Data</span>
         <div class="cell-content">
           <span class="previous-info">
             Anterior
-            <span class="previous-value">400</span>
+            <span class="previous-value">{{ medicaoAnterior?.ambiente?.dtColeta }}</span>
           </span>
           <span class="current-info">
             Atual
-            <span class="current-value">400</span>
+            <span class="current-value">{{ medicao?.ambiente?.dtColeta }}</span>
+          </span>
+        </div>
+      </div>
+      <div class="cell">
+        <span class="cell-title">Horário</span>
+        <div class="cell-content">
+          <span class="previous-info">
+            Anterior
+            <span class="previous-value">{{ medicaoAnterior?.ambiente?.hrColeta }}</span>
+          </span>
+          <span class="current-info">
+            Atual
+            <span class="current-value">{{ medicao?.ambiente?.hrColeta }}</span>
+          </span>
+        </div>
+      </div>
+      <div class="cell">
+        <span class="cell-title">Ph</span>
+        <div class="cell-content">
+          <span class="previous-info">
+            Anterior
+            <span class="previous-value">{{ medicaoAnterior?.ambiente?.ph }}</span>
+          </span>
+          <span class="current-info">
+            Atual
+            <span class="current-value">{{ medicao?.ambiente?.ph }}</span>
+          </span>
+        </div>
+      </div>
+      <div class="cell">
+        <span class="cell-title">Amônia</span>
+        <div class="cell-content">
+          <span class="previous-info">
+            Anterior
+            <span class="previous-value">{{ medicaoAnterior?.ambiente?.amonia }}</span>
+          </span>
+          <span class="current-info">
+            Atual
+            <span class="current-value">{{ medicao?.ambiente?.amonia }}</span>
+          </span>
+        </div>
+      </div>
+      <div class="cell">
+        <span class="cell-title">Nitrito</span>
+        <div class="cell-content">
+          <span class="previous-info">
+            Anterior
+            <span class="previous-value">{{ medicaoAnterior?.ambiente?.nitrito }}</span>
+          </span>
+          <span class="current-info">
+            Atual
+            <span class="current-value">{{ medicao?.ambiente?.nitrito }}</span>
+          </span>
+        </div>
+      </div>
+      <div class="cell">
+        <span class="cell-title">Alcalinidade</span>
+        <div class="cell-content">
+          <span class="previous-info">
+            Anterior
+            <span class="previous-value">{{ medicaoAnterior?.ambiente?.alcalinidade }}</span>
+          </span>
+          <span class="current-info">
+            Atual
+            <span class="current-value">{{ medicao?.ambiente?.alcalinidade }}</span>
+          </span>
+        </div>
+      </div>
+      <div class="cell">
+        <span class="cell-title">Transparência</span>
+        <div class="cell-content">
+          <span class="previous-info">
+            Anterior
+            <span class="previous-value">{{ medicaoAnterior?.ambiente?.transparenciaAgua }}</span>
+          </span>
+          <span class="current-info">
+            Atual
+            <span class="current-value">{{ medicao?.ambiente?.transparenciaAgua }}</span>
+          </span>
+        </div>
+      </div>
+      <div class="cell">
+        <span class="cell-title">Temperatura</span>
+        <div class="cell-content">
+          <span class="previous-info">
+            Anterior
+            <span class="previous-value">{{ medicaoAnterior?.ambiente?.temperatura }}</span>
+          </span>
+          <span class="current-info">
+            Atual
+            <span class="current-value">{{ medicao?.ambiente?.temperatura }}</span>
+          </span>
+        </div>
+      </div>
+      <div class="cell">
+        <span class="cell-title">Oxigênio</span>
+        <div class="cell-content">
+          <span class="previous-info">
+            Anterior
+            <span class="previous-value">{{ medicaoAnterior?.ambiente?.oxigenio }}</span>
+          </span>
+          <span class="current-info">
+            Atual
+            <span class="current-value">{{ medicao?.ambiente?.oxigenio }}</span>
           </span>
         </div>
       </div>

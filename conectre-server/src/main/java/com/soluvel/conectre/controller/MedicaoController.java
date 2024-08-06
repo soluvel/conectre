@@ -16,7 +16,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.time.LocalDate;
 
 @RestController
 @RequestMapping("/medicao")
@@ -63,6 +66,17 @@ public class MedicaoController extends CrudController<Medicao, Medicao, Long> {
     public ResponseEntity<Medicao> getByTanqueAndIdMax(@PathVariable("tanqueId") Long tanqueId) {
         return new ResponseEntity<>(medicaoService.findByMaxId(tanqueId), HttpStatus.OK);
     }
+
+    @GetMapping("by-data/{tanqueId}")
+    public ResponseEntity<Medicao> getByData(@PathVariable("tanqueId") Long tanqueId, @RequestParam("data") String data) {
+        return new ResponseEntity<>(medicaoService.findByData(tanqueId, LocalDate.parse(data)), HttpStatus.OK);
+    }
+
+    @GetMapping("anterior-by-data/{tanqueId}")
+    public ResponseEntity<Medicao> getAnteriorByData(@PathVariable("tanqueId") Long tanqueId, @RequestParam("data") String data) {
+        return new ResponseEntity<>(medicaoService.findAnteriorByData(tanqueId, LocalDate.parse(data)), HttpStatus.OK);
+    }
+
 
     @GetMapping("historico/{produtorId}/{number}/{size}")
     public ResponseEntity<Page<HistoricoRegistroRecords>> findHistorico(@PathVariable("produtorId") Long produtorId,

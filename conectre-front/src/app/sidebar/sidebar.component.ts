@@ -23,7 +23,7 @@ export class SidebarComponent implements OnChanges {
   gestaoItems(): { icon: string, title: string, route: string }[] {
     return [
       {icon: 'home', title: 'Início', route: '/inicio'},
-      {icon: 'notifications', title: 'Notificações', route: '/notificacao'},
+      // {icon: 'notifications', title: 'Notificações', route: '/notificacao'},
     ];
   }
 
@@ -34,12 +34,12 @@ export class SidebarComponent implements OnChanges {
       {icon: 'notifications_unread', title: 'Termos de Uso', route: '/notifications'},
     ];
   }
-  
+
   openSideMenu() {
     document.querySelector('.first-line').classList.toggle('first-line-open-menu');
     document.querySelector('.second-line').classList.toggle('second-line-open-menu');
     document.querySelector('.third-line').classList.toggle('third-line-open-menu');
-    
+
     document.querySelectorAll('.hidden-effect').forEach(topic => {
       topic.classList.toggle('invisible-effect');
     });

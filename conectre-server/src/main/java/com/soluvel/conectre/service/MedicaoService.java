@@ -9,6 +9,9 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
+import java.util.List;
+
 @Service
 public class MedicaoService extends CrudService<Medicao, Long> {
 
@@ -23,6 +26,23 @@ public class MedicaoService extends CrudService<Medicao, Long> {
     public Medicao findByMaxId(Long tanqueId) {
         return medicaoRepository.findMedicaoWithMaxId(tanqueId);
     }
+
+    public Medicao findByData(Long tanqueId, LocalDate data) {
+        List<Medicao> medicaoByData = medicaoRepository.findMedicaoByData(tanqueId, data);
+        if (!medicaoByData.isEmpty()) {
+            return medicaoByData.get(0);
+        }
+        return null;
+    }
+
+    public Medicao findAnteriorByData(Long tanqueId, LocalDate data) {
+        List<Medicao> medicaoAnterior = medicaoRepository.findMedicaoAnterior(tanqueId, data);
+        if (!medicaoAnterior.isEmpty()) {
+            return medicaoAnterior.get(0);
+        }
+        return null;
+    }
+
     public Page<HistoricoRegistroRecords> findHistorico(Long produtorId, Pageable pageable) {
         return medicaoRepository.findHistorico(produtorId, pageable);
     }
