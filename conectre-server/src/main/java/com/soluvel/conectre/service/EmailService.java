@@ -17,9 +17,7 @@ public class EmailService {
        message.setFrom("conectre@conectre.com.br");
        message.setTo(email.username());
        message.setSubject("Recuperação de senha");
-       message.setText(String.format("Na Sprint de autenticação, será adicionaddo a funcionalidade " +
-               "do link que expira para recuperar a senha. Por enquanto, " +
-               "a senha pode ser recuperada acessando: http://localhost:4200/redefinir-senha/%s ", token));
+       message.setText(String.format("Recuperação de senha: http://localhost:4200/redefinir-senha/%s ", token));
        mailSender.send(message);
     }
 }

@@ -1,18 +1,19 @@
 import { Injectable } from "@angular/core";
 import { jwtDecode } from 'jwt-decode';
-import { Router } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 
 @Injectable({
   providedIn: 'root'
 })
 export class StorageService {
-  private TOKEN_KEY= 'jwtToken';
+  private TOKEN_KEY = 'jwtToken';
   private ROLE_KEY = 'role';
   private USER_KEY = 'user';
   private USER_ID = 'user_id';
   private EMPRESA = 'empresa';
 
-  constructor(private router: Router) {
+  constructor(private router: Router,
+              private route: ActivatedRoute) {
   }
 
   public saveToken(auth: any): void {
@@ -39,7 +40,11 @@ export class StorageService {
   public getToken() {
     let jsonString: string;
 
-    if (localStorage.getItem(this.TOKEN_KEY) == undefined) {
+    const url = window.location.pathname;
+
+    if (url.includes('redefinir-senha')) {
+      return;
+    } else if (localStorage.getItem(this.TOKEN_KEY) == undefined) {
       this.router.navigate(['/login']);
     } else {
       jsonString = localStorage.getItem(this.TOKEN_KEY).toString();

@@ -42,7 +42,6 @@ export class OverlayConfirmacaoComponent implements OnChanges {
       default:
         break;
     }
-    alert(this.action);
   }
 
   logoutUser() {

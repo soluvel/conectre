@@ -1,5 +1,5 @@
 import { inject, Injectable } from "@angular/core";
-import { ActivatedRouteSnapshot, CanActivateFn, Router } from "@angular/router";
+import { ActivatedRoute, ActivatedRouteSnapshot, CanActivateFn, Router } from "@angular/router";
 import { StorageService } from "./storage.service";
 
 @Injectable({
@@ -8,6 +8,7 @@ import { StorageService } from "./storage.service";
 class PermissionsService {
 
   constructor(private router: Router,
+              private route: ActivatedRoute,
               private _tokenService: StorageService) {
   }
 
