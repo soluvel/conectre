@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { StorageService } from "./storage.service";
 import { Observable } from "rxjs";
+import { Propriedade } from "./produtor/propriedade";
 
 @Injectable({
   providedIn: 'root'
@@ -16,5 +17,9 @@ export class TanqueService {
 
   getTanques(produtorId: any): Observable<any> {
     return this.http.get<any>(`${this.apiUrl}/by-produtor/${produtorId}`, { headers: this.headers });
+  }
+
+  save(data: any): Observable<Propriedade> {
+    return this.http.post<any>(`${this.apiUrl}/save/record`, data, { headers: this.headers });
   }
 }

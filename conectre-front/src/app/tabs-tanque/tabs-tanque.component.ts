@@ -3,7 +3,9 @@ import { StorageService } from "../storage.service";
 import { FormBuilder, FormGroup } from "@angular/forms";
 import { MedicaoService } from "../produtor/medicao.service";
 import { Subject, takeUntil } from "rxjs";
-import { ActivatedRoute } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
+import { PropriedadeService } from "../produtor/propriedade.service";
+import { TanqueService } from "../tanque.service";
 
 @Component({
   selector: 'app-tabs-tanque',
@@ -21,10 +23,15 @@ export class TabsTanqueComponent implements OnInit, OnDestroy{
   private destroy$ = new Subject<void>();
   observacao: boolean = true;
   historico: boolean = false;
-
+  propriedades: any[];
+  propriedadeSelecionada: any;
+  nomeTanque: any;
   constructor(public storage: StorageService,
               private formBuilder: FormBuilder,
               private route: ActivatedRoute,
+              private router: Router,
+              private propriedade: PropriedadeService,
+              private tanqueService: TanqueService,
               private medicaoService: MedicaoService) {
     this.form = this.formBuilder.group({
       id: [],
@@ -72,6 +79,11 @@ export class TabsTanqueComponent implements OnInit, OnDestroy{
   }
 
   ngOnInit() {
+    this.propriedade.getPropriedades().subscribe(data => {
+      this.propriedades = data;
+    })
+
+
     if (this.tanqueId != '') {
       this.medicaoService.findOneByTanque(parseInt(this.tanqueId)).subscribe(data => {
         this.form.patchValue(data);
@@ -109,9 +121,29 @@ export class TabsTanqueComponent implements OnInit, OnDestroy{
     });
   }
 
-  sendMessage() {
+  submitPropriedade() {
+    const form = this.formBuilder.group({
+      nome: [],
+      propriedadeId: []
+      });
 
+    form.get('nome').setValue(this.nomeTanque);
+    form.get('propriedadeId').setValue(this.propriedadeSelecionada);
+
+    this.tanqueService.save(form.getRawValue()).pipe(takeUntil(this.destroy$)
+    ).subscribe({
+      next: response => {
+        this.router.navigate(['/inicio']);
+      },
+      error: error => {
+        console.error('Erro:', error);
+      }
+    });
+
+    this.closeConfirm();
+    window.location.reload();
   }
+
 
   openMessageBox() {
     var filterWall = document.getElementById('filterWall');

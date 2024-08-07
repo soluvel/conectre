@@ -21,6 +21,7 @@ export class PropriedadeCadastroComponent implements OnInit, OnDestroy {
   msgButton: string;
   form: FormGroup;
   produtores: any;
+  exibirTanque: boolean = false;
 
   constructor(private formBuilder: FormBuilder,
               private service: PropriedadeService,

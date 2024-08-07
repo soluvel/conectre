@@ -239,7 +239,7 @@
   <div class="buttons-box">
     <button class="button-no-border" style="margin-right: 10px">Limpar dados</button>
     <button [disabled]="tanqueId == ''" (click)="onSubmit()" [ngClass]="{'button-disabled': !form.valid || tanqueId == ''}">Salvar Registro</button>
-    <ng-container *ngIf="tanqueId != '' && observacao == true ">
+    <ng-container *ngIf="tanqueId != '' && observacao == true && storage.getRole() == 'TECNICO'">
     <button (click)="openMessageBox()" style="margin-left: 10px">Fazer Observação</button>
     </ng-container>
   </div>
@@ -259,7 +259,7 @@
     </div>
     <div class="buttons-box-observacao">
       <button class="button-white" style="margin-right: 10px">Limpar</button>
-      <button class="button-geral" (click)="sendMessage()">Enviar</button>
+      <button class="button-geral" (click)="submitPropriedade()">Enviar</button>
     </div>
   </div>
 </div>
@@ -271,13 +271,17 @@
   </div>
   <div class="content-overlay-novo-tanque">
     <span class="title-novo-tanque">Nome do tanque</span>
-    <input type="text" class="form-control">
+    <input type="text" class="form-control" [(ngModel)]="nomeTanque">
     <span class="title-novo-tanque" style="margin-top: 10px;">Propriedade vinculada</span>
-    <input type="text" class="form-control">
+    <select class="form-select" [(ngModel)]="propriedadeSelecionada">
+      <option *ngFor="let prop of propriedades" [value]="prop.id">
+        {{ prop?.id }} - {{ prop?.nome}}
+      </option>
+    </select>
 
     <div class="buttons-box-novo-tanque" style="margin-top: 20px;">
       <button class="button-white" (click)="closeConfirm()" style="margin-right: 10px">Cancelar</button>
-      <button class="button-geral" (click)="sendMessage()">Cadastrar</button>
+      <button class="button-geral" (click)="submitPropriedade()">Cadastrar</button>
     </div>
   </div>
 </div>

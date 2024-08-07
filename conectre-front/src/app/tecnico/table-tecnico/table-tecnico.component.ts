@@ -40,7 +40,7 @@ export class TableTecnicoComponent implements OnInit {
 
   getTableInfo() {
     let campo = this.storage.getRole() == 'EMPRESA' ? 'empresa.id' : '';
-    this.service.page(this.pageNumber, this.size, '', campo, '1', []).subscribe({
+    this.service.page(this.pageNumber, this.size, '', '', '', []).subscribe({
       next: (page) => {
         this.dataSource.data = page.content
         this.pageNumber = page.pageable.pageNumber
@@ -122,7 +122,7 @@ export class TableTecnicoComponent implements OnInit {
   }
 
   search() {
-    this.service.page(0, this.size, this.filter,  'empresa.id', '1',['nome','celular', 'empresa.razaoSocial']).subscribe({
+    this.service.page(0, this.size, this.filter,  '', '',['nome','celular', 'empresa.razaoSocial']).subscribe({
       next: (page) => {
         this.dataSource.data = page.content
         this.pageNumber = page.pageable.pageNumber

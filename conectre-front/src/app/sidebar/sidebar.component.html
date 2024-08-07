@@ -19,6 +19,7 @@
           <a href="tecnico/cadastrar" *ngIf="storage.getRole() === 'ADM_TREVISAN' || storage.getRole() === 'EMPRESA'"><img src="../../assets/subitem-icon.svg" alt="Cadastros">Técnico</a>
           <a href="produtor/cadastrar" *ngIf="storage.getRole() === 'ADM_TREVISAN' || storage.getRole() === 'TECNICO' || storage.getRole() === 'EMPRESA'"><img src="../../assets/subitem-icon.svg" alt="Cadastros">Produtor</a>
           <a href="produtor/cadastrar" *ngIf="storage.getRole() === 'ADM_TREVISAN' || storage.getRole() === 'TECNICO' || storage.getRole() === 'EMPRESA'"><img src="../../assets/subitem-icon.svg" alt="Cadastros">Tanques</a>
+          <a href="propriedade/cadastrar" *ngIf="storage.getRole() === 'ADM_TREVISAN' || storage.getRole() === 'TECNICO' || storage.getRole() === 'PRODUTOR'"><img src="../../assets/subitem-icon.svg" alt="Cadastros">Propriedade</a>
         </div>
       </li>
     </ul>

@@ -27,9 +27,9 @@ public interface MedicaoRepository extends CrudRepository<Medicao, Long> {
             "ORDER BY coalesce(p.dtColeta, r.dtColeta, a.dtColeta) desc")
     Page<HistoricoRegistroRecords> findHistorico(Long produtorId, Pageable pageable);
 
-    @Query("SELECT m FROM Medicao m WHERE m.tanque.id = :tanqueId AND COALESCE(m.peixe.dtColeta, m.ambiente.dtColeta, m.racao.dtColeta) < :data ORDER BY COALESCE(m.peixe.dtColeta, m.ambiente.dtColeta, m.racao.dtColeta) DESC")
+    @Query("SELECT m FROM Medicao m LEFT JOIN m.peixe p LEFT JOIN m.ambiente a LEFT JOIN m.racao r WHERE m.tanque.id = :tanqueId AND COALESCE(p.dtColeta, r.dtColeta, a.dtColeta) < :data ORDER BY COALESCE(p.dtColeta, r.dtColeta, a.dtColeta) DESC")
     List<Medicao> findMedicaoAnterior(@Param("tanqueId") Long tanqueId, @Param("data") LocalDate data);
 
-    @Query("SELECT m FROM Medicao m WHERE coalesce(m.peixe.dtColeta, m.ambiente.dtColeta, m.racao.dtColeta) = :data and m.tanque.id = :tanqueId")
+    @Query("SELECT m FROM Medicao m LEFT JOIN m.peixe p LEFT JOIN m.ambiente a LEFT JOIN m.racao r WHERE coalesce(p.dtColeta, r.dtColeta, a.dtColeta) = :data and m.tanque.id = :tanqueId")
     List<Medicao> findMedicaoByData(@Param("tanqueId") Long tanqueId, @Param("data") LocalDate data);
 }
