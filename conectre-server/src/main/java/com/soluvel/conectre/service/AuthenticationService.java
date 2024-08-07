@@ -8,6 +8,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -39,7 +40,8 @@ public class AuthenticationService implements UserDetailsService {
         TokenPassword byToken = tokenPasswordService.findByToken(password.token());
         var user = usuarioService.findByUsername(byToken.getUsername());
         user.ifPresent(u -> {
-            u.setPassword(password.password());
+            BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
+            u.setPassword(bCryptPasswordEncoder.encode(password.password()));
             usuarioService.save(u);
         });
     }

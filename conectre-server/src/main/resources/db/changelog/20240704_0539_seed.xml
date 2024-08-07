@@ -12,4 +12,12 @@
             VALUES(1, 'master', 'master', '$2a$12$aoo8V8MLqrOFgKHkCM1Q0OoeyeDka1jbFY69Bkg0YGpuEcOre12l.', true, 'ADM_TREVISAN');
         </sql>
     </changeSet>
+
+    <changeSet id="2" author="kassia.zama">
+        <sql>
+            ALTER SEQUENCE public.usuario_id_seq
+                MINVALUE 2
+                START 2 RESTART 2;
+        </sql>
+    </changeSet>
 </databaseChangeLog>
