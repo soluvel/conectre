@@ -78,6 +78,28 @@ export class ProdutorCadastroComponent implements OnInit, OnDestroy {
   }
 
   onSubmit() {
+    if (this.form.get('id').value != null) {
+      this.updating();
+    } else {
+      this.saving();
+    }
+
+  }
+
+  updating() {
+    this.service.edit(this.form.get('id').value, this.form.getRawValue()).pipe(takeUntil(this.destroy$)
+    ).subscribe({
+      next: response => {
+        this.toastr.success('Formulário salvo com sucesso!');
+        this.router.navigate(['/inicio']);
+      },
+      error: error => {
+        console.error('Erro:', error);
+      }
+    });
+  }
+
+  saving() {
     this.service.save(this.form.getRawValue()).pipe(takeUntil(this.destroy$)
     ).subscribe({
       next: response => {
@@ -88,7 +110,6 @@ export class ProdutorCadastroComponent implements OnInit, OnDestroy {
         console.error('Erro:', error);
       }
     });
-
   }
 
   handleImageUpload($event: Event) {

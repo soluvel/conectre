@@ -18,7 +18,7 @@ export class ProdutorService {
     return this.http.post<any>(`${this.apiUrl}/save/record`, data, { headers: this.headers });
   }
 
-  edit(data: any, id): Observable<any> {
+  edit(id, data: any): Observable<any> {
     return this.http.put<any>(`${this.apiUrl}/user/${id}`, data, { headers: this.headers });
   }
 

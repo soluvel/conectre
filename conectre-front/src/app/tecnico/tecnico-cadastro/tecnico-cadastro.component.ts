@@ -87,7 +87,7 @@ export class TecnicoCadastroComponent implements OnInit, OnDestroy {
   }
 
   onSubmit() {
-    if (this.isEditando) {
+    if (this.form.get('id').value != null) {
      this.isEditing();
     } else {
      this.isSaving();
