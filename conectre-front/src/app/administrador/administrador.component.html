@@ -17,7 +17,7 @@
 
     <div class="buttons">
       <button class="button-no-border exclude-button" (click)="deletAdm = !deletAdm">Excluir</button>
-      <button [disabled]="administradores.length >= 5" class="button-white license-info" (click)="adicionarAdm()" [ngClass]="{'button-disabled-mudar':  administradores.length >= 5}">Novo administrador</button>
+      <button [disabled]="administradores.length >= 5" class="button-white license-info" (click)="adicionarAdm(null)" [ngClass]="{'button-disabled':  administradores.length >= 5}">Novo administrador</button>
     </div>
   </div>
 

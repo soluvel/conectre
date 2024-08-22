@@ -43,6 +43,8 @@ export class AdministradorCadastroComponent implements OnInit, OnDestroy, OnChan
       this.service.getAdministrador(changes['admId'].currentValue).subscribe(data => {
         this.form.patchValue(data);
       });
+    } else {
+      this.form.reset();
     }
   }
 

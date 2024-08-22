@@ -51,7 +51,6 @@ export class LoginComponent implements OnInit {
     passwordInput.type = this.hide ? 'password' : 'text';
     
     this.iconStatus = (this.iconStatus === 'visibility_off') ? 'visibility' : 'visibility_off';
-
   }
 
   onSubmit() {
