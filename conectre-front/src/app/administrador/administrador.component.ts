@@ -21,7 +21,7 @@ export class AdministradorComponent implements OnInit, OnDestroy {
   private destroy$ = new Subject<void>();
 
   constructor(private service: AdministradorService,
-              private route: ActivatedRoute) {
+    private route: ActivatedRoute) {
   }
 
   ngOnInit() {
@@ -44,21 +44,29 @@ export class AdministradorComponent implements OnInit, OnDestroy {
   }
 
   getInitials(name: string): string {
-    const names = name.split(' ');
-    return names.map(name => name.charAt(0)).join('').toUpperCase();
+    // const names = name.split(' ');
+    // return names.map(name => name.charAt(0)).join('').toUpperCase();
+    
+    const names = name.trim();
+    return name.charAt(0).toUpperCase();
   }
 
-  adicionarAdm() {
+  adicionarAdm(admId) {
+    if (admId == null) {
+      this.admId = admId;
+    }
+    
     var overlay = document.getElementById('overlayAdm');
     overlay.style.display = 'block';
 
     var filterWall = document.getElementById('filter-wall');
     filterWall.style.display = 'block';
+  
   }
 
   editarAdm(admId: any) {
     this.admId = admId;
-    this.adicionarAdm();
+    this.adicionarAdm(admId);
   }
 
   animationArrow() {
@@ -91,7 +99,7 @@ export class AdministradorComponent implements OnInit, OnDestroy {
     filterWall.style.display = 'none';
   }
 
-  onDelete() {
+  async onDelete() {
     if (this.deletAdm != null) {
       this.service.deleteAdministrador(this.deleteAdmId).pipe(takeUntil(this.destroy$)
       ).subscribe({
@@ -101,9 +109,18 @@ export class AdministradorComponent implements OnInit, OnDestroy {
           console.error('Erro:', error);
         }
       });
+      this.closeConfirm();
+      await this.delay(10);
+      this.reloadAdm();
+
     }
 
     this.deletAdm = null
     this.deleteAdmNome = null
+  }
+
+
+  delay(ms: number): Promise<void> {
+    return new Promise(resolve => setTimeout(resolve, ms));
   }
 }

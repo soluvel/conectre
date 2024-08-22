@@ -8,16 +8,14 @@
           <h2 style="margin-bottom: 10px">Redefina sua senha</h2>
           <h4>Agora, vamos criar uma nova senha para você <br> com no <b>mínimo 6 caracteres</b>.</h4>
           <div class="form-group">
-            <input type="password" id="password" formControlName="password" placeholder="Nova senha" required>
-            <img class="toggle-password" src="../../../assets/password-hide.svg" (click)="togglePasswordVisibility()">
+            <input type="password" class="form-control" id="password" formControlName="password" placeholder="Nova senha" required>
+            <mat-icon class="icon-visibility-password toggle-password material-symbols-rounded" (click)="togglePasswordVisibility()">{{ iconStatus }}</mat-icon>
           </div>
           <div class="form-group">
-            <input type="password" id="passwordCheck" formControlName="passwordCheck" placeholder="Confirmar senha"
-                   required>
-            <img class="toggle-password" src="../../../assets/password-hide.svg" (click)="togglePasswordVisibility()">
+            <input type="password" class="form-control" id="passwordCheck" formControlName="passwordCheck" placeholder="Confirmar senha" required>
           </div>
           <div class="form-group">
-            <input type="submit" value="Confirmar nova senha">
+            <input type="submit" value="Confirmar nova senha" [disabled]="!newPassword.valid" [ngClass]="{'button-disabled': !newPassword.valid}">
           </div>
         </form>
       </div>

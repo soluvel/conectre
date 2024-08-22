@@ -132,9 +132,9 @@ button {
 }
 
 .button-disabled {
-  background-color: #BDBDBD;
-  cursor: not-allowed;
-  color: #F0F0F0;
+  background-color: #BDBDBD !important;
+  cursor: not-allowed !important;
+  color: #F0F0F0 !important;
 }
 
 .button-disabled-mudar {

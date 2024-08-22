@@ -17,6 +17,7 @@ export class RedefinirSenhaComponent implements OnInit {
   hide = true;
   newPassword: FormGroup
   disableSubmitButton: boolean = true;
+  iconStatus = "visibility_off";
 
   constructor(private fb: FormBuilder,
               public authService: AuthService,
@@ -26,9 +27,9 @@ export class RedefinirSenhaComponent implements OnInit {
 
   ngOnInit(): void {
     this.newPassword = this.fb.group({
-      password: ['', Validators.required],
-      passwordCheck: ['', Validators.required],
-      token: ['', Validators.required],
+      password: ['', [Validators.required, Validators.minLength(6)]],
+      passwordCheck: ['', [Validators.required, Validators.minLength(6)]],
+      token: [''],
     })
 
     this.token = this.activeRouter.snapshot.params['token'];
@@ -38,7 +39,12 @@ export class RedefinirSenhaComponent implements OnInit {
   togglePasswordVisibility(): void {
     this.hide = !this.hide;
     const passwordInput = document.getElementById('password') as HTMLInputElement;
+    const passwordCheckInput = document.getElementById('passwordCheck') as HTMLInputElement;
+    
     passwordInput.type = this.hide ? 'password' : 'text';
+    passwordCheckInput.type = this.hide ? 'password' : 'text';
+    
+    this.iconStatus = (this.iconStatus === 'visibility_off') ? 'visibility' : 'visibility_off';
   }
 
   updatePassword() {
