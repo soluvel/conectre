@@ -28,6 +28,7 @@
                 <constraints nullable="false" foreignKeyName="fk_produtor_empresa" referencedTableName="empresa"
                              referencedColumnNames="id"/>
             </column>
+            <column name="avatar" type="BYTEA"/>
         </createTable>
 
     </changeSet>

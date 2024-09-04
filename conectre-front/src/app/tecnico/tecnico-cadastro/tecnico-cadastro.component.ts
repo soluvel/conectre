@@ -20,6 +20,9 @@ export class TecnicoCadastroComponent implements OnInit, OnDestroy {
   private destroy$ = new Subject<void>();
   empresas: any[] = [];
 
+  selectedFile: File | null = null;
+  imagePreview: string | ArrayBuffer | null = null;
+
   constructor(private formBuilder: FormBuilder,
               private toastr: ToastrService,
               private route: ActivatedRoute,
@@ -33,6 +36,7 @@ export class TecnicoCadastroComponent implements OnInit, OnDestroy {
       email: ['', [Validators.required, Validators.email]],
       celular: ['', Validators.required],
       cpf: ['', Validators.required],
+      avatar: [''],
       empresa: ['', Validators.required],
       endereco: this.formBuilder.group({
         cep: [''],
@@ -88,9 +92,9 @@ export class TecnicoCadastroComponent implements OnInit, OnDestroy {
 
   onSubmit() {
     if (this.form.get('id').value != null) {
-     this.isEditing();
+      this.isEditing();
     } else {
-     this.isSaving();
+      this.isSaving();
     }
   }
 
@@ -132,9 +136,22 @@ export class TecnicoCadastroComponent implements OnInit, OnDestroy {
     });
   }
 
-  handleImageUpload($event: Event) {
+  handleImageUpload(event: any) {
+    const file = event.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = () => {
+        this.imagePreview = reader.result as string;
 
+        const base64String = reader.result?.toString().split(',')[1]; // Pega apenas a string Base64
+        this.form.patchValue({avatar: base64String});
+        this.form.get('avatar')?.updateValueAndValidity();
+        console.log(this.form.getRawValue())
+      };
+      reader.readAsDataURL(file);
+    }
   }
+
 
   openConfirm() {
     var overlay = document.getElementById('overlayConfirm');

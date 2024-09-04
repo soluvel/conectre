@@ -116,4 +116,5 @@ export class PropriedadeCadastroComponent implements OnInit, OnDestroy {
       console.error('Download failed', error);
     });
   }
+
 }

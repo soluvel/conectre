@@ -23,7 +23,7 @@
     <div class="buttons-box">
       <input type="date" class="form-control" id="dataColeta"  [(ngModel)]="selectedDate">
       <button type="button" class="button-white see-hist-button" (click)="findByDate()">Consultar histórico</button>
-      <button type="button" class="button-geral export-button" style="margin-left: 10px">Exportar</button>
+      <button type="button" class="button-geral export-button" style="margin-left: 10px" (click)="onDownloadSomatoria()">Exportar</button>
     </div>
   </div>
 

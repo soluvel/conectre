@@ -22,4 +22,13 @@ export class ExcelService {
     return this.http.get(`${this.apiUrl}/download`, { headers, responseType: 'blob' });
   }
 
+  downloadExcelSomatoria(): Observable<Blob> {
+    const token = this.storage.getToken();
+    const headers = new HttpHeaders({
+      'Accept': 'application/octet-stream',
+      'Authorization': `${token}`
+    });
+    return this.http.get(`${this.apiUrl}/download-somatoria`, { headers, responseType: 'blob' });
+  }
+
 }

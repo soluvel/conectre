@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from "@angular/router";
 import { MedicaoService } from "../medicao.service";
+import { ExcelService } from "../../excel.service";
 
 @Component({
   selector: 'app-historico',
@@ -24,6 +25,7 @@ export class HistoricoComponent implements OnInit {
     'Transparência', 'Temperatura', 'Oxigênio'];
 
   constructor(private route: ActivatedRoute,
+              private excelService: ExcelService,
               private medicaoService: MedicaoService) {
   }
 
@@ -39,11 +41,11 @@ export class HistoricoComponent implements OnInit {
 
 
   findByDate() {
-    this.medicaoService.findOneByData(this.tanqueId,this.selectedDate).subscribe(data => {
+    this.medicaoService.findOneByData(this.tanqueId, this.selectedDate).subscribe(data => {
       this.medicao = data;
     });
 
-    this.medicaoService.findAnteriorByData(this.tanqueId,this.selectedDate).subscribe(data => {
+    this.medicaoService.findAnteriorByData(this.tanqueId, this.selectedDate).subscribe(data => {
       this.medicaoAnterior = data;
     });
   }
@@ -56,4 +58,18 @@ export class HistoricoComponent implements OnInit {
     this.selectedDate = data;
     this.findByDate();
   }
+
+  onDownloadSomatoria() {
+    this.excelService.downloadExcelSomatoria().subscribe(blob => {
+      const url = window.URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'data.xlsx';
+      a.click();
+      window.URL.revokeObjectURL(url);
+    }, error => {
+      console.error('Download failed', error);
+    });
+  }
+
 }

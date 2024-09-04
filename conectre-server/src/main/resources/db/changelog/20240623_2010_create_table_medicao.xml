@@ -21,6 +21,10 @@
                 <constraints nullable="false" foreignKeyName="fk_medicao_tanque" referencedTableName="tanque"
                              referencedColumnNames="id"/>
             </column>
+
+            <column name="dt_medicao" type="DATE">
+                <constraints nullable="false"/>
+            </column>
         </createTable>
 
     </changeSet>

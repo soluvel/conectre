@@ -11,6 +11,7 @@ import com.soluvel.conectre.utils.GenerateRandomKeyUtils;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
 
+import java.util.Base64;
 import java.util.Objects;
 
 import static com.soluvel.conectre.utils.StringFormat.removeSpecialCharacters;
@@ -24,7 +25,7 @@ public class ProdutorMapper implements Mapper<Produtor, ProdutorRecords> {
     @Override
     public ProdutorRecords toRecord(Produtor entity) {
         return new ProdutorRecords(entity.getId(), entity.getNome(), entity.getCpf(),
-                entity.getCelular(), entity.getEmail(), entity.getEmpresa().getId());
+                entity.getCelular(), entity.getEmail(), Base64.getEncoder().encodeToString(entity.getAvatar()), entity.getEmpresa().getId());
     }
 
     public Produtor toEntity(ProdutorRecords record) {
@@ -38,6 +39,12 @@ public class ProdutorMapper implements Mapper<Produtor, ProdutorRecords> {
         if (Objects.isNull(produtor.getId())) {
             produtor.setPassword(GenerateRandomKeyUtils.generateRandomKey(6));
         }
+
+        if (Objects.nonNull(record.avatar())) {
+            byte[] imageBytes = Base64.getDecoder().decode(record.avatar());
+            produtor.setAvatar(imageBytes);
+        }
+
         produtor.setPermissao(Permissao.PRODUTOR);
         produtor.setAtivo(true);
         produtor.setEmpresa(empresaService.findById(record.empresa()).orElse(null));

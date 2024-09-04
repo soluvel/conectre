@@ -20,6 +20,9 @@ export class ProdutorCadastroComponent implements OnInit, OnDestroy {
   private destroy$ = new Subject<void>();
   empresas: any[] = [];
 
+  selectedFile: File | null = null;
+  imagePreview: string | ArrayBuffer | null = null;
+
   constructor(private formBuilder: FormBuilder,
               private toastr: ToastrService,
               private route: ActivatedRoute,
@@ -32,6 +35,7 @@ export class ProdutorCadastroComponent implements OnInit, OnDestroy {
       nome: ['', Validators.required],
       cpf: ['', Validators.required],
       email: ['', Validators.required],
+      avatar: [''],
       celular: ['', Validators.required],
       empresa: ['', Validators.required],
     });
@@ -73,6 +77,11 @@ export class ProdutorCadastroComponent implements OnInit, OnDestroy {
       this.form.patchValue(data);
       this.form.get('celular').setValue(StringNumberFormats.formatCelular(this.form.get('celular').value));
       this.form.get('cpf').setValue(StringNumberFormats.formatCpfCnpj(this.form.get('cpf').value));
+
+      if (data.avatar != null) {
+        this.imagePreview = `data:image/png;base64,${data.avatar}`;
+      }
+
       this.isEditando = true;
     });
   }
@@ -112,7 +121,18 @@ export class ProdutorCadastroComponent implements OnInit, OnDestroy {
     });
   }
 
-  handleImageUpload($event: Event) {
+  handleImageUpload(event: any) {
+    const file = event.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = () => {
+        this.imagePreview = reader.result as string;
 
+        const base64String = reader.result?.toString().split(',')[1];
+        this.form.patchValue({avatar: base64String});
+        this.form.get('avatar')?.updateValueAndValidity();
+      };
+      reader.readAsDataURL(file);
+    }
   }
 }

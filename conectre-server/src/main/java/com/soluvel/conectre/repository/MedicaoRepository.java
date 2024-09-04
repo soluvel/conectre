@@ -13,6 +13,8 @@ import java.util.List;
 
 public interface MedicaoRepository extends CrudRepository<Medicao, Long> {
 
+    List<Medicao> findByDtMedicaoBetween(LocalDate startDate, LocalDate endDate);
+
     @Query("SELECT m FROM Medicao m WHERE m.id = (SELECT MAX(r2.id) FROM Medicao r2) and m.tanque.id = :tanqueId")
     Medicao findMedicaoWithMaxId(@Param("tanqueId") Long tanqueId);
 

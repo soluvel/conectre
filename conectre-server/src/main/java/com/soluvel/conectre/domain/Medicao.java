@@ -17,6 +17,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.Objects;
 
 @Entity
@@ -39,14 +40,16 @@ public class Medicao implements Serializable {
     @Transient
     private Long tanqueId;
 
-    @OneToOne(mappedBy = "medicao", cascade = CascadeType.ALL, optional = true)
+    @OneToOne(mappedBy = "medicao", cascade = CascadeType.ALL)
     private Peixe peixe;
 
-    @OneToOne(mappedBy = "medicao", cascade = CascadeType.ALL, optional = true)
+    @OneToOne(mappedBy = "medicao", cascade = CascadeType.ALL)
     private Ambiente ambiente;
 
-    @OneToOne(mappedBy = "medicao", cascade = CascadeType.ALL, optional = true)
+    @OneToOne(mappedBy = "medicao", cascade = CascadeType.ALL)
     private Racao racao;
+
+    private LocalDate dtMedicao;
 
     public Long getTanqueId() {
         return Objects.nonNull(tanque) ? tanque.getId() : this.tanqueId;
