@@ -14,7 +14,8 @@ export class AppComponent {
   isLoggedIn: boolean = true;
   buttonPopUpAction = 'logout';
 
-  constructor(public storage: StorageService,
+  constructor(
+    public storage: StorageService,
     private _router: Router,
     private _authService: AuthService) {
     this._authService.loggedInChanged.subscribe((loggedIn: boolean) => {
@@ -36,10 +37,13 @@ export class AppComponent {
 
   onLogout() {
     this.storage.clear();
-    this._router.navigate(['/login']);
     this.isLoggedIn = false;
     this.collapsed.set(true);
     this.closeConfirm();
+    
+    this._router.navigate(['/login']).then(() => {
+      window.location.reload();
+    });;
   }
 
   openSideMenu() {

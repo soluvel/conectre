@@ -26,6 +26,16 @@ export class TabsTanqueComponent implements OnInit, OnDestroy{
   propriedades: any[];
   propriedadeSelecionada: any;
   nomeTanque: any;
+  
+  itemsPeixe = ['Data da coleta', 'Hora da coleta', 'Peixes /amostra', 'Volume Peixe', 'Mortalidade', 'Peso Médio', 'Biomassa total', 'Ganho de peso', 'Ração ofertada'];
+  selectedItemPeixe: string | null = null;
+  
+  itemsAmbiente = ['Data da coleta', 'Hora da coleta', 'PH', 'Amônia', 'Nitrito', 'Alcalinidade', 'Transparência água', 'Temperatura', 'Oxigênio'];
+  selectedItemAmbiente: string | null = null;
+  
+  itemsRacao = ['Data da coleta', 'Hora da coleta', 'Temperatura', 'Oxigênio', 'Ração por trato', 'Ração total'];
+  selectedItemRacao: string | null = null;
+
   constructor(public storage: StorageService,
               private formBuilder: FormBuilder,
               private route: ActivatedRoute,
@@ -151,6 +161,18 @@ export class TabsTanqueComponent implements OnInit, OnDestroy{
 
     var overlay = document.getElementById('overlayObservacao');
     overlay.style.display = 'block';
+  }
+
+  selectItemPeixe(itemPeixe: string): void {
+    this.selectedItemPeixe = itemPeixe;
+  }
+  
+  selectItemAmbiente(itemAmbiente: string): void {
+    this.selectedItemAmbiente = itemAmbiente;
+  }
+  
+  selectItemRacao(itemRacao: string): void {
+    this.selectedItemRacao = itemRacao;
   }
 
   openOverlayTanque() {

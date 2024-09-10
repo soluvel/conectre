@@ -21,9 +21,9 @@
     </div>
 
     <div class="buttons-box">
-      <input type="date" class="form-control" id="dataColeta"  [(ngModel)]="selectedDate">
-      <button type="button" class="button-white see-hist-button" (click)="findByDate()">Consultar histórico</button>
+      <!-- <input type="date" class="form-control" id="dataColeta"  [(ngModel)]="selectedDate"> -->
       <button type="button" class="button-geral export-button" style="margin-left: 10px">Exportar</button>
+      <button type="button" class="button-white see-hist-button" (click)="findByDate()">Consultar histórico</button>
     </div>
   </div>
 
@@ -275,4 +275,56 @@
     </div>
   </div>
 
+  <div id="filterWall"></div>
+
+  <div id="overlayExportar">
+    <div class="header-overlay-exportar">
+      <span class="title-exportar">Exportar relatório</span>
+      <mat-icon class="icon-close material-symbols-rounded" (click)="closeConfirm()">close</mat-icon>
+    </div>
+    <div class="content-overlay-exportar">
+      
+      <div class="internal-overlay-exportar">
+        <div class="hist-tabs">
+          <mat-tab-group animationDuration="0ms">
+            <mat-tab label="Data exata">
+              <ng-template mat-tab-label>
+                <span>Data exata</span>
+              </ng-template>
+              <div class="types-box">
+                <div class="type-calendar-container">
+                  <app-calendar [currentMonth]="month1" (monthChanged)="handleMonthChange1($event)"></app-calendar>
+                  <app-calendar [currentMonth]="month2" (monthChanged)="handleMonthChange2($event)"></app-calendar>
+                </div>
+              </div>
+            </mat-tab>
+      
+            <mat-tab label="Meses">
+              <ng-template mat-tab-label>
+                <span>Meses</span>
+              </ng-template>
+              <div class="types-box">
+                <div class="year-choice-container">
+                  <span>Ano</span>
+                  <input type="number" class="year-input" id="yearInput" placeholder="EX.: 2024" min="0" required>
+                </div>
+                <div class="type-title-container">
+                  <span *ngFor="let month of months" class="type-title" [ngClass]="{'active': isSelected(month)}" (click)="selectMonth(month)">
+                    {{ month }}
+                  </span>
+                </div>
+                <div class="clean-button-box">
+                  <span class="button-no-border clean-button">Limpar seleção</span>
+                </div>
+              </div>
+            </mat-tab>
+          </mat-tab-group>
+        </div>
+      </div>
+      <div class="buttons-box-exportar" style="margin-top: 20px;">
+        <button class="button-white" (click)="closeConfirm()" style="margin-right: 10px">Cancelar</button>
+        <button class="button-geral" (click)="download()">Baixar</button>
+      </div>
+    </div>
+  </div>
 </div>

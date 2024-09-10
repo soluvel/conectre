@@ -1,0 +1,20 @@
+<div class="calendar-container">
+    
+    <div class="calendar-header">
+        <mat-icon class="icon-close material-symbols-rounded" (click)="changeMonth(-1)">chevron_left</mat-icon>
+        <span class="calendar-header-month">{{ formattedMonth }}</span>
+        <mat-icon class="icon-close material-symbols-rounded" (click)="changeMonth(1)">chevron_right</mat-icon>
+    </div>
+
+    <div class="weekdays">
+        <div *ngFor="let weekday of weekdays" class="weekday">
+            {{ weekday }}
+        </div>
+    </div>
+
+    <div class="days-grid">
+        <div *ngFor="let day of days" [class.today]="isToday(day.date)" class="day">
+            {{ day.day }}
+        </div>
+    </div>
+</div>

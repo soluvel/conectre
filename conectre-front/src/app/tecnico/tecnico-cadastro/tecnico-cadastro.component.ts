@@ -7,6 +7,8 @@ import { Subject, takeUntil } from "rxjs";
 import { TecnicoService } from "../tecnico.service";
 import { ViaCepService } from "../../via-cep.service";
 import { StringNumberFormats } from "../../utils/StringNumberFormats";
+import { StorageService } from "../../storage.service";
+
 
 @Component({
   selector: 'app-tecnico-cadastro',
@@ -21,6 +23,7 @@ export class TecnicoCadastroComponent implements OnInit, OnDestroy {
   empresas: any[] = [];
 
   constructor(private formBuilder: FormBuilder,
+              public storage: StorageService,
               private toastr: ToastrService,
               private route: ActivatedRoute,
               private service: TecnicoService,
@@ -55,6 +58,9 @@ export class TecnicoCadastroComponent implements OnInit, OnDestroy {
     this.route.paramMap.subscribe(params => {
       this.tecnicoId = params.get('id');
       this.getTecnico();
+
+      const pageTitle = !this.tecnicoId ? "Cadastro de Técnico" : undefined; 
+      this.storage.updatePageTitle(pageTitle);
     });
 
     this.empresaService.getEmpresasReduce().subscribe(data => {
@@ -83,6 +89,8 @@ export class TecnicoCadastroComponent implements OnInit, OnDestroy {
       this.form.get('celular').setValue(StringNumberFormats.formatCelular(this.form.get('celular').value))
       this.form.get('cpf').setValue(StringNumberFormats.formatCpfCnpj(this.form.get('cpf').value))
       this.isEditando = true;
+
+      this.storage.updatePageTitle(data['nome']);
     });
   }
 

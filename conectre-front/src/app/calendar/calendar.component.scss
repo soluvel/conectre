@@ -1,0 +1,51 @@
+.calendar-container {
+    display: inline-block;
+    text-align: center;
+    width: 224px;
+    height: 244px;
+}
+
+.calendar-header {
+    display: flex;
+    justify-content: center;
+    padding-bottom: 12px;
+}
+
+.calendar-header-month {
+    color: #292929;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: underline;
+}
+
+.weekdays,
+.days-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+}
+
+.weekday,
+.day {
+    // padding: 10px;
+    // border: 1px solid #ddd;
+}
+
+.weekday {
+    font-size: 14px;
+    font-weight: 400;
+    color: #292929;
+}
+
+// .today {
+//     background-color: #d3d3d3;
+//     /* Destacar o dia de hoje */
+// }
+
+.day {
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #A1A1AA;
+    line-height: 32px;
+}

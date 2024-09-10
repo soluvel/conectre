@@ -14,6 +14,8 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.storage.updatePageTitle('Visualização Geral');
+
     if (this.storage.getRole() == 'TECNICO') {
       this.activeComponent = 'Produtores';
       this.activeMessage = 'Produtores cadastrados';

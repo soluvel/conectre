@@ -59,6 +59,7 @@ import { HistoricoComponent } from './produtor/historico/historico.component';
 import { DatePipe } from "@angular/common";
 import { DateFormatPipe } from "./pipes/dateFormat";
 import { TimeFormatPipe } from "./pipes/timeFormat";
+import { CalendarComponent } from './calendar/calendar.component';
 
 @NgModule({
   declarations: [
@@ -93,7 +94,8 @@ import { TimeFormatPipe } from "./pipes/timeFormat";
     OverlayConfirmacaoComponent,
     ProdutorHomeComponent,
     TableRegistroHistoricoComponent,
-    HistoricoComponent
+    HistoricoComponent,
+    CalendarComponent
   ],
   imports: [
     BrowserModule,
