@@ -84,6 +84,10 @@ export class PropriedadeCadastroComponent implements OnInit, OnDestroy {
     });
   }
 
+  newTanque() {
+    this.router.navigate(['/tanque/cadastrar']);
+  }
+
 
   getEnderecoViaCep() {
     this.viaCepService.getEndereco(this.form.get('endereco.cep').value).pipe(takeUntil(this.destroy$)
@@ -102,6 +106,21 @@ export class PropriedadeCadastroComponent implements OnInit, OnDestroy {
     document.querySelector('.menu-arrow-icon-select').classList.toggle('menu-arrow-icon-select-open');
 
     document.querySelector('.select-infos').classList.toggle('select-infos-open');
+  }
+
+  enableEdit(inputId: string): void {
+    const allInputs = document.querySelectorAll('.form-control');
+    const editingInput = document.getElementById(inputId);
+
+    allInputs.forEach(input => {
+      if (input !== editingInput) {
+        input.classList.add('click-disabled');
+        input.classList.remove('focus-editing-input');
+      }
+    });
+
+    editingInput.classList.toggle('click-disabled');
+    editingInput.classList.toggle('focus-editing-input');
   }
 
   onDownload(): void {

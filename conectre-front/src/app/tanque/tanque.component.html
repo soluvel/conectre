@@ -1,0 +1,139 @@
+<div style="position: relative; min-height: 85vh">
+    <div class="container-header">
+      <a href="/inicio"><mat-icon class="icon back-icon material-symbols-rounded">arrow_back</mat-icon></a>
+      <span class="back-text">Voltar</span>
+    </div>
+
+    <div class="container-progress-bar">
+        <div class="progress-bar-box">
+            <div class="progress-bar-header">
+                <span style="font-size: 14px; color: #71717A">Criando tanque</span>
+                <span style="font-size: 14px; color: #71717A">1/4</span>
+            </div>
+            <div class="progress-bar">
+                <div class="bar-progress"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="solid-container">
+        <div class="fake-input">
+            <span class="title-fake-input">Produtor vinculado</span>
+            <span class="text-fake-input">nome produtor</span>
+        </div>
+        <div class="fake-input">
+            <span class="title-fake-input">Propriedade vinculada</span>
+            <span class="text-fake-input">nome propriedade</span>
+        </div>
+    </div>
+
+    <div class="container-form">
+        <form [formGroup]="form">
+            <span style="font-size: 14px; font-weight: 500; color: #A1A1AA;">Tanque</span>
+            <div class="row g-3" style="margin-top: 0px; margin-bottom: 20px;">
+                <div class="col-3">
+                    <label for="tipoTanque" class="form-label required">Tipo de tanque</label>
+                    <div class="input-group">
+                        <select id="tipoTanque" class="form-control" formControlName="tipoTanque">
+                            <option value="" disabled selected hidden>Selecione um tipo...</option>
+                            <option *ngFor="let tipo of tiposTanque">
+                                {{ tipo }}
+                            </option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <label for="area" class="form-label required">Área (m²)</label>
+                    <div class="input-group">
+                        <input type="text" id="area" class="form-control" [ngClass]="{'click-disabled': isEditando}" formControlName="area" aria-describedby="area">
+                        <mat-icon class="icon edit-icon material-symbols-rounded" *ngIf="isEditando" (click)="enableEdit('area')">edit</mat-icon>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <label for="profundidadeMedia" class="form-label required">Profundidade média (m)</label>
+                    <div class="input-group">
+                        <input type="text" id="profundidadeMedia" class="form-control" [ngClass]="{'click-disabled': isEditando}" formControlName="profundidadeMedia" aria-describedby="profundidadeMedia">
+                        <mat-icon class="icon edit-icon material-symbols-rounded" *ngIf="isEditando" (click)="enableEdit('profundidadeMedia')">edit</mat-icon>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <label for="volume" class="form-label required">Volume (m³)</label>
+                        <div class="input-group">
+                        <input type="text" id="volume" class="form-control" [ngClass]="{'click-disabled': isEditando}" formControlName="volume" aria-describedby="volume">
+                    </div>
+                </div>
+            </div>
+    
+            <span style="font-size: 14px; font-weight: 500; color: #A1A1AA;">Aeradores</span>
+            <div class="row g-3" style="margin-top: 0px; margin-bottom: 40px;">
+                <div class="col-6">
+                    <label for="nmrAeradores" class="form-label required">Nº de aeradores</label>
+                    <div class="input-group">
+                        <input type="text" id="nmrAeradores" class="form-control" [ngClass]="{'click-disabled': isEditando}" formControlName="nmrAeradores" aria-describedby="nmrAeradores">
+                        <mat-icon class="icon edit-icon material-symbols-rounded" *ngIf="isEditando" (click)="enableEdit('nmrAeradores')">edit</mat-icon>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <label for="potenciaAeracaoTotal" class="form-label required">Potência de aeração total (CV)</label>
+                    <div class="input-group">
+                        <input type="text" id="potenciaAeracaoTotal" class="form-control" [ngClass]="{'click-disabled': isEditando}" formControlName="potenciaAeracaoTotal">
+                        <mat-icon class="icon edit-icon material-symbols-rounded" *ngIf="isEditando" (click)="enableEdit('potenciaAeracaoTotal')">edit</mat-icon>
+                    </div>
+                </div>
+            </div>
+        
+            <span style="font-size: 14px; font-weight: 500; color: #A1A1AA;">Alimentação</span>
+            <div class="row g-3" style="margin-top: 0px; margin-bottom: 20px;">
+                <div class="col-3">
+                    <label for="tipoAlimentacao" class="form-label required">Tipo de alimentação</label>
+                    <div class="input-group">
+                        <select id="tipoAlimentacao" class="form-control" formControlName="tipoAlimentacao">
+                            <option value="" disabled selected hidden>Selecione um tipo...</option>
+                            <option *ngFor="let tipo of tiposAlimentacao">
+                                {{ tipo }}
+                            </option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <label for="abastecimento" class="form-label required">Abastecimento</label>
+                    <div class="input-group">
+                        <select id="abastecimento" class="form-control" formControlName="abastecimento">
+                            <option value="" disabled selected hidden>Selecione um tipo...</option>
+                            <option *ngFor="let tipo of tiposAbastecimento">
+                                {{ tipo }}
+                            </option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <label for="maxAbastecimento" class="form-label required">Máximo de Abastecimento (m³/h)</label>
+                    <div class="input-group">
+                        <input type="text" id="maxAbastecimento" class="form-control" [ngClass]="{'click-disabled': isEditando}" formControlName="maxAbastecimento" aria-describedby="maxAbastecimento">
+                        <mat-icon class="icon edit-icon material-symbols-rounded" *ngIf="isEditando" (click)="enableEdit('maxAbastecimento')">edit</mat-icon>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <label for="redeEletrica" class="form-label required">Rede Elétrica</label>
+                    <div class="input-group">
+                        <select id="redeEletrica" class="form-control" formControlName="redeEletrica">
+                            <option value="" disabled selected hidden>Selecione um tipo...</option>
+                            <option *ngFor="let tipo of tiposEletrica">
+                                {{ tipo }}
+                            </option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+  
+    <div class="actions-footer">
+      <button class="button-no-border" style="margin-right: 10px">Limpar dados</button>
+      <button [disabled]="!form.valid" (click)="onSubmit()" [ngClass]="{'button-disabled': !form.valid}">
+        Próximo
+      </button>
+    </div>
+
+</div>
+  

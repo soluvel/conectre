@@ -22,7 +22,7 @@
 
     <div class="buttons-box">
       <!-- <input type="date" class="form-control" id="dataColeta"  [(ngModel)]="selectedDate"> -->
-      <button type="button" class="button-geral export-button" style="margin-left: 10px">Exportar</button>
+      <button type="button" class="button-geral export-button" style="margin-left: 10px" (click)="openExportBox()">Exportar</button>
       <button type="button" class="button-white see-hist-button" (click)="findByDate()">Consultar histórico</button>
     </div>
   </div>
@@ -293,8 +293,8 @@
               </ng-template>
               <div class="types-box">
                 <div class="type-calendar-container">
-                  <app-calendar [currentMonth]="month1" (monthChanged)="handleMonthChange1($event)"></app-calendar>
-                  <app-calendar [currentMonth]="month2" (monthChanged)="handleMonthChange2($event)"></app-calendar>
+                  <app-calendar class="calendar" [specificMonthDate]="month1" (monthChanged)="handleMonthChange1($event)"></app-calendar>
+                  <!-- <app-calendar [specificMonthDate]="month2" (monthChanged)="handleMonthChange2($event)"></app-calendar> -->
                 </div>
               </div>
             </mat-tab>
@@ -314,7 +314,7 @@
                   </span>
                 </div>
                 <div class="clean-button-box">
-                  <span class="button-no-border clean-button">Limpar seleção</span>
+                  <span class="button-no-border clean-button" (click)="cleanMonthSelection()">Limpar seleção</span>
                 </div>
               </div>
             </mat-tab>

@@ -1,20 +1,46 @@
 <div class="calendar-container">
-    
-    <div class="calendar-header">
-        <mat-icon class="icon-close material-symbols-rounded" (click)="changeMonth(-1)">chevron_left</mat-icon>
-        <span class="calendar-header-month">{{ formattedMonth }}</span>
-        <mat-icon class="icon-close material-symbols-rounded" (click)="changeMonth(1)">chevron_right</mat-icon>
-    </div>
-
-    <div class="weekdays">
-        <div *ngFor="let weekday of weekdays" class="weekday">
-            {{ weekday }}
+    <div class="calendar-header-box">
+        <div class="calendar-header">
+            <mat-icon class="calendar-icon-arrow material-symbols-rounded"
+                (click)="changeMonth(-1)">chevron_left</mat-icon>
+            <span class="calendar-header-month">{{ formattedMonth }}</span>
+            <span class="calendar-header-month">{{ formattedMonth2 }}</span>
+            <mat-icon class="calendar-icon-arrow material-symbols-rounded"
+                (click)="changeMonth(1)">chevron_right</mat-icon>
         </div>
     </div>
 
-    <div class="days-grid">
-        <div *ngFor="let day of days" [class.today]="isToday(day.date)" class="day">
-            {{ day.day }}
+    <div class="calendar-container-boxes">
+        <div class="calendar-container-box">
+            <div class="weekdays">
+                <div *ngFor="let weekday of weekdays" class="weekday">
+                    {{ weekday }}
+                </div>
+            </div>
+
+            <div class="days-grid">
+                <div *ngFor="let day of days" [class.empty]="!day.isCurrentMonth" class="day"
+                    [ngClass]="{'active': isSelectedDay(day.dateKey), 'today': day.isCurrentDay, 'dateInRange': isInRange(day.dateKey)}"
+                    (click)="selectDay(day.dateKey)">
+                    {{ day.isCurrentMonth ? day.day : '' }}
+                </div>
+            </div>
+        </div>
+
+        <div class="calendar-container-box">
+            <div class="weekdays">
+                <div *ngFor="let weekday of weekdays" class="weekday">
+                    {{ weekday }}
+                </div>
+            </div>
+
+            <div class="days-grid">
+                <div *ngFor="let day of nextDays" [class.empty]="!day.isNextMonth" class="day"
+                    [ngClass]="{'active': isSelectedDay(day.nextDateKey), 'today': day.isNextDay, 'dateInRange': isInRange(day.nextDateKey)}"
+                    (click)="selectDay(day.nextDateKey)">
+                    {{ day.isNextMonth ? day.nextDay : '' }}
+                </div>
+            </div>
         </div>
     </div>
 </div>

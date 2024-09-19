@@ -1,0 +1,181 @@
+<div style="position: relative; min-height: 85vh">
+    <div class="container-header">
+      <a href="/inicio"><mat-icon class="icon back-icon material-symbols-rounded">arrow_back</mat-icon></a>
+      <span class="back-text">Voltar</span>
+    </div>
+
+    <div class="container-progress-bar">
+        <div class="progress-bar-box">
+            <div class="progress-bar-header">
+                <span style="font-size: 14px; color: #71717A">Criando lote</span>
+                <span style="font-size: 14 px; color: #71717A">2/4</span>
+            </div>
+            <div class="progress-bar">
+                <div class="bar-progress"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="solid-container">
+        <div class="fake-input">
+            <span class="title-fake-input">Produtor vinculado</span>
+            <span class="text-fake-input">nome produtor</span>
+        </div>
+        <div class="fake-input">
+            <span class="title-fake-input">Propriedade vinculada</span>
+            <span class="text-fake-input">nome propriedade</span>
+        </div>
+        <div class="fake-input">
+            <span class="title-fake-input">Tanque vinculado</span>
+            <span class="text-fake-input">nome tanque</span>
+        </div>
+    </div>
+
+    <div class="container-form">
+        <form [formGroup]="form">
+            <span style="font-size: 14px; font-weight: 500; color: #A1A1AA;">Ambiente</span>
+            <div class="row g-3" style="margin-top: 0px; margin-bottom: 20px;">
+                <div class="col-4">
+                    <label for="tanque" class="form-label required">Tanque</label>
+                    <div class="input-group">
+                        <input type="text" id="tanque" class="form-control" [ngClass]="{'click-disabled': isEditando}" formControlName="tanque" aria-describedby="tanque">
+                        <mat-icon class="icon edit-icon material-symbols-rounded" *ngIf="isEditando" (click)="enableEdit('tanque')">edit</mat-icon>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <label for="lote" class="form-label required">Lote</label>
+                    <div class="input-group">
+                        <input type="text" id="lote" class="form-control" [ngClass]="{'click-disabled': isEditando}" formControlName="lote" aria-describedby="lote">
+                        <mat-icon class="icon edit-icon material-symbols-rounded" *ngIf="isEditando" (click)="enableEdit('lote')">edit</mat-icon>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <label for="ciclo" class="form-label required">Ciclo</label>
+                        <div class="input-group">
+                        <input type="text" id="ciclo" class="form-control" [ngClass]="{'click-disabled': isEditando}" formControlName="ciclo" aria-describedby="ciclo">
+                    </div>
+                </div>
+
+                <div class="col-4">
+                    <label for="tipoTanque" class="form-label required">Tipo do tanque</label>
+                    <div class="input-group">
+                        <input type="text" id="tipoTanque" class="form-control" [ngClass]="{'click-disabled': isEditando}" formControlName="tipoTanque" aria-describedby="tipoTanque">
+                        <mat-icon class="icon edit-icon material-symbols-rounded" *ngIf="isEditando" (click)="enableEdit('tipoTanque')">edit</mat-icon>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <label for="area" class="form-label required">Área (m²)</label>
+                    <div class="input-group">
+                        <input type="text" id="area" class="form-control" [ngClass]="{'click-disabled': isEditando}" formControlName="area" aria-describedby="area">
+                        <mat-icon class="icon edit-icon material-symbols-rounded" *ngIf="isEditando" (click)="enableEdit('area')">edit</mat-icon>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <label for="aeracaoTotal" class="form-label required">Aeração total (CV)</label>
+                        <div class="input-group">
+                        <input type="text" id="aeracaoTotal" class="form-control" [ngClass]="{'click-disabled': isEditando}" formControlName="aeracaoTotal" aria-describedby="aeracaoTotal">
+                    </div>
+                </div>
+            </div>
+
+            <span style="font-size: 14px; font-weight: 500; color: #A1A1AA;">Peixes</span>
+            <div class="row g-3" style="margin-top: 0px; margin-bottom: 20px;">
+                <div class="col-4">
+                    <label for="especie" class="form-label required">Espécie</label>
+                    <div class="input-group">
+                        <input type="text" id="especie" class="form-control" [ngClass]="{'click-disabled': isEditando}" formControlName="especie" aria-describedby="especie">
+                        <mat-icon class="icon edit-icon material-symbols-rounded" *ngIf="isEditando" (click)="enableEdit('especie')">edit</mat-icon>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <label for="origem" class="form-label required">Origem</label>
+                    <div class="input-group">
+                        <input type="text" id="origem" class="form-control" [ngClass]="{'click-disabled': isEditando}" formControlName="origem" aria-describedby="origem">
+                        <mat-icon class="icon edit-icon material-symbols-rounded" *ngIf="isEditando" (click)="enableEdit('origem')">edit</mat-icon>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <label for="dataAlojamento" class="form-label required">Data de alojamento</label>
+                        <div class="input-group">
+                        <input type="text" id="dataAlojamento" class="form-control" [ngClass]="{'click-disabled': isEditando}" formControlName="dataAlojamento" aria-describedby="dataAlojamento">
+                    </div>
+                </div>
+
+                <div class="col-4">
+                    <label for="primeiraRemessa" class="form-label required">Qtd. recebida (1ª remessa)</label>
+                    <div class="input-group">
+                        <input type="text" id="primeiraRemessa" class="form-control" [ngClass]="{'click-disabled': isEditando}" formControlName="primeiraRemessa" aria-describedby="primeiraRemessa">
+                        <mat-icon class="icon edit-icon material-symbols-rounded" *ngIf="isEditando" (click)="enableEdit('primeiraRemessa')">edit</mat-icon>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <label for="mortalidadeAlojamento" class="form-label required">Mortalidade de Alojamento (7 dias)</label>
+                    <div class="input-group">
+                        <input type="text" id="mortalidadeAlojamento" class="form-control" [ngClass]="{'click-disabled': isEditando}" formControlName="mortalidadeAlojamento" aria-describedby="mortalidadeAlojamento">
+                        <mat-icon class="icon edit-icon material-symbols-rounded" *ngIf="isEditando" (click)="enableEdit('mortalidadeAlojamento')">edit</mat-icon>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <label for="segundaRemessa" class="form-label required">Qtd. recebida (2ª remessa)</label>
+                        <div class="input-group">
+                        <input type="text" id="segundaRemessa" class="form-control" [ngClass]="{'click-disabled': isEditando}" formControlName="segundaRemessa" aria-describedby="segundaRemessa">
+                    </div>
+                </div>
+                
+                <div class="col-4">
+                    <label for="pesoMedio" class="form-label required">Peso Médio (Kg)</label>
+                    <div class="input-group">
+                        <input type="text" id="pesoMedio" class="form-control" [ngClass]="{'click-disabled': isEditando}" formControlName="pesoMedio" aria-describedby="pesoMedio">
+                        <mat-icon class="icon edit-icon material-symbols-rounded" *ngIf="isEditando" (click)="enableEdit('pesoMedio')">edit</mat-icon>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <label for="biomassaAlojada" class="form-label required">Biomassa total alojada (Kg)</label>
+                    <div class="input-group">
+                        <input type="text" id="biomassaAlojada" class="form-control" [ngClass]="{'click-disabled': isEditando}" formControlName="biomassaAlojada" aria-describedby="biomassaAlojada">
+                        <mat-icon class="icon edit-icon material-symbols-rounded" *ngIf="isEditando" (click)="enableEdit('biomassaAlojada')">edit</mat-icon>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <label for="densidade" class="form-label required">Densidade (Px/m²)</label>
+                        <div class="input-group">
+                        <input type="text" id="densidade" class="form-control" [ngClass]="{'click-disabled': isEditando}" formControlName="densidade" aria-describedby="densidade">
+                    </div>
+                </div>
+                
+                <div class="col-4">
+                    <label for="biomassaCVAtual" class="form-label required">Biomassa por CV Atual (Kg)</label>
+                    <div class="input-group">
+                        <input type="text" id="biomassaCVAtual" class="form-control" [ngClass]="{'click-disabled': isEditando}" formControlName="biomassaCVAtual" aria-describedby="biomassaCVAtual">
+                        <mat-icon class="icon edit-icon material-symbols-rounded" *ngIf="isEditando" (click)="enableEdit('biomassaCVAtual')">edit</mat-icon>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <label for="PesoAbateEsperado" class="form-label required">Peso de abate esperado (Kg)</label>
+                    <div class="input-group">
+                        <input type="text" id="PesoAbateEsperado" class="form-control" [ngClass]="{'click-disabled': isEditando}" formControlName="PesoAbateEsperado" aria-describedby="PesoAbateEsperado">
+                        <mat-icon class="icon edit-icon material-symbols-rounded" *ngIf="isEditando" (click)="enableEdit('PesoAbateEsperado')">edit</mat-icon>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <label for="biomassaEstimada" class="form-label required">Biomassa estimada/CV fase final (Kg/CV)</label>
+                        <div class="input-group">
+                        <input type="text" id="biomassaEstimada" class="form-control" [ngClass]="{'click-disabled': isEditando}" formControlName="biomassaEstimada" aria-describedby="biomassaEstimada">
+                    </div>
+                </div>
+            </div>
+     
+        </form>
+    </div>
+  
+    <div class="actions-footer">
+        <button class="button-clean" style="margin-left: 10px">Cadastrar depois</button>
+
+        <div class="buttons-box">
+            <button class="button-no-border" style="margin-right: 12px">Limpar dados</button>
+            <button [disabled]="!form.valid" (click)="onSubmit()" [ngClass]="{'button-disabled': !form.valid}">Próximo</button>
+        </div>
+    </div>
+
+</div>
+  

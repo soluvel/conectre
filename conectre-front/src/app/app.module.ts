@@ -60,6 +60,8 @@ import { DatePipe } from "@angular/common";
 import { DateFormatPipe } from "./pipes/dateFormat";
 import { TimeFormatPipe } from "./pipes/timeFormat";
 import { CalendarComponent } from './calendar/calendar.component';
+import { TanqueComponent } from './tanque/tanque.component';
+import { LoteComponent } from './lote/lote.component';
 
 @NgModule({
   declarations: [
@@ -95,7 +97,9 @@ import { CalendarComponent } from './calendar/calendar.component';
     ProdutorHomeComponent,
     TableRegistroHistoricoComponent,
     HistoricoComponent,
-    CalendarComponent
+    CalendarComponent,
+    TanqueComponent,
+    LoteComponent
   ],
   imports: [
     BrowserModule,
