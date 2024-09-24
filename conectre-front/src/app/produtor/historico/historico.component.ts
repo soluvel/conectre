@@ -1,6 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, QueryList, ViewChildren } from '@angular/core';
 import { ActivatedRoute } from "@angular/router";
 import { MedicaoService } from "../medicao.service";
+import { CalendarComponent } from "../../calendar/calendar.component";
+import { addMonths } from "date-fns/addMonths";
+import { ExcelService } from "../../excel.service";
+
+function startOfMonth(date: Date) {
+  return undefined;
+}
 
 @Component({
   selector: 'app-historico',

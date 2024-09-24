@@ -36,8 +36,8 @@
                     <div class="input-group">
                         <select id="tipoTanque" class="form-control" formControlName="tipoTanque">
                             <option value="" disabled selected hidden>Selecione um tipo...</option>
-                            <option *ngFor="let tipo of tiposTanque">
-                                {{ tipo }}
+                            <option *ngFor="let tipo of tiposTanque" [value]="tipo.name">
+                                {{ tipo.description }}
                             </option>
                         </select>
                     </div>
@@ -63,14 +63,14 @@
                     </div>
                 </div>
             </div>
-    
+
             <span style="font-size: 14px; font-weight: 500; color: #A1A1AA;">Aeradores</span>
             <div class="row g-3" style="margin-top: 0px; margin-bottom: 40px;">
                 <div class="col-6">
-                    <label for="nmrAeradores" class="form-label required">Nº de aeradores</label>
+                    <label for="noAeradores" class="form-label required">Nº de aeradores</label>
                     <div class="input-group">
-                        <input type="text" id="nmrAeradores" class="form-control" [ngClass]="{'click-disabled': isEditando}" formControlName="nmrAeradores" aria-describedby="nmrAeradores">
-                        <mat-icon class="icon edit-icon material-symbols-rounded" *ngIf="isEditando" (click)="enableEdit('nmrAeradores')">edit</mat-icon>
+                        <input type="text" id="noAeradores" class="form-control" [ngClass]="{'click-disabled': isEditando}" formControlName="noAeradores" aria-describedby="noAeradores">
+                        <mat-icon class="icon edit-icon material-symbols-rounded" *ngIf="isEditando" (click)="enableEdit('noAeradores')">edit</mat-icon>
                     </div>
                 </div>
                 <div class="col-6">
@@ -81,7 +81,7 @@
                     </div>
                 </div>
             </div>
-        
+
             <span style="font-size: 14px; font-weight: 500; color: #A1A1AA;">Alimentação</span>
             <div class="row g-3" style="margin-top: 0px; margin-bottom: 20px;">
                 <div class="col-3">
@@ -89,8 +89,8 @@
                     <div class="input-group">
                         <select id="tipoAlimentacao" class="form-control" formControlName="tipoAlimentacao">
                             <option value="" disabled selected hidden>Selecione um tipo...</option>
-                            <option *ngFor="let tipo of tiposAlimentacao">
-                                {{ tipo }}
+                            <option *ngFor="let tipo of tiposAlimentacao"  [value]="tipo.name">
+                                {{ tipo.description }}
                             </option>
                         </select>
                     </div>
@@ -100,8 +100,8 @@
                     <div class="input-group">
                         <select id="abastecimento" class="form-control" formControlName="abastecimento">
                             <option value="" disabled selected hidden>Selecione um tipo...</option>
-                            <option *ngFor="let tipo of tiposAbastecimento">
-                                {{ tipo }}
+                            <option *ngFor="let tipo of tiposAbastecimento" [value]="tipo.name">
+                                {{ tipo.description }}
                             </option>
                         </select>
                     </div>
@@ -118,8 +118,8 @@
                     <div class="input-group">
                         <select id="redeEletrica" class="form-control" formControlName="redeEletrica">
                             <option value="" disabled selected hidden>Selecione um tipo...</option>
-                            <option *ngFor="let tipo of tiposEletrica">
-                                {{ tipo }}
+                            <option *ngFor="let tipo of tiposEletrica" [value]="tipo.name">
+                                {{ tipo.description }}
                             </option>
                         </select>
                     </div>
@@ -127,7 +127,7 @@
             </div>
         </form>
     </div>
-  
+
     <div class="actions-footer">
       <button class="button-no-border" style="margin-right: 10px">Limpar dados</button>
       <button [disabled]="!form.valid" (click)="onSubmit()" [ngClass]="{'button-disabled': !form.valid}">
@@ -136,4 +136,3 @@
     </div>
 
 </div>
-  

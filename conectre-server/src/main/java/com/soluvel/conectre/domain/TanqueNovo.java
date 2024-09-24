@@ -1,5 +1,6 @@
 package com.soluvel.conectre.domain;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -27,6 +28,7 @@ import java.io.Serializable;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "tanque_novo")
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class TanqueNovo implements Serializable {
 
     @Serial

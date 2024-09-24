@@ -1,8 +1,9 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
-import { Subject, takeUntil } from "rxjs";
-import { ToastrService } from "ngx-toastr";
-import { ActivatedRoute, Router } from "@angular/router";
+import { filter, Subject, takeUntil } from "rxjs";
+import { ActivatedRoute, NavigationEnd, Router } from "@angular/router";
+import { EnumValueService } from "../enumValue.service";
+import { TanqueNovoService } from "../tanqueNovo.service";
 
 @Component({
   selector: 'app-tanque',
@@ -17,38 +18,88 @@ export class TanqueComponent implements OnInit, OnDestroy  {
   private destroy$ = new Subject<void>();
   msgButton: string;
   form: FormGroup;
-  produtores: any;
+  produtor: any;
+  propriedade: any;
   exibirTanque: boolean = false;
-  tiposTanque = ['Escavado', 'Geomembrana', 'Elevado', 'Concreto', 'Outro'];
-  tiposAlimentacao = ['Manual', 'Alimentador Arrasto', 'Alimentador Automático', 'Outro'];
-  tiposAbastecimento = ['Bombeamento', 'Gravidade', 'Chuva', 'Outro'];
-  tiposEletrica = ['Trifásica 220V', 'Trifásica 380V', 'Monofásica', 'Trifásica 220V e 380V', 'Outro'];
+  tiposTanque = [];
+  tiposAlimentacao = [];
+  tiposAbastecimento = [];
+  tiposEletrica = [];
 
   constructor(private formBuilder: FormBuilder,
-              // private service: PropriedadeService,
-              // private produtorService: ProdutorService,
-              // private excelService: ExcelService,
-              private toastr: ToastrService,
-              // private viaCepService: ViaCepService,
+              private enumValueService: EnumValueService,
+              private tanqueService: TanqueNovoService,
               private route: ActivatedRoute,
               private router: Router) {
     this.form = this.formBuilder.group({
       id: [],
+      produtor: [],
+      propriedade: [],
       tipoTanque: ['', Validators.required],
       area: ['', Validators.required],
       profundidadeMedia: ['', Validators.required],
       volume: ['', Validators.required],
-      nmrAeradores: ['', Validators.required],
+      noAeradores: ['', Validators.required],
       potenciaAeracaoTotal: ['', Validators.required],
       tipoAlimentacao: ['', Validators.required],
       abastecimento: ['', Validators.required],
       maxAbastecimento: ['', Validators.required],
       redeEletrica: ['', Validators.required],
+      produtorId: [''],
+      propriedadeId: [''],
     });
   }
 
   ngOnInit() {
-    
+
+    this.route.paramMap.subscribe(() => {
+      const navigation = this.router.getCurrentNavigation();
+      if (navigation?.extras.state) {
+        this.propriedade = navigation.extras.state['propriedade'];
+      } else {
+        this.propriedade = history.state.propriedade;
+      }
+    });
+
+    this.enumValueService.getEnum("TipoTanque").pipe(takeUntil(this.destroy$)
+    ).subscribe({
+      next: response => {
+        this.tiposTanque = response;
+      },
+      error: error => {
+        console.error('Erro:', error);
+      }
+    });
+
+    this.enumValueService.getEnum("Abastecimento").pipe(takeUntil(this.destroy$)
+    ).subscribe({
+      next: response => {
+        this.tiposAbastecimento = response;
+      },
+      error: error => {
+        console.error('Erro:', error);
+      }
+    });
+
+    this.enumValueService.getEnum("RedeEletrica").pipe(takeUntil(this.destroy$)
+    ).subscribe({
+      next: response => {
+        this.tiposEletrica = response;
+      },
+      error: error => {
+        console.error('Erro:', error);
+      }
+    });
+
+    this.enumValueService.getEnum("TipoAlimentacao").pipe(takeUntil(this.destroy$)
+    ).subscribe({
+      next: response => {
+        this.tiposAlimentacao = response;
+      },
+      error: error => {
+        console.error('Erro:', error);
+      }
+    });
   }
 
   ngOnDestroy() {
@@ -57,11 +108,27 @@ export class TanqueComponent implements OnInit, OnDestroy  {
   }
 
   getPropriedade(): void {
-    
+
   }
 
   onSubmit() {
-    
+
+    this.form.get('propriedadeId').setValue(1)
+    this.form.get('produtorId').setValue(8)
+
+    this.tanqueService.save(this.form.getRawValue()).pipe(takeUntil(this.destroy$)
+    ).subscribe({
+      next: response => {
+        console.log("salvo com sucesso")
+        this.router.navigate(['/lote/cadastrar']);
+
+      },
+      error: error => {
+        console.error('Erro:', error);
+      }
+    });
+
+
   }
 
 

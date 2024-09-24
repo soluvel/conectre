@@ -85,7 +85,7 @@ export class PropriedadeCadastroComponent implements OnInit, OnDestroy {
   }
 
   newTanque() {
-    this.router.navigate(['/tanque/cadastrar']);
+    this.router.navigate(['/tanque/cadastrar'], { state: { propriedade: this.form.getRawValue() } });
   }
 
 
