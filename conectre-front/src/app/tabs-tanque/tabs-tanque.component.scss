@@ -156,10 +156,11 @@ textarea:focus, input:focus, select:focus {
   left: 50%;
   transform: translate(-50%, -50%);
   width: 510px;
-  height: 310px !important;
+  height: auto !important;
   background-color: white;
   z-index: 9999;
   border-radius: 8px;
+  padding-bottom: 10px;
 }
 
 .icon-close {
@@ -218,6 +219,75 @@ textarea:focus, input:focus, select:focus {
   margin-top: 10px;
 }
 
+.observation-tabs {
+  padding: 24px;
+  padding-bottom: 0;
+}
+
+::ng-deep {
+  .observation-tabs .mat-mdc-tab-group.mat-mdc-tab-group-stretch-tabs > .mat-mdc-tab-header .mat-mdc-tab {
+    width: auto !important;
+  }
+
+  .observation-tabs .mat-mdc-tab.mdc-tab--active .mdc-tab__text-label {
+    background-color: transparent;
+    border-bottom: 2px solid #068fff;
+    color: #068fff !important;
+  }
+
+  .observation-tabs .mat-mdc-tab.mdc-tab--active {
+    background: transparent;
+    border: none;
+  }
+
+  .observation-tabs .mat-mdc-tab-labels {
+    width: 70%;
+  }
+
+  .observation-tabs .mdc-tab {
+    padding-right: 0 !important;
+  }
+}
+
+.types-box {
+  margin-top: 10px;
+  height: auto;
+}
+
+.observation-secondary-title {
+  font-size: 16px;
+  color: #000;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.type-title-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.type-title {
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  flex: 1 1 calc(33.333% - 10px);
+  box-sizing: border-box;
+  font-size: 12px;
+  font-weight: 400;
+  color: #242424;
+  padding: 6px 12px;
+  border: 1px solid #a1a1a1;
+  border-radius: 32px;
+  cursor: pointer;
+}
+
+.type-title.active {
+  background: #D7F2FF;
+  border: 1px solid #068fff;
+}
+
 .message {
   resize: none;
   width: 100%;
@@ -227,6 +297,10 @@ textarea:focus, input:focus, select:focus {
   border: 1px solid #D1D1D1;
   border-bottom: 1px solid #616161;
   border-radius: 4px; 
+}
+
+.clean-button {
+  background: transparent !important;
 }
 
 .form-control {

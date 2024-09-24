@@ -24,12 +24,12 @@ export class ProdutorCadastroComponent implements OnInit, OnDestroy {
   imagePreview: string | ArrayBuffer | null = null;
 
   constructor(private formBuilder: FormBuilder,
-              private toastr: ToastrService,
-              private route: ActivatedRoute,
-              private service: ProdutorService,
-              private empresaService: EmpresaService,
-              private router: Router,
-              public storage: StorageService) {
+    private toastr: ToastrService,
+    private route: ActivatedRoute,
+    private service: ProdutorService,
+    private empresaService: EmpresaService,
+    private router: Router,
+    public storage: StorageService) {
     this.form = this.formBuilder.group({
       id: [],
       nome: ['', Validators.required],
@@ -50,6 +50,9 @@ export class ProdutorCadastroComponent implements OnInit, OnDestroy {
     this.route.paramMap.subscribe(params => {
       this.produtorId = params.get('id');
       this.getProdutor();
+
+      const pageTitle = !this.produtorId ? "Cadastro de Produtor" : undefined; 
+      this.storage.updatePageTitle(pageTitle);
     });
 
     this.empresaService.getEmpresasReduce().subscribe(data => {
@@ -83,6 +86,8 @@ export class ProdutorCadastroComponent implements OnInit, OnDestroy {
       }
 
       this.isEditando = true;
+
+      this.storage.updatePageTitle(data['nome']);
     });
   }
 

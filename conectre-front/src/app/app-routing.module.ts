@@ -11,6 +11,8 @@ import { ProdutorCadastroComponent } from "./produtor/produtor-cadastro/produtor
 import { NotificacaoComponent } from "./notificacao/notificacao.component";
 import { PropriedadeCadastroComponent } from "./produtor/propriedade-cadastro/propriedade-cadastro.component";
 import { HistoricoComponent } from "./produtor/historico/historico.component";
+import { TanqueComponent } from "./tanque/tanque.component";
+import { LoteComponent } from "./lote/lote.component";
 
 const routes: Routes = [
   {path: '', redirectTo: 'inicio', pathMatch: 'full'},
@@ -25,6 +27,10 @@ const routes: Routes = [
   {path: 'produtor/editar/:id', component: ProdutorCadastroComponent, data: {role: ['ADM_TREVISAN', 'EMPRESA', 'TECNICO']}, canActivate: [AuthGuard]},
   {path: 'propriedade/cadastrar', component: PropriedadeCadastroComponent, data: {role: ['ADM_TREVISAN', 'EMPRESA','TECNICO', 'PRODUTOR']}, canActivate: [AuthGuard]},
   {path: 'propriedade/editar/:id', component: PropriedadeCadastroComponent, data: {role: ['ADM_TREVISAN', 'EMPRESA', 'TECNICO', 'PRODUTOR']}, canActivate: [AuthGuard]},
+  {path: 'tanque/cadastrar', component: TanqueComponent, data: {role: ['ADM_TREVISAN', 'EMPRESA','TECNICO', 'PRODUTOR']}, canActivate: [AuthGuard]},
+  {path: 'tanque/editar/:id', component: TanqueComponent, data: {role: ['ADM_TREVISAN', 'EMPRESA', 'TECNICO', 'PRODUTOR']}, canActivate: [AuthGuard]},
+  {path: 'lote/cadastrar', component: LoteComponent, data: {role: ['ADM_TREVISAN', 'EMPRESA','TECNICO', 'PRODUTOR']}, canActivate: [AuthGuard]},
+  {path: 'lote/editar/:id', component: LoteComponent, data: {role: ['ADM_TREVISAN', 'EMPRESA', 'TECNICO', 'PRODUTOR']}, canActivate: [AuthGuard]},
   {path: 'historico/:id', component: HistoricoComponent, data: {role: ['ADM_TREVISAN', 'TECNICO', 'PRODUTOR']}, canActivate: [AuthGuard]},
   {path: 'notificacao', component: NotificacaoComponent, data: {role: ['ADM_TREVISAN', 'TECNICO']}, canActivate: [AuthGuard]},
   {path: 'acesso-negado', component: AcessoNegadoComponent},

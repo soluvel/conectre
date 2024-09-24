@@ -67,7 +67,8 @@
 
   <div class="actions-footer">
     <button class="button-no-border" style="margin-right: 10px">Limpar dados</button>
-    <button [disabled]="!form.valid" (click)="onSubmit()" [ngClass]="{'button-disabled': !form.valid}">{{ isEditando ? 'Salvar Alterações' : 'Cadastrar Produtor' }}
+    <button [disabled]="!form.valid" (click)="onSubmit()" [ngClass]="{'button-disabled': !form.valid}">
+      {{ isEditando ? 'Salvar Alterações' : 'Cadastrar Produtor' }}
     </button>
   </div>
 

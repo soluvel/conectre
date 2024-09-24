@@ -2,8 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a60967e0-d34f-4e6a-95ec-bb75af3c1307" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/conectre-front/src/app/empresa/table-empresa/empresa-table.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/conectre-front/src/app/empresa/table-empresa/empresa-table.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/conectre-front/src/app/empresa/table-empresa/empresa-table.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/conectre-front/src/app/empresa/table-empresa/empresa-table.component.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/conectre-front/src/app/app.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/conectre-front/src/app/app.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/conectre-front/src/app/app.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/conectre-front/src/app/app.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/conectre-front/src/app/empresa/empresa-crud/empresa-cadastro/empresa.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/conectre-front/src/app/empresa/empresa-crud/empresa-cadastro/empresa.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/conectre-front/src/app/home/home.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/conectre-front/src/app/home/home.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/conectre-front/src/app/produtor/produtor-cadastro/produtor-cadastro.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/conectre-front/src/app/produtor/produtor-cadastro/produtor-cadastro.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/conectre-front/src/app/storage.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/conectre-front/src/app/storage.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/conectre-front/src/app/tabs-tanque/tabs-tanque.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/conectre-front/src/app/tabs-tanque/tabs-tanque.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/conectre-front/src/app/tabs-tanque/tabs-tanque.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/conectre-front/src/app/tabs-tanque/tabs-tanque.component.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/conectre-front/src/app/tecnico/tecnico-cadastro/tecnico-cadastro.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/conectre-front/src/app/tecnico/tecnico-cadastro/tecnico-cadastro.component.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -13,9 +20,9 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 1
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 1
+}</component>
   <component name="ProjectId" id="2jyOGqGEzExnMcjfl5y16ChunlV" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -24,9 +31,9 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "Responsividade-do-Jiraya",
+    "git-widget-placeholder": "ajustes-final-agosto",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "D:/_programação/_Projetos/_Projetos Soluvel/conectre/conectre-server"
+    "last_opened_file_path": "E:/_programação/_Projetos/_Projetos Soluvel/conectre/conectre-server"
   }
 }]]></component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />

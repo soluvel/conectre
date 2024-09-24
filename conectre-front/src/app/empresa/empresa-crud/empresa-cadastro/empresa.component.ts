@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { EmpresaService } from "../../empresa.service";
+import { StorageService } from "../../../storage.service";
 import { Subject, takeUntil } from "rxjs";
 import { ToastrService } from "ngx-toastr";
 import { ActivatedRoute, Router } from "@angular/router";
@@ -19,7 +20,9 @@ export class EmpresaComponent implements OnInit, OnDestroy {
   private destroy$ = new Subject<void>();
   msgButton: string;
 
-  constructor(private formBuilder: FormBuilder,
+  constructor(
+              public storage: StorageService,
+              private formBuilder: FormBuilder,
               private service: EmpresaService,
               private toastr: ToastrService,
               private viaCepService: ViaCepService,
@@ -63,6 +66,9 @@ export class EmpresaComponent implements OnInit, OnDestroy {
     this.service.getEmpresa(parseInt(this.empresaId)).subscribe(data => {
       this.form.patchValue(data);
       this.form.get('cnpjCpf').setValue(StringNumberFormats.formatCpfCnpj(this.form.get('cnpjCpf').value));
+      
+      const pageTitle = !this.isEditando ? "Cadastro de empresas" : data['razaoSocial']
+      this.storage.updatePageTitle(pageTitle);
     });
   }
 
