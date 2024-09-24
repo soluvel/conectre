@@ -26,7 +26,6 @@ import java.util.List;
 @Getter
 @Setter
 @Builder
-//@Audited
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "empresa", schema = "public")

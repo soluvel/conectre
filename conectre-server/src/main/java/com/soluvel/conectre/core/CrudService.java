@@ -1,6 +1,7 @@
 package com.soluvel.conectre.core;
 
 import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
@@ -11,6 +12,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Component
+@NoArgsConstructor
 @AllArgsConstructor
 public abstract class CrudService<T, ID extends Serializable> {
 
