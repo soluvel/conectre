@@ -63,41 +63,41 @@ public class ExcelService {
 
     private void addPeixeRow(Sheet sheet, int rowNum, Peixe peixe) {
         Row row = sheet.createRow(rowNum);
-        row.createCell(0).setCellValue(peixe.getId());
-        row.createCell(1).setCellValue(peixe.getDtColeta().toString());
-        row.createCell(2).setCellValue(peixe.getHrColeta().toString());
+        row.createCell(0).setCellValue(peixe.getId() == null ? 0 : peixe.getId());
+        row.createCell(1).setCellValue(peixe.getDtColeta() == null ? "" : peixe.getDtColeta().toString());
+        row.createCell(2).setCellValue(peixe.getHrColeta() == null ? "" : peixe.getHrColeta().toString());
         row.createCell(3).setCellValue(peixe.getQntAmostra() == null ? 0 : peixe.getQntAmostra());
         row.createCell(4).setCellValue(peixe.getVolume() == null ? 0 : peixe.getVolume());
-        row.createCell(5).setCellValue(peixe.getMortalidade());
-        row.createCell(6).setCellValue(peixe.getPesoMedio().toString());
-        row.createCell(7).setCellValue(peixe.getBiomassa().toString());
-        row.createCell(8).setCellValue(peixe.getGanhoPeso().toString());
-        row.createCell(9).setCellValue(peixe.getKgRacaoOfertada().toString());
+        row.createCell(5).setCellValue(peixe.getMortalidade() == null ? 0 : peixe.getMortalidade());
+        row.createCell(6).setCellValue(peixe.getPesoMedio() == null ? "" : peixe.getPesoMedio().toString());
+        row.createCell(7).setCellValue(peixe.getBiomassa() == null ? "" : peixe.getBiomassa().toString());
+        row.createCell(8).setCellValue(peixe.getGanhoPeso() == null ? "" : peixe.getGanhoPeso().toString());
+        row.createCell(9).setCellValue(peixe.getKgRacaoOfertada() == null ? "" : peixe.getKgRacaoOfertada().toString());
     }
 
     private void addAmbienteRow(Sheet sheet, int rowNum, Ambiente ambiente) {
         Row row = sheet.createRow(rowNum);
-        row.createCell(0).setCellValue(ambiente.getId());
-        row.createCell(1).setCellValue(ambiente.getDtColeta().toString());
-        row.createCell(2).setCellValue(ambiente.getHrColeta().toString());
-        row.createCell(3).setCellValue(ambiente.getPh());
-        row.createCell(4).setCellValue(ambiente.getAmonia());
-        row.createCell(5).setCellValue(ambiente.getNitrito());
-        row.createCell(6).setCellValue(ambiente.getAlcalinidade().toString());
-        row.createCell(7).setCellValue(ambiente.getTransparenciaAgua());
-        row.createCell(8).setCellValue(ambiente.getTemperatura().toString());
-        row.createCell(9).setCellValue(ambiente.getOxigenio());
+        row.createCell(0).setCellValue(ambiente.getId() == null ? 0 : ambiente.getId());
+        row.createCell(1).setCellValue(ambiente.getDtColeta() == null ? "" : ambiente.getDtColeta().toString());
+        row.createCell(2).setCellValue(ambiente.getHrColeta() == null ? "" : ambiente.getHrColeta().toString());
+        row.createCell(3).setCellValue(ambiente.getPh() == null ? 0 : ambiente.getPh());
+        row.createCell(4).setCellValue(ambiente.getAmonia() == null ? 0 : ambiente.getAmonia());
+        row.createCell(5).setCellValue(ambiente.getNitrito() == null ? 0 : ambiente.getNitrito());
+        row.createCell(6).setCellValue(ambiente.getAlcalinidade() == null ? "" : ambiente.getAlcalinidade().toString());
+        row.createCell(7).setCellValue(ambiente.getTransparenciaAgua() == null ? 0 : ambiente.getTransparenciaAgua());
+        row.createCell(8).setCellValue(ambiente.getTemperatura() == null ? "" : ambiente.getTemperatura().toString());
+        row.createCell(9).setCellValue(ambiente.getOxigenio() == null ? 0 : ambiente.getOxigenio());
     }
 
     private void addRacaoRow(Sheet sheet, int rowNum, Racao racao) {
         Row row = sheet.createRow(rowNum);
         row.createCell(0).setCellValue(racao.getId() == null ? 0 : racao.getId());
-        row.createCell(1).setCellValue(racao.getDtColeta().toString());
-        row.createCell(2).setCellValue(racao.getHrColeta().toString());
-        row.createCell(3).setCellValue(racao.getTemperatura().toString());
-        row.createCell(4).setCellValue(racao.getOxigenio());
-        row.createCell(5).setCellValue(racao.getRacaoTrato().toString());
-        row.createCell(6).setCellValue(racao.getRacaoTotal().toString());
+        row.createCell(1).setCellValue(racao.getDtColeta() == null ? "" : racao.getDtColeta().toString());
+        row.createCell(2).setCellValue(racao.getHrColeta() == null ? "" : racao.getHrColeta().toString());
+        row.createCell(3).setCellValue(racao.getTemperatura() == null ? "" : racao.getTemperatura().toString());
+        row.createCell(4).setCellValue(racao.getOxigenio() == null ? 0 : racao.getOxigenio());
+        row.createCell(5).setCellValue(racao.getRacaoTrato() == null ? "" : racao.getRacaoTrato().toString());
+        row.createCell(6).setCellValue(racao.getRacaoTotal() == null ? "" : racao.getRacaoTotal().toString());
     }
 }
 

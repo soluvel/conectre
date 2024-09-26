@@ -2,6 +2,7 @@ package com.soluvel.conectre.core;
 
 import jakarta.persistence.criteria.Path;
 import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.http.HttpStatus;
@@ -23,6 +24,7 @@ import java.util.stream.Collectors;
 
 @Component
 @AllArgsConstructor
+@RequiredArgsConstructor
 public abstract class CrudController<T, R, ID extends Serializable> {
 
     private CrudService<T, ID> service;

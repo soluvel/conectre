@@ -19,7 +19,7 @@ export class TanqueService {
     return this.http.get<any>(`${this.apiUrl}/by-produtor/${produtorId}`, { headers: this.headers });
   }
 
-  save(data: any): Observable<Propriedade> {
+  save(data: any): Observable<any> {
     return this.http.post<any>(`${this.apiUrl}/save/record`, data, { headers: this.headers });
   }
 }

@@ -20,7 +20,7 @@ export class PropriedadeCadastroComponent implements OnInit, OnDestroy {
   private destroy$ = new Subject<void>();
   msgButton: string;
   form: FormGroup;
-  produtores: any;
+  produtores: any[] = [];
   exibirTanque: boolean = false;
 
   constructor(private formBuilder: FormBuilder,
@@ -35,6 +35,7 @@ export class PropriedadeCadastroComponent implements OnInit, OnDestroy {
       id: [],
       nome: ['', Validators.required],
       produtor: ['', Validators.required],
+      produtorNome: [''],
       endereco: this.formBuilder.group({
         cep: [''],
         logradouro: [''],
@@ -66,6 +67,7 @@ export class PropriedadeCadastroComponent implements OnInit, OnDestroy {
   getPropriedade(): void {
     this.service.getPropriedade(parseInt(this.propriedadeId)).subscribe(data => {
       this.form.patchValue(data);
+      this.form.get('produtor').setValue(data.produtor.id);
       this.isEditando = true;
       this.msgButton = !this.isEditando ? "Cadastrar Propriedade" : "Salvar Alterações"
     });
@@ -82,6 +84,14 @@ export class PropriedadeCadastroComponent implements OnInit, OnDestroy {
         console.error('Erro:', error);
       }
     });
+  }
+
+  newTanque() {
+    let nome = this.produtores.filter(p => p.id == this.form.get('produtor').value).map(p => p.nome)[0];
+    let dados = this.form.getRawValue();
+    dados.produtorNome = nome;
+    localStorage.setItem('propriedade', JSON.stringify(dados));
+    this.router.navigate(['/tanque/cadastrar']);
   }
 
 
@@ -104,6 +114,21 @@ export class PropriedadeCadastroComponent implements OnInit, OnDestroy {
     document.querySelector('.select-infos').classList.toggle('select-infos-open');
   }
 
+  enableEdit(inputId: string): void {
+    const allInputs = document.querySelectorAll('.form-control');
+    const editingInput = document.getElementById(inputId);
+
+    allInputs.forEach(input => {
+      if (input !== editingInput) {
+        input.classList.add('click-disabled');
+        input.classList.remove('focus-editing-input');
+      }
+    });
+
+    editingInput.classList.toggle('click-disabled');
+    editingInput.classList.toggle('focus-editing-input');
+  }
+
   onDownload(): void {
     this.excelService.downloadExcel().subscribe(blob => {
       const url = window.URL.createObjectURL(blob);
@@ -116,4 +141,5 @@ export class PropriedadeCadastroComponent implements OnInit, OnDestroy {
       console.error('Download failed', error);
     });
   }
+
 }

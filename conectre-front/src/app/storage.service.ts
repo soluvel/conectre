@@ -11,6 +11,7 @@ export class StorageService {
   private USER_KEY = 'user';
   private USER_ID = 'user_id';
   private EMPRESA = 'empresa';
+  public PAGE_TITLE = '';
 
   constructor(private router: Router,
               private route: ActivatedRoute) {
@@ -64,6 +65,10 @@ export class StorageService {
   public getUserId(): string | null {
     return localStorage.getItem(this.USER_ID);
   }
+  
+  public updatePageTitle(pageTitle: string) {
+    this.PAGE_TITLE = pageTitle;
+  }
 
   isTokenValido() {
     if (this.getToken()) {
@@ -81,5 +86,6 @@ export class StorageService {
     localStorage.removeItem(this.ROLE_KEY);
     localStorage.removeItem(this.USER_KEY);
     localStorage.removeItem(this.USER_ID);
+    localStorage.removeItem(this.PAGE_TITLE);
   }
 }

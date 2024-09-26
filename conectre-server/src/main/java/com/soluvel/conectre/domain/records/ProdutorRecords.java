@@ -15,5 +15,7 @@ public record ProdutorRecords(
 
         @NotBlank(message = "email não pode ser em branco ou nulo")
         String email,
+
+        String avatar,
         Long empresa) {
 }

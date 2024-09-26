@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.3.xsd">
+
+    <changeSet id="1" author="kassia.zama">
+        <preConditions onFail="MARK_RAN" onFailMessage="A tabela tanque_novo já existe no database">
+            <not>
+                <tableExists tableName="tanque_novo"/>
+            </not>
+        </preConditions>
+
+        <createTable tableName="tanque_novo">
+            <column name="id" type="int" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="produtor_id" type="int">
+                <constraints nullable="false" foreignKeyName="fk_tanque_novo_produtor" referencedTableName="produtor" referencedColumnNames="id"/>
+            </column>
+            <column name="propriedade_id" type="int">
+                <constraints nullable="false" foreignKeyName="fk_tanque_novo_propriedade" referencedTableName="propriedade" referencedColumnNames="id"/>
+            </column>
+            <column name="no_aeradores" type="int"/>
+            <column name="area" type="double"/>
+            <column name="volume" type="double"/>
+            <column name="max_abastecimento" type="double"/>
+            <column name="profundidade_media" type="double"/>
+            <column name="potencia_aeracao_total" type="double"/>
+            <column name="tipo_tanque" type="varchar(50)"/>
+            <column name="rede_eletrica" type="varchar(50)"/>
+            <column name="abastecimento" type="varchar(50)"/>
+            <column name="tipo_alimentacao" type="varchar(50)"/>
+        </createTable>
+    </changeSet>
+</databaseChangeLog>

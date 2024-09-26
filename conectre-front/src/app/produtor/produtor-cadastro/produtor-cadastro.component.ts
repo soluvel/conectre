@@ -20,18 +20,22 @@ export class ProdutorCadastroComponent implements OnInit, OnDestroy {
   private destroy$ = new Subject<void>();
   empresas: any[] = [];
 
+  selectedFile: File | null = null;
+  imagePreview: string | ArrayBuffer | null = null;
+
   constructor(private formBuilder: FormBuilder,
-              private toastr: ToastrService,
-              private route: ActivatedRoute,
-              private service: ProdutorService,
-              private empresaService: EmpresaService,
-              private router: Router,
-              public storage: StorageService) {
+    private toastr: ToastrService,
+    private route: ActivatedRoute,
+    private service: ProdutorService,
+    private empresaService: EmpresaService,
+    private router: Router,
+    public storage: StorageService) {
     this.form = this.formBuilder.group({
       id: [],
       nome: ['', Validators.required],
       cpf: ['', Validators.required],
       email: ['', Validators.required],
+      avatar: [''],
       celular: ['', Validators.required],
       empresa: ['', Validators.required],
     });
@@ -46,6 +50,9 @@ export class ProdutorCadastroComponent implements OnInit, OnDestroy {
     this.route.paramMap.subscribe(params => {
       this.produtorId = params.get('id');
       this.getProdutor();
+
+      const pageTitle = !this.produtorId ? "Cadastro de Produtor" : undefined; 
+      this.storage.updatePageTitle(pageTitle);
     });
 
     this.empresaService.getEmpresasReduce().subscribe(data => {
@@ -73,7 +80,14 @@ export class ProdutorCadastroComponent implements OnInit, OnDestroy {
       this.form.patchValue(data);
       this.form.get('celular').setValue(StringNumberFormats.formatCelular(this.form.get('celular').value));
       this.form.get('cpf').setValue(StringNumberFormats.formatCpfCnpj(this.form.get('cpf').value));
+
+      if (data.avatar != null) {
+        this.imagePreview = `data:image/png;base64,${data.avatar}`;
+      }
+
       this.isEditando = true;
+
+      this.storage.updatePageTitle(data['nome']);
     });
   }
 
@@ -112,7 +126,18 @@ export class ProdutorCadastroComponent implements OnInit, OnDestroy {
     });
   }
 
-  handleImageUpload($event: Event) {
+  handleImageUpload(event: any) {
+    const file = event.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = () => {
+        this.imagePreview = reader.result as string;
 
+        const base64String = reader.result?.toString().split(',')[1];
+        this.form.patchValue({avatar: base64String});
+        this.form.get('avatar')?.updateValueAndValidity();
+      };
+      reader.readAsDataURL(file);
+    }
   }
 }

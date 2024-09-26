@@ -42,4 +42,6 @@ public class Produtor extends Usuario implements Serializable {
     @JoinColumn(name = "empresa_id", nullable = false)
     private Empresa empresa;
 
+    private byte[] avatar;
+
 }

@@ -1,5 +1,6 @@
 .geral {
   position: relative;
+  background-image: url("../../../assets/wallpaper.svg");
   background-repeat: no-repeat;
   background-size: contain;
   display: flex;
@@ -119,6 +120,22 @@ img.toggle-password {
   text-decoration: underline;
 }
 
+.icon-visibility-password {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translate(-50%, -50%);
+  color: #616161;
+  font-weight: 300;
+  cursor: pointer;
+}
+
+.button-disabled {
+  background-color: #BDBDBD !important;
+  cursor: not-allowed !important;
+  color: #F0F0F0 !important;
+}
+
 .back {
   position: absolute;
   bottom: 3vh;
@@ -134,6 +151,18 @@ img.toggle-password {
   color: #707070;
   font-size: 14px;
   font-weight: 400;
+}
+
+mat-progress-bar {
+  display: flex;
+  position: absolute;
+  align-items: normal;
+  flex-direction: column;
+  justify-content: center;
+  width: 95%;
+  top: 4vh;
+  left: 1vh;
+  color: red;
 }
 
 /*# sourceMappingURL=redefinir-senha.component.css.map */

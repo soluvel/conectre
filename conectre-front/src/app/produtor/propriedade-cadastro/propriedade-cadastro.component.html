@@ -26,14 +26,16 @@
         <div class="col-6">
           <label id="nomeLabel" for="nome" class="form-label required">Nome</label>
           <div class="input-group">
-            <input type="text" class="form-control" formControlName="nome" id="nome" aria-describedby="nomeImage">
-            <mat-icon class="icon edit-icon material-symbols-rounded">edit</mat-icon>
+            <input type="text" class="form-control" [ngClass]="{'click-disabled': isEditando}" formControlName="nome"
+              id="nome" aria-describedby="nomeImage">
+            <mat-icon class="icon edit-icon material-symbols-rounded" *ngIf="isEditando"
+              (click)="enableEdit('nome')">edit</mat-icon>
           </div>
         </div>
 
         <div class="col-6">
-          <label id="produtorLabel" for="produtor" class="form-label required">Produtor</label>
-          <select class="form-select" formControlName="produtor" id="produtor">
+          <label id="produtor" for="produtor" class="form-label required">Produtor</label>
+          <select class="form-select" formControlName="produtor">
             <option *ngFor="let produtor of produtores" [value]="produtor.id">{{ produtor.nome }}</option>
           </select>
         </div>
@@ -43,25 +45,30 @@
         <div class="col-6" formGroupName="endereco">
           <label for="logradouro" class="form-label required">Logradouro</label>
           <div class="input-group">
-            <input type="text" class="form-control" formControlName="logradouro" id="logradouro">
-            <mat-icon class="icon edit-icon material-symbols-rounded">edit</mat-icon>
+            <input type="text" class="form-control" [ngClass]="{'click-disabled': isEditando}"
+              formControlName="logradouro" id="logradouro">
+            <mat-icon class="icon edit-icon material-symbols-rounded" *ngIf="isEditando"
+              (click)="enableEdit('logradouro')">edit</mat-icon>
           </div>
         </div>
 
         <div class="col-2" formGroupName="endereco">
           <label for="cep" class="form-label required">CEP</label>
           <div class="input-group">
-            <input type="text" class="form-control required" formControlName="cep" id="cep" appCepMask
-                   (blur)="getEnderecoViaCep()" [maxLength]="9">
-            <mat-icon class="icon edit-icon material-symbols-rounded">edit</mat-icon>
+            <input type="text" class="form-control required" [ngClass]="{'click-disabled': isEditando}"
+              formControlName="cep" id="cep" appCepMask (blur)="getEnderecoViaCep()" [maxLength]="9">
+            <mat-icon class="icon edit-icon material-symbols-rounded" *ngIf="isEditando"
+              (click)="enableEdit('cep')">edit</mat-icon>
           </div>
         </div>
 
         <div class="col-4" formGroupName="endereco">
           <label for="localidade" class="form-label required">Cidade</label>
           <div class="input-group">
-            <input type="text" class="form-control" formControlName="localidade" id="localidade">
-            <mat-icon class="icon edit-icon material-symbols-rounded">edit</mat-icon>
+            <input type="text" class="form-control" [ngClass]="{'click-disabled': isEditando}"
+              formControlName="localidade" id="localidade">
+            <mat-icon class="icon edit-icon material-symbols-rounded" *ngIf="isEditando"
+              (click)="enableEdit('localidade')">edit</mat-icon>
           </div>
         </div>
       </div>
@@ -70,35 +77,41 @@
         <div class="col-6">
           <label for="complemento" class="form-label">Complemento</label>
           <div class="input-group" style="padding-bottom: 0">
-            <input type="text" class="form-control" formControlName="complemento" id="complemento"
-                   style="margin-bottom: 0">
-            <mat-icon class="icon edit-icon material-symbols-rounded">edit</mat-icon>
+            <input type="text" class="form-control" [ngClass]="{'click-disabled': isEditando}"
+              formControlName="complemento" id="complemento" style="margin-bottom: 0">
+            <mat-icon class="icon edit-icon material-symbols-rounded" *ngIf="isEditando"
+              (click)="enableEdit('complemento')">edit</mat-icon>
           </div>
-          <span style="margin-top: 5px; font-size: 12px; color: #52525B;">Em caso de área rural, informar latitude e
-            longitude</span>
+          <span style="margin-top: 5px; font-size: 12px; color: #52525B;">Em caso de área rural, informar latitude e longitude</span>
         </div>
 
         <div class="col-2">
           <label for="numero" class="form-label required">Número</label>
           <div class="input-group">
-            <input type="text" class="form-control" formControlName="numero" id="numero">
-            <mat-icon class="icon edit-icon material-symbols-rounded">edit</mat-icon>
+            <input type="text" class="form-control" [ngClass]="{'click-disabled': isEditando}" formControlName="numero"
+              id="numero">
+            <mat-icon class="icon edit-icon material-symbols-rounded" *ngIf="isEditando"
+              (click)="enableEdit('numero')">edit</mat-icon>
           </div>
         </div>
 
         <div class="col-2">
           <label for="bairro" class="form-label required">Bairro</label>
           <div class="input-group">
-            <input type="text" class="form-control" formControlName="bairro" id="bairro">
-            <mat-icon class="icon edit-icon material-symbols-rounded">edit</mat-icon>
+            <input type="text" class="form-control" [ngClass]="{'click-disabled': isEditando}" formControlName="bairro"
+              id="bairro">
+            <mat-icon class="icon edit-icon material-symbols-rounded" *ngIf="isEditando"
+              (click)="enableEdit('bairro')">edit</mat-icon>
           </div>
         </div>
 
         <div class="col-2">
           <label for="uf" class="form-label required">Estado</label>
           <div class="input-group">
-            <input type="text" class="form-control" formControlName="uf" id="uf" [maxLength]="2">
-            <mat-icon class="icon edit-icon material-symbols-rounded">edit</mat-icon>
+            <input type="text" class="form-control" [ngClass]="{'click-disabled': isEditando}" formControlName="uf"
+              id="uf" [maxLength]="2">
+            <mat-icon class="icon edit-icon material-symbols-rounded" *ngIf="isEditando"
+              (click)="enableEdit('uf')">edit</mat-icon>
           </div>
         </div>
       </div>
@@ -106,22 +119,33 @@
 
     <div class="container-buttons">
       <ng-container *ngIf="exibirTanque">
-      <button class="button-no-border" style="margin-right: 10px" (click)="onDownload()">Download Medições</button>
+        <button class="button-no-border" style="margin-right: 10px" (click)="onDownload()">Download Medições</button>
       </ng-container>
-      <button class="button-no-border" style="margin-right: 10px">Limpar</button>
-      <button [disabled]="!form.valid" (click)="onSubmit()" [ngClass]="{'button-disabled': !form.valid}">
-        Salvar alteração
-      </button>
+      <div class="exclude-button-box">
+        <mat-icon class="exclude-icon material-symbols-rounded">delete</mat-icon>
+        <button class="button-no-border exclude-button" style="margin-right: 10px">Excluir propriedade</button>
+      </div>
+      <div class="buttons-box">
+        <button class="button-no-border" style="margin-right: 10px">Limpar</button>
+        <button [disabled]="!form.valid" (click)="onSubmit()" [ngClass]="{'button-disabled': !form.valid}">
+          {{ isEditando ? 'Salvar Alterações' : 'Cadastrar propriedade' }}
+        </button>
+      </div>
     </div>
+  </div>
+
+  <div class="new-buttons-box">
+    <button (click)="newTanque()">Novo tanque</button>
+    <button class="button-white">Novo equipamento</button>
   </div>
 
   <ng-container *ngIf="exibirTanque">
     <div class="tanque-infos">
       <div class="header-infos">
-      <span class="select-title" (click)="selectOpen()">
-        Tanque Sol
-        <mat-icon class="menu-arrow-icon-select material-symbols-rounded">keyboard_arrow_down</mat-icon>
-      </span>
+        <span class="select-title" (click)="selectOpen()">
+          Tanque Sol
+          <mat-icon class="menu-arrow-icon-select material-symbols-rounded">keyboard_arrow_down</mat-icon>
+        </span>
         <div class="select-infos">
           <span>Piscicultura Sol nascente</span>
           <ul>
@@ -137,13 +161,13 @@
       <app-tabs-tanque class="table-infos" [tanqueId]="1"></app-tabs-tanque>
 
       <span class="footer-infos">
-      <span>
-        Registro realizado em:
-        <span class="date-info-footer">
-          08 de Maio, 2024 às 19h40
+        <span>
+          Registro realizado em:
+          <span class="date-info-footer">
+            08 de Maio, 2024 às 19h40
+          </span>
         </span>
       </span>
-    </span>
     </div>
   </ng-container>
 

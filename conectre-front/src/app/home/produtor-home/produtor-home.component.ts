@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TanqueService } from "../../tanque.service";
 import { StorageService } from "../../storage.service";
+import { ExcelService } from "../../excel.service";
 
 @Component({
   selector: 'app-produtor-home',
@@ -12,6 +13,7 @@ export class ProdutorHomeComponent implements OnInit {
   tanques: any[];
 
   constructor(private tanqueService: TanqueService,
+              private excelService: ExcelService,
               private storage: StorageService) {
 
   }
@@ -35,5 +37,18 @@ export class ProdutorHomeComponent implements OnInit {
     document.querySelector('.menu-arrow-icon-select').classList.toggle('menu-arrow-icon-select-open');
 
     document.querySelector('.select-infos').classList.toggle('select-infos-open');
+  }
+
+  onDownload() {
+    this.excelService.downloadPdf().subscribe(blob => {
+      const url = window.URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'arquivo.pdf';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      window.URL.revokeObjectURL(url);
+    });
   }
 }

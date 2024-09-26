@@ -59,6 +59,7 @@ public class MedicaoController extends CrudController<Medicao, Medicao, Long> {
             medicao.getAmbiente().setMedicao(medicao);
         }
 
+        medicao.setDtMedicao(LocalDate.now());
         return new ResponseEntity<>(medicaoService.save(medicao), HttpStatus.CREATED);
     }
 

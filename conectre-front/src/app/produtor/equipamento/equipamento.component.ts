@@ -44,13 +44,13 @@ export class EquipamentoComponent implements OnInit, OnDestroy {
     ).subscribe({
       next: response => {
         this.closeModal()
+        window.location.reload();
       },
       error: error => {
         console.error('Erro:', error);
       }
     });
   }
-
 
   closeModal() {
     var overlay = document.getElementById('overlay');
