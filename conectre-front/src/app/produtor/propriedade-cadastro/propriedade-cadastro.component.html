@@ -34,8 +34,8 @@
         </div>
 
         <div class="col-6">
-          <label id="produtorLabel" for="produtor" class="form-label required">Produtor</label>
-          <select class="form-select" formControlName="produtor" id="produtor">
+          <label id="produtor" for="produtor" class="form-label required">Produtor</label>
+          <select class="form-select" formControlName="produtor">
             <option *ngFor="let produtor of produtores" [value]="produtor.id">{{ produtor.nome }}</option>
           </select>
         </div>

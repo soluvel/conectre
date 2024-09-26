@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
-import { filter, Subject, takeUntil } from "rxjs";
-import { ActivatedRoute, NavigationEnd, Router } from "@angular/router";
+import { Subject, takeUntil } from "rxjs";
+import { ActivatedRoute, Router } from "@angular/router";
 import { EnumValueService } from "../enumValue.service";
 import { TanqueNovoService } from "../tanqueNovo.service";
 
@@ -14,13 +14,10 @@ import { TanqueNovoService } from "../tanqueNovo.service";
 export class TanqueComponent implements OnInit, OnDestroy  {
 
   isEditando: boolean = false;
-  propriedadeId: any;
   private destroy$ = new Subject<void>();
-  msgButton: string;
   form: FormGroup;
   produtor: any;
   propriedade: any;
-  exibirTanque: boolean = false;
   tiposTanque = [];
   tiposAlimentacao = [];
   tiposAbastecimento = [];
@@ -35,6 +32,8 @@ export class TanqueComponent implements OnInit, OnDestroy  {
       id: [],
       produtor: [],
       propriedade: [],
+      produtorNome: [],
+      propriedadeNome: [],
       tipoTanque: ['', Validators.required],
       area: ['', Validators.required],
       profundidadeMedia: ['', Validators.required],
@@ -51,15 +50,12 @@ export class TanqueComponent implements OnInit, OnDestroy  {
   }
 
   ngOnInit() {
+    const dados = JSON.parse(localStorage.getItem('propriedade')!);
 
-    this.route.paramMap.subscribe(() => {
-      const navigation = this.router.getCurrentNavigation();
-      if (navigation?.extras.state) {
-        this.propriedade = navigation.extras.state['propriedade'];
-      } else {
-        this.propriedade = history.state.propriedade;
-      }
-    });
+    this.form.get('propriedadeId').setValue(dados.id)
+    this.form.get('propriedadeNome').setValue(dados.nome)
+    this.form.get('produtorId').setValue(dados.produtor)
+    this.form.get('produtorNome').setValue(dados.produtorNome)
 
     this.enumValueService.getEnum("TipoTanque").pipe(takeUntil(this.destroy$)
     ).subscribe({
@@ -107,20 +103,24 @@ export class TanqueComponent implements OnInit, OnDestroy  {
     this.destroy$.complete();
   }
 
-  getPropriedade(): void {
-
-  }
-
   onSubmit() {
-
-    this.form.get('propriedadeId').setValue(1)
-    this.form.get('produtorId').setValue(8)
-
     this.tanqueService.save(this.form.getRawValue()).pipe(takeUntil(this.destroy$)
     ).subscribe({
       next: response => {
         console.log("salvo com sucesso")
+        let nome = this.tiposTanque.filter(p => p.name == this.form.get('tipoTanque').value).map(p => p.description)[0]
+        const dados = {
+          produtor: this.form.get('propriedadeNome').value,
+          propriedade: this.form.get('produtorNome').value,
+          tanque: nome,
+          tanqueId: response.id,
+          area: response.area,
+          potenciaAeracaoTotal: response.potenciaAeracaoTotal
+        };
+
+        localStorage.setItem('infoLote', JSON.stringify(dados));
         this.router.navigate(['/lote/cadastrar']);
+        localStorage.removeItem('chave');
 
       },
       error: error => {
@@ -128,11 +128,6 @@ export class TanqueComponent implements OnInit, OnDestroy  {
       }
     });
 
-
-  }
-
-
-  getEnderecoViaCep() {
 
   }
 

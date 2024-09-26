@@ -3,28 +3,26 @@ import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { Subject, takeUntil } from "rxjs";
 import { ToastrService } from "ngx-toastr";
 import { ActivatedRoute, Router } from "@angular/router";
+import { LoteService } from "../lote.service";
 
 @Component({
   selector: 'app-lote',
   templateUrl: './lote.component.html',
   styleUrls: ['./lote.component.scss']
 })
-export class LoteComponent implements OnInit, OnDestroy  {
+export class LoteComponent implements OnInit, OnDestroy {
 
   isEditando: boolean = false;
-  propriedadeId: any;
   private destroy$ = new Subject<void>();
-  msgButton: string;
   form: FormGroup;
-  produtores: any;
-  exibirTanque: boolean = false;
-  tiposTanque = ['Escavado', 'Geomembrana', 'Elevado', 'Concreto', 'Outro'];
-  tiposAlimentacao = ['Manual', 'Alimentador Arrasto', 'Alimentador Automático', 'Outro'];
-  tiposAbastecimento = ['Bombeamento', 'Gravidade', 'Chuva', 'Outro'];
-  tiposEletrica = ['Trifásica 220V', 'Trifásica 380V', 'Monofásica', 'Trifásica 220V e 380V', 'Outro'];
+  produtorNome: string;
+  propriedade: string;
+  tanque: string
+  area: string
+  potenciaAeracaoTotal: string
 
   constructor(private formBuilder: FormBuilder,
-              // private service: PropriedadeService,
+              private service: LoteService,
               // private produtorService: ProdutorService,
               // private excelService: ExcelService,
               private toastr: ToastrService,
@@ -32,30 +30,33 @@ export class LoteComponent implements OnInit, OnDestroy  {
               private route: ActivatedRoute,
               private router: Router) {
     this.form = this.formBuilder.group({
-      id: [],      
-      tanque: ['', Validators.required],
-      lote: ['', Validators.required],
-      ciclo: ['', Validators.required],
-      tipoTanque: ['', Validators.required],
-      area: ['', Validators.required],
-      aeracaoTotal: ['', Validators.required],
+      id: [],
+      tanque: [],
+      tanqueId: [],
       especie: ['', Validators.required],
       origem: ['', Validators.required],
       dataAlojamento: ['', Validators.required],
-      primeiraRemessa: ['', Validators.required],
-      mortalidadeAlojamento: ['', Validators.required],
-      segundaRemessa: ['', Validators.required],
+      qtdRecebida: ['', Validators.required],
+      mortalidade: ['', Validators.required],
+      qtdRecebida2: ['', Validators.required],
       pesoMedio: ['', Validators.required],
-      biomassaAlojada: ['', Validators.required],
+      biomassaTotal: ['', Validators.required],
       densidade: ['', Validators.required],
       biomassaCVAtual: ['', Validators.required],
-      PesoAbateEsperado: ['', Validators.required],
-      biomassaEstimada: ['', Validators.required],
+      pesoAbateEsperado: ['', Validators.required],
+      biomassaEstimadaFinal: ['', Validators.required],
     });
   }
 
   ngOnInit() {
-    
+    const dados = JSON.parse(localStorage.getItem('infoLote')!);
+
+    this.produtorNome = dados.produtor;
+    this.propriedade = dados.propriedade;
+    this.tanque = dados.tanque;
+    this.area = dados.area;
+    this.potenciaAeracaoTotal = dados.potenciaAeracaoTotal;
+    this.form.get('tanqueId').setValue(dados.tanqueId)
   }
 
   ngOnDestroy() {
@@ -63,19 +64,21 @@ export class LoteComponent implements OnInit, OnDestroy  {
     this.destroy$.complete();
   }
 
-  getPropriedade(): void {
-    
-  }
-
   onSubmit() {
-    
+
+    this.service.save(this.form.getRawValue()).pipe(takeUntil(this.destroy$)
+    ).subscribe({
+      next: response => {
+        console.log("salvo com sucesso")
+        this.router.navigate(['/inicio']);
+
+      },
+      error: error => {
+        console.error('Erro:', error);
+      }
+    });
+
   }
-
-
-  getEnderecoViaCep() {
-
-  }
-
 
   enableEdit(inputId: string): void {
     const allInputs = document.querySelectorAll('.form-control');
