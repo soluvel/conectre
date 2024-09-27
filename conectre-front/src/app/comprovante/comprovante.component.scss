@@ -105,7 +105,7 @@ label.required::after {
 
 .actions-footer {
   display: flex;
-  justify-content: space-between;
+  justify-content: end;
   padding: 20px 40px 20px 40px;
 }
 
@@ -177,7 +177,7 @@ select:focus {
 }
 
 .bar-progress {
-    width: 50%;
+    width: 75%;
     height: 4px;
     background: #0F6CBD;
     border-radius: 100px;
@@ -224,7 +224,7 @@ select:focus {
 // Keyframes
 
 @keyframes progress-bar-up {
-    0%   {width: 25%;}
-    100%  {width: 50%;}
+    0%   {width: 75%;}
+    100%  {width: 90%;}
     
 }

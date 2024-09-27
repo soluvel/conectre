@@ -5,11 +5,11 @@ import { ToastrService } from "ngx-toastr";
 import { ActivatedRoute, Router } from "@angular/router";
 
 @Component({
-  selector: 'app-lote',
-  templateUrl: './lote.component.html',
-  styleUrls: ['./lote.component.scss']
+  selector: 'app-comprovante',
+  templateUrl: './comprovante.component.html',
+  styleUrls: ['./comprovante.component.scss']
 })
-export class LoteComponent implements OnInit, OnDestroy  {
+export class ComprovanteComponent implements OnInit, OnDestroy  {
 
   isEditando: boolean = false;
   propriedadeId: any;
@@ -17,11 +17,6 @@ export class LoteComponent implements OnInit, OnDestroy  {
   msgButton: string;
   form: FormGroup;
   produtores: any;
-  exibirTanque: boolean = false;
-  tiposTanque = ['Escavado', 'Geomembrana', 'Elevado', 'Concreto', 'Outro'];
-  tiposAlimentacao = ['Manual', 'Alimentador Arrasto', 'Alimentador Automático', 'Outro'];
-  tiposAbastecimento = ['Bombeamento', 'Gravidade', 'Chuva', 'Outro'];
-  tiposEletrica = ['Monofásica 127V', 'Monofásica 220V', 'Monofásica 127V e 220V', 'Trifásica 220V', 'Trifásica 380V', 'Trifásica 220V e 380V', 'Outro'];
 
   constructor(private formBuilder: FormBuilder,
               // private service: PropriedadeService,
@@ -33,24 +28,18 @@ export class LoteComponent implements OnInit, OnDestroy  {
               private router: Router) {
     this.form = this.formBuilder.group({
       id: [],      
-      tanque: ['', Validators.required],
-      lote: ['', Validators.required],
-      ciclo: ['', Validators.required],
-      tipoTanque: ['', Validators.required],
-      area: ['', Validators.required],
-      aeracaoTotal: ['', Validators.required],
-      especie: ['', Validators.required],
-      origem: ['', Validators.required],
-      dataAlojamento: ['', Validators.required],
-      primeiraRemessa: ['', Validators.required],
-      mortalidadeAlojamento: ['', Validators.required],
-      segundaRemessa: ['', Validators.required],
+      data: ['', Validators.required],
+      saida: ['', Validators.required],
+      entrada: ['', Validators.required],
+      temperaturaAgua: ['', Validators.required],
+      oxigenio: ['', Validators.required],
+      placaVeiculo: ['', Validators.required],
+      numeroCaixas: ['', Validators.required],
+      peixePorCaixa: ['', Validators.required],
       pesoMedio: ['', Validators.required],
-      biomassaAlojada: ['', Validators.required],
-      densidade: ['', Validators.required],
-      biomassaCVAtual: ['', Validators.required],
-      PesoAbateEsperado: ['', Validators.required],
-      biomassaEstimada: ['', Validators.required],
+      tanqueAlocado: ['', Validators.required],
+      pesoTotal: ['', Validators.required],
+      numeroLacre: ['', Validators.required],
     });
   }
 

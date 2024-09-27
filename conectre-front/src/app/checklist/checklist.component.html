@@ -1,0 +1,72 @@
+<div style="position: relative; min-height: 85vh">
+    <div class="container-header">
+      <a href="/inicio"><mat-icon class="icon back-icon material-symbols-rounded">arrow_back</mat-icon></a>
+      <span class="back-text">Voltar</span>
+    </div>
+
+    <div class="container-progress-bar">
+        <div class="progress-bar-box">
+            <div class="progress-bar-header">
+                <span style="font-size: 14px; color: #71717A">Checklist</span>
+                <span style="font-size: 14 px; color: #71717A">3/4</span>
+            </div>
+            <div class="progress-bar">
+                <div class="bar-progress"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-checklist">
+        <div class="checklist-header">
+            <span>Visitas</span>
+            <span style="padding-right: 6px;">Checklist</span>
+        </div>
+        
+        <div class="checklist-itens" *ngFor="let item of itens">
+            <div class="item-box">
+                <input type="text" class="default-item-input click-disabled" value="{{ item[0] }}" [ngClass]="{'disabled-input': !isEditando}">
+                <div class="icons-box">
+                    <mat-icon class="icon edit-icon material-symbols-rounded" [ngClass]="{'disabled-edit': !isEditando}" (click)="enableEdit(item)">edit</mat-icon>
+                    <mat-icon class="exclude-icon material-symbols-rounded" (click)="deleteItem(item)" [ngClass]="{'disabled-edit': !isEditando}">delete</mat-icon>
+                </div>
+            </div>
+            <div class="checklist-number-box">
+                <mat-icon class="icon arrow-icon material-symbols-rounded">keyboard_arrow_down</mat-icon>
+                <select id="quantidadeChecklist" class="number-checklist" formControlName="quantidadeChecklist">
+                    <option value="" selected>00</option>
+                    <option *ngFor="let number of numbers">
+                        {{ number }}
+                    </option>
+                </select>
+            </div>
+        </div>
+
+        <div class="checklist-itens checklist-input-box">
+            <input type="text" class="add-item-input">
+            <div class="add-item-buttons">
+                <button class="save-item-button" (click)="addItem()">Salvar item</button>
+                <button class="clean-item-button" (click)="cleanInput()">Limpar</button>
+            </div>
+        </div>
+        
+        <div class="checklist-footer">
+            <span class="add-item" (click)="showAddItem()">
+                <mat-icon class="icon add-icon material-symbols-rounded">add_circle</mat-icon>
+                Adicionar novos itens
+            </span>
+            <span class="edit-item" (click)="editItem()">
+                <mat-icon class="icon edit-icon material-symbols-rounded">edit</mat-icon>
+                {{ !isEditando ? 'Editar item' : 'Confirmar edição' }}
+            </span>
+        </div>
+    </div>
+  
+    <div class="actions-footer">
+        <div class="buttons-box">
+            <button class="button-no-border" style="margin-right: 12px">Limpar</button>
+            <button [disabled]="!form.valid" (click)="onSubmit()" [ngClass]="{'button-disabled': !form.valid}">Próximo</button>
+        </div>
+    </div>
+
+</div>
+  

@@ -62,6 +62,8 @@ import { TimeFormatPipe } from "./pipes/timeFormat";
 import { CalendarComponent } from './calendar/calendar.component';
 import { TanqueComponent } from './tanque/tanque.component';
 import { LoteComponent } from './lote/lote.component';
+import { ChecklistComponent } from './checklist/checklist.component';
+import { ComprovanteComponent } from './comprovante/comprovante.component';
 
 @NgModule({
   declarations: [
@@ -99,7 +101,9 @@ import { LoteComponent } from './lote/lote.component';
     HistoricoComponent,
     CalendarComponent,
     TanqueComponent,
-    LoteComponent
+    LoteComponent,
+    ChecklistComponent,
+    ComprovanteComponent
   ],
   imports: [
     BrowserModule,

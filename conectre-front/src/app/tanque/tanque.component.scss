@@ -150,13 +150,14 @@ select:focus {
     justify-content: space-between;
     align-items: center;
     margin: 40px 0;
+    padding: 0 40px;
 }
 
 .progress-bar-box{
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    width: 95%;
+    width: 100%;
     height: 100%;
 }
 
