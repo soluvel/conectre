@@ -18,10 +18,6 @@ export class LoteComponent implements OnInit, OnDestroy  {
   form: FormGroup;
   produtores: any;
   exibirTanque: boolean = false;
-  tiposTanque = ['Escavado', 'Geomembrana', 'Elevado', 'Concreto', 'Outro'];
-  tiposAlimentacao = ['Manual', 'Alimentador Arrasto', 'Alimentador Automático', 'Outro'];
-  tiposAbastecimento = ['Bombeamento', 'Gravidade', 'Chuva', 'Outro'];
-  tiposEletrica = ['Monofásica 127V', 'Monofásica 220V', 'Monofásica 127V e 220V', 'Trifásica 220V', 'Trifásica 380V', 'Trifásica 220V e 380V', 'Outro'];
 
   constructor(private formBuilder: FormBuilder,
               // private service: PropriedadeService,
@@ -90,6 +86,22 @@ export class LoteComponent implements OnInit, OnDestroy  {
 
     editingInput.classList.toggle('click-disabled');
     editingInput.classList.toggle('focus-editing-input');
+  }
+
+  openPopup() {
+    var overlay = document.getElementById('overlaySuccessRegister');
+    overlay.style.display = 'block';
+
+    var popupWall = document.getElementById('popupWall');
+    popupWall.style.display = 'block';
+  }
+
+  closePopup() {
+    var overlay = document.getElementById('overlaySuccessRegister');
+    overlay.style.display = 'none';
+
+    var popupWall = document.getElementById('popupWall');
+    popupWall.style.display = 'none';
   }
 
 }

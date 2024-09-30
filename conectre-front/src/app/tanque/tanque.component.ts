@@ -22,7 +22,7 @@ export class TanqueComponent implements OnInit, OnDestroy  {
   tiposTanque = ['Escavado', 'Geomembrana', 'Elevado', 'Concreto', 'Outro'];
   tiposAlimentacao = ['Manual', 'Alimentador Arrasto', 'Alimentador Automático', 'Outro'];
   tiposAbastecimento = ['Bombeamento', 'Gravidade', 'Chuva', 'Outro'];
-  tiposEletrica = ['Trifásica 220V', 'Trifásica 380V', 'Monofásica', 'Trifásica 220V e 380V', 'Outro'];
+  tiposEletrica = ['Monofásica 127V', 'Monofásica 220V', 'Monofásica 127V e 220V', 'Trifásica 220V', 'Trifásica 380V', 'Trifásica 220V e 380V', 'Outro'];
 
   constructor(private formBuilder: FormBuilder,
               // private service: PropriedadeService,
@@ -34,6 +34,7 @@ export class TanqueComponent implements OnInit, OnDestroy  {
               private router: Router) {
     this.form = this.formBuilder.group({
       id: [],
+      nomeTanque: ['', Validators.required],
       tipoTanque: ['', Validators.required],
       area: ['', Validators.required],
       profundidadeMedia: ['', Validators.required],

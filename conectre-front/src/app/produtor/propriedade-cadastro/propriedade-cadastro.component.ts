@@ -22,6 +22,7 @@ export class PropriedadeCadastroComponent implements OnInit, OnDestroy {
   form: FormGroup;
   produtores: any;
   exibirTanque: boolean = false;
+  tanques = ['Tanque fixo 1', 'Tanque fixo 2'];
 
   constructor(private formBuilder: FormBuilder,
               private service: PropriedadeService,

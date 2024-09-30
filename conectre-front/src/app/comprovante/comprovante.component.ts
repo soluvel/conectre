@@ -81,4 +81,20 @@ export class ComprovanteComponent implements OnInit, OnDestroy  {
     editingInput.classList.toggle('focus-editing-input');
   }
 
+  openPopup() {
+    var overlay = document.getElementById('overlaySuccessRegister');
+    overlay.style.display = 'block';
+
+    var popupWall = document.getElementById('popupWall');
+    popupWall.style.display = 'block';
+  }
+
+  closePopup() {
+    var overlay = document.getElementById('overlaySuccessRegister');
+    overlay.style.display = 'none';
+
+    var popupWall = document.getElementById('popupWall');
+    popupWall.style.display = 'none';
+  }
+
 }

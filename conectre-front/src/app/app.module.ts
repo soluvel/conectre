@@ -64,6 +64,7 @@ import { TanqueComponent } from './tanque/tanque.component';
 import { LoteComponent } from './lote/lote.component';
 import { ChecklistComponent } from './checklist/checklist.component';
 import { ComprovanteComponent } from './comprovante/comprovante.component';
+import { TableLoteComponent } from './lote/table-lote/table-lote.component';
 
 @NgModule({
   declarations: [
@@ -103,7 +104,8 @@ import { ComprovanteComponent } from './comprovante/comprovante.component';
     TanqueComponent,
     LoteComponent,
     ChecklistComponent,
-    ComprovanteComponent
+    ComprovanteComponent,
+    TableLoteComponent
   ],
   imports: [
     BrowserModule,

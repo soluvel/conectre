@@ -17,68 +17,50 @@
     </div>
 
     <div class="solid-container">
-        <div class="fake-input">
-            <span class="title-fake-input">Produtor vinculado</span>
-            <span class="text-fake-input">nome produtor</span>
+        <span class="solid-container-title">Vinculos do lote</span>
+        <div class="solid-container-content">
+            <div class="fake-input">
+                <span class="title-fake-input">Produtor vinculado</span>
+                <span class="text-fake-input">nome produtor</span>
+            </div>
+            <div class="fake-input">
+                <span class="title-fake-input">Propriedade vinculada</span>
+                <span class="text-fake-input">nome propriedade</span>
+            </div>
+            <div class="fake-input">
+                <span class="title-fake-input">Tanque vinculado</span>
+                <span class="text-fake-input">nome tanque</span>
+            </div>
         </div>
-        <div class="fake-input">
-            <span class="title-fake-input">Propriedade vinculada</span>
-            <span class="text-fake-input">nome propriedade</span>
-        </div>
-        <div class="fake-input">
-            <span class="title-fake-input">Tanque vinculado</span>
-            <span class="text-fake-input">nome tanque</span>
+        
+        <span class="solid-container-title" style="margin-top: 16px;">Ambiente</span>
+        <div class="solid-container-content">
+            <div class="fake-input">
+                <span class="title-fake-input">Lote</span>
+                <span class="text-fake-input">número lote</span>
+            </div>
+            <div class="fake-input">
+                <span class="title-fake-input">Ciclo</span>
+                <span class="text-fake-input">número ciclo</span>
+            </div>
+            <div class="fake-input">
+                <span class="title-fake-input">Tipo de tanque</span>
+                <span class="text-fake-input">tipo do tanque</span>
+            </div>
+            <div class="fake-input">
+                <span class="title-fake-input">Área (m²)</span>
+                <span class="text-fake-input">valor da área</span>
+            </div>
+            <div class="fake-input">
+                <span class="title-fake-input">Aeração total (CV)</span>
+                <span class="text-fake-input">valor da aeração</span>
+            </div>
         </div>
     </div>
 
     <div class="container-form">
         <form [formGroup]="form">
-            <span style="font-size: 14px; font-weight: 500; color: #A1A1AA;">Ambiente</span>
-            <div class="row g-3" style="margin-top: 0px; margin-bottom: 20px;">
-                <div class="col-4">
-                    <label for="tanque" class="form-label required">Tanque</label>
-                    <div class="input-group">
-                        <input type="text" id="tanque" class="form-control" [ngClass]="{'click-disabled': isEditando}" formControlName="tanque" aria-describedby="tanque">
-                        <mat-icon class="icon edit-icon material-symbols-rounded" *ngIf="isEditando" (click)="enableEdit('tanque')">edit</mat-icon>
-                    </div>
-                </div>
-                <div class="col-4">
-                    <label for="lote" class="form-label required">Lote</label>
-                    <div class="input-group">
-                        <input type="text" id="lote" class="form-control" [ngClass]="{'click-disabled': isEditando}" formControlName="lote" aria-describedby="lote">
-                        <mat-icon class="icon edit-icon material-symbols-rounded" *ngIf="isEditando" (click)="enableEdit('lote')">edit</mat-icon>
-                    </div>
-                </div>
-                <div class="col-4">
-                    <label for="ciclo" class="form-label required">Ciclo</label>
-                        <div class="input-group">
-                        <input type="text" id="ciclo" class="form-control" [ngClass]="{'click-disabled': isEditando}" formControlName="ciclo" aria-describedby="ciclo">
-                    </div>
-                </div>
-
-                <div class="col-4">
-                    <label for="tipoTanque" class="form-label required">Tipo do tanque</label>
-                    <div class="input-group">
-                        <input type="text" id="tipoTanque" class="form-control" [ngClass]="{'click-disabled': isEditando}" formControlName="tipoTanque" aria-describedby="tipoTanque">
-                        <mat-icon class="icon edit-icon material-symbols-rounded" *ngIf="isEditando" (click)="enableEdit('tipoTanque')">edit</mat-icon>
-                    </div>
-                </div>
-                <div class="col-4">
-                    <label for="area" class="form-label required">Área (m²)</label>
-                    <div class="input-group">
-                        <input type="text" id="area" class="form-control" [ngClass]="{'click-disabled': isEditando}" formControlName="area" aria-describedby="area">
-                        <mat-icon class="icon edit-icon material-symbols-rounded" *ngIf="isEditando" (click)="enableEdit('area')">edit</mat-icon>
-                    </div>
-                </div>
-                <div class="col-4">
-                    <label for="aeracaoTotal" class="form-label required">Aeração total (CV)</label>
-                        <div class="input-group">
-                        <input type="text" id="aeracaoTotal" class="form-control" [ngClass]="{'click-disabled': isEditando}" formControlName="aeracaoTotal" aria-describedby="aeracaoTotal">
-                    </div>
-                </div>
-            </div>
-
-            <span style="font-size: 14px; font-weight: 500; color: #A1A1AA;">Peixes</span>
+            <span style="font-size: 14px; font-weight: 500; color: #6D6D6D;">Peixes</span>
             <div class="row g-3" style="margin-top: 0px; margin-bottom: 20px;">
                 <div class="col-4">
                     <label for="especie" class="form-label required">Espécie</label>
@@ -169,11 +151,31 @@
     </div>
   
     <div class="actions-footer">
-        <button class="button-clean" style="margin-left: 10px">Cadastrar depois</button>
+        <button class="button-clean" style="margin-left: 10px" (click)="openPopup()">Cadastrar depois</button>
 
         <div class="buttons-box">
             <button class="button-no-border" style="margin-right: 12px">Limpar</button>
             <button [disabled]="!form.valid" (click)="onSubmit()" [ngClass]="{'button-disabled': !form.valid}">Próximo</button>
+        </div>
+    </div>
+
+
+    <div id="popupWall"></div>
+
+    <div id="overlaySuccessRegister">
+        <div class="overlay-success-header">
+            <span>Tanque cadastrado!</span>
+            <mat-icon class="icon-close material-symbols-rounded" (click)="closePopup()">close</mat-icon>
+        </div>
+        <div class="overlay-success-content">
+            <div class="overlay-success-text-box">
+                <span class="overlay-success-text-title">Tanque cadastrado com sucesso!</span>
+                <span class="overlay-success-text">Mas lembre-se, para o produtor realizar o registro é preciso cadastrar o lote.</span>
+            </div>
+            <div class="overlay-success-buttons">
+                <button class="cancel-success-button" (click)="closePopup()">Voltar para o cadastro</button>
+                <button class="back-success-button button-white" (click)="true">Ir para o início</button>
+            </div>
         </div>
     </div>
 

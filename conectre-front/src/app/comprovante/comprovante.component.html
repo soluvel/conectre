@@ -118,5 +118,23 @@
         </div>
     </div>
 
+    <div id="popupWall"></div>
+
+    <div id="overlaySuccessRegister">
+        <div class="overlay-success-header">
+            <span>Tudo certo!</span>
+            <mat-icon class="icon-close material-symbols-rounded" (click)="closePopup()">close</mat-icon>
+        </div>
+        <div class="overlay-success-content">
+            <div class="overlay-success-text-box">
+                <span class="overlay-success-text">Cadastros realizados com sucesso. Enviamos já para o produtor para validar o cadastro.</span>
+            </div>
+            <div class="overlay-success-buttons">
+                <button class="cancel-success-button" (click)="true">Voltar a propriedade</button>
+                <button class="back-success-button button-white" (click)="closePopup()">Cancelar</button>
+            </div>
+        </div>
+    </div>
+
 </div>
   
