@@ -17,6 +17,8 @@
     </div>
 
     <div class="solid-container">
+      <span class="solid-container-title">Vinculos do lote</span>
+      <div class="solid-container-content">
         <div class="fake-input">
             <span class="title-fake-input">Produtor vinculado</span>
             <span class="text-fake-input">{{ produtorNome }}</span>
@@ -31,38 +33,40 @@
         </div>
     </div>
 
-    <div class="container-form">
         <form [formGroup]="form">
-            <span style="font-size: 14px; font-weight: 500; color: #A1A1AA;">Ambiente</span>
-            <div class="row g-3" style="margin-top: 0px; margin-bottom: 20px;">
-                <div class="col-4">
+          <span class="solid-container-title" style="margin-top: 16px;">Ambiente</span>
+          <div class="solid-container-content">
+              <div class="fake-input">
                   <span class="title-fake-input">Tanque</span>
                   <span class="text-fake-input">{{ tanque }}</span>
                 </div>
-                <div class="col-4">
+              <div class="fake-input">
                   <span class="title-fake-input">Produtor vinculado</span>
                   <span class="text-fake-input">{{ produtorNome }}</span>
                 </div>
-                <div class="col-4">
+              <div class="fake-input">
                   <span class="title-fake-input">Lote</span>
                   <span class="text-fake-input">{{ 1 }}</span>
                 </div>
 
-                <div class="col-4">
+              <div class="fake-input">
                   <span class="title-fake-input">Tipo do tanque</span>
                   <span class="text-fake-input">{{ tanque }}</span>
                 </div>
-                <div class="col-4">
+              <div class="fake-input">
                   <span class="title-fake-input">Área (m²)</span>
                   <span class="text-fake-input">{{ area }}</span>
                 </div>
-                <div class="col-4">
+              <div class="fake-input">
                   <span class="title-fake-input">Aeração total (CV)</span>
                   <span class="text-fake-input">{{ potenciaAeracaoTotal }}</span>
                 </div>
             </div>
+          </div>
 
-            <span style="font-size: 14px; font-weight: 500; color: #A1A1AA;">Peixes</span>
+  <div class="container-form">
+    <form [formGroup]="form">
+      <span style="font-size: 14px; font-weight: 500; color: #6D6D6D;">Peixes</span>
             <div class="row g-3" style="margin-top: 0px; margin-bottom: 20px;">
                 <div class="col-4">
                     <label for="especie" class="form-label required">Espécie</label>
@@ -153,11 +157,31 @@
     </div>
 
     <div class="actions-footer">
-        <button class="button-clean" style="margin-left: 10px">Cadastrar depois</button>
+        <button class="button-clean" style="margin-left: 10px" (click)="openPopup()">Cadastrar depois</button>
 
         <div class="buttons-box">
-            <button class="button-no-border" style="margin-right: 12px">Limpar dados</button>
+            <button class="button-no-border" style="margin-right: 12px">Limpar</button>
             <button [disabled]="!form.valid" (click)="onSubmit()" [ngClass]="{'button-disabled': !form.valid}">Próximo</button>
+        </div>
+    </div>
+
+
+    <div id="popupWall"></div>
+
+    <div id="overlaySuccessRegister">
+        <div class="overlay-success-header">
+            <span>Tanque cadastrado!</span>
+            <mat-icon class="icon-close material-symbols-rounded" (click)="closePopup()">close</mat-icon>
+        </div>
+        <div class="overlay-success-content">
+            <div class="overlay-success-text-box">
+                <span class="overlay-success-text-title">Tanque cadastrado com sucesso!</span>
+                <span class="overlay-success-text">Mas lembre-se, para o produtor realizar o registro é preciso cadastrar o lote.</span>
+            </div>
+            <div class="overlay-success-buttons">
+                <button class="cancel-success-button" (click)="closePopup()">Voltar para o cadastro</button>
+                <button class="back-success-button button-white" (click)="true">Ir para o início</button>
+            </div>
         </div>
     </div>
 

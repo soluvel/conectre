@@ -19,6 +19,9 @@
   </div>
 
   <div class="solid-container">
+    <span class="solid-container-title">Vinculos do tanque</span>
+
+    <div class="solid-container-content">
     <div class="fake-input">
       <span class="title-fake-input">Produtor vinculado</span>
       <span class="text-fake-input">{{ this.form.get('produtorNome').value }}</span>
@@ -28,12 +31,20 @@
       <span class="text-fake-input">{{ this.form.get('propriedadeNome').value }}</span>
     </div>
   </div>
+  </div>
 
   <div class="container-form">
     <form [formGroup]="form">
       <span style="font-size: 14px; font-weight: 500; color: #A1A1AA;">Tanque</span>
       <div class="row g-3" style="margin-top: 0px; margin-bottom: 20px;">
-        <div class="col-3">
+        <div class="col-4">
+          <label for="nomeTanque" class="form-label required">Nome do tanque</label>
+          <div class="input-group">
+            <input type="text" id="nomeTanque" class="form-control" [ngClass]="{'click-disabled': isEditando}" formControlName="nomeTanque" aria-describedby="nomeTanque">
+            <mat-icon class="icon edit-icon material-symbols-rounded" *ngIf="isEditando" (click)="enableEdit('nomeTanque')">edit</mat-icon>
+          </div>
+        </div>
+        <div class="col-4">
           <label for="tipoTanque" class="form-label required">Tipo de tanque</label>
           <div class="input-group">
             <select id="tipoTanque" class="form-control" formControlName="tipoTanque">
@@ -44,7 +55,7 @@
             </select>
           </div>
         </div>
-        <div class="col-3">
+        <div class="col-4">
           <label for="area" class="form-label required">Área (m²)</label>
           <div class="input-group">
             <input type="text" id="area" class="form-control" [ngClass]="{'click-disabled': isEditando}"
@@ -54,7 +65,7 @@
             </mat-icon>
           </div>
         </div>
-        <div class="col-3">
+        <div class="col-6">
           <label for="profundidadeMedia" class="form-label required">Profundidade média (m)</label>
           <div class="input-group">
             <input type="text" id="profundidadeMedia" class="form-control" [ngClass]="{'click-disabled': isEditando}"
@@ -64,7 +75,7 @@
             </mat-icon>
           </div>
         </div>
-        <div class="col-3">
+        <div class="col-36>
           <label for="volume" class="form-label required">Volume (m³)</label>
           <div class="input-group">
             <input type="text" id="volume" class="form-control" [ngClass]="{'click-disabled': isEditando}"
