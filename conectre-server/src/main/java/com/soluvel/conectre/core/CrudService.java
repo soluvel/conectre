@@ -22,6 +22,10 @@ public abstract class CrudService<T, ID extends Serializable> {
         return repository.save(entity);
     }
 
+    public List<T> saveAll(List<T> entity) {
+        return repository.saveAll(entity);
+    }
+
     public Optional<T> findById(ID id) {
         return repository.findById(id);
     }
