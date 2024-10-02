@@ -15,6 +15,7 @@ export class TanqueComponent implements OnInit, OnDestroy  {
 
   isEditando: boolean = false;
   private destroy$ = new Subject<void>();
+  exibirTanque: boolean = false;
   form: FormGroup;
   produtor: any;
   propriedade: any;
@@ -34,6 +35,7 @@ export class TanqueComponent implements OnInit, OnDestroy  {
       propriedade: [],
       produtorNome: [],
       propriedadeNome: [],
+      nomeTanque: ['', Validators.required],
       tipoTanque: ['', Validators.required],
       area: ['', Validators.required],
       profundidadeMedia: ['', Validators.required],

@@ -1,0 +1,140 @@
+<div style="position: relative; min-height: 85vh">
+    <div class="container-header">
+      <a href="/inicio"><mat-icon class="icon back-icon material-symbols-rounded">arrow_back</mat-icon></a>
+      <span class="back-text">Voltar</span>
+    </div>
+
+    <div class="container-progress-bar">
+        <div class="progress-bar-box">
+            <div class="progress-bar-header">
+                <span style="font-size: 14px; color: #71717A">Criando comprovante de entrega</span>
+                <span style="font-size: 14 px; color: #71717A">4/4</span>
+            </div>
+            <div class="progress-bar">
+                <div class="bar-progress"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-form">
+        <form [formGroup]="form">
+            <span style="font-size: 14px; font-weight: 500; color: #A1A1AA;">Geral</span>
+            <div class="row g-3" style="margin-top: 0px; margin-bottom: 20px;">
+                <div class="col-4">
+                    <label for="data" class="form-label required">Data</label>
+                    <div class="input-group">
+                        <input type="date" id="data" class="form-control" [ngClass]="{'click-disabled': isEditando}" formControlName="data" aria-describedby="data">
+                        <mat-icon class="icon edit-icon material-symbols-rounded" *ngIf="isEditando" (click)="enableEdit('data')">edit</mat-icon>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <label for="saida" class="form-label required">saída</label>
+                    <div class="input-group">
+                        <input type="text" id="saida" class="form-control" [ngClass]="{'click-disabled': isEditando}" formControlName="saida" aria-describedby="saida">
+                        <mat-icon class="icon edit-icon material-symbols-rounded" *ngIf="isEditando" (click)="enableEdit('saida')">edit</mat-icon>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <label for="entrada" class="form-label required">Entrada</label>
+                        <div class="input-group">
+                        <input type="text" id="entrada" class="form-control" [ngClass]="{'click-disabled': isEditando}" formControlName="entrada" aria-describedby="entrada">
+                    </div>
+                </div>
+
+                <div class="col-4">
+                    <label for="temperaturaAgua" class="form-label required">Temperatura da água</label>
+                    <div class="input-group">
+                        <input type="text" id="temperaturaAgua" class="form-control" [ngClass]="{'click-disabled': isEditando}" formControlName="temperaturaAgua" aria-describedby="temperaturaAgua">
+                        <mat-icon class="icon edit-icon material-symbols-rounded" *ngIf="isEditando" (click)="enableEdit('temperaturaAgua')">edit</mat-icon>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <label for="oxigenio" class="form-label required">Oxigênio</label>
+                    <div class="input-group">
+                        <input type="text" id="oxigenio" class="form-control" [ngClass]="{'click-disabled': isEditando}" formControlName="oxigenio" aria-describedby="oxigenio">
+                        <mat-icon class="icon edit-icon material-symbols-rounded" *ngIf="isEditando" (click)="enableEdit('oxigenio')">edit</mat-icon>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <label for="placaVeiculo" class="form-label required">Placa do veículo</label>
+                        <div class="input-group">
+                        <input type="text" id="placaVeiculo" class="form-control" [ngClass]="{'click-disabled': isEditando}" formControlName="placaVeiculo" aria-describedby="placaVeiculo">
+                    </div>
+                </div>
+            </div>
+            
+            <span style="font-size: 14px; font-weight: 500; color: #A1A1AA;">Carregamento</span>
+            <div class="row g-3" style="margin-top: 0px; margin-bottom: 20px;">
+                <div class="col-4">
+                    <label for="numeroCaixas" class="form-label required">Nº de caixas</label>
+                    <div class="input-group">
+                        <input type="text" id="numeroCaixas" class="form-control" [ngClass]="{'click-disabled': isEditando}" formControlName="numeroCaixas" aria-describedby="numeroCaixas">
+                        <mat-icon class="icon edit-icon material-symbols-rounded" *ngIf="isEditando" (click)="enableEdit('numeroCaixas')">edit</mat-icon>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <label for="peixePorCaixa" class="form-label required">Qtd. de peixes por caixa</label>
+                    <div class="input-group">
+                        <input type="text" id="peixePorCaixa" class="form-control" [ngClass]="{'click-disabled': isEditando}" formControlName="peixePorCaixa" aria-describedby="peixePorCaixa">
+                        <mat-icon class="icon edit-icon material-symbols-rounded" *ngIf="isEditando" (click)="enableEdit('peixePorCaixa')">edit</mat-icon>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <label for="pesoMedio" class="form-label required">Peso médio (g)</label>
+                        <div class="input-group">
+                        <input type="text" id="pesoMedio" class="form-control" [ngClass]="{'click-disabled': isEditando}" formControlName="pesoMedio" aria-describedby="pesoMedio">
+                    </div>
+                </div>
+
+                <div class="col-4">
+                    <label for="tanqueAlocado" class="form-label required">Tanque alocado</label>
+                    <div class="input-group">
+                        <input type="text" id="tanqueAlocado" class="form-control" [ngClass]="{'click-disabled': isEditando}" formControlName="tanqueAlocado" aria-describedby="tanqueAlocado">
+                        <mat-icon class="icon edit-icon material-symbols-rounded" *ngIf="isEditando" (click)="enableEdit('tanqueAlocado')">edit</mat-icon>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <label for="pesoTotal" class="form-label required">Peso total (Kg)</label>
+                    <div class="input-group">
+                        <input type="text" id="pesoTotal" class="form-control" [ngClass]="{'click-disabled': isEditando}" formControlName="pesoTotal" aria-describedby="pesoTotal">
+                        <mat-icon class="icon edit-icon material-symbols-rounded" *ngIf="isEditando" (click)="enableEdit('pesoTotal')">edit</mat-icon>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <label for="numeroLacre" class="form-label required">Nº do lacre</label>
+                        <div class="input-group">
+                        <input type="text" id="numeroLacre" class="form-control" [ngClass]="{'click-disabled': isEditando}" formControlName="numeroLacre" aria-describedby="numeroLacre">
+                    </div>
+                </div>
+            </div>
+     
+        </form>
+    </div>
+  
+    <div class="actions-footer">
+        <div class="buttons-box">
+            <button class="button-no-border" style="margin-right: 12px">Limpar</button>
+            <button [disabled]="!form.valid" (click)="onSubmit()" [ngClass]="{'button-disabled': !form.valid}">Finalizar</button>
+        </div>
+    </div>
+
+    <div id="popupWall"></div>
+
+    <div id="overlaySuccessRegister">
+        <div class="overlay-success-header">
+            <span>Tudo certo!</span>
+            <mat-icon class="icon-close material-symbols-rounded" (click)="closePopup()">close</mat-icon>
+        </div>
+        <div class="overlay-success-content">
+            <div class="overlay-success-text-box">
+                <span class="overlay-success-text">Cadastros realizados com sucesso. Enviamos já para o produtor para validar o cadastro.</span>
+            </div>
+            <div class="overlay-success-buttons">
+                <button class="cancel-success-button" (click)="true">Voltar a propriedade</button>
+                <button class="back-success-button button-white" (click)="closePopup()">Cancelar</button>
+            </div>
+        </div>
+    </div>
+
+</div>
+  

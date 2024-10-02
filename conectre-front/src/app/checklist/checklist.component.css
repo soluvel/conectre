@@ -1,11 +1,7 @@
-$border-botton-color: #E0E0E0;
-$background-color: #fafafa;
-
 .container-form {
   width: 100%;
   padding: 20px 40px;
 }
-
 
 .container-header {
   display: flex;
@@ -17,18 +13,16 @@ $background-color: #fafafa;
   font-weight: 600;
 }
 
-.edit-icon {
-  position: absolute;
-  top: -15%;
-  right: 0;
-  height: 100%;
+.add-icon,
+.edit-icon,
+.exclude-icon {
+  font-weight: 300;
+  font-size: 22px;
+  width: auto;
+  height: auto;
   color: #616161;
-  z-index: 999;
+  padding-right: 2px;
   cursor: pointer;
-}
-
-.edit-icon:hover {
-  color: #333333;
 }
 
 .back-icon {
@@ -36,7 +30,6 @@ $background-color: #fafafa;
   align-items: center;
   font-weight: 200;
   color: #333333;
-  cursor: pointer;
 }
 
 .back-icon:hover {
@@ -58,7 +51,7 @@ $background-color: #fafafa;
   border: none;
   border-bottom: 1px solid #E0E0E0 !important;
   border-radius: unset;
-  background-color: $background-color;
+  background-color: #fafafa;
 }
 
 .click-disabled {
@@ -70,11 +63,11 @@ $background-color: #fafafa;
 }
 
 .input-group-text {
-  background-color: $background-color;
+  background-color: #fafafa;
   border: none;
   border-radius: unset;
-  padding-top: 0.10rem;
-  padding-bottom: 0.10rem;
+  padding-top: 0.1rem;
+  padding-bottom: 0.1rem;
   margin-bottom: 0.25rem;
 }
 
@@ -87,7 +80,7 @@ select:focus {
 }
 
 label.required::after {
-  content: '*';
+  content: "*";
   color: #9d1212;
   margin-left: 4px;
 }
@@ -96,21 +89,20 @@ label.required::after {
 .form-control,
 option,
 select {
-  padding-top: 0.10rem;
-  padding-bottom: 0.10rem;
+  padding-top: 0.1rem;
+  padding-bottom: 0.1rem;
   font-size: 14px;
   font-weight: 400;
   margin-bottom: 5px;
 }
 
-
-.row.g-3>.col-3 {
+.row.g-3 > .col-3 {
   margin-bottom: 20px;
 }
 
 .actions-footer {
   display: flex;
-  justify-content: space-between;
+  justify-content: end;
   padding: 20px 40px 20px 40px;
 }
 
@@ -142,15 +134,14 @@ select {
 option,
 select {
   border: none;
-  border-bottom: 1px solid $border-botton-color;
+  border-bottom: 1px solid #E0E0E0;
   border-radius: unset;
-  background-color: $background-color;
+  background-color: #fafafa;
 }
 
 select:focus {
   border-bottom: 2px solid #0F6CBD;
 }
-
 
 .container-progress-bar {
   height: 32px;
@@ -183,168 +174,174 @@ select:focus {
 }
 
 .bar-progress {
-  width: 50%;
+  width: 75%;
   height: 4px;
   background: #0F6CBD;
   border-radius: 100px;
-  transition: .5s;
+  transition: 0.5s;
   animation: progress-bar-up 2s forwards ease-out;
 }
 
-.solid-container {
+.container-checklist {
+  padding: 20px 40px;
+}
+
+.checklist-header,
+.checklist-footer {
   display: flex;
-  flex-direction: column;
-  padding: 32px 40px;
-  margin: 0 40px 30px 40px;
-  border-radius: 8px;
-  background: #f1f1f1;
+  justify-content: space-between;
+  align-items: center;
+  height: 44px;
+  padding: 0 30px;
+  background: #F4F4F5;
 }
 
-.solid-container-title {
-  font-size: 14px;
-  font-weight: 600;
-  margin-bottom: 10px;
-}
-
-.solid-container-content {
-  display: flex;
-  padding: 0 10px;
-}
-
-.fake-input {
-  display: flex;
-  flex-direction: column;
-  border-bottom: 1px solid #E4E4E7 !important;
-  width: 49%;
-}
-
-.title-fake-input {
+.checklist-header > span {
   font-size: 14px;
   font-weight: 500;
-  color: #52525B;
-  padding-top: 0.1rem;
-  padding-bottom: 0.1rem;
-  margin-bottom: 5px;
+  color: #6D6D6D;
 }
 
-.text-fake-input {
-  font-size: 14px;
-  font-weight: 400;
-  color: #52525B;
-  padding-left: 12px;
-  padding-bottom: 5px;
-}
-
-.select-placeholder {
-  display: none;
-}
-
-#popupWall {
-  display: none;
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-  background: #000000;
-  opacity: 18%;
-  z-index: 9998;
-}
-
-#overlaySuccessRegister {
-  display: none;
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 320px;
-  height: 305px !important;
-  padding: 24px;
-  background-color: white;
-  z-index: 9999;
-  border-radius: 8px;
-}
-
-.icon-close {
-  font-weight: 300;
-  color: #52525B;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-}
-
-.icon-close:hover {
-  font-weight: 400;
-  color: #000;
-}
-
-.overlay-success-header {
-  display: flex;
-  justify-content: space-between;
-}
-
-.overlay-success-header span {
-  font-size: 14px;
-  font-weight: 400;
-  color: #52525B;
-}
-
-.overlay-success-content {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  height: auto;
-}
-
-.overlay-success-text-box {
-  display: flex;
-  flex-direction: column;
-  margin: 38px 0;
-  gap: 16px;
-}
-
-.overlay-success-text-title {
-  font-size: 16px;
-  font-weight: 700;
-  color: #242424;
-}
-
-.overlay-success-text {
-  font-size: 13.5px;
-  font-weight: 400;
-  color: #242424;
-}
-
-.overlay-success-buttons {
+.checklist-footer > span {
   display: flex;
   justify-content: center;
-  flex-direction: column;
-  width: 100%;
+  align-items: center;
+  width: auto;
+  font-size: 12px;
+  font-weight: 600;
+  color: #3F3F46;
 }
 
-.cancel-success-button {
-  background: #18181B;
-  margin-bottom: 8px;
+.checklist-itens {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 72px;
+  padding: 0 30px;
+  border-bottom: 1px solid #E7E7E7;
 }
 
-.back-success-button {
+.checklist-number-box {
+  position: relative;
+}
+
+.number-checklist {
+  margin: 0;
+  width: 71px;
+  height: 32px;
   border: 1px solid #D1D1D1;
+  border-radius: 4px;
+  color: #707070;
+  font-size: 14px;
+  font-weight: 400;
+  padding: 0 12px;
+  background: transparent;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+.arrow-icon {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translate(-8px, -50%);
+  color: #616161;
+  font-weight: 300;
+  z-index: -1;
+}
+
+.item-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 85%;
+}
+
+.icons-box {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 0 20px;
+}
+
+.add-item,
+.edit-item {
+  cursor: pointer;
+}
+
+.add-item-buttons {
+  display: flex;
+}
+
+.save-item-button {
+  font-size: 12px;
+  font-weight: 600;
+  color: #FAFAFA;
+  background: #27272A;
+  margin-right: 12px;
+  border: 1px solid #D1D1D1;
+  border-radius: 4px;
+}
+
+.clean-item-button {
+  font-size: 12px;
+  font-weight: 500;
+  color: #242424;
+  background: transparent;
+  border: 1px solid #D1D1D1;
+  border-radius: 4px;
+}
+
+.default-item-input,
+.add-item-input {
+  font-size: 14px;
+  font-weight: 400;
+  color: #707070;
+  border: none;
+  border-bottom: 1px solid #b8b8b8;
+  width: 100%;
+  padding: 7px 12px;
   background: transparent;
 }
 
-// ---------------------------------------------------------------------
-// Keyframes
+.add-item-input {
+  width: 79%;
+}
+
+.disabled-input {
+  border-bottom: none;
+}
+
+.disabled-edit,
+.checklist-input-box {
+  display: none;
+}
+
+.input-box-reveal {
+  display: flex;
+}
+
+.exclude-icon {
+  color: #CD0000;
+  cursor: pointer;
+}
+
+.click-disabled {
+  pointer-events: none;
+}
+
+.focus-editing-input {
+  border-bottom: 1px solid #616161 !important;
+}
 
 @keyframes progress-bar-up {
   0% {
-    width: 25%;
-  }
-
-  100% {
     width: 50%;
   }
-
+  100% {
+    width: 70%;
+  }
 }
+
+/*# sourceMappingURL=checklist.component.css.map */
