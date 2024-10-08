@@ -2,19 +2,19 @@ package com.soluvel.conectre.service;
 
 import com.soluvel.conectre.core.CrudRepository;
 import com.soluvel.conectre.core.CrudService;
-import com.soluvel.conectre.domain.Checklist;
-import com.soluvel.conectre.repository.ChecklistRepository;
+import com.soluvel.conectre.domain.Comprovante;
+import com.soluvel.conectre.repository.ComprovanteRepository;
 import org.springframework.stereotype.Service;
 
 @Service
-public class ChecklistService extends CrudService<Checklist, Long> {
+public class ComprovanteService extends CrudService<Comprovante, Long> {
 
-    private final ChecklistRepository repository;
+    private final ComprovanteRepository repository;
 
-    public ChecklistService(CrudRepository<Checklist, Long> repository,
-                            ChecklistRepository checkRepository) {
+    public ComprovanteService(CrudRepository<Comprovante, Long> repository,
+                              ComprovanteRepository comprovanteRepository) {
         super(repository);
-        this.repository = checkRepository;
+        this.repository = comprovanteRepository;
     }
 
 

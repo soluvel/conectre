@@ -1,15 +1,16 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
-import { Subject, takeUntil } from "rxjs";
-import { ToastrService } from "ngx-toastr";
 import { ActivatedRoute, Router } from "@angular/router";
+import { ToastrService } from "ngx-toastr";
+import { Subject, takeUntil } from "rxjs";
+import { ComprovanteService } from './comprovante.service';
 
 @Component({
   selector: 'app-comprovante',
   templateUrl: './comprovante.component.html',
   styleUrls: ['./comprovante.component.scss']
 })
-export class ComprovanteComponent implements OnInit, OnDestroy  {
+export class ComprovanteComponent implements OnInit, OnDestroy {
 
   isEditando: boolean = false;
   propriedadeId: any;
@@ -17,17 +18,15 @@ export class ComprovanteComponent implements OnInit, OnDestroy  {
   msgButton: string;
   form: FormGroup;
   produtores: any;
+  tanqueAlocado: string;
 
   constructor(private formBuilder: FormBuilder,
-              // private service: PropriedadeService,
-              // private produtorService: ProdutorService,
-              // private excelService: ExcelService,
-              private toastr: ToastrService,
-              // private viaCepService: ViaCepService,
-              private route: ActivatedRoute,
-              private router: Router) {
+    private toastr: ToastrService,
+    private service: ComprovanteService,
+    private route: ActivatedRoute,
+    private router: Router) {
     this.form = this.formBuilder.group({
-      id: [],      
+      id: [],
       data: ['', Validators.required],
       saida: ['', Validators.required],
       entrada: ['', Validators.required],
@@ -37,14 +36,16 @@ export class ComprovanteComponent implements OnInit, OnDestroy  {
       numeroCaixas: ['', Validators.required],
       peixePorCaixa: ['', Validators.required],
       pesoMedio: ['', Validators.required],
-      tanqueAlocado: ['', Validators.required],
       pesoTotal: ['', Validators.required],
       numeroLacre: ['', Validators.required],
+      loteId: [''],
     });
   }
 
   ngOnInit() {
-    
+    const dados = JSON.parse(localStorage.getItem('infoLote')!);
+    this.tanqueAlocado = dados.tanque;
+    this.form.get('loteId').setValue(localStorage.getItem('lote'))
   }
 
   ngOnDestroy() {
@@ -52,19 +53,18 @@ export class ComprovanteComponent implements OnInit, OnDestroy  {
     this.destroy$.complete();
   }
 
-  getPropriedade(): void {
-    
-  }
-
   onSubmit() {
-    
+    this.service.save(this.form.getRawValue()).pipe(takeUntil(this.destroy$)
+    ).subscribe({
+      next: response => {
+        console.log("salvo com sucesso");
+        this.router.navigate(['/inicio']);
+      },
+      error: error => {
+        console.error('Erro:', error);
+      }
+    });
   }
-
-
-  getEnderecoViaCep() {
-
-  }
-
 
   enableEdit(inputId: string): void {
     const allInputs = document.querySelectorAll('.form-control');

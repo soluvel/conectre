@@ -6,34 +6,22 @@
                    http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.3.xsd">
 
     <changeSet id="1" author="kassia.zama">
-        <preConditions onFail="MARK_RAN" onFailMessage="A tabela lote já existe no database">
+        <preConditions onFail="MARK_RAN" onFailMessage="A tabela checklist já existe no database">
             <not>
-                <tableExists tableName="lote"/>
+                <tableExists tableName="checklist"/>
             </not>
         </preConditions>
 
-        <createTable tableName="lote">
+        <createTable tableName="checklist">
             <column name="id" type="int" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="tanque_id" type="int">
-                <constraints nullable="false" foreignKeyName="fk_lote_tanque" referencedTableName="tanque_novo" referencedColumnNames="id"/>
+            <column name="lote_id" type="int">
+                <constraints nullable="false" foreignKeyName="fk_check_lote" referencedTableName="lote" referencedColumnNames="id"/>
             </column>
 
-            <column name="lote" type="varchar(50)"/>
-            <column name="ciclo" type="varchar(50)"/>
-            <column name="especie" type="varchar(50)"/>
-            <column name="origem" type="varchar(50)"/>
-            <column name="data_alojamento" type="date"/>
-            <column name="qtd_reccebida" type="int"/>
-            <column name="mortalidade" type="int"/>
-            <column name="qtd_recebida2" type="int"/>
-            <column name="peso_medio" type="double"/>
-            <column name="biomassa_total" type="double"/>
-            <column name="densidade" type="double"/>
-            <column name="biomassa_cv_atual" type="double"/>
-            <column name="peso_abate_esperado" type="double"/>
-            <column name="biomassa_estimada_final" type="double"/>
+            <column name="sentence" type="varchar(250)"/>
+            <column name="note" type="varchar(3)"/>
         </createTable>
     </changeSet>
 </databaseChangeLog>

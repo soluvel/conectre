@@ -2,35 +2,30 @@ package com.soluvel.conectre.controller;
 
 import com.soluvel.conectre.core.CrudController;
 import com.soluvel.conectre.core.CrudService;
-import com.soluvel.conectre.domain.Checklist;
-import com.soluvel.conectre.domain.records.Checklists;
-import com.soluvel.conectre.service.ChecklistService;
+import com.soluvel.conectre.domain.Comprovante;
+import com.soluvel.conectre.domain.Lote;
+import com.soluvel.conectre.service.ComprovanteService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-
-import java.util.List;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/checklist")
+@RequestMapping("/comprovante")
 @CrossOrigin(origins = "*", maxAge = 3600)
-public class ChecklistController extends CrudController<Checklist, Checklist, Long> {
+public class ComprovanteController extends CrudController<Comprovante, Comprovante, Long> {
 
-    private final ChecklistService checkListService;
+    private final ComprovanteService checkListService;
 
-    public ChecklistController(CrudService<Checklist, Long> service,
-                               ChecklistService checklistService) {
-        super(service, Checklist.class);
+    public ComprovanteController(CrudService<Comprovante, Long> service,
+                                 ComprovanteService checklistService) {
+        super(service, Comprovante.class);
         this.checkListService = checklistService;
     }
 
     @PostMapping("save/record")
-    public ResponseEntity<List<Checklist>> create(@RequestBody Checklists entity) {
-        return new ResponseEntity<>(checkListService.saveAll(entity.checks()), HttpStatus.CREATED);
+    public ResponseEntity<Comprovante> create(@RequestBody Comprovante entity) {
+        entity.setLote(Lote.builder().id(entity.getLoteId()).build());
+        return new ResponseEntity<>(checkListService.save(entity), HttpStatus.CREATED);
     }
 
 }
