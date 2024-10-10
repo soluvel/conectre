@@ -65,6 +65,8 @@ import { LoteComponent } from './lote/lote.component';
 import { ChecklistComponent } from './checklist/checklist.component';
 import { ComprovanteComponent } from './comprovante/comprovante.component';
 import { TableLoteComponent } from './lote/table-lote/table-lote.component';
+import { TableHistoricoLoteComponent } from './produtor/table-historico-lote/table-historico-lote.component';
+import { TabsBiometriasComponent } from './tabs-biometrias/tabs-biometrias.component';
 
 @NgModule({
   declarations: [
@@ -105,7 +107,9 @@ import { TableLoteComponent } from './lote/table-lote/table-lote.component';
     LoteComponent,
     ChecklistComponent,
     ComprovanteComponent,
-    TableLoteComponent
+    TableLoteComponent,
+    TableHistoricoLoteComponent,
+    TabsBiometriasComponent
   ],
   imports: [
     BrowserModule,
