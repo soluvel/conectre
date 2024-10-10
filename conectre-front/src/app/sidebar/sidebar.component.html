@@ -15,11 +15,11 @@
           <mat-icon class="arrow-icon material-symbols-rounded hidden-effect invisible-effect">keyboard_arrow_down</mat-icon>
         </a>
         <div class="dropdown-content">
-          <a href="empresa/cadastrar" *ngIf="storage.getRole() === 'ADM_TREVISAN' || storage.getRole() === 'EMPRESA'"><img src="../../assets/subitem-icon.svg" alt="Cadastros">Empresa</a>
-          <a href="tecnico/cadastrar" *ngIf="storage.getRole() === 'ADM_TREVISAN' || storage.getRole() === 'EMPRESA'"><img src="../../assets/subitem-icon.svg" alt="Cadastros">Técnico</a>
-          <a href="produtor/cadastrar" *ngIf="storage.getRole() === 'ADM_TREVISAN' || storage.getRole() === 'TECNICO' || storage.getRole() === 'EMPRESA'"><img src="../../assets/subitem-icon.svg" alt="Cadastros">Produtor</a>
-          <a href="produtor/cadastrar" *ngIf="storage.getRole() === 'ADM_TREVISAN' || storage.getRole() === 'TECNICO' || storage.getRole() === 'EMPRESA'"><img src="../../assets/subitem-icon.svg" alt="Cadastros">Tanques</a>
-          <a href="propriedade/cadastrar" *ngIf="storage.getRole() === 'ADM_TREVISAN' || storage.getRole() === 'TECNICO' || storage.getRole() === 'PRODUTOR'"><img src="../../assets/subitem-icon.svg" alt="Cadastros">Propriedade</a>
+          <a href="empresa/cadastrar" *ngIf="storage.getRole() === 'ADM_TREVISAN' || storage.getRole() === 'EMPRESA'"><span class="cadastro-icon"></span> Empresa</a>
+          <a href="tecnico/cadastrar" *ngIf="storage.getRole() === 'ADM_TREVISAN' || storage.getRole() === 'EMPRESA'"><span class="cadastro-icon"></span> Técnico</a>
+          <a href="produtor/cadastrar" *ngIf="storage.getRole() === 'ADM_TREVISAN' || storage.getRole() === 'TECNICO' || storage.getRole() === 'EMPRESA'"><span class="cadastro-icon"></span> Produtor</a>
+          <a href="produtor/cadastrar" *ngIf="storage.getRole() === 'ADM_TREVISAN' || storage.getRole() === 'TECNICO' || storage.getRole() === 'EMPRESA'"><span class="cadastro-icon"></span> Tanques</a>
+          <a href="propriedade/cadastrar" *ngIf="storage.getRole() === 'ADM_TREVISAN' || storage.getRole() === 'TECNICO' || storage.getRole() === 'PRODUTOR'"><span class="cadastro-icon"></span> Propriedade</a>
         </div>
       </li>
     </ul>

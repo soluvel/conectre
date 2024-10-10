@@ -6,7 +6,7 @@
       </a>
       <span class="back-text">Voltar aos detalhes do produtor</span>
     </div>
-    <div class="register-info">
+    <!-- <div class="register-info">
       <span class="tec-info">
         <span>Cadastrado pelo técnico: </span>
         <span class="tec-name">Diogo Garbo</span>
@@ -16,7 +16,7 @@
         <span>Última edição: </span>
         <span class="edited-date">08 de Maio, 2024</span>
       </span>
-    </div>
+    </div> -->
   </div>
 
   <div class="container-form">
@@ -156,13 +156,20 @@
       <button>Iniciar lote</button>
     </div>
   <!-- </ng-container> -->
+  
+  <!-- <ng-container *ngIf="exibirTanque"> -->
+    <div class="container-biometria">
+      <app-tabs-biometrias></app-tabs-biometrias>
+    </div>
+  
+  <!-- </ng-container> -->
+
 
   <!-- <ng-container *ngIf="exibirTanque"> -->
     <div class="container-historic">
       <span>Histórico de lotes</span>
 
-      <div class="historic-table"></div>
-      <!-- criar component novo para a table -->
+      <app-table-historico-lote></app-table-historico-lote>
     </div>
   <!-- </ng-container> -->
 

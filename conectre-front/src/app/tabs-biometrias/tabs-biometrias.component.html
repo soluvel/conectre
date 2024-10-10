@@ -1,0 +1,431 @@
+<mat-tab-group animationDuration="0ms">
+  <form [formGroup]="form">
+    <mat-tab label="Água">
+      <ng-template mat-tab-label>
+        <mat-icon class="icon-tabs material-symbols-rounded">water</mat-icon>
+        <span>Água</span>
+      </ng-template>
+      <div formGroupName="agua">
+        <div class="tab-container">
+          <div class="row g-3 row-full-line">
+            <div class="col-4">
+              <label for="dtAgua" class="form-label">Data</label>
+              <div class="input-group" style="padding-bottom: 0">
+                <input type="date" class="form-control" id="dtAgua" formControlName="dtAgua"
+                  style="margin-bottom: 0">
+              </div>
+            </div>
+
+            <div class="col-4">
+              <label for="hrAgua" class="form-label required">Hora</label>
+              <div class="input-group">
+                <input type="time" class="form-control" id="hrAgua" formControlName="hrAgua">
+              </div>
+            </div>
+
+            <div class="col-4">
+              <label for="pH" class="form-label required">pH</label>
+              <div class="input-group">
+                <input type="number" class="form-control" id="pH" formControlName="pH">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="tab-container">
+          <div class="row g-3 row-full-line">
+            <div class="col-4">
+              <label for="amonia" class="form-label">Amônia (NH3)</label>
+              <div class="input-group" style="padding-bottom: 0">
+                <input type="number" class="form-control" id="amonia" formControlName="amonia"
+                  style="margin-bottom: 0">
+              </div>
+            </div>
+
+            <div class="col-4">
+              <label for="nitrito" class="form-label required">Nitrito (NO2)</label>
+              <div class="input-group">
+                <input type="number" class="form-control" id="nitrito" formControlName="nitrito">
+              </div>
+            </div>
+
+            <div class="col-4">
+              <label for="alcalinidade" class="form-label required">Alcalinidade</label>
+              <div class="input-group">
+                <input type="number" class="form-control" id="alcalinidade" formControlName="alcalinidade">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="tab-container">
+          <div class="row g-3 row-full-line">
+            <div class="col-4">
+              <label for="transparencia" class="form-label">Transparência (cm)</label>
+              <div class="input-group" style="padding-bottom: 0">
+                <input type="number" class="form-control" id="transparencia" formControlName="transparencia"
+                  style="margin-bottom: 0">
+              </div>
+            </div>
+
+            <div class="col-4">
+              <label for="oxigenioAgua" class="form-label required">Oxigênio (mg/L)</label>
+              <div class="input-group">
+                <input type="number" class="form-control" id="oxigenioAgua" formControlName="oxigenioAgua">
+              </div>
+            </div>
+
+            <div class="col-4">
+              <label for="temperaturaAgua" class="form-label required">Temperatura (ºC)</label>
+              <div class="input-group">
+                <input type="number" class="form-control" id="temperaturaAgua" formControlName="temperaturaAgua">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </mat-tab>
+
+    <mat-tab label="Biometria">
+      <ng-template mat-tab-label>
+        <mat-icon class="icon-tabs material-symbols-rounded">set_meal</mat-icon>
+        <span>Biometria</span>
+      </ng-template>
+      <div formGroupName="biometria">
+        <div class="tab-container">
+          <div class="row g-3 row-full-line">
+            <div class="col-4">
+              <label for="dtBiometria" class="form-label">Data</label>
+              <div class="input-group" style="padding-bottom: 0">
+                <input type="date" class="form-control" id="dtBiometria" formControlName="dtBiometria"
+                  style="margin-bottom: 0">
+              </div>
+            </div>
+
+            <div class="col-4">
+              <label for="hrBiometria" class="form-label required">Hora</label>
+              <div class="input-group">
+                <input type="time" class="form-control" id="hrBiometria" formControlName="hrBiometria">
+              </div>
+            </div>
+
+            <div class="col-4">
+              <label for="qntAmostra" class="form-label required">Peixes por amostra</label>
+              <div class="input-group">
+                <input type="number" class="form-control" id="qntAmostra" formControlName="qntAmostra">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="tab-container">
+          <div class="row g-3 row-full-line">
+            <div class="col-4">
+              <label for="mortalidade" class="form-label">Mortalidade</label>
+              <div class="input-group" style="padding-bottom: 0">
+                <input type="number" class="form-control" id="mortalidade" formControlName="mortalidade"
+                  style="margin-bottom: 0">
+              </div>
+            </div>
+
+            <div class="col-4">
+              <label for="mortalidadeAcumulada" class="form-label required">Mortalidade acumulada</label>
+              <div class="input-group">
+                <input type="number" class="form-control" id="mortalidadeAcumulada" formControlName="mortalidadeAcumulada">
+              </div>
+            </div>
+
+            <div class="col-4">
+              <label for="qntPeixe" class="form-label required">Qtde. de peixes</label>
+              <div class="input-group">
+                <input type="number" class="form-control" id="qntPeixe" formControlName="qntPeixe">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="tab-container">
+          <div class="row g-3 row-full-line">
+            <div class="col-4">
+              <label for="pesoMedio" class="form-label">Peso médio (Kg)</label>
+              <div class="input-group" style="padding-bottom: 0">
+                <input type="number" class="form-control" id="pesoMedio" formControlName="pesoMedio" style="margin-bottom: 0">
+              </div>
+            </div>
+
+            <div class="col-4">
+              <label for="biomassaTotal" class="form-label required">Biomassa total (Kg)</label>
+              <div class="input-group">
+                <input type="number" class="form-control" id="biomassaTotal" formControlName="biomassaTotal">
+              </div>
+            </div>
+
+            <div class="col-4">
+              <label for="ganhoPeso" class="form-label required">Ganho de peso (Kg)</label>
+              <div class="input-group">
+                <input type="number" class="form-control" id="ganhoPeso" formControlName="ganhoPeso">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="tab-container">
+          <div class="row g-3 row-full-line">
+            <div class="col-4">
+              <label for="racaoTotal" class="form-label">Ração total (kg)</label>
+              <div class="input-group" style="padding-bottom: 0">
+                <input type="number" class="form-control" id="racaoTotal" formControlName="racaoTotal" style="margin-bottom: 0">
+              </div>
+            </div>
+
+            <div class="col-4">
+              <label for="ca" class="form-label required">C.A</label>
+              <div class="input-group">
+                <input type="number" class="form-control" id="ca" formControlName="ca">
+              </div>
+            </div>
+
+            <div class="col-4">
+              <label for="gpd" class="form-label required">GPD (g)</label>
+              <div class="input-group">
+                <input type="number" class="form-control" id="gpd" formControlName="gpd">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </mat-tab>
+
+    <mat-tab label="Trato">
+      <ng-template mat-tab-label>
+        <mat-icon class="icon-tabs material-symbols-rounded">restaurant</mat-icon>
+        <span>Trato</span>
+      </ng-template>
+      <div formGroupName="trato">
+        <div class="tab-container">
+          <div class="row g-3 row-full-line">
+            <div class="col">
+              <label for="dtTrato" class="form-label">Data</label>
+              <div class="input-group" style="padding-bottom: 0">
+                <input type="date" class="form-control" id="dtTrato" formControlName="dtTrato"
+                  style="margin-bottom: 0">
+              </div>
+            </div>
+
+            <div class="col">
+              <label for="hrTrato" class="form-label required">Hora</label>
+              <div class="input-group">
+                <input type="time" class="form-control" id="hrTrato" formControlName="hrTrato">
+              </div>
+            </div>
+
+            <div class="col">
+              <label for="temperaturaTrato" class="form-label required">Temperatura (ºC)</label>
+              <div class="input-group">
+                <input type="number" class="form-control" id="temperaturaTrato" formControlName="temperaturaTrato">
+              </div>
+            </div>
+
+            <div class="col">
+              <label for="oxigenioTrato" class="form-label required">Oxigênio (mg/L)</label>
+              <div class="input-group">
+                <input type="number" class="form-control" id="oxigenioTrato" formControlName="oxigenioTrato">
+              </div>
+            </div>
+
+            <div class="col">
+              <label for="racaoOfertada" class="form-label required">Ração ofertada (Kg)</label>
+              <div class="input-group">
+                <input type="number" class="form-control" id="racaoOfertada" formControlName="racaoOfertada">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="tab-container">
+          <div class="row g-3 row-full-line">
+            <div class="col-6">
+              <label for="racaoTotal" class="form-label">Ração total despejada (Kg)</label>
+              <div class="input-group" style="padding-bottom: 0">
+                <input type="number" class="form-control" id="racaoTotal" formControlName="racaoTotal"
+                  style="margin-bottom: 0">
+              </div>
+            </div>
+
+            <div class="col-6">
+              <label for="racaoRestante" class="form-label required">Ração restante no silo</label>
+              <div class="input-group">
+                <input type="number" class="form-control" id="racaoRestante" formControlName="racaoRestante">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </mat-tab>
+
+    <mat-tab label="Estoque">
+      <ng-template mat-tab-label>
+        <mat-icon class="icon-tabs material-symbols-rounded">package_2</mat-icon>
+        <span>Estoque</span>
+      </ng-template>
+      <div formGroupName="estoque">
+        <div class="tab-container">
+          <div class="row g-3 row-full-line">
+            <div class="col-3">
+              <label for="dtRecebimento" class="form-label">Data de recebimento</label>
+              <div class="input-group" style="padding-bottom: 0">
+                <input type="date" class="form-control" id="dtRecebimento" formControlName="dtRecebimento"
+                  style="margin-bottom: 0">
+              </div>
+            </div>
+
+            <div class="col-3">
+              <label for="qtdRecebida" class="form-label required">Qtde. recebida (Kg)</label>
+              <div class="input-group">
+                <input type="number" class="form-control" id="qtdRecebida" formControlName="qtdRecebida">
+              </div>
+            </div>
+
+            <div class="col-3">
+              <label for="tipoRacao" class="form-label required">Tipo da ração</label>
+              <div class="input-group">
+                <input type="number" class="form-control" id="tipoRacao" formControlName="tipoRacao">
+              </div>
+            </div>
+            
+            <div class="col-3">
+              <label for="nrmNota" class="form-label required">Nº da nota</label>
+              <div class="input-group">
+                <input type="number" class="form-control" id="nrmNota" formControlName="nrmNota">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </mat-tab>
+  </form>
+</mat-tab-group>
+
+
+<div class="actions-footer">
+  <div>
+    <!-- <button class="button-white" [disabled]="historico == true" (click)="openMessageBox()" style="margin-right: 10px">Fazer observação</button> -->
+    <button class="button-white" (click)="openMessageBox()" style="margin-right: 10px">Fazer observação</button>
+    <ng-container>
+      <button (click)="openOverlayTanque()"  style="margin-left: 10px">Novo tanque</button>
+    </ng-container>
+  </div>
+
+  <div class="buttons-box">
+    <button class="button-no-border clean-button" style="margin-right: 10px">Limpar dados</button>
+    <button [disabled]="tanqueId == ''" (click)="onSubmit()" [ngClass]="{'button-disabled': !form.valid || tanqueId == ''}">Salvar Registro</button>
+    <!-- <button (click)="onSubmit()">Salvar Registro</button> -->
+  </div>
+</div>
+
+<div id="filterWall"></div>
+
+<div id="overlayObservacao">
+  <div class="header-overlay-observacao">
+    <span class="title-observacao-box">Observações</span>
+    <mat-icon class="icon-close material-symbols-rounded" (click)="closeConfirm()">close</mat-icon>
+  </div>
+
+  <!-- Os tabs devem ser visíveis para o técnico também -->
+  <div class="observation-tabs">
+    <mat-tab-group animationDuration="0ms">
+      <mat-tab label="Água">
+        <ng-template mat-tab-label>
+          <mat-icon class="icon-tabs material-symbols-rounded">water</mat-icon>
+          <span>Água</span>
+        </ng-template>
+        <div class="types-box"> 
+          <div class="observation-secondary-title">Assunto tratado</div>
+          <div class="type-title-container">
+            <span *ngFor="let itemAgua of itemsAgua" [ngClass]="{'type-title': true, 'active': selectedItemAgua === itemAgua}" (click)="selectItemAgua(itemAgua)">
+              {{ itemAgua }}
+            </span>
+          </div>
+        </div>
+      </mat-tab>
+
+      <mat-tab label="Biometria">
+        <ng-template mat-tab-label>
+          <mat-icon class="icon-tabs material-symbols-rounded">set_meal</mat-icon>
+          <span>Biometria</span>
+        </ng-template>
+        <div class="types-box">
+          <div class="observation-secondary-title">Assunto tratado</div>
+          <div class="type-title-container">
+            <span *ngFor="let itemBiometria of itemsBiometria" [ngClass]="{'type-title': true, 'active': selectedItemBiometria === itemBiometria}" (click)="selectItemBiometria(itemBiometria)">
+              {{ itemBiometria }}
+            </span>
+          </div>
+        </div>
+      </mat-tab>
+      
+      <mat-tab label="Trato">
+        <ng-template mat-tab-label>
+          <mat-icon class="icon-tabs material-symbols-rounded">restaurant</mat-icon>
+          <span>Trato</span>
+        </ng-template>
+        <div class="types-box">
+          <div class="observation-secondary-title">Assunto tratado</div>
+          <div class="type-title-container">
+            <span *ngFor="let itemTrato of itemsTrato" [ngClass]="{'type-title': true, 'active': selectedItemTrato === itemTrato}" (click)="selectItemTrato(itemTrato)">
+              {{ itemTrato }}
+            </span>
+          </div>
+        </div>
+      </mat-tab>
+      
+      <mat-tab label="Estoque">
+        <ng-template mat-tab-label>
+          <mat-icon class="icon-tabs material-symbols-rounded">package_2</mat-icon>
+          <span>Estoque</span>
+        </ng-template>
+        <div class="types-box">
+          <div class="observation-secondary-title">Assunto tratado</div>
+          <div class="type-title-container">
+            <span *ngFor="let itemEstoque of itemsEstoque" [ngClass]="{'type-title': true, 'active': selectedItemEstoque === itemEstoque}" (click)="selectItemEstoque(itemEstoque)">
+              {{ itemEstoque }}
+            </span>
+          </div>
+        </div>
+      </mat-tab>
+    </mat-tab-group>
+  </div>
+
+  <div class="content-overlay-observacao">
+    <span class="title-observacao">Faça sua observação</span>
+    <div class="text-box">
+      <textarea id="message" class="message" name="message"></textarea>
+    </div>
+    <div class="buttons-box-observacao">
+      <button class="button-white clean-button" style="margin-right: 10px">Limpar</button>
+      <button class="button-geral" (click)="submitPropriedade()">Enviar</button>
+    </div>
+  </div>
+</div>
+
+<div id="overlayNovoTanque">
+  <div class="header-overlay-novo-tanque">
+    <span class="title-novo-tanque-box">Novo tanque</span>
+    <mat-icon class="icon-close material-symbols-rounded" (click)="closeConfirm()">close</mat-icon>
+  </div>
+  <div class="content-overlay-novo-tanque">
+    <span class="title-novo-tanque">Nome do tanque</span>
+    <input type="text" class="form-control" [(ngModel)]="nomeTanque">
+    <span class="title-novo-tanque" style="margin-top: 10px;">Propriedade vinculada</span>
+    <select class="form-select" [(ngModel)]="propriedadeSelecionada">
+      <option *ngFor="let prop of propriedades" [value]="prop.id">
+        {{ prop?.id }} - {{ prop?.nome}}
+      </option>
+    </select>
+
+    <div class="buttons-box-novo-tanque" style="margin-top: 20px;">
+      <button class="button-white" (click)="closeConfirm()" style="margin-right: 10px">Cancelar</button>
+      <button class="button-geral" (click)="submitPropriedade()">Cadastrar</button>
+    </div>
+  </div>
+</div>
