@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.3.xsd">
+
+    <changeSet id="1" author="kassia.zama">
+        <preConditions onFail="MARK_RAN" onFailMessage="A tabela comprovante já existe no database">
+            <not>
+                <tableExists tableName="comprovante"/>
+            </not>
+        </preConditions>
+
+        <createTable tableName="comprovante">
+            <column name="id" type="int" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="lote_id" type="int">
+                <constraints nullable="false" foreignKeyName="fk_comprovante_lote" referencedTableName="lote" referencedColumnNames="id"/>
+            </column>
+
+            <column name="data" type="date"/>
+            <column name="saida" type="varchar(100)"/>
+            <column name="entrada" type="varchar(100)"/>
+            <column name="temperatura_agua" type="varchar(50)"/>
+            <column name="oxigenio" type="varchar(50)"/>
+            <column name="placa_veiculo" type="varchar(50)"/>
+            <column name="no_caixas" type="int"/>
+            <column name="peixe_caixa" type="int"/>
+            <column name="peso_medio" type="double"/>
+            <column name="peso_total" type="double"/>
+            <column name="numero_lacre" type="varchar(50)"/>
+        </createTable>
+    </changeSet>
+</databaseChangeLog>

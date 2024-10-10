@@ -70,7 +70,8 @@ export class LoteComponent implements OnInit, OnDestroy {
     ).subscribe({
       next: response => {
         console.log("salvo com sucesso")
-        this.router.navigate(['/inicio']);
+        localStorage.setItem('lote', response.id);
+        this.router.navigate(['/checklist']);
 
       },
       error: error => {
