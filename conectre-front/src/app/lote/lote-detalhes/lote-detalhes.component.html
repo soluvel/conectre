@@ -1,0 +1,335 @@
+<div style="position: relative; min-height: 85vh">
+    <div class="container-header">
+        <div class="back-box">
+            <a href="">
+                <mat-icon class="icon back-icon material-symbols-rounded">arrow_back</mat-icon>
+            </a>
+            <span class="back-text">Voltar</span>
+        </div>
+        <!-- <div class="register-info">
+        <span class="tec-info">
+          <span>Cadastrado pelo técnico: </span>
+          <span class="tec-name">Diogo Garbo</span>
+        </span>
+  
+        <span class="date-info">
+          <span>Última edição: </span>
+          <span class="edited-date">08 de Maio, 2024</span>
+        </span>
+      </div> -->
+    </div>
+
+
+    <div class="finalizar-lote-container">
+        <div class="infos-finalizar-lote-box">
+            <div class="info-finalizar-lote">
+                <span class="info-title">Data de alojamento</span>
+                <span class="info">03/07/2024</span>
+            </div>
+            <div class="info-finalizar-lote">
+                <span class="info-title">Peso de abate esperado</span>
+                <span class="info">1,0 Kg</span>
+            </div>
+            <div class="info-finalizar-lote">
+                <span class="info-title">Remessa total</span>
+                <span class="info">32.230</span>
+            </div>
+            <div class="info-finalizar-lote">
+                <span class="info-title">Espécie</span>
+                <span class="info">Tilápia</span>
+            </div>
+        </div>
+
+        <button class="finalizar-lote-button" (click)="finalizarLote()">Finalizar lote</button>
+    </div>
+
+    <div class="container-historic">
+        <span>Histórico de registro</span>
+
+        <app-table-registro-historico></app-table-registro-historico>
+    </div>
+
+    <div class="dividing-line"></div>
+
+    <div class="container-form">
+        <span class="container-infos-title">Informações do lote</span>
+
+        <span class="container-infos-subtitle">Ambiente</span>
+        <div class="row g-3">
+            <div class="col-4">
+                <label for="tanque" class="form-label">Tanque</label>
+                <div class="input-group">
+                    <input type="text" class="form-control click-disabled" id="tanque">
+                </div>
+            </div>
+
+            <div class="col-4">
+                <label for="lote" class="form-label">Lote</label>
+                <div class="input-group">
+                    <input type="text" class="form-control click-disabled" id="lote">
+                </div>
+            </div>
+
+            <div class="col-4">
+                <label for="ciclo" class="form-label">Ciclo</label>
+                <div class="input-group">
+                    <input type="text" class="form-control click-disabled" id="ciclo">
+                </div>
+            </div>
+        </div>
+
+        <div class="row g-3">
+            <div class="col-4">
+                <label for="tipoTanque" class="form-label">Tipo de tanque</label>
+                <div class="input-group">
+                    <input type="text" class="form-control click-disabled" id="tipoTanque">
+                </div>
+            </div>
+
+            <div class="col-4">
+                <label for="area" class="form-label">Área (m²)</label>
+                <div class="input-group">
+                    <input type="text" class="form-control click-disabled" id="area">
+                </div>
+            </div>
+
+            <div class="col-4">
+                <label for="aeracaoTotal" class="form-label">Aeração total (CV)</label>
+                <div class="input-group">
+                    <input type="text" class="form-control click-disabled" id="aeracaoTotal">
+                </div>
+            </div>
+        </div>
+
+        <span class="container-infos-subtitle">Peixes</span>
+        <div class="row g-3">
+            <div class="col-4">
+                <label for="especie" class="form-label">Espécie</label>
+                <div class="input-group">
+                    <input type="text" class="form-control click-disabled" id="especie">
+                </div>
+            </div>
+
+            <div class="col-4">
+                <label for="origem" class="form-label">Origem</label>
+                <div class="input-group">
+                    <input type="text" class="form-control click-disabled" id="origem">
+                </div>
+            </div>
+
+            <div class="col-4">
+                <label for="dataAlojamento" class="form-label">Data de alojamento</label>
+                <div class="input-group">
+                    <input type="text" class="form-control click-disabled" id="dataAlojamento">
+                </div>
+            </div>
+        </div>
+
+        <div class="row g-3">
+            <div class="col-4">
+                <label for="primeiraRemessa" class="form-label">Qtd. recebida (1º remessa)</label>
+                <div class="input-group">
+                    <input type="text" class="form-control click-disabled" id="primeiraRemessa">
+                </div>
+            </div>
+
+            <div class="col-4">
+                <label for="mortalidadeAlojamento" class="form-label">Mortalidade de Alojamento (7 dias)</label>
+                <div class="input-group">
+                    <input type="text" class="form-control click-disabled" id="mortalidadeAlojamento">
+                </div>
+            </div>
+
+            <div class="col-4">
+                <label for="segundaRemessa" class="form-label">Qtd. recebida (2º remessa)</label>
+                <div class="input-group">
+                    <input type="text" class="form-control click-disabled" id="segundaRemessa">
+                </div>
+            </div>
+        </div>
+
+        <div class="row g-3">
+            <div class="col-4">
+                <label for="pesoMedio" class="form-label">Peso médio (Kg)</label>
+                <div class="input-group">
+                    <input type="text" class="form-control click-disabled" id="pesoMedio">
+                </div>
+            </div>
+
+            <div class="col-4">
+                <label for="biomassaTotal" class="form-label">Biomassa total alojada (Kg)</label>
+                <div class="input-group">
+                    <input type="text" class="form-control click-disabled" id="biomassaTotal">
+                </div>
+            </div>
+
+            <div class="col-4">
+                <label for="densidade" class="form-label">Densidade (Px/m²)</label>
+                <div class="input-group">
+                    <input type="text" class="form-control click-disabled" id="densidade">
+                </div>
+            </div>
+        </div>
+
+        <div class="row g-3">
+            <div class="col-4">
+                <label for="biomassaAtual" class="form-label">Biomassa por CV Atual (Kg)</label>
+                <div class="input-group">
+                    <input type="text" class="form-control click-disabled" id="biomassaAtual">
+                </div>
+            </div>
+
+            <div class="col-4">
+                <label for="pesoAbateEsperado" class="form-label">Peso de abate esperado (Kg)</label>
+                <div class="input-group">
+                    <input type="text" class="form-control click-disabled" id="pesoAbateEsperado">
+                </div>
+            </div>
+
+            <div class="col-4">
+                <label for="biomassaEstimada" class="form-label">Biomassa estimada/CV fase final (Kg/CV)</label>
+                <div class="input-group">
+                    <input type="text" class="form-control click-disabled" id="biomassaEstimada">
+                </div>
+            </div>
+        </div>
+
+        <span class="container-infos-title">Comprovante de entrega</span>
+
+        <span class="container-infos-subtitle">Geral</span>
+        <div class="row g-3">
+            <div class="col-4">
+                <label for="data" class="form-label">Data</label>
+                <div class="input-group">
+                    <input type="text" class="form-control click-disabled" id="data">
+                </div>
+            </div>
+
+            <div class="col-4">
+                <label for="saida" class="form-label">Saída</label>
+                <div class="input-group">
+                    <input type="text" class="form-control click-disabled" id="saida">
+                </div>
+            </div>
+
+            <div class="col-4">
+                <label for="entrada" class="form-label">Entrada</label>
+                <div class="input-group">
+                    <input type="text" class="form-control click-disabled" id="entrada">
+                </div>
+            </div>
+        </div>
+
+        <div class="row g-3">
+            <div class="col-4">
+                <label for="temperaturaAgua" class="form-label">Temperatura da água</label>
+                <div class="input-group">
+                    <input type="text" class="form-control click-disabled" id="temperaturaAgua">
+                </div>
+            </div>
+
+            <div class="col-4">
+                <label for="oxigenio" class="form-label">Oxigênio</label>
+                <div class="input-group">
+                    <input type="text" class="form-control click-disabled" id="oxigenio">
+                </div>
+            </div>
+
+            <div class="col-4">
+                <label for="placaVeiculo" class="form-label">Placa do veículo</label>
+                <div class="input-group">
+                    <input type="text" class="form-control click-disabled" id="placaVeiculo">
+                </div>
+            </div>
+        </div>
+
+        <span class="container-infos-subtitle">Carregamento</span>
+        <div class="row g-3">
+            <div class="col-4">
+                <label for="nmrCaixas" class="form-label">Nº de caixas</label>
+                <div class="input-group">
+                    <input type="text" class="form-control click-disabled" id="nmrCaixas">
+                </div>
+            </div>
+
+            <div class="col-4">
+                <label for="peixePorCaixa" class="form-label">Qtd. de peixes por caixa</label>
+                <div class="input-group">
+                    <input type="text" class="form-control click-disabled" id="peixePorCaixa">
+                </div>
+            </div>
+
+            <div class="col-4">
+                <label for="pesoMedioCaixa" class="form-label">Peso médio (g)</label>
+                <div class="input-group">
+                    <input type="text" class="form-control click-disabled" id="pesoMedioCaixa">
+                </div>
+            </div>
+        </div>
+
+        <div class="row g-3">
+            <div class="col-4">
+                <label for="tanqueAlocado" class="form-label">Tanque alocado</label>
+                <div class="input-group">
+                    <input type="text" class="form-control click-disabled" id="tanqueAlocado">
+                </div>
+            </div>
+
+            <div class="col-4">
+                <label for="pesoTotalCaixa" class="form-label">Peso total (Kg)</label>
+                <div class="input-group">
+                    <input type="text" class="form-control click-disabled" id="pesoTotalCaixa">
+                </div>
+            </div>
+
+            <div class="col-4">
+                <label for="nmrLacre" class="form-label">Nº do lacre</label>
+                <div class="input-group">
+                    <input type="text" class="form-control click-disabled" id="nmrLacre">
+                </div>
+            </div>
+        </div>
+
+        <span class="container-infos-subtitle">Observações</span>
+        <div class="row g-3">
+            <div class="col-12">
+                <label for="anotacaoGeral" class="form-label">Anotações gerais sobre o lote</label>
+                <div class="input-group">
+                    <input type="text" class="form-control click-disabled" id="anotacaoGeral">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="popupWall"></div>
+
+    <div id="overlayEndLote">
+        <div class="overlay-end-lote-header">
+            <span>Finalizar lote!</span>
+            <mat-icon class="icon-close material-symbols-rounded" (click)="closePopup()">close</mat-icon>
+        </div>
+        <div class="overlay-end-lote-content">
+            <div class="overlay-end-lote-text-box">
+                <div class="col-12">
+                    <label for="dataFinalizar" class="form-label label-popup">Data</label>
+                    <div>
+                        <input type="date" class="form-control form-popup" id="dataFinalizar">
+                    </div>
+                </div>
+
+                <div class="col-12">
+                    <label for="horaFinalizar" class="form-label label-popup">Hora</label>
+                    <div>
+                        <input type="time" class="form-control form-popup" id="horaFinalizar">
+                    </div>
+                </div>
+            </div>
+            
+            <div class="overlay-end-lote-buttons">
+                <button class="back-end-lote-button button-white" (click)="closePopup()">Cancelar</button>
+                <button class="end-lote-button" (click)="true">Finalizar</button>
+            </div>
+        </div>
+    </div>
+
+</div>

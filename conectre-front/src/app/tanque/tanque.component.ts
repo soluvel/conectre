@@ -54,10 +54,13 @@ export class TanqueComponent implements OnInit, OnDestroy  {
   ngOnInit() {
     const dados = JSON.parse(localStorage.getItem('propriedade')!);
 
-    this.form.get('propriedadeId').setValue(dados.id)
-    this.form.get('propriedadeNome').setValue(dados.nome)
-    this.form.get('produtorId').setValue(dados.produtor)
-    this.form.get('produtorNome').setValue(dados.produtorNome)
+    this.form.get('propriedadeId').setValue(dados.id);
+    this.form.get('propriedadeNome').setValue(dados.nome);
+    this.form.get('produtorId').setValue(dados.produtor);
+    this.form.get('produtorNome').setValue(dados.produtorNome);
+
+    this.form.get('area').valueChanges.subscribe(() => this.calcularVolume());
+    this.form.get('profundidadeMedia').valueChanges.subscribe(() => this.calcularVolume());
 
     this.enumValueService.getEnum("TipoTanque").pipe(takeUntil(this.destroy$)
     ).subscribe({
@@ -130,9 +133,19 @@ export class TanqueComponent implements OnInit, OnDestroy  {
       }
     });
 
-
   }
 
+  calcularVolume() {
+    const area = this.form.get('area').value;
+    const profundidadeMedia = this.form.get('profundidadeMedia').value;
+
+    if (area && profundidadeMedia) {
+      const volume = parseFloat(area) * parseFloat(profundidadeMedia);
+      this.form.get('volume').setValue(volume.toFixed(2));
+    } else {
+      this.form.get('volume').setValue(0);
+    }
+  }
 
   enableEdit(inputId: string): void {
     const allInputs = document.querySelectorAll('.form-control');

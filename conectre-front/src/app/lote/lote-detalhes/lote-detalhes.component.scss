@@ -1,0 +1,514 @@
+$border-botton-color: #E0E0E0;
+$border-botton-color-focus: #313131;
+$background-color: #fafafa;
+$lines-color: #E0E0E0;
+
+.container-form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 0px 40px 20px 40px;
+}
+
+.container-header {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 0 10px 0;
+    color: #27272A;
+    font-size: 14px;
+}
+
+.input-group {
+    margin-bottom: 25px;
+}
+
+.edit-icon {
+    position: absolute;
+    top: -15%;
+    right: 0;
+    height: 100%;
+    color: #616161;
+    z-index: 999;
+    cursor: pointer;
+}
+
+.edit-icon:hover {
+    color: #333333;
+}
+
+.back-box {
+    display: flex;
+}
+
+.back-icon {
+    display: flex;
+    align-items: center;
+    font-weight: 200;
+    color: #333333;
+    cursor: pointer;
+}
+
+.back-icon:hover {
+    color: #000;
+    font-weight: 300;
+}
+
+.back-text {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    font-weight: 400 !important;
+    color: #27272A;
+    padding-left: 10px;
+}
+
+.register-info {
+    position: absolute;
+    right: 0;
+    font-size: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.form-control {
+    position: relative;
+    border: none;
+    border-bottom: 1px solid $border-botton-color;
+    border-radius: unset;
+    background-color: $background-color;
+}
+
+.edit-icon {
+    position: absolute;
+    right: 0;
+    z-index: 999;
+}
+
+textarea:focus,
+input:focus,
+select:focus {
+    box-shadow: 0 0 0 0;
+    border-bottom: 1px solid $border-botton-color;
+    outline: 0;
+}
+
+label.required::after {
+    content: '*';
+    color: #9d1212;
+    margin-left: 4px;
+}
+
+.form-label,
+.form-control,
+option,
+select {
+    padding-top: 0.10rem;
+    padding-bottom: 0.10rem;
+    // font-size: 0.800rem;
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+.row.g-3 {
+    margin-bottom: 16px;
+}
+
+.row>* {
+    padding-right: 20px;
+}
+
+#overlay {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 45%;
+    height: 30%;
+    background-color: white;
+    z-index: 9999;
+    border-radius: 10px;
+}
+
+.mat-panel-title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.button-no-border {
+    padding-right: 20px;
+}
+
+.button-disabled {
+    background-color: #F0F0F0;
+    color: #BDBDBD;
+    cursor: not-allowed;
+}
+
+.click-disabled {
+    pointer-events: none;
+}
+
+option,
+select {
+    border: none;
+    border-bottom: 1px solid $border-botton-color;
+    border-radius: unset;
+    background-color: $background-color;
+}
+
+select:focus {
+    border-bottom: 2px solid #0F6CBD;
+}
+
+.container-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.new-buttons-box {
+    display: flex;
+    justify-content: space-between;
+    height: 48px;
+    margin: 0 40px;
+    margin-top: 50px;
+}
+
+.new-buttons-box button {
+    width: 49%;
+    border-radius: 10px;
+}
+
+
+.icon {
+    color: #616161;
+}
+
+.back-icon {
+    cursor: pointer;
+    font-weight: 200;
+}
+
+.back-icon:hover {
+    color: #000;
+}
+
+.filter-button {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.icon-filter {
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.menu-arrow-icon-select {
+    transition: .3s;
+}
+
+.menu-arrow-icon-select-open {
+    transform: rotateX(180deg);
+}
+
+.tanque-infos {
+    background: #FAFAFA;
+    padding: 15px 40px 0 40px;
+    border-radius: 20px;
+    height: 475px;
+    margin: 0 35px 0 35px;
+}
+
+.header-infos {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid $lines-color;
+}
+
+.header-infos>span {
+    display: flex;
+    align-items: center;
+    padding-left: 10px;
+}
+
+.select-title {
+    position: relative;
+    font-weight: 600;
+    width: 10%;
+    justify-content: space-between;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: .3s;
+    color: #3F3F46;
+}
+
+.select-title-open {
+    width: 33.3%;
+}
+
+.select-infos {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    width: 33.3%;
+    height: 0px;
+    z-index: 999;
+    transition: .3s;
+    background: #fff;
+    margin-left: 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1),
+        0 4px 8px rgba(0, 0, 0, 0.1),
+        0 8px 16px rgba(0, 0, 0, 0.1),
+        0 16px 32px rgba(0, 0, 0, 0.1);
+    overflow-x: hidden;
+    // overflow-y: scroll;
+}
+
+.select-infos-open {
+    position: absolute;
+    top: 100%;
+    height: 300px;
+    z-index: 999;
+}
+
+.select-infos span {
+    color: #616161;
+    padding: 10px;
+}
+
+.select-infos ul {
+    list-style-type: none;
+}
+
+.select-infos ul li {
+    margin-bottom: 10px;
+    color: #424242;
+    cursor: pointer;
+}
+
+.select-infos span {
+    font-weight: 600;
+    cursor: default;
+}
+
+.table-infos {
+    display: flex;
+    height: auto;
+    width: 100%;
+}
+
+.footer-infos {
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    right: 0;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #A1A1AA;
+    font-size: 12px;
+}
+
+.date-info-footer {
+    font-weight: 600;
+}
+
+textarea:focus,
+input:focus,
+select:focus {
+    box-shadow: 0 0 0 0;
+    border-bottom: 1px solid $border-botton-color-focus;
+    outline: 0;
+}
+
+.finalizar-lote-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 160px;
+    border-radius: 8px;
+    margin: 0 40px;
+    margin-top: 50px;
+    padding: 24px 32px;
+    gap: 32px;
+    background: #F4F4F5;
+}
+
+.infos-finalizar-lote-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 24px;
+}
+
+.info-finalizar-lote {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.info-title {
+    font-size: 12px;
+    font-weight: 600;
+    margin-bottom: 4px;
+    color: #52525B;
+}
+
+.info {
+    font-size: 14px;
+    font-weight: 400;
+    color: #52525B;
+}
+
+.finalizar-lote-button {
+    font-size: 14px;
+    font-weight: 600;
+    width: 114px;
+    height: 32px;
+    background: #27272A;
+    padding: 5px 12px;
+    border-radius: 4px;
+}
+
+.dividing-line {
+    height: 1px;
+    width: auto;
+    margin: 50px 40px;
+    background: #c5c5c5;
+}
+
+.container-infos-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: #27272A;
+    margin-bottom: 24px;
+}
+
+.container-infos-subtitle {
+    font-size: 14px;
+    font-weight: 500;
+    color: #6D6D6D;
+    margin-bottom: 16px;
+}
+
+.container-historic {
+    font-size: 16px;
+    font-weight: 400;
+    margin: 40px 40px 20px 40px;
+}
+
+#popupWall {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: #000000;
+    opacity: 18%;
+    z-index: 9998;
+}
+
+#overlayEndLote {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 320px;
+    height: 300px !important;
+    padding: 24px;
+    background-color: white;
+    z-index: 9999;
+    border-radius: 8px;
+}
+
+.icon-close {
+    font-weight: 300;
+    color: #52525B;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.icon-close:hover {
+    font-weight: 400;
+    color: #000;
+}
+
+.overlay-end-lote-header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.overlay-end-lote-header span {
+    font-size: 14px;
+    font-weight: 600;
+    color: #27272A;
+}
+
+.overlay-end-lote-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 85%;
+    margin-top: 20px;
+}
+
+.overlay-end-lote-text-box {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.overlay-end-lote-text {
+    font-size: 14px;
+    font-weight: 400;
+    color: #242424;
+}
+
+.overlay-end-lote-buttons {
+    display: flex;
+    justify-content: end;
+    width: 100%;
+    gap: 8px;
+}
+
+.end-lote-button {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.back-end-lote-button {
+    font-size: 14px;
+    font-weight: 600;
+    border: 1px solid #D1D1D1;
+    background: transparent;
+    margin-bottom: 8px;
+}
+
+.label-popup {
+    color: #71717A;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.form-popup {
+    background: transparent !important;
+}

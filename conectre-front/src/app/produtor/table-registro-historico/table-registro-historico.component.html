@@ -45,13 +45,13 @@
     </ng-container>
 
     <ng-container matColumnDef="coleta">
-      <th mat-header-cell class="data-coleta-column" *matHeaderCellDef id="coleta">Data Coleta</th>
+      <th mat-header-cell class="data-coleta-column" *matHeaderCellDef id="coleta">Coleta</th>
       <td mat-cell class="data-coleta-column" *matCellDef="let element">{{ element.coleta | dateFormat}}</td>
     </ng-container>
 
     <ng-container matColumnDef="registro">
-      <th mat-header-cell class="hora-coleta-column" *matHeaderCellDef id="registro">Hora Coleta</th>
-      <td mat-cell class="hora-coleta-column" *matCellDef="let element">{{ element.hrColeta | timeFormatPipe }}</td>
+      <th mat-header-cell class="data-registro-column" *matHeaderCellDef id="registro">Registro</th>
+      <td mat-cell class="data-registro-column" *matCellDef="let element">{{ element.registro | timeFormatPipe }}</td>
     </ng-container>
 
     <ng-container matColumnDef="detalhe">

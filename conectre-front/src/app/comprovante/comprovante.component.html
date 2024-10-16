@@ -89,7 +89,7 @@
                 <div class="col-4">
                     <label for="tanqueAlocado" class="form-label required">Tanque alocado</label>
                     <div class="input-group">
-                        <input type="text" id="tanqueAlocado" class="form-control" [ngClass]="{'click-disabled': isEditando}" [value]="tanqueAlocado" aria-describedby="tanqueAlocado" readonly>
+                        <input type="text" id="tanqueAlocado" class="form-control" [ngClass]="{'click-disabled': true}" [value]="tanqueAlocado" aria-describedby="tanqueAlocado" readonly>
                         <mat-icon class="icon edit-icon material-symbols-rounded" *ngIf="isEditando" (click)="enableEdit('tanqueAlocado')">edit</mat-icon>
                       </div>
                 </div>

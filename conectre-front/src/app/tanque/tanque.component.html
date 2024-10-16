@@ -41,9 +41,9 @@
           <label for="nomeTanque" class="form-label required">Nome do tanque</label>
           <div class="input-group">
             <input type="text" id="nomeTanque" class="form-control" [ngClass]="{'click-disabled': isEditando}"
-                   formControlName="nomeTanque" aria-describedby="nomeTanque">
+              formControlName="nomeTanque" aria-describedby="nomeTanque">
             <mat-icon class="icon edit-icon material-symbols-rounded" *ngIf="isEditando"
-                      (click)="enableEdit('nomeTanque')">edit
+              (click)="enableEdit('nomeTanque')">edit
             </mat-icon>
           </div>
         </div>
@@ -62,7 +62,7 @@
           <label for="area" class="form-label required">Área (m²)</label>
           <div class="input-group">
             <input type="text" id="area" class="form-control" [ngClass]="{'click-disabled': isEditando}"
-                   formControlName="area" aria-describedby="area">
+              formControlName="area" aria-describedby="area">
             <mat-icon class="icon edit-icon material-symbols-rounded" *ngIf="isEditando" (click)="enableEdit('area')">
               edit
             </mat-icon>
@@ -72,17 +72,16 @@
           <label for="profundidadeMedia" class="form-label required">Profundidade média (m)</label>
           <div class="input-group">
             <input type="text" id="profundidadeMedia" class="form-control" [ngClass]="{'click-disabled': isEditando}"
-                   formControlName="profundidadeMedia" aria-describedby="profundidadeMedia">
+              formControlName="profundidadeMedia" aria-describedby="profundidadeMedia">
             <mat-icon class="icon edit-icon material-symbols-rounded" *ngIf="isEditando"
-                      (click)="enableEdit('profundidadeMedia')">edit
+              (click)="enableEdit('profundidadeMedia')">edit
             </mat-icon>
           </div>
         </div>
         <div class="col-6">
           <label for="volume" class="form-label required">Volume (m³)</label>
           <div class="input-group">
-            <input type="text" id="volume" class="form-control" [ngClass]="{'click-disabled': isEditando}"
-                   formControlName="volume" aria-describedby="volume">
+            <input type="text" id="volume" class="form-control" formControlName="volume" aria-describedby="volume" [ngClass]="{'click-disabled': true}">
           </div>
         </div>
 
@@ -92,9 +91,9 @@
             <label for="noAeradores" class="form-label required">Nº de aeradores</label>
             <div class="input-group">
               <input type="text" id="noAeradores" class="form-control" [ngClass]="{'click-disabled': isEditando}"
-                     formControlName="noAeradores" aria-describedby="noAeradores">
+                formControlName="noAeradores" aria-describedby="noAeradores">
               <mat-icon class="icon edit-icon material-symbols-rounded" *ngIf="isEditando"
-                        (click)="enableEdit('noAeradores')">edit
+                (click)="enableEdit('noAeradores')">edit
               </mat-icon>
             </div>
           </div>
@@ -102,10 +101,9 @@
             <label for="potenciaAeracaoTotal" class="form-label required">Potência de aeração total (CV)</label>
             <div class="input-group">
               <input type="text" id="potenciaAeracaoTotal" class="form-control"
-                     [ngClass]="{'click-disabled': isEditando}"
-                     formControlName="potenciaAeracaoTotal">
+                [ngClass]="{'click-disabled': isEditando}" formControlName="potenciaAeracaoTotal">
               <mat-icon class="icon edit-icon material-symbols-rounded" *ngIf="isEditando"
-                        (click)="enableEdit('potenciaAeracaoTotal')">edit
+                (click)="enableEdit('potenciaAeracaoTotal')">edit
               </mat-icon>
             </div>
           </div>
@@ -140,9 +138,9 @@
           <label for="maxAbastecimento" class="form-label required">Máximo de Abastecimento (m³/h)</label>
           <div class="input-group">
             <input type="text" id="maxAbastecimento" class="form-control" [ngClass]="{'click-disabled': isEditando}"
-                   formControlName="maxAbastecimento" aria-describedby="maxAbastecimento">
+              formControlName="maxAbastecimento" aria-describedby="maxAbastecimento">
             <mat-icon class="icon edit-icon material-symbols-rounded" *ngIf="isEditando"
-                      (click)="enableEdit('maxAbastecimento')">edit
+              (click)="enableEdit('maxAbastecimento')">edit
             </mat-icon>
           </div>
         </div>

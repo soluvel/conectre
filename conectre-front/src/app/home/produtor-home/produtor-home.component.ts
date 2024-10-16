@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { TanqueService } from "../../tanque.service";
+import { TanqueNovoService } from "../../tanqueNovo.service";
 import { StorageService } from "../../storage.service";
 import { ExcelService } from "../../excel.service";
 
@@ -12,10 +12,18 @@ export class ProdutorHomeComponent implements OnInit {
   selectedTanque: string = '';
   tanques: any[];
 
-  constructor(private tanqueService: TanqueService,
+  constructor(private tanqueService: TanqueNovoService,
               private excelService: ExcelService,
               private storage: StorageService) {
 
+  }
+
+  ngOnInit() {
+    this.tanqueService.getTanques(this.storage.getUserId()).subscribe(data => {
+      this.tanques = data;
+    });
+
+    console.log(this.tanques)
   }
 
   get selectedTanqueName(): string {
@@ -24,12 +32,6 @@ export class ProdutorHomeComponent implements OnInit {
       selectedTanque = this.tanques.find(tanque => tanque.id == this.selectedTanque);
     }
     return selectedTanque ? selectedTanque.nome : '';
-  }
-
-  ngOnInit() {
-    this.tanqueService.getTanques(this.storage.getUserId()).subscribe(data => {
-      this.tanques = data;
-    });
   }
 
   selectOpen() {
