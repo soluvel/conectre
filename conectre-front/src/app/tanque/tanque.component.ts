@@ -35,7 +35,7 @@ export class TanqueComponent implements OnInit, OnDestroy  {
       propriedade: [],
       produtorNome: [],
       propriedadeNome: [],
-      nomeTanque: ['', Validators.required],
+      nome: ['', Validators.required],
       tipoTanque: ['', Validators.required],
       area: ['', Validators.required],
       profundidadeMedia: ['', Validators.required],
@@ -113,11 +113,12 @@ export class TanqueComponent implements OnInit, OnDestroy  {
     ).subscribe({
       next: response => {
         console.log("salvo com sucesso")
-        let nome = this.tiposTanque.filter(p => p.name == this.form.get('tipoTanque').value).map(p => p.description)[0]
+        let tipoTanque = this.tiposTanque.filter(p => p.name == this.form.get('tipoTanque').value).map(p => p.description)[0]
         const dados = {
           produtor: this.form.get('propriedadeNome').value,
           propriedade: this.form.get('produtorNome').value,
-          tanque: nome,
+          tanque: tipoTanque,
+          tanqueNome: this.form.get('nome').value,
           tanqueId: response.id,
           area: response.area,
           potenciaAeracaoTotal: response.potenciaAeracaoTotal
@@ -136,10 +137,13 @@ export class TanqueComponent implements OnInit, OnDestroy  {
   }
 
   calcularVolume() {
-    const area = this.form.get('area').value;
-    const profundidadeMedia = this.form.get('profundidadeMedia').value;
+    let area = this.form.get('area').value;
+    let profundidadeMedia = this.form.get('profundidadeMedia').value;
 
     if (area && profundidadeMedia) {
+      area = area.replace(',', '.');
+      profundidadeMedia = profundidadeMedia.replace(',', '.');
+
       const volume = parseFloat(area) * parseFloat(profundidadeMedia);
       this.form.get('volume').setValue(volume.toFixed(2));
     } else {

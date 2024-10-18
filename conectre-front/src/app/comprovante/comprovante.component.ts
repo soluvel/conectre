@@ -44,7 +44,7 @@ export class ComprovanteComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     const dados = JSON.parse(localStorage.getItem('infoLote')!);
-    this.tanqueAlocado = dados.tanque;
+    this.tanqueAlocado = dados.tanqueNome;
     this.form.get('loteId').setValue(localStorage.getItem('lote'))
   }
 
@@ -54,7 +54,7 @@ export class ComprovanteComponent implements OnInit, OnDestroy {
   }
 
   onSubmit() {
-    this.service.save(this.form.getRawValue()).pipe(takeUntil(this.destroy$)
+     this.service.save(this.form.getRawValue()).pipe(takeUntil(this.destroy$)
     ).subscribe({
       next: response => {
         console.log("salvo com sucesso");

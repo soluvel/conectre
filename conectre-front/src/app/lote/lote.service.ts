@@ -1,11 +1,8 @@
-import { EventEmitter, Injectable } from "@angular/core";
-import { jwtDecode } from 'jwt-decode';
-import { Router } from "@angular/router";
 import { HttpClient, HttpHeaders, HttpParams } from "@angular/common/http";
+import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { StorageService } from "../storage.service";
 import { Lote } from "./lote";
-import { Empresa } from "../empresa/empresa";
 
 @Injectable({
     providedIn: 'root'
@@ -30,7 +27,7 @@ export class LoteService {
         return this.http.get<any>(`${this.apiUrl}/by-produtor/${produtor}`, { headers: this.headers });
     }
 
-    save(data: any): Observable<Lote> {
+    save(data: any): Observable<any> {
         return this.http.post<any>(`${this.apiUrl}/save/record`, data, { headers: this.headers });
     }
 
@@ -53,5 +50,13 @@ export class LoteService {
             headers: this.headers
         });
 
+    }
+
+    findByPropriedade(id: any, page: any, size: any): Observable<any> {
+        return this.http.get<any>(`${this.apiUrl}/find-by-propriedade-id/${id}/${page}/${size}`, { headers: this.headers });
+    }
+
+    findDetail(id: any): Observable<any> {
+        return this.http.get<any>(`${this.apiUrl}/find-detail/${id}`, { headers: this.headers });
     }
 }

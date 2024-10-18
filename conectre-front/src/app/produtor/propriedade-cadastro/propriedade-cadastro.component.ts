@@ -1,12 +1,13 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
-import { PropriedadeService } from "../propriedade.service";
-import { Subject, takeUntil } from "rxjs";
-import { ToastrService } from "ngx-toastr";
 import { ActivatedRoute, Router } from "@angular/router";
+import { ToastrService } from "ngx-toastr";
+import { Subject, takeUntil } from "rxjs";
+import { TanqueNovoService } from 'src/app/tanqueNovo.service';
+import { ExcelService } from "../../excel.service";
 import { ViaCepService } from "../../via-cep.service";
 import { ProdutorService } from "../produtor.service";
-import { ExcelService } from "../../excel.service";
+import { PropriedadeService } from "../propriedade.service";
 
 @Component({
   selector: 'app-propriedade-cadastro',
@@ -22,29 +23,32 @@ export class PropriedadeCadastroComponent implements OnInit, OnDestroy {
   form: FormGroup;
   produtores: any[] = [];
   exibirTanque: boolean = false;
-  tanques = ['Tanque fixo 1', 'Tanque fixo 2'];
+  exibirLote: boolean = false;
+  tanques: any[];
+  tanqueSelecionado: number;
 
   constructor(private formBuilder: FormBuilder,
-              private service: PropriedadeService,
-              private produtorService: ProdutorService,
-              private excelService: ExcelService,
-              private toastr: ToastrService,
-              private viaCepService: ViaCepService,
-              private route: ActivatedRoute,
-              private router: Router) {
+    private service: PropriedadeService,
+    private produtorService: ProdutorService,
+    private excelService: ExcelService,
+    private toastr: ToastrService,
+    private viaCepService: ViaCepService,
+    private tanqueService: TanqueNovoService,
+    private route: ActivatedRoute,
+    private router: Router) {
     this.form = this.formBuilder.group({
       id: [],
       nome: ['', Validators.required],
       produtor: ['', Validators.required],
       produtorNome: [''],
       endereco: this.formBuilder.group({
-        cep: [''],
-        logradouro: [''],
+        cep: ['', Validators.required],
+        logradouro: ['', Validators.required],
         numero: [''],
         complemento: [''],
         bairro: [''],
-        localidade: [''],
-        uf: [''],
+        localidade: ['', Validators.required],
+        uf: ['', Validators.required],
       }),
     });
   }
@@ -52,7 +56,12 @@ export class PropriedadeCadastroComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
       this.propriedadeId = params.get('id');
-      this.getPropriedade();
+
+      if (this.propriedadeId) {
+        this.exibirTanque = true;
+        this.getPropriedade();
+        this.getTanques();
+      }
     });
 
     this.produtorService.getProdutorReduce().subscribe(data => {
@@ -63,6 +72,15 @@ export class PropriedadeCadastroComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.destroy$.next();
     this.destroy$.complete();
+  }
+
+  getTanques(): void {
+    this.tanqueService.getTanquesByPropriedades(parseInt(this.propriedadeId)).subscribe(data => {
+      this.tanques = data;
+      if (this.tanques.length > 0) {
+        this.tanqueSelecionado = this.tanques[0].id; 
+      }
+    });
   }
 
   getPropriedade(): void {
@@ -93,6 +111,27 @@ export class PropriedadeCadastroComponent implements OnInit, OnDestroy {
     dados.produtorNome = nome;
     localStorage.setItem('propriedade', JSON.stringify(dados));
     this.router.navigate(['/tanque/cadastrar']);
+  }
+
+  iniciarLote() {
+    const tanque = this.tanques.find(t => t.id === this.tanqueSelecionado);
+    if (tanque) {
+      console.log('Tanque selecionado:', tanque);
+
+      const dados = {
+        produtor: tanque.produtorNome,
+        propriedade: tanque.propriedadeNome,
+        tanque: tanque.tipoTanque,
+        tanqueNome: tanque.nome,
+        tanqueId: tanque.id,
+        area: tanque.area,
+        potenciaAeracaoTotal: tanque.potenciaAeracaoTotal
+      };
+
+      localStorage.setItem('infoLote', JSON.stringify(dados));
+      this.router.navigate(['/lote/cadastrar']);
+    } 
+    
   }
 
 

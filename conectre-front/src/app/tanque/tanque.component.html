@@ -38,12 +38,12 @@
       <span style="font-size: 14px; font-weight: 500; color: #A1A1AA;">Tanque</span>
       <div class="row g-3" style="margin-top: 0px; margin-bottom: 20px;">
         <div class="col-4">
-          <label for="nomeTanque" class="form-label required">Nome do tanque</label>
+          <label for="nome" class="form-label required">Nome do tanque</label>
           <div class="input-group">
-            <input type="text" id="nomeTanque" class="form-control" [ngClass]="{'click-disabled': isEditando}"
-              formControlName="nomeTanque" aria-describedby="nomeTanque">
+            <input type="text" id="nome" class="form-control" [ngClass]="{'click-disabled': isEditando}"
+              formControlName="nome" aria-describedby="nome">
             <mat-icon class="icon edit-icon material-symbols-rounded" *ngIf="isEditando"
-              (click)="enableEdit('nomeTanque')">edit
+              (click)="enableEdit('nome')">edit
             </mat-icon>
           </div>
         </div>
@@ -81,7 +81,7 @@
         <div class="col-6">
           <label for="volume" class="form-label required">Volume (m³)</label>
           <div class="input-group">
-            <input type="text" id="volume" class="form-control" formControlName="volume" aria-describedby="volume" [ngClass]="{'click-disabled': true}">
+            <input type="text" id="volume" class="form-control" formControlName="volume" aria-describedby="volume" readonly [ngClass]="{'click-disabled': true}">
           </div>
         </div>
 

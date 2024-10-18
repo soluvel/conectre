@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.3.xsd">
+
+    <changeSet id="1" author="kassia.zama">
+        <preConditions onFail="MARK_RAN" onFailMessage="A tabela agua já existe no database">
+            <not>
+                <tableExists tableName="agua"/>
+            </not>
+        </preConditions>
+
+        <createTable tableName="agua">
+            <column name="id" autoIncrement="true" type="int">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_agua"/>
+            </column>
+
+            <column name="dt_medicao" type="DATE">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="hora" type="TIMESTAMP"/>
+            <column name="ph" type="int"/>
+            <column name="nitrito" type="int"/>
+            <column name="alcalinidade" type="int"/>
+            <column name="transparencia" type="int"/>
+
+            <column name="oxigenio" type="double"/>
+            <column name="temperatura" type="double"/>
+
+            <column name="medicao_id" type="int">
+                <constraints nullable="false" foreignKeyName="fk_agua_medicao" referencedTableName="medicao_novo" referencedColumnNames="id"/>
+            </column>
+        </createTable>
+
+    </changeSet>
+</databaseChangeLog>

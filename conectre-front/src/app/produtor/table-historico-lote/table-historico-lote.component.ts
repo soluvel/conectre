@@ -1,9 +1,11 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { MatTableDataSource } from "@angular/material/table";
 import { MatPaginator } from "@angular/material/paginator";
 import { Router } from "@angular/router";
 import { MedicaoService } from "../medicao.service";
 import { StorageService } from "../../storage.service";
+import { LoteService } from 'src/app/lote/lote.service';
+
 
 @Component({
   selector: 'app-table-historico-lote',
@@ -11,6 +13,8 @@ import { StorageService } from "../../storage.service";
   styleUrls: ['./table-historico-lote.component.scss']
 })
 export class TableHistoricoLoteComponent implements OnInit {
+
+  @Input() propriedadeId: any;
 
   dataSource = new MatTableDataSource<any>;
   displayedColumns: string[] = ['tanque', 'propriedade', 'convAlimentar', 'gpd', 'totalRecebida', 'alojamento', 'despeca', 'diasCultivo', 'detalhe'];
@@ -21,13 +25,12 @@ export class TableHistoricoLoteComponent implements OnInit {
   size: number = 5;
   filter: string;
 
-  constructor(private service: MedicaoService,
-              private storage: StorageService,
+  constructor(private loteService: LoteService,
               private router: Router) {
   }
 
   ngOnInit(): void {
-    this.service.findHistorico(this.storage.getUserId(), this.pageNumber, this.size).subscribe({
+    this.loteService.findByPropriedade(this.propriedadeId, this.pageNumber, this.size).subscribe({
       next: (page) => {
         this.dataSource.data = page.content
         this.pageNumber = page.pageable.pageNumber
@@ -45,7 +48,7 @@ export class TableHistoricoLoteComponent implements OnInit {
   nextOrBack(isAvancar: boolean) {
     let page = isAvancar ? this.pageNumber + 1 : this.pageNumber - 1;
 
-    this.service.findHistorico(this.storage.getUserId(), page, this.size).subscribe({
+    this.loteService.findByPropriedade(this.propriedadeId, page, this.size).subscribe({
       next: (page) => {
         this.dataSource.data = page.content
         this.pageNumber = page.pageable.pageNumber
@@ -59,7 +62,7 @@ export class TableHistoricoLoteComponent implements OnInit {
   }
 
   paginado(number: any) {
-    this.service.findHistorico(this.storage.getUserId(), number - 1, this.size).subscribe({
+    this.loteService.findByPropriedade(this.propriedadeId, number - 1, this.size).subscribe({
       next: (page) => {
         this.dataSource.data = page.content
         this.pageNumber = page.pageable.pageNumber
@@ -74,7 +77,7 @@ export class TableHistoricoLoteComponent implements OnInit {
   }
 
   redirectToDetails(id: any) {
-    this.router.navigate(['/historico', id]);
+    this.router.navigate(['/lote/detalhes', id]);
   }
 }
 

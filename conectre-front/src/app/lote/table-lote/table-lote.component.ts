@@ -1,9 +1,9 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatTableDataSource } from "@angular/material/table";
 import { MatPaginator } from "@angular/material/paginator";
-import { LoteService } from "../lote.service";
 import { Router } from "@angular/router";
 import { StorageService } from "../../storage.service";
+import { LoteService } from '../lote.service';
 
 @Component({
   selector: 'app-table-lote',

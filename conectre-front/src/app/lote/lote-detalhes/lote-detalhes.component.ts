@@ -7,6 +7,7 @@ import { ActivatedRoute, Router } from "@angular/router";
 import { ViaCepService } from "../../via-cep.service";
 import { ProdutorService } from "../../produtor/produtor.service";
 import { ExcelService } from "../../excel.service";
+import { LoteService } from '../lote.service';
 
 @Component({
   selector: 'app-lote-detalhes',
@@ -22,6 +23,7 @@ export class LoteDetalhesComponent  implements OnInit, OnDestroy {
   form: FormGroup;
   produtores: any[] = [];
   exibirTanque: boolean = false;
+  loteDetail: any;
 
   constructor(private formBuilder: FormBuilder,
               private service: PropriedadeService,
@@ -29,6 +31,7 @@ export class LoteDetalhesComponent  implements OnInit, OnDestroy {
               private excelService: ExcelService,
               private toastr: ToastrService,
               private viaCepService: ViaCepService,
+              private loteService: LoteService,
               private route: ActivatedRoute,
               private router: Router) {
     this.form = this.formBuilder.group({
@@ -52,6 +55,8 @@ export class LoteDetalhesComponent  implements OnInit, OnDestroy {
     this.route.paramMap.subscribe(params => {
       this.propriedadeId = params.get('id');
       this.getPropriedade();
+      this.getLoteDetail();
+
     });
 
     this.produtorService.getProdutorReduce().subscribe(data => {
@@ -70,6 +75,12 @@ export class LoteDetalhesComponent  implements OnInit, OnDestroy {
       this.form.get('produtor').setValue(data.produtor.id);
       this.isEditando = true;
       this.msgButton = !this.isEditando ? "Cadastrar Propriedade" : "Salvar Alterações"
+    });
+  }
+
+  getLoteDetail(): void {
+    this.loteService.findDetail(parseInt(this.propriedadeId)).subscribe(data => {
+      this.loteDetail = data;
     });
   }
 

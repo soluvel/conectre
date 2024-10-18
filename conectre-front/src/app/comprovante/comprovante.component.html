@@ -45,6 +45,7 @@
                     <label for="temperaturaAgua" class="form-label required">Temperatura da água</label>
                     <div class="input-group">
                         <input type="text" id="temperaturaAgua" class="form-control" [ngClass]="{'click-disabled': isEditando}" formControlName="temperaturaAgua" aria-describedby="temperaturaAgua">
+                        <span class="input-suffix">°C</span>
                         <mat-icon class="icon edit-icon material-symbols-rounded" *ngIf="isEditando" (click)="enableEdit('temperaturaAgua')">edit</mat-icon>
                     </div>
                 </div>
@@ -52,6 +53,7 @@
                     <label for="oxigenio" class="form-label required">Oxigênio</label>
                     <div class="input-group">
                         <input type="text" id="oxigenio" class="form-control" [ngClass]="{'click-disabled': isEditando}" formControlName="oxigenio" aria-describedby="oxigenio">
+                        <span class="input-suffix">mg/L</span>
                         <mat-icon class="icon edit-icon material-symbols-rounded" *ngIf="isEditando" (click)="enableEdit('oxigenio')">edit</mat-icon>
                     </div>
                 </div>

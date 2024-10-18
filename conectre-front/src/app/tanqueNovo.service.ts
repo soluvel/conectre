@@ -8,7 +8,7 @@ import { Propriedade } from "./produtor/propriedade";
   providedIn: 'root'
 })
 export class TanqueNovoService {
-  private apiUrl = 'http://localhost:8080/tanque_novo';
+  private apiUrl = 'http://localhost:8080/tanque-novo';
   private headers = new HttpHeaders().set('Authorization', this.storage.getToken());
 
   constructor(private http: HttpClient,
@@ -21,6 +21,10 @@ export class TanqueNovoService {
 
   save(data: any): Observable<any> {
     return this.http.post<any>(`${this.apiUrl}/save/record`, data, { headers: this.headers });
+  }
+
+  getTanquesByPropriedades(propriedadeId: any): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/list-by-propriedade/${propriedadeId}`, { headers: this.headers });
   }
 
 }

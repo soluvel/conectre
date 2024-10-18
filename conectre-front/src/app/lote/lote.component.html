@@ -31,28 +31,24 @@
       </div>
       <div class="fake-input">
         <span class="title-fake-input">Tanque vinculado</span>
-        <span class="text-fake-input">{{ tanque }}</span>
+        <span class="text-fake-input">{{ tanqueNome }}</span>
       </div>
     </div>
 
     <span class="solid-container-title" style="margin-top: 16px;">Ambiente</span>
     <div class="solid-container-content">
       <div class="fake-input">
-        <span class="title-fake-input">Tanque</span>
-        <span class="text-fake-input">{{ tanque }}</span>
-      </div>
-      <div class="fake-input">
-        <span class="title-fake-input">Produtor vinculado</span>
-        <span class="text-fake-input">{{ produtorNome }}</span>
-      </div>
-      <div class="fake-input">
         <span class="title-fake-input">Lote</span>
-        <span class="text-fake-input">{{ 1 }}</span>
+        <span class="text-fake-input">???</span>
       </div>
-
+      <div class="fake-input">
+        <span class="title-fake-input">Ciclo</span>
+        <span class="text-fake-input">???</span>
+      </div>
+      
       <div class="fake-input">
         <span class="title-fake-input">Tipo do tanque</span>
-        <span class="text-fake-input">{{ tanque }}</span>
+        <span class="text-fake-input">{{ tipoTanque }}</span>
       </div>
       <div class="fake-input">
         <span class="title-fake-input">Área (m²)</span>
@@ -121,7 +117,7 @@
           <label for="qtdRecebida2" class="form-label required">Qtd. recebida (2ª remessa)</label>
           <div class="input-group">
             <input type="text" id="qtdRecebida2" class="form-control" [ngClass]="{'click-disabled': isEditando}"
-              formControlName="qtdRecebida2" aria-describedby="qtdRecebida2">
+              formControlName="qtdRecebida2" (blur)="calcularDensidade()" aria-describedby="qtdRecebida2">
           </div>
         </div>
 
@@ -129,7 +125,7 @@
           <label for="pesoMedio" class="form-label required">Peso Médio (Kg)</label>
           <div class="input-group">
             <input type="text" id="pesoMedio" class="form-control" [ngClass]="{'click-disabled': isEditando}"
-              formControlName="pesoMedio" aria-describedby="pesoMedio">
+              formControlName="pesoMedio" (blur)="calcularBiomassa()" aria-describedby="pesoMedio">
             <mat-icon class="icon edit-icon material-symbols-rounded" *ngIf="isEditando"
               (click)="enableEdit('pesoMedio')">edit
             </mat-icon>
@@ -139,7 +135,7 @@
           <label for="biomassaTotal" class="form-label required">Biomassa total alojada (Kg)</label>
           <div class="input-group">
             <input type="text" id="biomassaTotal" class="form-control" [ngClass]="{'click-disabled': isEditando}"
-              formControlName="biomassaTotal" aria-describedby="biomassaTotal">
+              formControlName="biomassaTotal" aria-describedby="biomassaTotal" readonly>
             <mat-icon class="icon edit-icon material-symbols-rounded" *ngIf="isEditando"
               (click)="enableEdit('biomassaTotal')">edit
             </mat-icon>
@@ -213,7 +209,7 @@
       </div>
       <div class="overlay-success-buttons">
         <button class="cancel-success-button" (click)="closePopup()">Voltar para o cadastro</button>
-        <button class="back-success-button button-white" (click)="true">Ir para o início</button>
+        <button class="back-success-button button-white" (click)="voltarInicial()">Ir para o início</button>
       </div>
     </div>
   </div>

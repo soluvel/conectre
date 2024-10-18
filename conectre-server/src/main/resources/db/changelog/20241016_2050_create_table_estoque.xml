@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.3.xsd">
+
+    <changeSet id="1" author="kassia.zama">
+        <preConditions onFail="MARK_RAN" onFailMessage="A tabela estoque já existe no database">
+            <not>
+                <tableExists tableName="estoque"/>
+            </not>
+        </preConditions>
+
+        <createTable tableName="estoque">
+            <column name="id" autoIncrement="true" type="int">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_estoque"/>
+            </column>
+
+            <column name="dt_recebimento" type="DATE">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="racao_ofertada" type="double"/>
+            <column name="tipo_racao" type="varchar(100)"/>
+            <column name="no_nf" type="varchar(15)"/>
+
+
+            <column name="medicao_id" type="int">
+                <constraints nullable="false" foreignKeyName="fk_estoque_medicao" referencedTableName="medicao_novo"
+                             referencedColumnNames="id"/>
+            </column>
+        </createTable>
+
+    </changeSet>
+</databaseChangeLog>

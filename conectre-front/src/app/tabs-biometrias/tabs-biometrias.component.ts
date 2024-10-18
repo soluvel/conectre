@@ -108,7 +108,7 @@ export class TabsBiometriasComponent implements OnInit, OnDestroy{
     })
 
 
-    if (this.tanqueId != '') {
+    if (this.tanqueId) {
       this.medicaoService.findOneByTanque(parseInt(this.tanqueId)).subscribe(data => {
         this.form.patchValue(data);
       });

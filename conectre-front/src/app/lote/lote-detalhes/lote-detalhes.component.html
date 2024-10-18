@@ -24,19 +24,19 @@
         <div class="infos-finalizar-lote-box">
             <div class="info-finalizar-lote">
                 <span class="info-title">Data de alojamento</span>
-                <span class="info">03/07/2024</span>
+                <span class="info">{{ loteDetail.dataAlojamento | dateFormat }}</span>
             </div>
             <div class="info-finalizar-lote">
                 <span class="info-title">Peso de abate esperado</span>
-                <span class="info">1,0 Kg</span>
+                <span class="info">{{ loteDetail.pesoAbateEsperado}}.kg</span>
             </div>
             <div class="info-finalizar-lote">
                 <span class="info-title">Remessa total</span>
-                <span class="info">32.230</span>
+                <span class="info">{{ loteDetail.qtdRecebida }}</span>
             </div>
             <div class="info-finalizar-lote">
                 <span class="info-title">Espécie</span>
-                <span class="info">Tilápia</span>
+                <span class="info">{{ loteDetail.especie}}</span>
             </div>
         </div>
 

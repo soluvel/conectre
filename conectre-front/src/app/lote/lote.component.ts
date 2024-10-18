@@ -1,9 +1,10 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
-import { Subject, takeUntil } from "rxjs";
-import { ToastrService } from "ngx-toastr";
 import { ActivatedRoute, Router } from "@angular/router";
-import { LoteService } from "../lote.service";
+import { ToastrService } from "ngx-toastr";
+import { Subject, takeUntil } from "rxjs";
+import { LoteService } from './lote.service';
+
 
 @Component({
   selector: 'app-lote',
@@ -17,18 +18,16 @@ export class LoteComponent implements OnInit, OnDestroy {
   form: FormGroup;
   produtorNome: string;
   propriedade: string;
-  tanque: string
+  tanqueNome: string;
+  tipoTanque: string;
   area: string
   potenciaAeracaoTotal: string
 
   constructor(private formBuilder: FormBuilder,
-              private service: LoteService,
-              // private produtorService: ProdutorService,
-              // private excelService: ExcelService,
-              private toastr: ToastrService,
-              // private viaCepService: ViaCepService,
-              private route: ActivatedRoute,
-              private router: Router) {
+    private service: LoteService,
+    private toastr: ToastrService,
+    private route: ActivatedRoute,
+    private router: Router) {
     this.form = this.formBuilder.group({
       id: [],
       tanque: [],
@@ -53,10 +52,12 @@ export class LoteComponent implements OnInit, OnDestroy {
 
     this.produtorNome = dados.produtor;
     this.propriedade = dados.propriedade;
-    this.tanque = dados.tanque;
+    this.tanqueNome = dados.tanqueNome;
+    this.tipoTanque = dados.tanque;
     this.area = dados.area;
     this.potenciaAeracaoTotal = dados.potenciaAeracaoTotal;
     this.form.get('tanqueId').setValue(dados.tanqueId)
+
   }
 
   ngOnDestroy() {
@@ -110,6 +111,45 @@ export class LoteComponent implements OnInit, OnDestroy {
 
     var popupWall = document.getElementById('popupWall');
     popupWall.style.display = 'none';
+  }
+
+  voltarInicial() {
+    this.router.navigate(['/inicio']);
+    this.closePopup();
+  }
+
+  calcularBiomassa() {
+
+    let qtdRecebida = parseFloat(this.form.get('qtdRecebida').value) || 0;
+    let mortalidade = parseFloat(this.form.get('mortalidade').value) || 0;
+    let qtdRecebida2 = parseFloat(this.form.get('qtdRecebida2').value) || 0;
+    let pesoMedio = parseFloat((this.form.get('pesoMedio').value || '0').replace(',', '.'));
+
+    const resultado = ((qtdRecebida - mortalidade + qtdRecebida2) * pesoMedio);
+
+    this.form.get('biomassaTotal').setValue(resultado.toFixed(5));
+  }
+
+  calcularDensidade() {
+
+    let qtdRecebida = parseFloat(this.form.get('qtdRecebida').value) || 0;
+    let qtdRecebida2 = parseFloat(this.form.get('qtdRecebida2').value) || 0;
+    let area = parseFloat((this.area || '0').replace(',', '.'));
+
+    const resultado = ((qtdRecebida2 + qtdRecebida) / area);
+
+    this.form.get('densidade').setValue(resultado.toFixed(2));
+  }
+
+  
+  calcularBiomassaPorCv() {
+
+    let biomassaTotal = parseFloat(this.form.get('biomassaTotal').value) || 0;
+    let qtdRecebida2 = parseFloat(this.potenciaAeracaoTotal) || 0;
+
+    const resultado = (biomassaTotal / qtdRecebida2);
+
+    this.form.get('biomassaCVAtual').setValue(resultado.toFixed(2));
   }
 
 }

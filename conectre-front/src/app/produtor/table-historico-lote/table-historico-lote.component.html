@@ -21,27 +21,27 @@
   
       <ng-container matColumnDef="convAlimentar">
         <th mat-header-cell *matHeaderCellDef id="convAlimentar">C.A</th>
-        <td mat-cell *matCellDef="let element"> {{ element?.convAlimenticia }}</td>
+        <td mat-cell *matCellDef="let element"> {{ element?.ca }}</td>
       </ng-container>
   
       <ng-container matColumnDef="gpd">
         <th mat-header-cell *matHeaderCellDef id="gpd">GPD</th>
-        <td mat-cell *matCellDef="let element">{{ element.gpd }}</td>
+        <td mat-cell *matCellDef="let element">{{ element.gpd }}kg</td>
       </ng-container>
   
       <ng-container matColumnDef="totalRecebida">
         <th mat-header-cell *matHeaderCellDef id="totalRecebida">Total recebida</th>
-        <td mat-cell *matCellDef="let element">{{ element.totalRecebida }}</td>
+        <td mat-cell *matCellDef="let element">{{ element.tlRecebida }}</td>
       </ng-container>
   
       <ng-container matColumnDef="alojamento">
         <th mat-header-cell *matHeaderCellDef id="alojamento">Alojamento</th>
-        <td mat-cell *matCellDef="let element">{{ element.alojamento }}</td>
+        <td mat-cell *matCellDef="let element">{{ element.alojamento | dateFormat }}</td>
       </ng-container>
   
       <ng-container matColumnDef="despeca">
-        <th mat-header-cell class="despeca-column" *matHeaderCellDef id="despeca">Despeca</th>
-        <td mat-cell class="despeca-column" *matCellDef="let element">{{ element.despeca }}</td>
+        <th mat-header-cell class="despeca-column" *matHeaderCellDef id="despeca">Despesca</th>
+        <td mat-cell class="despeca-column" *matCellDef="let element">{{ element.despesca | dateFormat }}</td>
       </ng-container>
   
       <ng-container matColumnDef="diasCultivo">

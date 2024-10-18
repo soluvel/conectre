@@ -4,14 +4,14 @@ import com.soluvel.conectre.core.CrudController;
 import com.soluvel.conectre.core.CrudService;
 import com.soluvel.conectre.domain.Lote;
 import com.soluvel.conectre.domain.TanqueNovo;
+import com.soluvel.conectre.domain.records.LoteDetail;
+import com.soluvel.conectre.domain.records.LoteHistorico;
 import com.soluvel.conectre.service.LoteService;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/lote")
@@ -31,6 +31,16 @@ public class LoteController extends CrudController<Lote, Lote, Long> {
         entity.setTanque(TanqueNovo.builder().id(entity.getTanqueId()).build());
 
         return new ResponseEntity<>(loteService.save(entity), HttpStatus.CREATED);
+    }
+
+    @GetMapping("find-by-propriedade-id/{propriedadeId}/{page}/{size}")
+    public ResponseEntity<Page<LoteHistorico>> findByPropriedadeId(@PathVariable("propriedadeId") Long propriedadeId, @PathVariable("page") int page, @PathVariable("size") int size) {
+        return new ResponseEntity<>(loteService.findByPropriedadeId(propriedadeId, PageRequest.of(page, size)), HttpStatus.OK);
+    }
+
+    @GetMapping("find-detail/{id}")
+    public ResponseEntity<LoteDetail> findDetailById(@PathVariable("id") Long id) {
+        return new ResponseEntity<>(loteService.findDetailById(id), HttpStatus.OK);
     }
 
 }

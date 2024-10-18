@@ -119,15 +119,14 @@
 
     <div class="container-buttons">
       <ng-container *ngIf="exibirTanque">
-        <button class="button-no-border" style="margin-right: 10px" (click)="onDownload()">Download Medições</button>
-      </ng-container>
       <div class="exclude-button-box">
         <mat-icon class="exclude-icon material-symbols-rounded">delete</mat-icon>
         <button class="button-no-border exclude-button" style="margin-right: 10px">Excluir propriedade</button>
       </div>
+    </ng-container>
       <div class="buttons-box">
         <button class="button-no-border" style="margin-right: 10px">Limpar</button>
-        <button [disabled]="!form.valid" (click)="onSubmit()" [ngClass]="{'button-disabled': !form.valid}">
+        <button [disabled]="!form.valid || form.pristine" (click)="onSubmit()" [ngClass]="{'button-disabled': !form.valid || form.pristine}">
           {{ isEditando ? 'Salvar Alterações' : 'Cadastrar propriedade' }}
         </button>
       </div>
@@ -135,43 +134,42 @@
   </div>
 
 
-  <!-- <ng-container *ngIf="!exibirTanque"> -->
+  <ng-container *ngIf="exibirTanque && tanques.length == 0">
     <div class="new-buttons-box">
       <button (click)="newTanque()">Novo tanque</button>
       <button class="button-white">Novo equipamento</button>
     </div>
-  <!-- </ng-container> -->
+  </ng-container>
 
-  <!-- <ng-container *ngIf="exibirTanque"> -->
+  <ng-container *ngIf="tanques.length > 0">
     <div class="iniciar-lote-container">
       <div class="iniciar-lote-container-buttons-box">
-        <select id="tanqueSelecionado" class="select-tanque">
-          <option *ngFor="let tanque of tanques">
-            {{ tanque }}
+        <select id="tanqueSelecionado" class="select-tanque" [(ngModel)]="tanqueSelecionado">
+          <option *ngFor="let tanque of tanques" [value]="tanque.id">
+            {{ tanque.nome }}
           </option>
         </select>
         <button class="new-tanque-button" (click)="newTanque()">Novo Tanque</button>
       </div>
       
-      <button>Iniciar lote</button>
+      <button (click)="iniciarLote()">Iniciar lote</button>
     </div>
-  <!-- </ng-container> -->
+  </ng-container>
   
-  <!-- <ng-container *ngIf="exibirTanque"> -->
+  <ng-container *ngIf="exibirLote">
     <div class="container-biometria">
       <app-tabs-biometrias></app-tabs-biometrias>
     </div>
   
-  <!-- </ng-container> -->
+  </ng-container>
 
 
-  <!-- <ng-container *ngIf="exibirTanque"> -->
+  <ng-container *ngIf="tanques.length > 0">
     <div class="container-historic">
       <span>Histórico de lotes finalizados</span>
 
-      <app-table-historico-lote></app-table-historico-lote>
+      <app-table-historico-lote [propriedadeId]="propriedadeId"></app-table-historico-lote>
     </div>
-  <!-- </ng-container> -->
-
+  </ng-container>
 
 </div>
