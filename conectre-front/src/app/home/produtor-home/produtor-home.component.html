@@ -1,3 +1,36 @@
+<div class="iniciar-lote-container">
+  <div class="iniciar-lote-container-buttons-box">
+    <select id="tanqueSelecionado" class="select-tanque">
+      <option *ngFor="let tanque of tanques">
+        {{ tanque }}
+      </option>
+    </select>
+
+    <div class="right-header-container-buttons-box">
+      <span>Piscicultura Sol Nascente</span>
+      <button class="new-tanque-button" (click)="newTanque()">Novo Tanque</button>
+    </div>
+  </div>
+
+  <ng-container *ngIf="waitingTech">
+    <div class="waiting-tec-container">
+      <div class="clock-animated">
+        <div class="clock"></div>
+        <div class="big-clock-pointer"></div>
+        <div class="small-clock-pointer"></div>
+      </div>
+      <span>Aguardando o técnico</span>
+    </div>
+  </ng-container>
+
+  <ng-container *ngIf="!waitingTech">
+    <div class="validate-container">
+      <mat-icon class="warning-icon material-symbols-rounded">warning</mat-icon>
+      <span>Valide o cadastro</span>
+    </div>
+  </ng-container>
+</div>
+
 <div class="tanque-infos">
   <div class="header-infos">
     <select id="tanque" [(ngModel)]="selectedTanque">
@@ -18,6 +51,7 @@
   <h3 class="historic-title">Histórico de registro</h3>
 </div>
 
-<button type="button" class="button-geral export-button" style="margin-bottom: 10px; background: #000;" (click)="onDownload()">Exportar</button>
+<button type="button" class="button-geral export-button" style="margin-bottom: 10px; background: #000;"
+  (click)="onDownload()">Exportar</button>
 
 <app-table-registro-historico></app-table-registro-historico>
