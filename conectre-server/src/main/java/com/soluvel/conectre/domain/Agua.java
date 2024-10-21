@@ -8,7 +8,7 @@ import lombok.*;
 import java.io.Serial;
 import java.io.Serializable;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
+import java.time.LocalTime;
 
 @Getter
 @Setter
@@ -30,7 +30,7 @@ public class Agua implements Serializable {
     @Column(name = "dt_medicao")
     private LocalDate dtMedicao;
 
-    private LocalDateTime hora;
+    private LocalTime hora;
 
     private Integer ph;
     private Integer amonia;
@@ -44,4 +44,6 @@ public class Agua implements Serializable {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "medicao_id", nullable = false)
     private MedicaoNovo medicao;
+
+
 }

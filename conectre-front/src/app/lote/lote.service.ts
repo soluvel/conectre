@@ -59,4 +59,12 @@ export class LoteService {
     findDetail(id: any): Observable<any> {
         return this.http.get<any>(`${this.apiUrl}/find-detail/${id}`, { headers: this.headers });
     }
+
+    findInfos(id: any): Observable<any> {
+        return this.http.get<any>(`${this.apiUrl}/find-infos/${id}`, { headers: this.headers });
+    }
+
+    patch(data: any): Observable<any> {
+        return this.http.patch<any>(`${this.apiUrl}/finalizacao`, data, { headers: this.headers });
+    }
 }

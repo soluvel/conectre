@@ -27,22 +27,27 @@ public class MedicaoNovo implements Serializable {
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "tanque_id")
-    private TanqueNovo tanque;
+    @JoinColumn(name = "lote_id")
+    private Lote lote;
 
     @Column(name = "dt_medicao")
     private LocalDate dtMedicao;
 
-    @OneToMany(mappedBy = "medicao", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "medicao", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Agua> aguas;
 
-    @OneToMany(mappedBy = "medicao", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "medicao", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Biometria> biometrias;
 
-    @OneToMany(mappedBy = "medicao", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "medicao", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Trato> tratos;
 
-    @OneToOne(mappedBy = "medicao", cascade = CascadeType.ALL)
-    private Estoque estoque;
+    @OneToMany(mappedBy = "medicao", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<Estoque> estoques;
+
+    @Transient
+    private Long tanqueId;
+
+
 
 }

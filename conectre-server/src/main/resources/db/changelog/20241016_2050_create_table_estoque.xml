@@ -21,9 +21,9 @@
                 <constraints nullable="false"/>
             </column>
 
-            <column name="racao_ofertada" type="double"/>
+            <column name="qtd_recebida" type="double"/>
             <column name="tipo_racao" type="varchar(100)"/>
-            <column name="no_nf" type="varchar(15)"/>
+            <column name="nrm_nf" type="varchar(15)"/>
 
 
             <column name="medicao_id" type="int">

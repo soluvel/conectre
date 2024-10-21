@@ -36,4 +36,12 @@
             <column name="biomassa_estimada_final" type="double"/>
         </createTable>
     </changeSet>
+
+    <changeSet id="3" author="kassia.zama">
+        <addColumn tableName="lote">
+            <column name="dt_finalizacao" type="date"/>
+            <column name="hr_finalizacao" type="time"/>
+        </addColumn>
+
+    </changeSet>
 </databaseChangeLog>

@@ -8,7 +8,7 @@ import lombok.*;
 import java.io.Serial;
 import java.io.Serializable;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
+import java.time.LocalTime;
 
 @Getter
 @Setter
@@ -30,7 +30,7 @@ public class Trato implements Serializable {
     @Column(name = "dt_medicao")
     private LocalDate dtMedicao;
 
-    private LocalDateTime hora;
+    private LocalTime hora;
 
     private Double temperatura;
     private Double oxigenio;

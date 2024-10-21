@@ -29,18 +29,18 @@ public class Estoque implements Serializable {
     @Column(name = "dt_recebimento")
     private LocalDate dtRecebimento;
 
-    @Column(name = "racao_ofertada")
-    private Double racaoOfertada;
+    @Column(name = "qtd_recebida")
+    private Double qtdRecebida;
 
     @Column(name = "tipo_racao")
     private String tipoRacao;
 
-    @Column(name = "no_nf")
-    private String noNf;
+    @Column(name = "nrm_nf")
+    private String nrmNf;
 
     @JsonIgnore
-    @OneToOne
-    @JoinColumn(name = "medicao_id")
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "medicao_id", nullable = false)
     private MedicaoNovo medicao;
 
 }

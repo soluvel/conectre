@@ -1,32 +1,31 @@
 <mat-tab-group animationDuration="0ms">
-  <form [formGroup]="form">
     <mat-tab label="Água">
       <ng-template mat-tab-label>
         <mat-icon class="icon-tabs material-symbols-rounded">water</mat-icon>
         <span>Água</span>
       </ng-template>
-      <div formGroupName="agua">
+      <form [formGroup]="formAgua">
         <div class="tab-container">
           <div class="row g-3 row-full-line">
             <div class="col-4">
-              <label for="dtAgua" class="form-label">Data</label>
+              <label for="dtMedicao" class="form-label">Data</label>
               <div class="input-group" style="padding-bottom: 0">
-                <input type="date" class="form-control" id="dtAgua" formControlName="dtAgua"
+                <input type="date" class="form-control" id="dtMedicao" formControlName="dtMedicao"
                   style="margin-bottom: 0">
               </div>
             </div>
 
             <div class="col-4">
-              <label for="hrAgua" class="form-label required">Hora</label>
+              <label for="hora" class="form-label required">Hora</label>
               <div class="input-group">
-                <input type="time" class="form-control" id="hrAgua" formControlName="hrAgua">
+                <input type="time" class="form-control" id="hora" formControlName="hora">
               </div>
             </div>
 
             <div class="col-4">
-              <label for="pH" class="form-label required">pH</label>
+              <label for="ph" class="form-label required">pH</label>
               <div class="input-group">
-                <input type="number" class="form-control" id="pH" formControlName="pH">
+                <input type="number" class="form-control" id="ph" formControlName="ph">
               </div>
             </div>
           </div>
@@ -69,21 +68,21 @@
             </div>
 
             <div class="col-4">
-              <label for="oxigenioAgua" class="form-label required">Oxigênio (mg/L)</label>
+              <label for="oxigenio" class="form-label required">Oxigênio (mg/L)</label>
               <div class="input-group">
-                <input type="number" class="form-control" id="oxigenioAgua" formControlName="oxigenioAgua">
+                <input type="number" class="form-control" id="oxigenio" formControlName="oxigenio">
               </div>
             </div>
 
             <div class="col-4">
-              <label for="temperaturaAgua" class="form-label required">Temperatura (ºC)</label>
+              <label for="temperatura" class="form-label required">Temperatura (ºC)</label>
               <div class="input-group">
-                <input type="number" class="form-control" id="temperaturaAgua" formControlName="temperaturaAgua">
+                <input type="number" class="form-control" id="temperatura" formControlName="temperatura">
               </div>
             </div>
           </div>
         </div>
-      </div>
+      </form>
     </mat-tab>
 
     <mat-tab label="Biometria">
@@ -91,28 +90,28 @@
         <mat-icon class="icon-tabs material-symbols-rounded">set_meal</mat-icon>
         <span>Biometria</span>
       </ng-template>
-      <div formGroupName="biometria">
+      <form [formGroup]="formBiometria">
         <div class="tab-container">
           <div class="row g-3 row-full-line">
             <div class="col-4">
-              <label for="dtBiometria" class="form-label">Data</label>
+              <label for="dtMedicao" class="form-label">Data</label>
               <div class="input-group" style="padding-bottom: 0">
-                <input type="date" class="form-control" id="dtBiometria" formControlName="dtBiometria"
+                <input type="date" class="form-control" id="dtMedicao" formControlName="dtMedicao"
                   style="margin-bottom: 0">
               </div>
             </div>
 
             <div class="col-4">
-              <label for="hrBiometria" class="form-label required">Hora</label>
+              <label for="hora" class="form-label required">Hora</label>
               <div class="input-group">
-                <input type="time" class="form-control" id="hrBiometria" formControlName="hrBiometria">
+                <input type="time" class="form-control" id="hora" formControlName="hora">
               </div>
             </div>
 
             <div class="col-4">
-              <label for="qntAmostra" class="form-label required">Peixes por amostra</label>
+              <label for="peixePorAmostra" class="form-label required">Peixes por amostra</label>
               <div class="input-group">
-                <input type="number" class="form-control" id="qntAmostra" formControlName="qntAmostra">
+                <input type="number" class="form-control" id="peixePorAmostra" formControlName="peixePorAmostra">
               </div>
             </div>
           </div>
@@ -193,7 +192,7 @@
             </div>
           </div>
         </div>
-      </div>
+      </form>
     </mat-tab>
 
     <mat-tab label="Trato">
@@ -201,35 +200,35 @@
         <mat-icon class="icon-tabs material-symbols-rounded">restaurant</mat-icon>
         <span>Trato</span>
       </ng-template>
-      <div formGroupName="trato">
+      <form [formGroup]="formTrato">
         <div class="tab-container">
           <div class="row g-3 row-full-line">
             <div class="col">
-              <label for="dtTrato" class="form-label">Data</label>
+              <label for="dtMedicao" class="form-label">Data</label>
               <div class="input-group" style="padding-bottom: 0">
-                <input type="date" class="form-control" id="dtTrato" formControlName="dtTrato"
+                <input type="date" class="form-control" id="dtMedicao" formControlName="dtMedicao"
                   style="margin-bottom: 0">
               </div>
             </div>
 
             <div class="col">
-              <label for="hrTrato" class="form-label required">Hora</label>
+              <label for="hora" class="form-label required">Hora</label>
               <div class="input-group">
-                <input type="time" class="form-control" id="hrTrato" formControlName="hrTrato">
+                <input type="time" class="form-control" id="hora" formControlName="hora">
               </div>
             </div>
 
             <div class="col">
-              <label for="temperaturaTrato" class="form-label required">Temperatura (ºC)</label>
+              <label for="temperatura" class="form-label required">Temperatura (ºC)</label>
               <div class="input-group">
-                <input type="number" class="form-control" id="temperaturaTrato" formControlName="temperaturaTrato">
+                <input type="number" class="form-control" id="temperatura" formControlName="temperatura">
               </div>
             </div>
 
             <div class="col">
-              <label for="oxigenioTrato" class="form-label required">Oxigênio (mg/L)</label>
+              <label for="oxigenio" class="form-label required">Oxigênio (mg/L)</label>
               <div class="input-group">
-                <input type="number" class="form-control" id="oxigenioTrato" formControlName="oxigenioTrato">
+                <input type="number" class="form-control" id="oxigenio" formControlName="oxigenio">
               </div>
             </div>
 
@@ -245,22 +244,22 @@
         <div class="tab-container">
           <div class="row g-3 row-full-line">
             <div class="col-6">
-              <label for="racaoTotal" class="form-label">Ração total despejada (Kg)</label>
+              <label for="racaoTotalDespejada" class="form-label">Ração total despejada (Kg)</label>
               <div class="input-group" style="padding-bottom: 0">
-                <input type="number" class="form-control" id="racaoTotal" formControlName="racaoTotal"
+                <input type="number" class="form-control" id="racaoTotalDespejada" formControlName="racaoTotalDespejada"
                   style="margin-bottom: 0">
               </div>
             </div>
 
             <div class="col-6">
-              <label for="racaoRestante" class="form-label required">Ração restante no silo</label>
+              <label for="racaoRestanteSilo" class="form-label required">Ração restante no silo</label>
               <div class="input-group">
-                <input type="number" class="form-control" id="racaoRestante" formControlName="racaoRestante">
+                <input type="number" class="form-control" id="racaoRestanteSilo" formControlName="racaoRestanteSilo">
               </div>
             </div>
           </div>
         </div>
-      </div>
+      </form>
     </mat-tab>
 
     <mat-tab label="Estoque">
@@ -268,7 +267,7 @@
         <mat-icon class="icon-tabs material-symbols-rounded">package_2</mat-icon>
         <span>Estoque</span>
       </ng-template>
-      <div formGroupName="estoque">
+      <form [formGroup]="formEstoque">
         <div class="tab-container">
           <div class="row g-3 row-full-line">
             <div class="col-3">
@@ -294,16 +293,15 @@
             </div>
             
             <div class="col-3">
-              <label for="nrmNota" class="form-label required">Nº da nota</label>
+              <label for="nrmNf" class="form-label required">Nº da nota</label>
               <div class="input-group">
-                <input type="number" class="form-control" id="nrmNota" formControlName="nrmNota">
+                <input type="number" class="form-control" id="nrmNf" formControlName="nrmNf">
               </div>
             </div>
           </div>
         </div>
-      </div>
+      </form>
     </mat-tab>
-  </form>
 </mat-tab-group>
 
 
@@ -318,7 +316,7 @@
 
   <div class="buttons-box">
     <button class="button-no-border clean-button" style="margin-right: 10px">Limpar dados</button>
-    <button [disabled]="tanqueId == ''" (click)="onSubmit()" [ngClass]="{'button-disabled': !form.valid || tanqueId == ''}">Salvar Registro</button>
+    <button [disabled]="tanqueId == ''" (click)="onSubmitNovo()" [ngClass]="{'button-disabled': !form.valid || tanqueId == ''}">Salvar Registro</button>
     <!-- <button (click)="onSubmit()">Salvar Registro</button> -->
   </div>
 </div>

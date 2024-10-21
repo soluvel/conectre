@@ -21,8 +21,9 @@
                 <constraints nullable="false"/>
             </column>
 
-            <column name="hora" type="TIMESTAMP"/>
+            <column name="hora" type="TIME"/>
             <column name="ph" type="int"/>
+            <column name="amonia" type="int"/>
             <column name="nitrito" type="int"/>
             <column name="alcalinidade" type="int"/>
             <column name="transparencia" type="int"/>

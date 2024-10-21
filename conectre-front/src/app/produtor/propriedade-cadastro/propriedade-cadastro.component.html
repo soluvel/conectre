@@ -156,9 +156,9 @@
     </div>
   </ng-container>
   
-  <ng-container *ngIf="exibirLote">
+  <ng-container *ngIf="tanques.length > 0">
     <div class="container-biometria">
-      <app-tabs-biometrias></app-tabs-biometrias>
+      <app-tabs-biometrias [tanqueId]="tanqueSelecionado"></app-tabs-biometrias>
     </div>
   
   </ng-container>

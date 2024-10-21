@@ -5,7 +5,9 @@ import com.soluvel.conectre.core.CrudService;
 import com.soluvel.conectre.domain.Lote;
 import com.soluvel.conectre.domain.TanqueNovo;
 import com.soluvel.conectre.domain.records.LoteDetail;
+import com.soluvel.conectre.domain.records.LoteFinalizacao;
 import com.soluvel.conectre.domain.records.LoteHistorico;
+import com.soluvel.conectre.domain.records.LoteInfos;
 import com.soluvel.conectre.service.LoteService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -41,6 +43,17 @@ public class LoteController extends CrudController<Lote, Lote, Long> {
     @GetMapping("find-detail/{id}")
     public ResponseEntity<LoteDetail> findDetailById(@PathVariable("id") Long id) {
         return new ResponseEntity<>(loteService.findDetailById(id), HttpStatus.OK);
+    }
+
+    @GetMapping("find-infos/{id}")
+    public ResponseEntity<LoteInfos> findInfosById(@PathVariable("id") Long id) {
+        return new ResponseEntity<>(loteService.findInfosById(id), HttpStatus.OK);
+    }
+
+    @PatchMapping("finalizacao")
+    public ResponseEntity<Void> patchLoteFinalizacao(@RequestBody LoteFinalizacao LoteFinalizacao) {
+        loteService.updateLoteFinalizacao(LoteFinalizacao.loteId(), LoteFinalizacao.dtFinalizacao(), LoteFinalizacao.hrFinalizacao());
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
 }

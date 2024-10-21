@@ -17,8 +17,8 @@
                 <constraints nullable="false" primaryKey="true" primaryKeyName="pk_medicao_novo"/>
             </column>
 
-            <column name="tanque_id" type="int">
-                <constraints nullable="false" foreignKeyName="fk_medicao_novo_tanque" referencedTableName="tanque_novo"
+            <column name="lote_id" type="int">
+                <constraints nullable="false" foreignKeyName="fk_medicao_novo_lote" referencedTableName="lote"
                              referencedColumnNames="id"/>
             </column>
 

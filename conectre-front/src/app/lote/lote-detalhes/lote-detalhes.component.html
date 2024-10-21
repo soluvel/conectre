@@ -40,7 +40,7 @@
             </div>
         </div>
 
-        <button class="finalizar-lote-button" (click)="finalizarLote()">Finalizar lote</button>
+        <button class="finalizar-lote-button" (click)="popUpFinalizar()">Finalizar lote</button>
     </div>
 
     <div class="container-historic">
@@ -51,6 +51,7 @@
 
     <div class="dividing-line"></div>
 
+    <form [formGroup]="form">
     <div class="container-form">
         <span class="container-infos-title">Informações do lote</span>
 
@@ -59,21 +60,21 @@
             <div class="col-4">
                 <label for="tanque" class="form-label">Tanque</label>
                 <div class="input-group">
-                    <input type="text" class="form-control click-disabled" id="tanque">
+                    <input type="text" class="form-control click-disabled" id="tanque" formControlName="nomeTanque">
                 </div>
             </div>
 
             <div class="col-4">
                 <label for="lote" class="form-label">Lote</label>
                 <div class="input-group">
-                    <input type="text" class="form-control click-disabled" id="lote">
+                    <input type="text" class="form-control click-disabled" id="lote"  formControlName="lote">
                 </div>
             </div>
 
             <div class="col-4">
                 <label for="ciclo" class="form-label">Ciclo</label>
                 <div class="input-group">
-                    <input type="text" class="form-control click-disabled" id="ciclo">
+                    <input type="text" class="form-control click-disabled" id="ciclo"  formControlName="ciclo">
                 </div>
             </div>
         </div>
@@ -82,21 +83,21 @@
             <div class="col-4">
                 <label for="tipoTanque" class="form-label">Tipo de tanque</label>
                 <div class="input-group">
-                    <input type="text" class="form-control click-disabled" id="tipoTanque">
+                    <input type="text" class="form-control click-disabled" id="tipoTanque" formControlName="tipoTanque">
                 </div>
             </div>
 
             <div class="col-4">
                 <label for="area" class="form-label">Área (m²)</label>
                 <div class="input-group">
-                    <input type="text" class="form-control click-disabled" id="area">
+                    <input type="text" class="form-control click-disabled" id="area" formControlName="area">
                 </div>
             </div>
 
             <div class="col-4">
                 <label for="aeracaoTotal" class="form-label">Aeração total (CV)</label>
                 <div class="input-group">
-                    <input type="text" class="form-control click-disabled" id="aeracaoTotal">
+                    <input type="text" class="form-control click-disabled" id="aeracaoTotal" formControlName="potenciaAeracaoTotal">
                 </div>
             </div>
         </div>
@@ -106,21 +107,21 @@
             <div class="col-4">
                 <label for="especie" class="form-label">Espécie</label>
                 <div class="input-group">
-                    <input type="text" class="form-control click-disabled" id="especie">
+                    <input type="text" class="form-control click-disabled" id="especie" formControlName="especie">
                 </div>
             </div>
 
             <div class="col-4">
                 <label for="origem" class="form-label">Origem</label>
                 <div class="input-group">
-                    <input type="text" class="form-control click-disabled" id="origem">
+                    <input type="text" class="form-control click-disabled" id="origem" formControlName="origem">
                 </div>
             </div>
 
             <div class="col-4">
                 <label for="dataAlojamento" class="form-label">Data de alojamento</label>
                 <div class="input-group">
-                    <input type="text" class="form-control click-disabled" id="dataAlojamento">
+                    <input type="text" class="form-control click-disabled" id="dataAlojamento" formControlName="dataAlojamento">
                 </div>
             </div>
         </div>
@@ -129,21 +130,21 @@
             <div class="col-4">
                 <label for="primeiraRemessa" class="form-label">Qtd. recebida (1º remessa)</label>
                 <div class="input-group">
-                    <input type="text" class="form-control click-disabled" id="primeiraRemessa">
+                    <input type="text" class="form-control click-disabled" id="primeiraRemessa" formControlName="qtdRecebida">
                 </div>
             </div>
 
             <div class="col-4">
                 <label for="mortalidadeAlojamento" class="form-label">Mortalidade de Alojamento (7 dias)</label>
                 <div class="input-group">
-                    <input type="text" class="form-control click-disabled" id="mortalidadeAlojamento">
+                    <input type="text" class="form-control click-disabled" id="mortalidadeAlojamento" formControlName="mortalidade">
                 </div>
             </div>
 
             <div class="col-4">
                 <label for="segundaRemessa" class="form-label">Qtd. recebida (2º remessa)</label>
                 <div class="input-group">
-                    <input type="text" class="form-control click-disabled" id="segundaRemessa">
+                    <input type="text" class="form-control click-disabled" id="segundaRemessa" formControlName="qtdRecebida2">
                 </div>
             </div>
         </div>
@@ -152,21 +153,21 @@
             <div class="col-4">
                 <label for="pesoMedio" class="form-label">Peso médio (Kg)</label>
                 <div class="input-group">
-                    <input type="text" class="form-control click-disabled" id="pesoMedio">
+                    <input type="text" class="form-control click-disabled" id="pesoMedio" formControlName="pesoMedio">
                 </div>
             </div>
 
             <div class="col-4">
                 <label for="biomassaTotal" class="form-label">Biomassa total alojada (Kg)</label>
                 <div class="input-group">
-                    <input type="text" class="form-control click-disabled" id="biomassaTotal">
+                    <input type="text" class="form-control click-disabled" id="biomassaTotal" formControlName="biomassaTotal">
                 </div>
             </div>
 
             <div class="col-4">
                 <label for="densidade" class="form-label">Densidade (Px/m²)</label>
                 <div class="input-group">
-                    <input type="text" class="form-control click-disabled" id="densidade">
+                    <input type="text" class="form-control click-disabled" id="densidade" formControlName="densidade">
                 </div>
             </div>
         </div>
@@ -175,21 +176,21 @@
             <div class="col-4">
                 <label for="biomassaAtual" class="form-label">Biomassa por CV Atual (Kg)</label>
                 <div class="input-group">
-                    <input type="text" class="form-control click-disabled" id="biomassaAtual">
+                    <input type="text" class="form-control click-disabled" id="biomassaAtual" formControlName="biomassaCVAtual">
                 </div>
             </div>
 
             <div class="col-4">
                 <label for="pesoAbateEsperado" class="form-label">Peso de abate esperado (Kg)</label>
                 <div class="input-group">
-                    <input type="text" class="form-control click-disabled" id="pesoAbateEsperado">
+                    <input type="text" class="form-control click-disabled" id="pesoAbateEsperado" formControlName="pesoAbateEsperado">
                 </div>
             </div>
 
             <div class="col-4">
                 <label for="biomassaEstimada" class="form-label">Biomassa estimada/CV fase final (Kg/CV)</label>
                 <div class="input-group">
-                    <input type="text" class="form-control click-disabled" id="biomassaEstimada">
+                    <input type="text" class="form-control click-disabled" id="biomassaEstimada" formControlName="biomassaEstimadaFinal">
                 </div>
             </div>
         </div>
@@ -201,21 +202,21 @@
             <div class="col-4">
                 <label for="data" class="form-label">Data</label>
                 <div class="input-group">
-                    <input type="text" class="form-control click-disabled" id="data">
+                    <input type="text" class="form-control click-disabled" id="data" formControlName="data">
                 </div>
             </div>
 
             <div class="col-4">
                 <label for="saida" class="form-label">Saída</label>
                 <div class="input-group">
-                    <input type="text" class="form-control click-disabled" id="saida">
+                    <input type="text" class="form-control click-disabled" id="saida" formControlName="saida">
                 </div>
             </div>
 
             <div class="col-4">
-                <label for="entrada" class="form-label">Entrada</label>
+                <label for="entrada" class="form-label">entrada</label>
                 <div class="input-group">
-                    <input type="text" class="form-control click-disabled" id="entrada">
+                    <input type="text" class="form-control click-disabled" id="entrada" formControlName="ciclo">
                 </div>
             </div>
         </div>
@@ -224,21 +225,21 @@
             <div class="col-4">
                 <label for="temperaturaAgua" class="form-label">Temperatura da água</label>
                 <div class="input-group">
-                    <input type="text" class="form-control click-disabled" id="temperaturaAgua">
+                    <input type="text" class="form-control click-disabled" id="temperaturaAgua" formControlName="temperaturaAgua">
                 </div>
             </div>
 
             <div class="col-4">
                 <label for="oxigenio" class="form-label">Oxigênio</label>
                 <div class="input-group">
-                    <input type="text" class="form-control click-disabled" id="oxigenio">
+                    <input type="text" class="form-control click-disabled" id="oxigenio" formControlName="oxigenio">
                 </div>
             </div>
 
             <div class="col-4">
                 <label for="placaVeiculo" class="form-label">Placa do veículo</label>
                 <div class="input-group">
-                    <input type="text" class="form-control click-disabled" id="placaVeiculo">
+                    <input type="text" class="form-control click-disabled" id="placaVeiculo" formControlName="placaVeiculo">
                 </div>
             </div>
         </div>
@@ -248,21 +249,21 @@
             <div class="col-4">
                 <label for="nmrCaixas" class="form-label">Nº de caixas</label>
                 <div class="input-group">
-                    <input type="text" class="form-control click-disabled" id="nmrCaixas">
+                    <input type="text" class="form-control click-disabled" id="nmrCaixas" formControlName="numeroCaixas">
                 </div>
             </div>
 
             <div class="col-4">
                 <label for="peixePorCaixa" class="form-label">Qtd. de peixes por caixa</label>
                 <div class="input-group">
-                    <input type="text" class="form-control click-disabled" id="peixePorCaixa">
+                    <input type="text" class="form-control click-disabled" id="peixePorCaixa" formControlName="peixePorCaixa">
                 </div>
             </div>
 
             <div class="col-4">
                 <label for="pesoMedioCaixa" class="form-label">Peso médio (g)</label>
                 <div class="input-group">
-                    <input type="text" class="form-control click-disabled" id="pesoMedioCaixa">
+                    <input type="text" class="form-control click-disabled" id="pesoMedioCaixa" formControlName="pesoMedioComprovante">
                 </div>
             </div>
         </div>
@@ -271,21 +272,21 @@
             <div class="col-4">
                 <label for="tanqueAlocado" class="form-label">Tanque alocado</label>
                 <div class="input-group">
-                    <input type="text" class="form-control click-disabled" id="tanqueAlocado">
+                    <input type="text" class="form-control click-disabled" id="tanqueAlocado" formControlName="nomeTanque">
                 </div>
             </div>
 
             <div class="col-4">
                 <label for="pesoTotalCaixa" class="form-label">Peso total (Kg)</label>
                 <div class="input-group">
-                    <input type="text" class="form-control click-disabled" id="pesoTotalCaixa">
+                    <input type="text" class="form-control click-disabled" id="pesoTotalCaixa" formControlName="pesoTotal">
                 </div>
             </div>
 
             <div class="col-4">
                 <label for="nmrLacre" class="form-label">Nº do lacre</label>
                 <div class="input-group">
-                    <input type="text" class="form-control click-disabled" id="nmrLacre">
+                    <input type="text" class="form-control click-disabled" id="nmrLacre" formControlName="numeroLacre">
                 </div>
             </div>
         </div>
@@ -300,6 +301,7 @@
             </div>
         </div>
     </div>
+</form>
 
     <div id="popupWall"></div>
 
@@ -313,21 +315,21 @@
                 <div class="col-12">
                     <label for="dataFinalizar" class="form-label label-popup">Data</label>
                     <div>
-                        <input type="date" class="form-control form-popup" id="dataFinalizar">
+                        <input type="date" class="form-control form-popup" id="dataFinalizar" [(ngModel)]="dataFinalizar">
                     </div>
                 </div>
 
                 <div class="col-12">
                     <label for="horaFinalizar" class="form-label label-popup">Hora</label>
                     <div>
-                        <input type="time" class="form-control form-popup" id="horaFinalizar">
+                        <input type="time" class="form-control form-popup" id="horaFinalizar" [(ngModel)]="horaFinalizar">
                     </div>
                 </div>
             </div>
             
             <div class="overlay-end-lote-buttons">
                 <button class="back-end-lote-button button-white" (click)="closePopup()">Cancelar</button>
-                <button class="end-lote-button" (click)="true">Finalizar</button>
+                <button class="end-lote-button" (click)="finalizarLote(dataFinalizar, horaFinalizar)">Finalizar</button>
             </div>
         </div>
     </div>

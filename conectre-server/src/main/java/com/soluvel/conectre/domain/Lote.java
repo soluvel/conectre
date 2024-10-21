@@ -1,23 +1,12 @@
 package com.soluvel.conectre.domain;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
-import jakarta.persistence.Transient;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import jakarta.persistence.*;
+import lombok.*;
 
 import java.io.Serial;
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.time.LocalTime;
 
 @Getter
 @Setter
@@ -71,6 +60,12 @@ public class Lote implements Serializable {
 
     @Column(name = "biomassa_estimada_final")
     private Double biomassaEstimadaFinal;
+
+    @Column(name = "dt_finalizacao")
+    private LocalDate dtFinalizacao;
+
+    @Column(name = "hr_finalizacao")
+    private LocalTime hrFinalizacao;
 
     @Transient
     private Long tanqueId;

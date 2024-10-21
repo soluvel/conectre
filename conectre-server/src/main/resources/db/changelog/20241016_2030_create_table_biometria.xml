@@ -21,7 +21,7 @@
                 <constraints nullable="false"/>
             </column>
 
-            <column name="hora" type="TIMESTAMP"/>
+            <column name="hora" type="TIME"/>
 
             <column name="peixe_amostra" type="int"/>
             <column name="mortalidade" type="int"/>
