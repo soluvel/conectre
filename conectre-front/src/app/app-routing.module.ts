@@ -16,6 +16,7 @@ import { LoteComponent } from "./lote/lote.component";
 import { LoteDetalhesComponent } from "./lote/lote-detalhes/lote-detalhes.component";
 import { ChecklistComponent } from "./checklist/checklist.component";
 import { ComprovanteComponent } from "./comprovante/comprovante.component";
+import { GuiaUsuarioComponent } from "./guia-usuario/guia-usuario.component";
 
 const routes: Routes = [
   {path: '', redirectTo: 'inicio', pathMatch: 'full'},
@@ -40,6 +41,7 @@ const routes: Routes = [
   {path: 'checklist', component: ChecklistComponent, data: {role: ['ADM_TREVISAN', 'EMPRESA', 'TECNICO', 'PRODUTOR']}, canActivate: [AuthGuard]},
   {path: 'historico/:id', component: HistoricoComponent, data: {role: ['ADM_TREVISAN', 'TECNICO', 'PRODUTOR']}, canActivate: [AuthGuard]},
   {path: 'notificacao', component: NotificacaoComponent, data: {role: ['ADM_TREVISAN', 'TECNICO']}, canActivate: [AuthGuard]},
+  { path: 'guia-usuario', component: GuiaUsuarioComponent },
   {path: 'acesso-negado', component: AcessoNegadoComponent},
   {path: '**', redirectTo: 'acesso-negado'}
 ];
